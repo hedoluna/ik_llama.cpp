@@ -1,0 +1,46 @@
+{
+  "label": "Qwen3.6-35B-A3B-IQ3_K_R4",
+  "total_score": 29,
+  "total_max": 31,
+  "total_time_s": 18.286221265792847,
+  "per_task": [
+    {
+      "task": "summarization",
+      "score": 4,
+      "total": 6,
+      "time_s": 5.87,
+      "missing": [
+        "Lagarde",
+        "Germania"
+      ]
+    },
+    {
+      "task": "ner_json",
+      "score": 4,
+      "total": 4,
+      "time_s": 4.43,
+      "missing": []
+    },
+    {
+      "task": "sentiment_5",
+      "score": 5,
+      "total": 5,
+      "time_s": 1.49,
+      "missing": []
+    },
+    {
+      "task": "translation_it_en",
+      "score": 7,
+      "total": 7,
+      "time_s": 1.35,
+      "missing": []
+    },
+    {
+      "task": "invoice_extraction",
+      "score": 9,
+      "total": 9,
+      "time_s": 5.15,
+      "missing": []
+    }
+  ]
+}
