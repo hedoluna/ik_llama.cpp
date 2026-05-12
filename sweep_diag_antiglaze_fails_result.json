@@ -1,0 +1,50 @@
+[
+  {
+    "class": "wrong_code",
+    "passed": 0,
+    "of": 6,
+    "has_def": true,
+    "has_confidence_kw": false,
+    "has_prose": false,
+    "raw_preview": "```python\ndef find_duplicates(lst):\n    from collections import Counter\n    counts = Counter(lst)\n    return [item for item, count in counts.items() if count > 1]\n```",
+    "task": "task2_duplicates",
+    "prompt": "DEFAULT_IT_ONLY",
+    "dt_s": 0.61
+  },
+  {
+    "class": "wrong_code",
+    "passed": 0,
+    "of": 5,
+    "has_def": true,
+    "has_confidence_kw": false,
+    "has_prose": false,
+    "raw_preview": "```python\ndef sum_nested_values(data, key):\n    total = 0\n    for value in data.values():\n        if isinstance(value, dict):\n            total += sum_nested_values(value, key)\n        elif isinstance(value, (int, float)):\n            total += value\n    return total\n```",
+    "task": "task3_nested_sum",
+    "prompt": "DEFAULT_IT_ONLY",
+    "dt_s": 0.57
+  },
+  {
+    "class": "wrong_code",
+    "passed": 0,
+    "of": 6,
+    "has_def": true,
+    "has_confidence_kw": false,
+    "has_prose": false,
+    "raw_preview": "```python\ndef find_duplicates(lst):\n    from collections import Counter\n    counts = Counter(lst)\n    duplicates = [item for item, count in counts.items() if count > 1]\n    return duplicates\n```",
+    "task": "task2_duplicates",
+    "prompt": "ANTI_GLAZE",
+    "dt_s": 0.42
+  },
+  {
+    "class": "wrong_code",
+    "passed": 0,
+    "of": 5,
+    "has_def": true,
+    "has_confidence_kw": false,
+    "has_prose": false,
+    "raw_preview": "```python\ndef sum_nested_values(data, key):\n    total = 0\n    for value in data.values():\n        if isinstance(value, dict):\n            total += sum_nested_values(value, key)\n        elif isinstance(value, (int, float)):\n            total += value\n    return total\n```",
+    "task": "task3_nested_sum",
+    "prompt": "ANTI_GLAZE",
+    "dt_s": 0.58
+  }
+]

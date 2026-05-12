@@ -1,0 +1,108 @@
+============================================================
+CODING BENCHMARK - Test Modelli per Coding
+============================================================
+
+Task da completare:
+  - [facile] FizzBuzz
+  - [medio] Trova Duplicati
+  - [difficile] Somma Valori Nested
+  - [medio] Appiattisci Lista
+  - [medio] Parse Configurazione
+  - [difficile] Unisci Intervalli
+  - [difficile] Parentesi Bilanciate
+  - [molto difficile] Merge Profondo Dizionari
+
+Modelli da testare: 1
+  - gemma-2-2b-it-Q4_K_M
+
+============================================================
+TESTING: gemma-2-2b-it-Q4_K_M
+============================================================
+  Warm-up... ok (0.1s)
+
+  [FACILE] FizzBuzz...
+    [PASS] - 8/8 test (1.1s)
+
+  [MEDIO] Trova Duplicati...
+    [PASS] - 6/6 test (0.8s)
+
+  [DIFFICILE] Somma Valori Nested...
+    [FAIL] - 1/5 test (1.2s)
+
+  [MEDIO] Appiattisci Lista...
+    [PASS] - 6/6 test (0.8s)
+
+  [MEDIO] Parse Configurazione...
+    [PASS] - 6/6 test (1.2s)
+
+  [DIFFICILE] Unisci Intervalli...
+    [FAIL] - 5/6 test (1.8s)
+
+  [DIFFICILE] Parentesi Bilanciate...
+    [PASS] - 8/8 test (1.5s)
+
+  [MOLTO DIFFICILE] Merge Profondo Dizionari...
+    [FAIL] - 2/6 test (1.6s)
+
+  RISULTATO: [X] SCARTATO
+  Test totali: 42/51
+  Tempo totale: 10.08s
+
+============================================================
+RISULTATI FINALI
+============================================================
+
+[OK] MODELLI VALIDI PER CODING (16):
+   Qwen2.5-Coder-1.5B-Q4_K_M (4.79s)
+   qwen2.5-coder-3b-instruct@q4_0 (7.81s)
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen3-4B-Instruct-2507-GGUF/Qwen3-4B-Instruct-2507-Q4_K_M.gguf (9.74s)
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/gemma-3-4B-it-qat-GGUF/gemma-3-4B-it-QAT-Q4_0.gguf (11.99s)
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen2.5-7B-Instruct-1M-GGUF/Qwen2.5-7B-Instruct-1M-Q4_K_M.gguf (14.07s)
+   models/Qwen3.6-35B-A3B-IQ3_K_R4.gguf (20.7s)
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/granite-3.2-8b-instruct-GGUF/granite-3.2-8b-instruct-Q4_K_M.gguf (22.78s)
+   iklama_winner (24.69s)
+   meta-llama-3.1-8b-instruct (35.35s)
+   stage_b_winner (40.99s)
+   gemma-3-4b-it (41.06s)
+   phi-3.5-mini-instruct (49.19s)
+   ibm/granite-3.2-8b (51.61s)
+   mistralai/mistral-nemo-instruct-2407 (72.65s)
+   microsoft/phi-4 (93.0s)
+   qwen3.5-4b-uncensored-hauhaucs-aggressive (150.93s)
+
+[X] MODELLI SCARTATI (32):
+   qwen2.5-coder-7b-instruct
+   qwen2.5-coder-3b-instruct@q8_0
+   deepseek-coder-v2-lite-instruct
+   deepseek-coder-6.7b-instruct
+   stable-code-instruct-3b
+   qwen/qwen2.5-coder-0.5b-instruct
+   qwen3-0.6b
+   gemma-3-1b-it
+   yi-coder-1.5b-chat
+   qwen/qwen3-1.7b
+   qwen/qwen3-4b
+   llama-3.2-3b-instruct
+   qwen2.5-coder-14b-instruct
+   qwen/qwen3-8b
+   deepseek-r1-distill-qwen-7b
+   qwen3.5-9b-deepseek-v4-flash
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF/Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen3-8B-GGUF/Qwen3-8B-Q4_K_M.gguf
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Mistral-Nemo-Instruct-2407-GGUF/Mistral-Nemo-Instruct-2407-Q4_K_M.gguf
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen3-1.7B-GGUF/Qwen3-1.7B-Q6_K.gguf
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/DeepSeek-R1-0528-Qwen3-8B-GGUF/DeepSeek-R1-0528-Qwen3-8B-Q4_K_M.gguf
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/gemma-3-12B-it-qat-GGUF/gemma-3-12B-it-QAT-Q4_0.gguf
+   C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Phi-4-reasoning-plus-GGUF/Phi-4-reasoning-plus-Q4_K_M.gguf
+   Qwen2.5-Coder-0.5B-Q4_K_M
+   Qwen3-0.6B-Q8_0
+   deepseek-coder-1.3B-kexer-Q4_K_M
+   Yi-Coder-1.5B-Chat-Q4_K_M
+   DeepCoder-1.5B-Preview-Q8_0
+   gemma-3-1B-it-qat-Q4_0
+   SmolLM2-1.7B-Instruct-Q8_0
+   gemma-2-2b-it-Q4_K_M
+
+Risultati salvati in: D:\repos\ralph\local_ralph\coding_benchmark_results.json
+

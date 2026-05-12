@@ -1,0 +1,269 @@
+============================================================
+ADVANCED BENCHMARK - Test Specializzazioni Modelli
+============================================================
+
+Categorie: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+Modelli: 1
+  - Qwen2.5-Coder-1.5B-Q4_K_M
+
+============================================================
+TESTING: Qwen2.5-Coder-1.5B-Q4_K_M
+============================================================
+  Warm-up... ok (0.1s)
+
+  [Algoritmi & Strutture Dati] Binary Search... [PASS] (0.8s)
+
+  [Algoritmi & Strutture Dati] QuickSort... [PASS] (0.8s)
+
+  [Algoritmi & Strutture Dati] LRU Cache... [PASS] (1.5s)
+
+  [Algoritmi Genetici] Fitness Function... [PASS] (0.2s)
+
+  [Algoritmi Genetici] Single-Point Crossover... [PASS] (0.5s)
+
+  [Algoritmi Genetici] Bit-Flip Mutation... [PASS] (0.7s)
+
+  [Algoritmi Genetici] Tournament Selection... [PASS] (0.5s)
+
+  [Machine Learning] Min-Max Normalization... [PASS] (0.6s)
+
+  [Machine Learning] Euclidean Distance... [PASS] (0.4s)
+
+  [Machine Learning] Linear Regression (Gradient Descent)... [PASS] (1.2s)
+
+  [Machine Learning] K-Means Single Step... [FAIL] 0/1 (1.0s)
+
+  [Matematica & Scientifico] Matrix Multiplication... [PASS] (1.2s)
+
+  [Matematica & Scientifico] Newton-Raphson Square Root... [PASS] (0.7s)
+
+  [Matematica & Scientifico] Sieve of Eratosthenes... [PASS] (1.0s)
+
+  [Design Patterns] Singleton Pattern... [PASS] (0.5s)
+
+  [Design Patterns] Factory Pattern... [PASS] (0.8s)
+
+  [Design Patterns] Observer Pattern... A received: Hello
+B received: Hello
+B received: World
+[PASS] (1.1s)
+
+  PROFILO: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+  Score: 16/17
+
+============================================================
+PROFILI MODELLI
+============================================================
+
+qwen2.5-coder-3b-instruct:
+  Score: 15/17
+  Tempo: 60.16s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#####-----] 2/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+qwen2.5-7b-instruct:
+  Score: 14/17
+  Tempo: 178.17s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [#######---] 3/4
+    Machine Learning: [#####-----] 2/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+qwen2.5-coder-7b-instruct:
+  Score: 14/17
+  Tempo: 58.1s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [#######---] 3/4
+    Machine Learning: [#######---] 3/4
+    Matematica & Scientifico: [######----] 2/3
+    Design Patterns: [##########] 3/3
+
+llama-3.2-3b-instruct:
+  Score: 11/17
+  Tempo: 35.09s
+  Specializzazioni: Algoritmi & Strutture Dati, Matematica & Scientifico
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [#####-----] 2/4
+    Machine Learning: [#####-----] 2/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [###-------] 1/3
+
+deepseek-coder-v2-lite-instruct:
+  Score: 15/17
+  Tempo: 119.23s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [#######---] 3/4
+    Machine Learning: [#######---] 3/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+codellama-7b-instruct:
+  Score: 12/17
+  Tempo: 179.81s
+  Specializzazioni: Algoritmi & Strutture Dati, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [#####-----] 2/4
+    Machine Learning: [#####-----] 2/4
+    Matematica & Scientifico: [######----] 2/3
+    Design Patterns: [##########] 3/3
+
+gemma-3-4b-it:
+  Score: 15/17
+  Tempo: 191.62s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#######---] 3/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [######----] 2/3
+
+yi-coder-1.5b-chat:
+  Score: 14/17
+  Tempo: 75.44s
+  Specializzazioni: Algoritmi Genetici, Machine Learning, Matematica & Scientifico
+    Algoritmi & Strutture Dati: [######----] 2/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#######---] 3/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [######----] 2/3
+
+qwen2.5-coder-3b-instruct@q4_0:
+  Score: 15/17
+  Tempo: 91.4s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#####-----] 2/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+phi-3.5-mini-instruct:
+  Score: 15/17
+  Tempo: 151.03s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#######---] 3/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [######----] 2/3
+
+microsoft/phi-4:
+  Score: 16/17
+  Tempo: 371.49s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#######---] 3/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+mistralai/mistral-nemo-instruct-2407:
+  Score: 15/17
+  Tempo: 253.49s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#####-----] 2/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+ibm/granite-3.2-8b:
+  Score: 14/17
+  Tempo: 236.7s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [#######---] 3/4
+    Machine Learning: [#####-----] 2/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+meta-llama-3.1-8b-instruct:
+  Score: 16/17
+  Tempo: 187.24s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#######---] 3/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+stage_b_winner:
+  Score: 17/17
+  Tempo: 89.93s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [##########] 4/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+iklama_winner:
+  Score: 17/17
+  Tempo: 55.16s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [##########] 4/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+models/Qwen3.6-35B-A3B-IQ3_K_R4.gguf:
+  Score: 17/17
+  Tempo: 51.58s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [##########] 4/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/granite-3.2-8b-instruct-GGUF/granite-3.2-8b-instruct-Q4_K_M.gguf:
+  Score: 17/17
+  Tempo: 60.27s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [##########] 4/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen3-4B-Instruct-2507-GGUF/Qwen3-4B-Instruct-2507-Q4_K_M.gguf:
+  Score: 15/17
+  Tempo: 27.7s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [#######---] 3/4
+    Machine Learning: [##########] 4/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [######----] 2/3
+
+C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/gemma-3-4B-it-qat-GGUF/gemma-3-4B-it-QAT-Q4_0.gguf:
+  Score: 15/17
+  Tempo: 36.58s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#####-----] 2/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+Qwen2.5-Coder-1.5B-Q4_K_M:
+  Score: 16/17
+  Tempo: 13.35s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [#######---] 3/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+Risultati salvati in: D:\repos\ralph\local_ralph\advanced_benchmark_results.json
+

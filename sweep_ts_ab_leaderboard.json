@@ -1,0 +1,267 @@
+[
+  {
+    "label": "Qwen2.5-Coder-1.5B-Q4_K_M",
+    "status": "ok",
+    "load_time": 13.21,
+    "total_score": 50,
+    "total_max": 58,
+    "total_time_s": 0,
+    "per_task": [
+      {
+        "task": "tanstack_vanilla",
+        "score": 12,
+        "total": 12,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "tanstack_recipe",
+        "score": 12,
+        "total": 12,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "useinvoices_vanilla",
+        "score": 8,
+        "total": 11,
+        "elapsed": null,
+        "missing": "'useState', 'useEffect', 'function useInvoices'"
+      },
+      {
+        "task": "useinvoices_recipe",
+        "score": 10,
+        "total": 11,
+        "elapsed": null,
+        "missing": "'function useInvoices'"
+      },
+      {
+        "task": "zod_vanilla",
+        "score": 8,
+        "total": 8,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "asynciter_vanilla",
+        "score": 0,
+        "total": 4,
+        "elapsed": null,
+        "missing": ""
+      }
+    ],
+    "timestamp": "2026-05-12 00:59:53"
+  },
+  {
+    "label": "Qwen2.5-Coder-3B-Q4_0",
+    "status": "ok",
+    "load_time": 25.19,
+    "total_score": 48,
+    "total_max": 58,
+    "total_time_s": 0,
+    "per_task": [
+      {
+        "task": "tanstack_vanilla",
+        "score": 11,
+        "total": 12,
+        "elapsed": null,
+        "missing": "'cancelQueries'"
+      },
+      {
+        "task": "tanstack_recipe",
+        "score": 12,
+        "total": 12,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "useinvoices_vanilla",
+        "score": 7,
+        "total": 11,
+        "elapsed": null,
+        "missing": "'useState', 'useEffect', 'queryKey:', 'function useInvoices'"
+      },
+      {
+        "task": "useinvoices_recipe",
+        "score": 10,
+        "total": 11,
+        "elapsed": null,
+        "missing": "'queryKey:'"
+      },
+      {
+        "task": "zod_vanilla",
+        "score": 8,
+        "total": 8,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "asynciter_vanilla",
+        "score": 0,
+        "total": 4,
+        "elapsed": null,
+        "missing": ""
+      }
+    ],
+    "timestamp": "2026-05-12 01:00:53"
+  },
+  {
+    "label": "granite-4.1-3B-Q4_K_S",
+    "status": "ok",
+    "load_time": 21.67,
+    "total_score": 46,
+    "total_max": 58,
+    "total_time_s": 0,
+    "per_task": [
+      {
+        "task": "tanstack_vanilla",
+        "score": 9,
+        "total": 12,
+        "elapsed": null,
+        "missing": "'useQueryClient', 'mutationFn', 'cancelQueries'"
+      },
+      {
+        "task": "tanstack_recipe",
+        "score": 12,
+        "total": 12,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "useinvoices_vanilla",
+        "score": 7,
+        "total": 11,
+        "elapsed": null,
+        "missing": "'useState', 'useEffect', 'queryKey:', 'function useInvoices'"
+      },
+      {
+        "task": "useinvoices_recipe",
+        "score": 10,
+        "total": 11,
+        "elapsed": null,
+        "missing": "'function useInvoices'"
+      },
+      {
+        "task": "zod_vanilla",
+        "score": 8,
+        "total": 8,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "asynciter_vanilla",
+        "score": 0,
+        "total": 4,
+        "elapsed": null,
+        "missing": ""
+      }
+    ],
+    "timestamp": "2026-05-12 01:01:42"
+  },
+  {
+    "label": "Qwen3-4B-Instruct-2507-Q4_K_M",
+    "status": "ok",
+    "load_time": 44.16,
+    "total_score": 51,
+    "total_max": 54,
+    "total_time_s": 0,
+    "per_task": [
+      {
+        "task": "tanstack_vanilla",
+        "score": 11,
+        "total": 12,
+        "elapsed": null,
+        "missing": "'useQueryClient'"
+      },
+      {
+        "task": "tanstack_recipe",
+        "score": 12,
+        "total": 12,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "useinvoices_vanilla",
+        "score": 9,
+        "total": 11,
+        "elapsed": null,
+        "missing": "'useState', 'useEffect'"
+      },
+      {
+        "task": "useinvoices_recipe",
+        "score": 11,
+        "total": 11,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "zod_vanilla",
+        "score": 8,
+        "total": 8,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "asynciter_vanilla",
+        "score": null,
+        "total": null,
+        "elapsed": null,
+        "missing": ""
+      }
+    ],
+    "timestamp": "2026-05-12 01:02:59"
+  },
+  {
+    "label": "Qwen3.6-35B-A3B-IQ3_K_R4",
+    "status": "ok",
+    "load_time": 12.59,
+    "total_score": 55,
+    "total_max": 58,
+    "total_time_s": 0,
+    "per_task": [
+      {
+        "task": "tanstack_vanilla",
+        "score": 12,
+        "total": 12,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "tanstack_recipe",
+        "score": 12,
+        "total": 12,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "useinvoices_vanilla",
+        "score": 8,
+        "total": 11,
+        "elapsed": null,
+        "missing": "'useState', 'useEffect', 'function useInvoices'"
+      },
+      {
+        "task": "useinvoices_recipe",
+        "score": 11,
+        "total": 11,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "zod_vanilla",
+        "score": 8,
+        "total": 8,
+        "elapsed": null,
+        "missing": ""
+      },
+      {
+        "task": "asynciter_vanilla",
+        "score": 4,
+        "total": 4,
+        "elapsed": null,
+        "missing": ""
+      }
+    ],
+    "timestamp": "2026-05-12 01:04:12"
+  }
+]

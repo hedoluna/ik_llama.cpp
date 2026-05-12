@@ -1,0 +1,149 @@
+{
+  "label": "olmocr_sanitized_v2",
+  "results": [
+    {
+      "fixture": "sgam",
+      "dt_s": 70.58,
+      "score": 0,
+      "of": 8,
+      "math_ok": false,
+      "verdict": "JSON_PARSE_FAIL",
+      "raw_preview": "{\n  \"supplierName\": \"CDF SRL\",\n  \"supplierVat\": \"IT12345678901\",\n  \"invoiceNumber\": \"128.969/2025\",\n  \"invoiceDate\": \"2025-08-11\",\n  \"totalAmount\": \"3.554,17\",\n  \"taxAmount\": \"640,92\",\n  \"netAmount\": \"2.913,25\",\n  \"currency\": \"EUR\",\n  \"lineItems\": [\n    {\n      \"description\": \"100CL E.N. (1 X 12 BT)"
+    },
+    {
+      "fixture": "fiorucci",
+      "dt_s": 35.34,
+      "score": 2,
+      "of": 8,
+      "math_ok": true,
+      "scores": {
+        "supplierName": {
+          "ok": true,
+          "note": "exact",
+          "expected": "Fiorucci S.p.A."
+        },
+        "supplierVat": {
+          "ok": false,
+          "note": "got='IT12345678901'",
+          "expected": "IT11980969"
+        },
+        "invoiceNumber": {
+          "ok": false,
+          "note": "got='YYY-9999/9999'",
+          "expected": "3511054052"
+        },
+        "invoiceDate": {
+          "ok": false,
+          "note": "got='2024-03-15'",
+          "expected": "2025-08-11"
+        },
+        "totalAmount": {
+          "ok": false,
+          "note": "got='8888.88'",
+          "expected": "996.19"
+        },
+        "taxAmount": {
+          "ok": false,
+          "note": "got='1955.94'",
+          "expected": "90.56"
+        },
+        "netAmount": {
+          "ok": false,
+          "note": "got='6932.94'",
+          "expected": "905.63"
+        },
+        "currency": {
+          "ok": true,
+          "note": "exact",
+          "expected": "EUR"
+        }
+      },
+      "raw_json": {
+        "supplierName": "Fiorucci S.p.A.",
+        "supplierVat": "IT12345678901",
+        "invoiceNumber": "YYY-9999/9999",
+        "invoiceDate": "2024-03-15",
+        "totalAmount": "8888.88",
+        "taxAmount": "1955.94",
+        "netAmount": "6932.94",
+        "currency": "EUR",
+        "lineItems": [
+          {
+            "description": "UNGHERESE META SV 1,5 KG",
+            "quantity": "10",
+            "unitPrice": "616.40",
+            "total": "6164.00"
+          },
+          {
+            "description": "10 Colli 61,64 kg lotto N.5240212000 (524021200) data scad:08/11/2025",
+            "quantity": "10",
+            "unitPrice": "616.40",
+            "total": "6164.00"
+          },
+          {
+            "description": "COUPON RESI F X PROD",
+            "quantity": "5",
+            "unitPrice": "334.70",
+            "total": "1673.50"
+          },
+          {
+            "description": "SALAME VENTRICINA 1/2 SV",
+            "quantity": "5",
+            "unitPrice": "334.70",
+            "total": "1673.50"
+          },
+          {
+            "description": "5 Colli 33,47 kg lotto N.5240217000 (524021700) data scad:13/11/2025",
+            "quantity": "5",
+            "unitPrice": "334.70",
+            "total": "1673.50"
+          },
+          {
+            "description": "SALAME NAPOLI",
+            "quantity": "2",
+            "unitPrice": "1651.80",
+            "total": "3303.60"
+          },
+          {
+            "description": "2 Colli 16,52 kg lotto N.5020219001 (502021901) data scad:05/11/2025",
+            "quantity": "2",
+            "unitPrice": "1651.80",
+            "total": "3303.60"
+          },
+          {
+            "description": "WURSTEL SUILLO 250gr",
+            "quantity": "2",
+            "unitPrice": "1651.80",
+            "total": "3303.60"
+          },
+          {
+            "description": "2 Colli 9,00 kg lotto N.:181225LJ data scadenza:18/12/2025",
+            "quantity": "2",
+            "unitPrice": "1651.80",
+            "total": "3303.60"
+          },
+          {
+            "description": "PROSCIUTTO CRUDO 40g QB1",
+            "quantity": "1",
+            "unitPrice": "16000.00",
+            "total": "16000.00"
+          },
+          {
+            "description": "1 Colli 0,64 kg lotto N.5090212000 (5212000) data scad:29/10/2025",
+            "quantity": "1",
+            "unitPrice": "16000.00",
+            "total": "16000.00"
+          },
+          {
+            "description": "ORARIO DI SCARICO: DAL LUNEDI AL VENERDI 09,00/12,00 14,30/16,00",
+            "quantity": "1",
+            "unitPrice": "16000.00",
+            "total": "16000.00"
+          }
+        ]
+      }
+    }
+  ],
+  "total_correct": 2,
+  "total": 16
+}

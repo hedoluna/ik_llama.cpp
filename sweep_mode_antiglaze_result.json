@@ -1,0 +1,64 @@
+{
+  "label": "Qwen2.5-Coder-1.5B-migarcoes + anti-glaze system prompt",
+  "passed": 51,
+  "total": 51,
+  "wall_s": 28.39,
+  "per_task": [
+    {
+      "id": "task1_fizzbuzz",
+      "verdict": "PASS",
+      "passed": 8,
+      "total": 8,
+      "time_s": 3.53
+    },
+    {
+      "id": "task2_duplicates",
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 2.5
+    },
+    {
+      "id": "task3_nested_sum",
+      "verdict": "PASS",
+      "passed": 5,
+      "total": 5,
+      "time_s": 3.58
+    },
+    {
+      "id": "task4_flatten",
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 2.43
+    },
+    {
+      "id": "task5_parse_config",
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 2.96
+    },
+    {
+      "id": "task6_merge_intervals",
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 5.41
+    },
+    {
+      "id": "task7_balanced_brackets",
+      "verdict": "PASS",
+      "passed": 8,
+      "total": 8,
+      "time_s": 3.16
+    },
+    {
+      "id": "task8_deep_merge",
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 4.8
+    }
+  ]
+}

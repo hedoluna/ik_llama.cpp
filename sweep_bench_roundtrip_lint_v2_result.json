@@ -1,0 +1,74 @@
+[
+  {
+    "task": "task1_fizzbuzz",
+    "pre_pass": true,
+    "post_pass": true,
+    "pre_issues": 3,
+    "post_issues": 0,
+    "fix_broke_functionality": false,
+    "dt_s": 6.46
+  },
+  {
+    "task": "task2_duplicates",
+    "pre_pass": true,
+    "post_pass": true,
+    "pre_issues": 2,
+    "post_issues": 0,
+    "fix_broke_functionality": false,
+    "dt_s": 5.33
+  },
+  {
+    "task": "task3_nested_sum",
+    "pre_pass": true,
+    "post_pass": true,
+    "pre_issues": 2,
+    "post_issues": 0,
+    "fix_broke_functionality": false,
+    "dt_s": 6.86
+  },
+  {
+    "task": "task4_flatten",
+    "pre_pass": true,
+    "post_pass": true,
+    "pre_issues": 2,
+    "post_issues": 0,
+    "fix_broke_functionality": false,
+    "dt_s": 4.63
+  },
+  {
+    "task": "task5_parse_config",
+    "pre_pass": true,
+    "post_pass": true,
+    "pre_issues": 3,
+    "post_issues": 1,
+    "fix_broke_functionality": false,
+    "dt_s": 6.04
+  },
+  {
+    "task": "task6_merge_intervals",
+    "pre_pass": true,
+    "post_pass": true,
+    "pre_issues": 7,
+    "post_issues": 1,
+    "fix_broke_functionality": false,
+    "dt_s": 12.27
+  },
+  {
+    "task": "task7_balanced_brackets",
+    "pre_pass": true,
+    "post_pass": true,
+    "pre_issues": 6,
+    "post_issues": 0,
+    "fix_broke_functionality": false,
+    "dt_s": 6.63
+  },
+  {
+    "task": "task8_deep_merge",
+    "pre_pass": true,
+    "post_pass": true,
+    "pre_issues": 2,
+    "post_issues": 0,
+    "fix_broke_functionality": false,
+    "dt_s": 6.59
+  }
+]

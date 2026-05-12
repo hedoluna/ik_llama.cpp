@@ -1,0 +1,58 @@
+[
+  {
+    "id": "invoice_id_translation_NO_HINT",
+    "verdict": "PASS",
+    "pass": "1/1",
+    "missing": [],
+    "output": "<think>\n\n</think>\n\nPlease send the invoice FT-2025-0042 by Friday.",
+    "dt_s": 1.87
+  },
+  {
+    "id": "url_path_summary_NO_HINT",
+    "verdict": "PASS",
+    "pass": "2/2",
+    "missing": [],
+    "output": "L'endpoint `/api/v2/users/{id}/invoices?format=json` restituisce una lista di fatture.",
+    "dt_s": 2.36
+  },
+  {
+    "id": "placeholder_rewrite_NO_HINT",
+    "verdict": "PASS",
+    "pass": "2/2",
+    "missing": [],
+    "output": "Si informa che il codice <<<TOKEN_ABC>>> scadrà in data {{ts}}.",
+    "dt_s": 1.79
+  },
+  {
+    "id": "version_string_explain_NO_HINT",
+    "verdict": "PASS",
+    "pass": "2/2",
+    "missing": [],
+    "output": "L'aggiornamento a **nginx-1.27.3-alpine3.20** depreca l'uso di **SSLv3**.\n\n### Spiegazione dettagliata:\n\n1. **Cosa significa \"deprecare\"**:  \n   Depricare qualcosa significa che una funzionalità, un p",
+    "dt_s": 16.53
+  },
+  {
+    "id": "regex_translation_NO_HINT",
+    "verdict": "PASS",
+    "pass": "1/1",
+    "missing": [],
+    "output": "Der reguläre Ausdruck ^[A-Z]{2}\\d{4}$ entspricht unserem Format.",
+    "dt_s": 1.73
+  },
+  {
+    "id": "sku_in_marketing_NO_HINT",
+    "verdict": "PASS",
+    "pass": "1/1",
+    "missing": [],
+    "output": "Ecco diverse opzioni per riscrivere la descrizione, a seconda del tono di voce che vuoi dare al tuo brand (più emozionale, tecnico o minimalista):\n\n**Opzione 1: Emozionale e Comfort (Ideale per lifest",
+    "dt_s": 16.44
+  },
+  {
+    "id": "commit_hash_summary_NO_HINT",
+    "verdict": "PASS",
+    "pass": "2/2",
+    "missing": [],
+    "output": "Il commit 7a3f9e2bc ha refactorato la classe DatabasePool.",
+    "dt_s": 1.8
+  }
+]

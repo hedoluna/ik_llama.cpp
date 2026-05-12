@@ -1,0 +1,32 @@
+[
+  {
+    "label": "sample1_cold",
+    "ttft_s": 0.3157,
+    "total_s": 0.9135,
+    "chunks": 67
+  },
+  {
+    "label": "sample2_warm",
+    "ttft_s": 0.0199,
+    "total_s": 0.5889,
+    "chunks": 67
+  },
+  {
+    "label": "sample3_warm",
+    "ttft_s": 0.0445,
+    "total_s": 0.6086,
+    "chunks": 67
+  },
+  {
+    "label": "sample4_warm",
+    "ttft_s": 0.0336,
+    "total_s": 0.6026,
+    "chunks": 67
+  },
+  {
+    "label": "sample5_warm",
+    "ttft_s": 0.0178,
+    "total_s": 0.5756,
+    "chunks": 67
+  }
+]

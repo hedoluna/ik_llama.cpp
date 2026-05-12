@@ -1,0 +1,25 @@
+{
+  "label": "gemma3_4b",
+  "results": [
+    {
+      "fixture": "sgam",
+      "dt_s": 28.25,
+      "score": 0,
+      "of": 8,
+      "math_ok": false,
+      "verdict": "JSON_PARSE_FAIL",
+      "raw_preview": ""
+    },
+    {
+      "fixture": "fiorucci",
+      "dt_s": 26.44,
+      "score": 0,
+      "of": 8,
+      "math_ok": false,
+      "verdict": "JSON_PARSE_FAIL",
+      "raw_preview": "```json\n{\n  \"supplierName\": \"SGAM SpA\",\n  \"supplierVat\": \"IT01315810612\",\n  \"invoiceNumber\": \"FAT-2024-001\",\n  \"invoiceDate\": \"2024-03-12\",\n  \"totalAmount\": \"3843.00\",\n  \"taxAmount\": \"693.00\",\n.00\",\n  \"netAmount\": \"3150.00\",\n  \"currency\": \"EUR\",\n  \"lineItems\": [\n    {\n      \"description\": \"Consulenz"
+    }
+  ],
+  "total_correct": 0,
+  "total": 16
+}

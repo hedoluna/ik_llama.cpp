@@ -1,0 +1,159 @@
+Analyze this invoice and extract the following information in JSON format.
+
+===== CRITICAL RULE: EXACT VALUE EXTRACTION =====
+Copy the EXACT text from the invoice WITHOUT paraphrasing, translating, or reformatting EXCEPT for number formats.
+- GOOD: "DEMO - Sliced Invoices" -> "DEMO - Sliced Invoices" (exact copy)
+- BAD: "DEMO - Sliced Invoices" -> "Demo Sliced Invoices" (removed dash, changed case)
+- BAD: "DEMO - Sliced Invoices" -> "Sliced Invoices Demo" (reordered words)
+- BAD: "Sliced Invoices" -> "Slicedinvoices" (removed space)
+
+===== ENTITY IDENTIFICATION (CRITICAL - READ CAREFULLY) =====
+
+⚠️ THIS IS THE MOST COMMON ERROR - PAY CLOSE ATTENTION ⚠️
+
+Invoices have TWO different companies/entities:
+1. SUPPLIER/VENDOR (Emittente) = Company ISSUING/SENDING the invoice → EXTRACT THIS ONE
+2. CUSTOMER/CLIENT (Cliente) = Company RECEIVING the invoice → IGNORE THIS ONE
+
+COMMON MISTAKE: Extracting the CUSTOMER's data instead of the SUPPLIER's data.
+
+HOW TO IDENTIFY THE SUPPLIER (the one to extract):
+- Look for: "Emittente", "Da:", "Fornitore", "Venditore", "Cedente", "Mittente"
+- Usually has company logo/letterhead at the TOP of the invoice
+- Usually in the TOP-LEFT or HEADER section
+- Is the company whose invoice number this is (they created the invoice)
+- Their VAT appears near THEIR company name, not in "Destinatario" section
+
+HOW TO IDENTIFY THE CUSTOMER (IGNORE this entity):
+- Look for: "Cliente", "Destinatario", "A:", "Committente", "Cessionario", "Acquirente", "Spett.le"
+- Usually in a box labeled "Dati Cliente" or "Destinatario"
+- Usually in the TOP-RIGHT or below the supplier section
+- Is the company being billed
+
+EXAMPLE 1 - Correct extraction:
+Invoice shows:
+  [TOP-LEFT] ExampleCorp SRL, P.IVA: IT00000000000  ← THIS IS THE SUPPLIER
+  [TOP-RIGHT] Destinatario: G A M SAMPLE LTD, P.IVA: IT88888888888  ← THIS IS THE CUSTOMER (IGNORE)
+Extract:
+  supplierName: "ExampleCorp SRL" ✓
+  supplierVat: "IT00000000000" ✓
+NOT:
+  supplierName: "G A M SAMPLE LTD" ✗ (this is the customer!)
+  supplierVat: "IT88888888888" ✗ (this is the customer's VAT!)
+
+EXAMPLE 2 - Correct extraction:
+Invoice shows:
+  PlaceholderCo S.p.A. - Via Roma 123 - P.IVA IT99999999999  ← SUPPLIER (in header)
+  Spett.le: Ristorante Da Mario, P.IVA IT99887766  ← CUSTOMER (in "Spett.le" section)
+Extract:
+  supplierName: "PlaceholderCo S.p.A." ✓
+  supplierVat: "IT99999999999" ✓
+
+VALIDATION RULE: The supplierName and supplierVat MUST belong to the SAME entity.
+If the VAT number appears in a "Destinatario" or "Cliente" section, it's the WRONG VAT.
+
+===== FIELD-SPECIFIC INSTRUCTIONS =====
+
+supplierName:
+  - Copy EXACT company name as written on invoice
+  - GOOD: "DEMO - Sliced Invoices"
+  - BAD: "Demo Sliced Invoices" (changed formatting)
+  - BAD: "Sliced Invoices" (removed prefix)
+  - Include all parts: prefixes, suffixes, punctuation
+  - Do NOT translate or abbreviate
+
+supplierVat:
+  - MUST include country prefix (e.g., IT for Italy)
+  - Format: 2-letter country code + digits (e.g., "IT12345678901")
+  - GOOD: "IT77777777777"
+  - BAD: "77777777777" (missing IT prefix)
+  - Verify it's the SUPPLIER's VAT, not the customer's
+
+invoiceNumber:
+  - Copy EXACT invoice number with all formatting
+  - GOOD: "XXX-9999-999"
+  - BAD: "XXX9999999" (removed dashes)
+  - BAD: "001" (removed prefix)
+  - Include prefixes, dashes, slashes as shown
+
+invoiceDate:
+  - Convert to YYYY-MM-DD format
+  - GOOD: "12/03/2024" -> "2024-03-12"
+  - BAD: "12/03/2024" -> "2024-12-03" (wrong month/day order)
+  - Watch for DD/MM/YYYY vs MM/DD/YYYY formats (European invoices use DD/MM/YYYY)
+
+totalAmount, taxAmount, netAmount:
+  - Use international format: dot for decimals, NO thousand separators
+  - GOOD: "9.999,99" -> "9999.99"
+  - BAD: "9.999,99" -> "3.843" (kept thousand separator)
+  - BAD: "9.999,99" -> "8843.00" (OCR error: 3 read as 8)
+  - Must be strings with 2 decimal places (e.g., "9999.99" not "9999")
+  - Verify math: netAmount + taxAmount MUST equal totalAmount
+
+currency:
+  - Use 3-letter ISO code
+  - GOOD: "EUR", "USD", "GBP"
+  - BAD: "Euro", "$"
+
+===== JSON OUTPUT SCHEMA =====
+
+{
+  "supplierName": "Company name of the SUPPLIER/VENDOR (Emittente) who is issuing the invoice - NOT the customer",
+  "supplierVat": "VAT number or tax ID of the SUPPLIER/VENDOR (Emittente) - NOT the customer - should be the Partita IVA of the issuer (e.g., IT12345678901)",
+  "invoiceNumber": "Invoice number/reference",
+  "invoiceDate": "Invoice date in YYYY-MM-DD format",
+  "totalAmount": "Total amount including tax - use international format: dot for decimals, no thousand separators (e.g., '9999.99' not '9.999,99')",
+  "taxAmount": "VAT/Tax amount - use international format: dot for decimals, no thousand separators (e.g., '2197.80' not '2197,80')",
+  "netAmount": "Net amount before tax - use international format: dot for decimals, no thousand separators (e.g., '7802.19' not '7.802,19')",
+  "currency": "Currency code (EUR, USD, etc.)",
+  "lineItems": [
+    {
+      "description": "Item/service description",
+      "quantity": "Quantity (as string)",
+      "unitPrice": "Unit price (as string with 2 decimals)",
+      "total": "Line total (as string with 2 decimals)"
+    }
+  ]
+}
+
+EXAMPLE of correct output for an Italian invoice:
+{
+  "supplierName": "GenericFake SRL",
+  "supplierVat": "IT77777777777",
+  "invoiceNumber": "YYY-9999/9999",
+  "invoiceDate": "2024-03-15",
+  "totalAmount": "8888.88",
+  "taxAmount": "1955.94",
+  "netAmount": "6932.94",
+  "currency": "EUR",
+  "lineItems": [{"description": "Servizio generico", "quantity": "1", "unitPrice": "6932.94", "total": "6932.94"}]
+}
+
+===== NUMBER FORMAT CONVERSION =====
+Italian invoices use "." (dot) for thousands and "," (comma) for decimals (e.g., "9.999,99")
+You MUST convert to international format:
+1. Remove ALL thousand separators (dots, spaces, commas)
+2. Replace decimal comma with decimal dot
+3. Ensure exactly 2 decimal places
+
+Examples:
+- "9.999,99" -> "9999.99"
+- "3.843" -> "9999.99" (assume 2 decimals)
+- "1.234.567,89" -> "1234567.89"
+- "50" -> "50.00"
+
+Common OCR errors to avoid:
+- Don't confuse "3" with "8"
+- Don't confuse "5" with "S"
+- Don't confuse "1" with "l" or "I"
+- Don't confuse "0" with "O"
+
+===== FINAL CHECK =====
+Before outputting JSON, verify: netAmount + taxAmount = totalAmount, and supplierVat starts with country code (e.g., IT).
+
+===== GENERAL RULES =====
+- Return ONLY valid JSON, no explanations
+- Use empty string "" for fields you cannot find (DO NOT use null)
+- The supplier/vendor is the one ISSUING the invoice, NOT the one receiving it
+- When in doubt, copy the EXACT text from the invoice
+- PRIORITY ORDER: First extract supplierName, supplierVat, invoiceNumber, invoiceDate, totalAmount, taxAmount, netAmount, currency. Then extract lineItems if visible. Never guess — use "" for any field you cannot find.

@@ -1,0 +1,93 @@
+{
+  "args": {
+    "temp": 0.6,
+    "top_k": 20,
+    "n": 10,
+    "task": "task3_nested_sum",
+    "label": "daily_t06_nested"
+  },
+  "results": [
+    {
+      "seed": 1,
+      "pass": true,
+      "passed_count": 5,
+      "of": 5,
+      "code_hash": 70080,
+      "dt": 2.22
+    },
+    {
+      "seed": 2,
+      "pass": false,
+      "passed_count": 4,
+      "of": 5,
+      "code_hash": 38187,
+      "dt": 2.98
+    },
+    {
+      "seed": 3,
+      "pass": false,
+      "passed_count": 4,
+      "of": 5,
+      "code_hash": 36734,
+      "dt": 2.71
+    },
+    {
+      "seed": 4,
+      "pass": true,
+      "passed_count": 5,
+      "of": 5,
+      "code_hash": 50186,
+      "dt": 2.34
+    },
+    {
+      "seed": 5,
+      "pass": false,
+      "passed_count": 4,
+      "of": 5,
+      "code_hash": 36734,
+      "dt": 2.73
+    },
+    {
+      "seed": 6,
+      "pass": false,
+      "passed_count": 4,
+      "of": 5,
+      "code_hash": 19906,
+      "dt": 2.6
+    },
+    {
+      "seed": 7,
+      "pass": true,
+      "passed_count": 5,
+      "of": 5,
+      "code_hash": 97219,
+      "dt": 2.4
+    },
+    {
+      "seed": 8,
+      "pass": true,
+      "passed_count": 5,
+      "of": 5,
+      "code_hash": 26274,
+      "dt": 4.09
+    },
+    {
+      "seed": 9,
+      "pass": false,
+      "passed_count": 4,
+      "of": 5,
+      "code_hash": 19906,
+      "dt": 2.6
+    },
+    {
+      "seed": 10,
+      "pass": false,
+      "passed_count": 4,
+      "of": 5,
+      "code_hash": 66557,
+      "dt": 2.92
+    }
+  ],
+  "pass_rate": 0.4,
+  "unique_variants": 8
+}

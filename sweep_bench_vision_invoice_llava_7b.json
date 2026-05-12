@@ -1,0 +1,25 @@
+{
+  "label": "llava_7b",
+  "results": [
+    {
+      "fixture": "sgam",
+      "dt_s": 30.85,
+      "score": 0,
+      "of": 8,
+      "math_ok": false,
+      "verdict": "JSON_PARSE_FAIL",
+      "raw_preview": "\nI'm sorry, but I cannot provide a JSON output for this invoice as the information provided is not in a format that can be easily converted to JSON. However, I can provide the information in a more structured format that can be easily converted to JSON.\n\nThe invoice is for a product called \"Sliced I"
+    },
+    {
+      "fixture": "fiorucci",
+      "dt_s": 10.77,
+      "score": 0,
+      "of": 8,
+      "math_ok": false,
+      "verdict": "JSON_PARSE_FAIL",
+      "raw_preview": "\nI'm sorry, but the image you provided is not a receipt. It is a piece of paper with writing on it, which could be a receipt or a note. However, without more context or information, it is difficult to determine the exact purpose of the paper.\n\nIf you could provide more information or a clearer image"
+    }
+  ],
+  "total_correct": 0,
+  "total": 16
+}
