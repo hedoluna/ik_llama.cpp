@@ -1,0 +1,46 @@
+{
+  "label": "Qwen2.5-Coder-3B-Q4_0",
+  "total_score": 29,
+  "total_max": 31,
+  "total_time_s": 5.9706339836120605,
+  "per_task": [
+    {
+      "task": "summarization",
+      "score": 4,
+      "total": 6,
+      "time_s": 2.12,
+      "missing": [
+        "Lagarde",
+        "2,1"
+      ]
+    },
+    {
+      "task": "ner_json",
+      "score": 4,
+      "total": 4,
+      "time_s": 0.99,
+      "missing": []
+    },
+    {
+      "task": "sentiment_5",
+      "score": 5,
+      "total": 5,
+      "time_s": 0.42,
+      "missing": []
+    },
+    {
+      "task": "translation_it_en",
+      "score": 7,
+      "total": 7,
+      "time_s": 0.37,
+      "missing": []
+    },
+    {
+      "task": "invoice_extraction",
+      "score": 9,
+      "total": 9,
+      "time_s": 2.07,
+      "missing": []
+    }
+  ]
+}
