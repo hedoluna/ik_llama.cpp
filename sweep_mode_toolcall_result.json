@@ -1,0 +1,49 @@
+[
+  {
+    "text": "Che tempo fa a Milano? Usa Celsius.",
+    "want_fn": "get_weather",
+    "got_fn": "get_weather",
+    "want_args": {
+      "city": "Milano",
+      "unit": "celsius"
+    },
+    "got_args": {
+      "city": "Milano",
+      "unit": "celsius"
+    },
+    "verdict": "PASS",
+    "dt": 6.07
+  },
+  {
+    "text": "Quanto fa 47 moltiplicato per 13?",
+    "want_fn": "calculator",
+    "got_fn": "calculator",
+    "want_args": {
+      "op": "mul",
+      "a": 47,
+      "b": 13
+    },
+    "got_args": {
+      "op": "mul",
+      "a": 47,
+      "b": 13
+    },
+    "verdict": "PASS",
+    "dt": 6.33
+  },
+  {
+    "text": "Trova la fattura numero FT-2025-0042 dell'anno 2025.",
+    "want_fn": "query_invoice",
+    "got_fn": "query_invoice",
+    "want_args": {
+      "invoice_number": "FT-2025-0042",
+      "year": 2025
+    },
+    "got_args": {
+      "invoice_number": "FT-2025-0042",
+      "year": 2025
+    },
+    "verdict": "PASS",
+    "dt": 6.5
+  }
+]

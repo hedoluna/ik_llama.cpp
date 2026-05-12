@@ -1,0 +1,127 @@
+{
+  "label": "qwen3vl4b",
+  "results": [
+    {
+      "fixture": "sgam",
+      "dt_s": 53.21,
+      "score": 0,
+      "of": 8,
+      "math_ok": false,
+      "scores": {
+        "supplierName": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "SGAM SpA"
+        },
+        "supplierVat": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "IT01315810612"
+        },
+        "invoiceNumber": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "128.969/2025"
+        },
+        "invoiceDate": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "2025-08-11"
+        },
+        "totalAmount": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "3554.17"
+        },
+        "taxAmount": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "640.92"
+        },
+        "netAmount": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "2913.25"
+        },
+        "currency": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "EUR"
+        }
+      },
+      "raw_json": {
+        "supplierName": "",
+        "supplierVat": "",
+        "invoiceNumber": "",
+        "invoiceDate": "",
+        "totalAmount": "",
+        "taxAmount": "",
+        "netAmount": "",
+        "currency": "",
+        "lineItems": []
+      }
+    },
+    {
+      "fixture": "fiorucci",
+      "dt_s": 50.69,
+      "score": 0,
+      "of": 8,
+      "math_ok": false,
+      "scores": {
+        "supplierName": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "Fiorucci S.p.A."
+        },
+        "supplierVat": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "IT11980969"
+        },
+        "invoiceNumber": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "3511054052"
+        },
+        "invoiceDate": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "2025-08-11"
+        },
+        "totalAmount": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "996.19"
+        },
+        "taxAmount": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "90.56"
+        },
+        "netAmount": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "905.63"
+        },
+        "currency": {
+          "ok": false,
+          "note": "got=''",
+          "expected": "EUR"
+        }
+      },
+      "raw_json": {
+        "supplierName": "",
+        "supplierVat": "",
+        "invoiceNumber": "",
+        "invoiceDate": "",
+        "totalAmount": "",
+        "taxAmount": "",
+        "netAmount": "",
+        "currency": "",
+        "lineItems": []
+      }
+    }
+  ],
+  "total_correct": 0,
+  "total": 16
+}

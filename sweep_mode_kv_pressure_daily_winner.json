@@ -1,0 +1,36 @@
+{
+  "args": {
+    "label": "daily_winner",
+    "task": "task3_nested_sum"
+  },
+  "rows": [
+    {
+      "passed": 5,
+      "of": 5,
+      "dt_s": 3.82,
+      "prefix_chars": 0,
+      "distractor_tokens": 0
+    },
+    {
+      "passed": 4,
+      "of": 5,
+      "dt_s": 5.78,
+      "prefix_chars": 7979,
+      "distractor_tokens": 2000
+    },
+    {
+      "passed": 4,
+      "of": 5,
+      "dt_s": 9.13,
+      "prefix_chars": 20007,
+      "distractor_tokens": 5000
+    },
+    {
+      "passed": 4,
+      "of": 5,
+      "dt_s": 13.63,
+      "prefix_chars": 39971,
+      "distractor_tokens": 10000
+    }
+  ]
+}

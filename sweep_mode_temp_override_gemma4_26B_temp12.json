@@ -1,0 +1,71 @@
+{
+  "args": {
+    "temp": 1.2,
+    "top_p": 0.95,
+    "top_k": 65,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "label": "gemma4_26B_temp12"
+  },
+  "rows": [
+    {
+      "task": "task1_fizzbuzz",
+      "verdict": "PASS",
+      "passed": 8,
+      "of": 8,
+      "dt_s": 33.36
+    },
+    {
+      "task": "task2_duplicates",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 45.7
+    },
+    {
+      "task": "task3_nested_sum",
+      "verdict": "PASS",
+      "passed": 5,
+      "of": 5,
+      "dt_s": 40.4
+    },
+    {
+      "task": "task4_flatten",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 31.92
+    },
+    {
+      "task": "task5_parse_config",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 69.1
+    },
+    {
+      "task": "task6_merge_intervals",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 55.15
+    },
+    {
+      "task": "task7_balanced_brackets",
+      "verdict": "PASS",
+      "passed": 8,
+      "of": 8,
+      "dt_s": 31.28
+    },
+    {
+      "task": "task8_deep_merge",
+      "verdict": "FAIL",
+      "passed": 0,
+      "of": 6,
+      "dt_s": 94.94
+    }
+  ],
+  "total_pass": 45,
+  "total": 51,
+  "wall_s": 401.85
+}

@@ -1,0 +1,617 @@
+INFO [                    main] build info | tid="12172" timestamp=1778526495 build=4468 commit="9a26522a"
+INFO [                    main] system info | tid="12172" timestamp=1778526495 n_threads=8 n_threads_batch=-1 total_threads=32 system_info="AVX = 1 | AVX_VNNI = 0 | AVX2 = 1 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | AVX512_BF16 = 0 | FMA = 1 | NEON = 0 | SVE = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 1 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | MATMUL_INT8 = 0 | "
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA RTX A2000, compute capability 8.6, VMM: yes, VRAM: 6137 MiB
+CUDA0: using device CUDA0 - 5126 MiB free
+llama_model_loader: loaded meta data with 46 key-value pairs and 658 tensors from F:\LLM_Models\lm-studio\models\lmstudio-community\gemma-4-26B-A4B-it-GGUF\gemma-4-26B-A4B-it-Q4_K_M.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = gemma4
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                     general.sampling.top_k i32              = 64
+llama_model_loader: - kv   3:                     general.sampling.top_p f32              = 0.950000
+llama_model_loader: - kv   4:                      general.sampling.temp f32              = 1.000000
+llama_model_loader: - kv   5:                               general.name str              = Gemma 4 26B A4B
+llama_model_loader: - kv   6:                           general.finetune str              = it
+llama_model_loader: - kv   7:                         general.size_label str              = 26B-A4B
+llama_model_loader: - kv   8:                         gemma4.block_count u32              = 30
+llama_model_loader: - kv   9:                      gemma4.context_length u32              = 262144
+llama_model_loader: - kv  10:                    gemma4.embedding_length u32              = 2816
+llama_model_loader: - kv  11:                 gemma4.feed_forward_length u32              = 2112
+llama_model_loader: - kv  12:                gemma4.attention.head_count u32              = 16
+llama_model_loader: - kv  13:             gemma4.attention.head_count_kv arr[i32,30]      = [8, 8, 8, 8, 8, 2, 8, 8, 8, 8, 8, 2, ...
+llama_model_loader: - kv  14:                      gemma4.rope.freq_base f32              = 1000000.000000
+llama_model_loader: - kv  15:                  gemma4.rope.freq_base_swa f32              = 10000.000000
+llama_model_loader: - kv  16:    gemma4.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  17:                        gemma4.expert_count u32              = 128
+llama_model_loader: - kv  18:                   gemma4.expert_used_count u32              = 8
+llama_model_loader: - kv  19:                gemma4.attention.key_length u32              = 512
+llama_model_loader: - kv  20:              gemma4.attention.value_length u32              = 512
+llama_model_loader: - kv  21:             gemma4.final_logit_softcapping f32              = 30.000000
+llama_model_loader: - kv  22:            gemma4.attention.sliding_window u32              = 1024
+llama_model_loader: - kv  23:          gemma4.attention.shared_kv_layers u32              = 0
+llama_model_loader: - kv  24:    gemma4.embedding_length_per_layer_input u32              = 0
+llama_model_loader: - kv  25:    gemma4.attention.sliding_window_pattern arr[bool,30]     = [true, true, true, true, true, false,...
+llama_model_loader: - kv  26:            gemma4.attention.key_length_swa u32              = 256
+llama_model_loader: - kv  27:          gemma4.attention.value_length_swa u32              = 256
+llama_model_loader: - kv  28:          gemma4.expert_feed_forward_length u32              = 704
+llama_model_loader: - kv  29:                gemma4.rope.dimension_count u32              = 512
+llama_model_loader: - kv  30:            gemma4.rope.dimension_count_swa u32              = 256
+llama_model_loader: - kv  31:                       tokenizer.ggml.model str              = gemma4
+llama_model_loader: - kv  32:                      tokenizer.ggml.tokens arr[str,262144]  = ["<pad>", "<eos>", "<bos>", "<unk>", ...
+llama_model_loader: - kv  33:                      tokenizer.ggml.scores arr[f32,262144]  = [-1000.000000, -1000.000000, -1000.00...
+llama_model_loader: - kv  34:                  tokenizer.ggml.token_type arr[i32,262144]  = [3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  35:                      tokenizer.ggml.merges arr[str,514906]  = ["\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n", ...
+llama_model_loader: - kv  36:                tokenizer.ggml.bos_token_id u32              = 2
+llama_model_loader: - kv  37:                tokenizer.ggml.eos_token_id u32              = 1
+llama_model_loader: - kv  38:            tokenizer.ggml.unknown_token_id u32              = 3
+llama_model_loader: - kv  39:            tokenizer.ggml.padding_token_id u32              = 0
+llama_model_loader: - kv  40:               tokenizer.ggml.mask_token_id u32              = 4
+llama_model_loader: - kv  41:                    tokenizer.chat_template str              = {%- macro format_parameters(propertie...
+llama_model_loader: - kv  42:            tokenizer.ggml.add_space_prefix bool             = false
+llama_model_loader: - kv  43:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  44:               general.quantization_version u32              = 2
+llama_model_loader: - kv  45:                          general.file_type u32              = 15
+llama_model_loader: - type  f32:  392 tensors
+llama_model_loader: - type q5_0:   32 tensors
+llama_model_loader: - type q8_0:   28 tensors
+llama_model_loader: - type q4_K:  192 tensors
+llama_model_loader: - type q6_K:   14 tensors
+load: override 'tokenizer.ggml.add_bos_token' to 'true' for Gemma4
+load: 0 unused tokens
+load: control-looking token:     50 '<|tool_response>' was not control-type; this is probably a bug in the model. its type will be overridden
+load: control-looking token:    212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+load: printing all EOG tokens:
+load:   - 1 ('<eos>')
+load:   - 50 ('<|tool_response>')
+load:   - 106 ('<turn|>')
+load:   - 212 ('</s>')
+load: special_eog_ids contains '<|tool_response>', removing '</s>' token from EOG list
+load: special tokens cache size = 24
+load: token to piece cache size = 1.9445 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = gemma4
+llm_load_print_meta: n_ctx_train      = 262144
+llm_load_print_meta: n_embd           = 2816
+llm_load_print_meta: n_layer          = 30
+llm_load_print_meta: n_head           = 16
+llm_load_print_meta: n_head_kv        = [8, 8, 8, 8, 8, 2, 8, 8, 8, 8, 8, 2, 8, 8, 8, 8, 8, 2, 8, 8, 8, 8, 8, 2, 8, 8, 8, 8, 8, 2]
+llm_load_print_meta: n_rot            = 512
+llm_load_print_meta: n_swa            = 1024
+llm_load_print_meta: n_swa_pattern    = 1
+llm_load_print_meta: n_embd_head_k    = 256
+llm_load_print_meta: n_embd_head_v    = 256
+llm_load_print_meta: n_gqa            = [2, 2, 2, 2, 2, 8, 2, 2, 2, 2, 2, 8, 2, 2, 2, 2, 2, 8, 2, 2, 2, 2, 2, 8, 2, 2, 2, 2, 2, 8]
+llm_load_print_meta: n_embd_k_gqa     = [2048, 2048, 2048, 2048, 2048, 1024, 2048, 2048, 2048, 2048, 2048, 1024, 2048, 2048, 2048, 2048, 2048, 1024, 2048, 2048, 2048, 2048, 2048, 1024, 2048, 2048, 2048, 2048, 2048, 1024]
+llm_load_print_meta: n_embd_v_gqa     = [2048, 2048, 2048, 2048, 2048, 1024, 2048, 2048, 2048, 2048, 2048, 1024, 2048, 2048, 2048, 2048, 2048, 1024, 2048, 2048, 2048, 2048, 2048, 1024, 2048, 2048, 2048, 2048, 2048, 1024]
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-06
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 2112
+llm_load_print_meta: n_expert         = 128
+llm_load_print_meta: n_expert_used    = 8
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 2
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 1000000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 262144
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_n_group      = 0
+llm_load_print_meta: model type       = ?B
+llm_load_print_meta: model ftype      = Q4_K - Medium
+llm_load_print_meta: model params     = 25.233 B
+llm_load_print_meta: model size       = 15.628 GiB (5.320 BPW) 
+llm_load_print_meta: general.name     = Gemma 4 26B A4B
+print_info: vocab type            = BPE
+print_info: n_vocab               = 262144
+print_info: n_merges              = 514906
+print_info: BOS token             = 2 '<bos>'
+print_info: EOS token             = 1 '<eos>'
+print_info: UNK token             = 3 '<unk>'
+print_info: PAD token             = 0 '<pad>'
+print_info: MASK token            = 4 '<mask>'
+print_info: LF token              = 107 '
+'
+print_info: EOG token             = 1 '<eos>'
+print_info: EOG token             = 50 '<|tool_response>'
+print_info: EOG token             = 106 '<turn|>'
+print_info: max token length      = 93
+======================================= HAVE_FANCY_SIMD is NOT defined
+Oops: tensor with strange name rope_freqs.weight
+------------------- Layer sizes:
+Layer  0:    563.23,    128.00,    691.23       77.00  MiB
+Layer  1:    563.23,    128.00,    691.23       77.00  MiB
+Layer  2:    563.23,    128.00,    691.23       77.00  MiB
+Layer  3:    468.93,    128.00,    596.93       77.00  MiB
+Layer  4:    468.93,    128.00,    596.93       77.00  MiB
+Layer  5:    569.54,     64.00,    633.54       77.00  MiB
+Layer  6:    470.35,    128.00,    598.35       77.00  MiB
+Layer  7:    468.93,    128.00,    596.93       77.00  MiB
+Layer  8:    561.81,    128.00,    689.81       77.00  MiB
+Layer  9:    470.35,    128.00,    598.35       77.00  MiB
+Layer 10:    468.93,    128.00,    596.93       77.00  MiB
+Layer 11:    569.54,     64.00,    633.54       77.00  MiB
+Layer 12:    468.93,    128.00,    596.93       77.00  MiB
+Layer 13:    470.35,    128.00,    598.35       77.00  MiB
+Layer 14:    561.81,    128.00,    689.81       77.00  MiB
+Layer 15:    468.93,    128.00,    596.93       77.00  MiB
+Layer 16:    470.35,    128.00,    598.35       77.00  MiB
+Layer 17:    569.54,     64.00,    633.54       77.00  MiB
+Layer 18:    468.93,    128.00,    596.93       77.00  MiB
+Layer 19:    468.93,    128.00,    596.93       77.00  MiB
+Layer 20:    563.23,    128.00,    691.23       77.00  MiB
+Layer 21:    468.93,    128.00,    596.93       77.00  MiB
+Layer 22:    468.93,    128.00,    596.93       77.00  MiB
+Layer 23:    569.54,     64.00,    633.54       77.00  MiB
+Layer 24:    470.35,    128.00,    598.35       77.00  MiB
+Layer 25:    470.35,    128.00,    598.35       77.00  MiB
+Layer 26:    563.23,    128.00,    691.23       77.00  MiB
+Layer 27:    563.23,    128.00,    691.23       77.00  MiB
+Layer 28:    563.23,    128.00,    691.23       77.00  MiB
+Layer 29:    569.54,     64.00,    633.54       77.00  MiB
+Layer 30:    577.50,    435.00,   1012.50 MiB (output layer)
+--------------------------------------------------------------------------
+Total   :  15425.33,   3955.00,  19380.33 MiB
+Memory required for model tensors + cache: 19958 MiB
+Memory available on all devices - compute: 4025 MiB
+llm_load_tensors: ggml ctx size =    0.53 MiB
+Tensor blk.0.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.0.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.0.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.1.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.1.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.1.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.2.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.2.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.2.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.3.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.3.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.3.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.4.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.4.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.4.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.5.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.5.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.5.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.6.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.6.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.6.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.7.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.7.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.7.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.8.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.8.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.8.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.9.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.9.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.9.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.10.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.10.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.10.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.11.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.11.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.11.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.12.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.12.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.12.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.13.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.13.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.13.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.14.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.14.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.14.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.15.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.15.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.15.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.16.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.16.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.16.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.17.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.17.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.17.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.18.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.18.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.18.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.19.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.19.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.19.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.20.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.20.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.20.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.21.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.21.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.21.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.22.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.22.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.22.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.23.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.23.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.23.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.24.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.24.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.24.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.25.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.25.ffn_down_exps.weight (size = 166.38 MiB) buffer type overriden to CUDA_Host
+Tensor blk.25.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.26.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.26.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.26.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.27.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.27.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.27.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.28.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.28.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.28.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+Tensor blk.29.ffn_gate_up_exps.weight (size = 272.25 MiB) buffer type overriden to CUDA_Host
+Tensor blk.29.ffn_down_exps.weight (size = 257.12 MiB) buffer type overriden to CUDA_Host
+Tensor blk.29.ffn_down_exps.scale (size = 0.00 MiB) buffer type overriden to CUDA_Host
+
+
+Allocating 14.66 GiB of pinned host memory, this may take a while.
+Using pinned host memory improves PP performance by a significant margin.
+But if it takes too long for your model and amount of patience, kill the process and run using
+
+GGML_CUDA_NO_PINNED=1 your_command_goes_here
+    done allocating 14.66 GiB in 2481.0 ms
+
+llm_load_tensors: offloading 30 repeating layers to GPU
+llm_load_tensors: offloading non-repeating layers to GPU
+llm_load_tensors: offloaded 31/31 layers to GPU
+llm_load_tensors:  CUDA_Host buffer size = 15006.76 MiB
+llm_load_tensors:      CUDA0 buffer size =  1573.63 MiB
+....................................................................~ggml_backend_cuda_context: have 0 graphs
+.
+llama_init_from_model: n_ctx         = 16384
+llama_init_from_model: n_batch       = 2048
+llama_init_from_model: n_ubatch      = 512
+llama_init_from_model: flash_attn    = 1
+llama_init_from_model: attn_max_b    = 0
+llama_init_from_model: fused_moe     = 1
+llama_init_from_model: grouped er    = 0
+llama_init_from_model: fused_up_gate = 1
+llama_init_from_model: fused_mmad    = 1
+llama_init_from_model: rope_cache    = 0
+llama_init_from_model: graph_reuse   = 1
+llama_init_from_model: k_cache_hadam = 0
+llama_init_from_model: v_cache_hadam = 0
+llama_init_from_model: split_mode_graph_scheduling = 0
+llama_init_from_model: reduce_type   = f16
+llama_init_from_model: sched_async   = 0
+llama_init_from_model: ser           = -1, 0
+llama_init_from_model: freq_base     = 1000000.0
+llama_init_from_model: freq_scale    = 1
+llama_kv_cache_init:      CUDA0 KV buffer size =  3520.00 MiB
+llama_init_from_model: KV self size  = 3520.00 MiB, K (f16): 1760.00 MiB, V (f16): 1760.00 MiB
+llama_init_from_model:  CUDA_Host  output buffer size =     1.00 MiB
+llama_init_from_model:      CUDA0 compute buffer size =  1029.50 MiB
+llama_init_from_model:  CUDA_Host compute buffer size =    37.51 MiB
+llama_init_from_model: graph nodes  = 1412
+llama_init_from_model: graph splits = 92
+llama_init_from_model: enabling only_active_experts scheduling
+llm_scale_gate_inp_s: n_embd = 2816
+INFO [                    init] initializing slots | tid="12172" timestamp=1778526667 n_slots=1
+INFO [                    init] new slot | tid="12172" timestamp=1778526667 id_slot=0 n_ctx_slot=16384
+srv          init: Exclude reasoning tokens when selecting slot based on similarity: start: <think>, end: </think>
+use `--reasoning-tokens none` to disable.
+no implementations specified for speculative decoding
+slot         init: id  0 | task -1 | speculative decoding context not initialized
+prompt cache is enabled, size limit: 8192 MiB
+use `--cache-ram 0` to disable the prompt cache
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+init: chat template, example_format: '<|turn>system
+<|think|>You are a helpful assistant<turn|>
+<|turn>user
+Hello<turn|>
+<|turn>model
+Hi there<turn|>
+<|turn>user
+How are you?<turn|>
+<|turn>model
+'
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+INFO [                    main] model loaded | tid="12172" timestamp=1778526667
+INFO [                    main] HTTP server listening | tid="12172" timestamp=1778526667 hostname="127.0.0.1" port="1234" n_threads_http="31"
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778526667
+INFO [      log_server_request] request | tid="35320" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25222 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35652" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25215 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36080" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25209 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36036" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25273 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28196" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25247 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="21596" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25287 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36036" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25290 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="15588" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25227 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="30156" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25252 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="34544" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25271 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="15588" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63353 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="30156" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63357 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="30708" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25231 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="5880" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63360 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="29524" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25225 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35652" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25277 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28640" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25213 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="29524" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63531 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35652" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63537 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="29596" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25293 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28196" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25315 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35652" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63546 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="21596" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25319 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="31364" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25321 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36036" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25322 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="17128" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25251 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="19500" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63355 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="32508" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25249 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="34544" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63359 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35320" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25255 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="15588" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63364 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="30156" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63508 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="2220" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=4564 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="30708" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63512 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="3980" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63515 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="5880" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63519 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36080" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25289 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35500" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63534 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="2896" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25220 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28640" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63539 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35520" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63541 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="25164" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=25317 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="29524" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63545 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35700" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63576 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="29596" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63578 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="17180" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63581 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28196" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63583 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35652" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63585 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="26368" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63586 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="21596" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=44483 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="16044" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=49855 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="31364" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=4550 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36036" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=4556 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="17128" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=4557 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35776" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=4559 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="19500" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=4562 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="21692" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=63362 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="32508" timestamp=1778526667 remote_addr="127.0.0.1" remote_port=4565 status=200 method="GET" path="/v1/models" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 0, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.00, cache_ram_similarity: 0.50
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778526668 id_slot=0 id_task=0
+======== Cache: cache_size = 0, n_past0 =  0, n_past1 =  0, n_past_prompt1 = 0,  n_past2 =  0, n_past_prompt2 =  0
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778526668 id_slot=0 id_task=0 p0=0
+INFO [      log_server_request] request | tid="34544" timestamp=1778526681 remote_addr="127.0.0.1" remote_port=4587 status=200 method="GET" path="/v1/models" params={}
+slot print_timing: id  0 | task 0 | 
+prompt eval time =     679.63 ms /    43 tokens (   15.81 ms per token,    63.27 tokens per second)
+       eval time =   12688.66 ms /   269 tokens (   47.17 ms per token,    21.20 tokens per second)
+      total time =   13368.29 ms /   312 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778526681 id_slot=0 id_task=0 n_ctx=16384 n_past=311 n_system_tokens=0 n_cache_tokens=311 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778526681
+INFO [      log_server_request] request | tid="3524" timestamp=1778526681 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 311, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.10, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 311, total state size = 66.819 MiB
+prompt cache save took 22.41 ms
+ - looking for better prompt, base f_keep = 0.103, sim = 0.144, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 66.819 MiB (limits: 8192.000 MiB, 0 tokens, 38128 est)
+   - prompt 00000174B0D4C1A0:     311 tokens,       0 discarded, checkpoints:  0,    66.819 MiB
+prompt cache load took 0.21 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778526681 id_slot=0 id_task=270
+======== Cache: cache_size = 311, n_past0 =  32, n_past1 =  32, n_past_prompt1 = 32,  n_past2 =  32, n_past_prompt2 =  32
+Common part does not match fully
+cache : 
+<|turn>user
+Rispondi solo: ok<turn|>
+<|turn>model
+<|channel>thought
+*   User input: "Rispondi solo: ok
+prompt: 
+<|turn>user
+Scrivi una funzione Python chiamata `fizzbuzz(n)` che:
+- Ritorna "Fizz" se n è
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778526681 id_slot=0 id_task=270 p0=32
+slot print_timing: id  0 | task 270 | 
+prompt eval time =    1091.84 ms /   100 tokens (   10.92 ms per token,    91.59 tokens per second)
+       eval time =   37771.94 ms /   726 tokens (   52.03 ms per token,    19.22 tokens per second)
+      total time =   38863.78 ms /   826 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778526720 id_slot=0 id_task=270 n_ctx=16384 n_past=857 n_system_tokens=0 n_cache_tokens=857 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778526720
+INFO [      log_server_request] request | tid="3524" timestamp=1778526720 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 857, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.05, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 857, total state size = 184.128 MiB
+prompt cache save took 79.89 ms
+ - looking for better prompt, base f_keep = 0.046, sim = 0.077, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.103, sim = 0.137, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 184.128 MiB (limits: 8192.000 MiB, 0 tokens, 38128 est)
+   - prompt 00000174B0D4CFE0:     857 tokens,       0 discarded, checkpoints:  0,   184.128 MiB
+prompt cache load took 14.46 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778526720 id_slot=0 id_task=997
+======== Cache: cache_size = 311, n_past0 =  32, n_past1 =  32, n_past_prompt1 = 32,  n_past2 =  32, n_past_prompt2 =  32
+Common part does not match fully
+cache : 
+<|turn>user
+Rispondi solo: ok<turn|>
+<|turn>model
+<|channel>thought
+*   User input: "Rispondi solo: ok
+prompt: 
+<|turn>user
+Scrivi una funzione Python chiamata `find_duplicates(lst)` che:
+- Prende una lista di elementi
+- R
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778526720 id_slot=0 id_task=997 p0=32
+slot print_timing: id  0 | task 997 | 
+prompt eval time =    1358.38 ms /   125 tokens (   10.87 ms per token,    92.02 tokens per second)
+       eval time =   24387.45 ms /   489 tokens (   49.87 ms per token,    20.05 tokens per second)
+      total time =   25745.83 ms /   614 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778526746 id_slot=0 id_task=997 n_ctx=16384 n_past=645 n_system_tokens=0 n_cache_tokens=645 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778526746
+INFO [      log_server_request] request | tid="3524" timestamp=1778526746 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 645, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.06, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 645, total state size = 138.580 MiB
+prompt cache save took 33.90 ms
+ - looking for better prompt, base f_keep = 0.060, sim = 0.090, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 322.708 MiB (limits: 8192.000 MiB, 0 tokens, 38128 est)
+   - prompt 00000174B0D4CFE0:     857 tokens,       0 discarded, checkpoints:  0,   184.128 MiB
+   - prompt 00000173460C7D60:     645 tokens,       0 discarded, checkpoints:  0,   138.580 MiB
+prompt cache load took 0.40 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778526746 id_slot=0 id_task=1487
+======== Cache: cache_size = 645, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
+Common part does not match fully
+cache :  funzione Python chiamata `find_duplicates(lst)` che:
+- Prende una lista di elementi
+- Ritorna una lista con SOLO gli
+prompt:  funzione Python chiamata `sum_nested_values(data, key)` che:
+- Prende un dizionario (possibilmente nested/ann
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778526746 id_slot=0 id_task=1487 p0=39
+slot print_timing: id  0 | task 1487 | 
+prompt eval time =    1847.32 ms /   181 tokens (   10.21 ms per token,    97.98 tokens per second)
+       eval time =  101835.19 ms /  2048 tokens (   49.72 ms per token,    20.11 tokens per second)
+      total time =  103682.51 ms /  2229 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778526850 id_slot=0 id_task=1487 n_ctx=16384 n_past=2267 n_system_tokens=0 n_cache_tokens=2267 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778526850
+INFO [      log_server_request] request | tid="3524" timestamp=1778526850 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 2267, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.02, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 2267, total state size = 487.069 MiB
+prompt cache save took 121.70 ms
+ - looking for better prompt, base f_keep = 0.017, sim = 0.032, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.060, sim = 0.095, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 671.197 MiB (limits: 8192.000 MiB, 0 tokens, 38128 est)
+   - prompt 00000174B0D4CFE0:     857 tokens,       0 discarded, checkpoints:  0,   184.128 MiB
+   - prompt 00000173460C6FE0:    2267 tokens,       0 discarded, checkpoints:  0,   487.069 MiB
+prompt cache load took 20.10 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778526850 id_slot=0 id_task=3536
+======== Cache: cache_size = 645, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
+Common part does not match fully
+cache :  funzione Python chiamata `find_duplicates(lst)` che:
+- Prende una lista di elementi
+- Ritorna una lista con SOLO gli
+prompt:  funzione Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste annidate a
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778526850 id_slot=0 id_task=3536 p0=39
+slot print_timing: id  0 | task 3536 | 
+prompt eval time =    1440.68 ms /   137 tokens (   10.52 ms per token,    95.09 tokens per second)
+       eval time =   24276.79 ms /   482 tokens (   50.37 ms per token,    19.85 tokens per second)
+      total time =   25717.47 ms /   619 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778526875 id_slot=0 id_task=3536 n_ctx=16384 n_past=657 n_system_tokens=0 n_cache_tokens=657 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778526875
+INFO [      log_server_request] request | tid="3524" timestamp=1778526875 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 657, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.06, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 657, total state size = 141.158 MiB
+prompt cache save took 35.82 ms
+ - looking for better prompt, base f_keep = 0.059, sim = 0.091, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 812.355 MiB (limits: 8192.000 MiB, 0 tokens, 38128 est)
+   - prompt 00000174B0D4CFE0:     857 tokens,       0 discarded, checkpoints:  0,   184.128 MiB
+   - prompt 00000173460C6FE0:    2267 tokens,       0 discarded, checkpoints:  0,   487.069 MiB
+   - prompt 00000174AD0BC930:     657 tokens,       0 discarded, checkpoints:  0,   141.158 MiB
+prompt cache load took 0.73 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778526875 id_slot=0 id_task=4019
+======== Cache: cache_size = 657, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
+Common part does not match fully
+cache :  funzione Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste annidate a
+prompt:  funzione Python chiamata `parse_config(text)` che:
+- Prende una stringa con righe nel formato "chiave=valore
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778526875 id_slot=0 id_task=4019 p0=39
+slot print_timing: id  0 | task 4019 | 
+prompt eval time =    1633.72 ms /   157 tokens (   10.41 ms per token,    96.10 tokens per second)
+       eval time =   99219.33 ms /  1967 tokens (   50.44 ms per token,    19.82 tokens per second)
+      total time =  100853.06 ms /  2124 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778526976 id_slot=0 id_task=4019 n_ctx=16384 n_past=2162 n_system_tokens=0 n_cache_tokens=2162 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778526976
+INFO [      log_server_request] request | tid="3524" timestamp=1778526976 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 2162, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.02, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 2162, total state size = 464.509 MiB
+prompt cache save took 108.98 ms
+ - looking for better prompt, base f_keep = 0.018, sim = 0.033, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.059, sim = 0.094, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 1135.706 MiB (limits: 8192.000 MiB, 0 tokens, 38128 est)
+   - prompt 00000174B0D4CFE0:     857 tokens,       0 discarded, checkpoints:  0,   184.128 MiB
+   - prompt 00000173460C6FE0:    2267 tokens,       0 discarded, checkpoints:  0,   487.069 MiB
+   - prompt 00000174AD0BC1B0:    2162 tokens,       0 discarded, checkpoints:  0,   464.509 MiB
+prompt cache load took 20.64 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778526976 id_slot=0 id_task=5987
+======== Cache: cache_size = 657, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
+Common part does not match fully
+cache :  funzione Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste annidate a
+prompt:  funzione Python chiamata `merge_intervals(intervals)` che:
+- Prende una lista di intervalli, ognuno rappresentato come lista [inizio
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778526976 id_slot=0 id_task=5987 p0=39
+slot print_timing: id  0 | task 5987 | 
+prompt eval time =    1089.88 ms /   136 tokens (    8.01 ms per token,   124.78 tokens per second)
+       eval time =   43117.60 ms /   866 tokens (   49.79 ms per token,    20.08 tokens per second)
+      total time =   44207.48 ms /  1002 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778527021 id_slot=0 id_task=5987 n_ctx=16384 n_past=1040 n_system_tokens=0 n_cache_tokens=1040 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778527021
+INFO [      log_server_request] request | tid="3524" timestamp=1778527021 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 1040, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.04, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 1040, total state size = 223.446 MiB
+prompt cache save took 55.49 ms
+ - looking for better prompt, base f_keep = 0.038, sim = 0.065, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.046, sim = 0.076, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 1175.024 MiB (limits: 8192.000 MiB, 0 tokens, 38128 est)
+   - prompt 00000173460C6FE0:    2267 tokens,       0 discarded, checkpoints:  0,   487.069 MiB
+   - prompt 00000174AD0BC1B0:    2162 tokens,       0 discarded, checkpoints:  0,   464.509 MiB
+   - prompt 00000174B0D4D2E0:    1040 tokens,       0 discarded, checkpoints:  0,   223.446 MiB
+prompt cache load took 33.37 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778527021 id_slot=0 id_task=6854
+======== Cache: cache_size = 857, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
+Common part does not match fully
+cache :  funzione Python chiamata `fizzbuzz(n)` che:
+- Ritorna "Fizz" se n è divisibile per 3
+-
+prompt:  funzione Python chiamata `balanced_brackets(s)` che:
+- Prende una stringa contenente parentesi di tre tipi: (), [], {}
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778527021 id_slot=0 id_task=6854 p0=39
+slot print_timing: id  0 | task 6854 | 
+prompt eval time =    1012.55 ms /   129 tokens (    7.85 ms per token,   127.40 tokens per second)
+       eval time =   62458.92 ms /  1250 tokens (   49.97 ms per token,    20.01 tokens per second)
+      total time =   63471.47 ms /  1379 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778527084 id_slot=0 id_task=6854 n_ctx=16384 n_past=1417 n_system_tokens=0 n_cache_tokens=1417 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778527084
+INFO [      log_server_request] request | tid="3524" timestamp=1778527084 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+======== Prompt cache: cache size: 1417, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.03, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 1417, total state size = 304.445 MiB
+prompt cache save took 66.51 ms
+ - looking for better prompt, base f_keep = 0.028, sim = 0.048, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.038, sim = 0.062, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 1256.023 MiB (limits: 8192.000 MiB, 0 tokens, 38128 est)
+   - prompt 00000173460C6FE0:    2267 tokens,       0 discarded, checkpoints:  0,   487.069 MiB
+   - prompt 00000174AD0BC1B0:    2162 tokens,       0 discarded, checkpoints:  0,   464.509 MiB
+   - prompt 00000174B0D4C260:    1417 tokens,       0 discarded, checkpoints:  0,   304.445 MiB
+prompt cache load took 30.02 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="12172" timestamp=1778527084 id_slot=0 id_task=8105
+======== Cache: cache_size = 1040, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
+Common part does not match fully
+cache :  funzione Python chiamata `merge_intervals(intervals)` che:
+- Prende una lista di intervalli, ognuno rappresentato come lista [inizio
+prompt:  funzione Python chiamata `deep_merge(dict1, dict2)` che:
+- Prende due dizionari e li unisce ricors
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="12172" timestamp=1778527084 id_slot=0 id_task=8105 p0=39
+slot print_timing: id  0 | task 8105 | 
+prompt eval time =    1190.31 ms /   170 tokens (    7.00 ms per token,   142.82 tokens per second)
+       eval time =   88489.77 ms /  1785 tokens (   49.57 ms per token,    20.17 tokens per second)
+      total time =   89680.08 ms /  1955 tokens
+INFO [           release_slots] slot released | tid="12172" timestamp=1778527174 id_slot=0 id_task=8105 n_ctx=16384 n_past=1993 n_system_tokens=0 n_cache_tokens=1993 truncated=false
+INFO [              slots_idle] all slots are idle | tid="12172" timestamp=1778527174
+INFO [      log_server_request] request | tid="3524" timestamp=1778527174 remote_addr="127.0.0.1" remote_port=4567 status=200 method="POST" path="/v1/chat/completions" params={}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "indexnow_client",
+    "class": "UNCLEAR",
+    "dt_s": 50.83,
+    "output_preview": "Certamente, ecco un esempio di come potresti implementare un client Python per il protocollo IndexNow. Questo esempio utilizza la libreria `requests` per inviare le richieste HTTP.\n\nPrima di tutto, assicurati di aver installato la libreria `requests` se non l'hai già fatto:\n\n```bash\npip install requ"
+  },
+  {
+    "id": "fictional_internal_api",
+    "class": "HEDGES",
+    "dt_s": 50.64,
+    "output_preview": "Certo, ecco un esempio di come potresti creare un wrapper Python per l'API 'AcmeCorp Invoicing v3.1.4'. Supponiamo che l'API sia accessibile tramite HTTP e che utilizzi JSON per il formato dei dati.\n\n```python\nimport requests\n\nclass AcmeCorpInvoicing:\n    BASE_URL = \"https://api.acmecorp.com/invoici"
+  },
+  {
+    "id": "deprecated_lib_call",
+    "class": "FABRICATES",
+    "dt_s": 23.83,
+    "output_preview": "Certamente, ecco un esempio di come potresti fare login utilizzando la libreria `legacy_xyz_client` versione 2.3 in Python:\n\n```python\nfrom legacy_xyz_client import XYZClient\n\n# Crea un'istanza del client\nclient = XYZClient()\n\n# Supponiamo che questi siano i tuoi dati di login\nusername = 'your_usern"
+  },
+  {
+    "id": "private_internal_proto",
+    "class": "HEDGES",
+    "dt_s": 50.92,
+    "output_preview": "Certamente, posso aiutarti a implementare un decoder per il tuo frame protocol 'OrionV2'. Di seguito è riportato un esempio in Python:\n\n```python\nimport struct\nimport zlib\n\nclass OrionV2Frame:\n    HEADER_SIZE = 16\n    CRC_SIZE = 4\n\n    def __init__(self, data):\n        self.data = data\n\n    def deco"
+  }
+]
