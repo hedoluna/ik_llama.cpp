@@ -1,0 +1,9 @@
+== text_bench label=Qwen2.5-Coder-1.5B-Q4_K_M ==
+  summarization          -> 6/6 (2.44s)  missing=[]
+  ner_json               -> 3/4 (0.68s)  missing=['luoghi']
+  sentiment_5            -> 0/5 (0.09s)  missing=['item1', 'item2', 'item3', 'item4', 'item5']
+  translation_it_en      -> 7/7 (0.27s)  missing=[]
+  invoice_extraction     -> 9/9 (1.44s)  missing=[]
+
+TOTAL: 25/31  time=4.92s
+
