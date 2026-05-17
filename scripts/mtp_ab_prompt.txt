@@ -1,0 +1,1 @@
+Write a Python function `merge_sorted(a, b)` that takes two sorted lists of integers and returns a new sorted list containing all elements from both, preserving order. Then write three test cases as `assert` statements. Output only code, no commentary.
