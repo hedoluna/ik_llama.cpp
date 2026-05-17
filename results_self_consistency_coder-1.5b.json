@@ -1,0 +1,47 @@
+{
+  "model": "coder-1.5b",
+  "task": "task3_nested_sum",
+  "n_runs": 5,
+  "temp": 0.6,
+  "pass_at_n": 1,
+  "unique_impls": 5,
+  "unique_passing_impls": 1,
+  "pass_rate": 0.2,
+  "runs": [
+    {
+      "run": 0,
+      "seed": 42,
+      "passed": false,
+      "impl_hash": "b5fd643876",
+      "wall_s": 1.06
+    },
+    {
+      "run": 1,
+      "seed": 43,
+      "passed": false,
+      "impl_hash": "8f102d4fb8",
+      "wall_s": 1.19
+    },
+    {
+      "run": 2,
+      "seed": 44,
+      "passed": false,
+      "impl_hash": "bf44687ace",
+      "wall_s": 0.74
+    },
+    {
+      "run": 3,
+      "seed": 45,
+      "passed": false,
+      "impl_hash": "e435cd06d8",
+      "wall_s": 0.89
+    },
+    {
+      "run": 4,
+      "seed": 46,
+      "passed": true,
+      "impl_hash": "9c59876e27",
+      "wall_s": 0.84
+    }
+  ]
+}

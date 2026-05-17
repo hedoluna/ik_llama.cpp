@@ -1,0 +1,37 @@
+{
+  "model": "coder-1.5b",
+  "cases": [
+    {
+      "id": "simple_rename",
+      "passed": true,
+      "wall_s": 0.44,
+      "diff_chars": 0
+    },
+    {
+      "id": "add_imports",
+      "passed": false,
+      "wall_s": 0.15,
+      "diff_chars": 23
+    },
+    {
+      "id": "delete_block",
+      "passed": true,
+      "wall_s": 0.22,
+      "diff_chars": 0
+    },
+    {
+      "id": "two_hunks",
+      "passed": true,
+      "wall_s": 0.32,
+      "diff_chars": 0
+    },
+    {
+      "id": "context_only_block_move",
+      "passed": true,
+      "wall_s": 0.58,
+      "diff_chars": 0
+    }
+  ],
+  "passed": 4,
+  "total": 5
+}
