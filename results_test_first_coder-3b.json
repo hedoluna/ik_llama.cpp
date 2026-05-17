@@ -1,0 +1,56 @@
+{
+  "model": "coder-3b",
+  "cases": [
+    {
+      "id": "stack_pop_empty",
+      "passed": true,
+      "wall_s": 1.97,
+      "impl_chars": 501,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpsw5or68v\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "lru_cache",
+      "passed": true,
+      "wall_s": 2.02,
+      "impl_chars": 525,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp4upircs3\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "parse_duration",
+      "passed": false,
+      "wall_s": 1.94,
+      "impl_chars": 464,
+      "tail": " ^^^^^^^^^^^^^^\nE   ValueError: invalid literal for int() with base 10: '1h30'\n=========================== short test summary info ===========================\nFAILED test_x.py::test_parse_duration - ValueError: invalid literal for int()...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    },
+    {
+      "id": "rate_limiter_window",
+      "passed": false,
+      "wall_s": 2.02,
+      "impl_chars": 502,
+      "tail": "r2')\nE    +    where allow = <test_x.RateLimiter object at 0x000002479D18C2F0>.allow\n=========================== short test summary info ===========================\nFAILED test_x.py::test_rate_limiter - AssertionError: assert False is True\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    },
+    {
+      "id": "topo_sort",
+      "passed": false,
+      "wall_s": 1.93,
+      "impl_chars": 433,
+      "tail": " where <built-in method index of list object at 0x00000180DB0F47C0> = ['d', 'c', 'b', 'a'].index\n=========================== short test summary info ===========================\nFAILED test_x.py::test_toposort - AssertionError: assert 3 < 2\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    },
+    {
+      "id": "url_parse",
+      "passed": false,
+      "wall_s": 1.64,
+      "impl_chars": 367,
+      "tail": " ValueError: dictionary update sequence element #0 has length 1; 2 is required\n=========================== short test summary info ===========================\nFAILED test_x.py::test_url - ValueError: dictionary update sequence element #...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    },
+    {
+      "id": "retry_decorator",
+      "passed": true,
+      "wall_s": 1.82,
+      "impl_chars": 512,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp9h4h5eu5\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    }
+  ],
+  "passed": 3,
+  "total": 7
+}

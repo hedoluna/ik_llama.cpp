@@ -1,0 +1,49 @@
+{
+  "model": "daily-winner",
+  "cases": [
+    {
+      "id": "extract_constant",
+      "passed": true,
+      "wall_s": 4.34,
+      "impl_chars": 304,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpu_vmdv4b\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.03s ==============================\n"
+    },
+    {
+      "id": "remove_dup",
+      "passed": true,
+      "wall_s": 3.34,
+      "impl_chars": 269,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpcss0r_uc\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "early_return",
+      "passed": true,
+      "wall_s": 3.08,
+      "impl_chars": 269,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp5q7ihwxs\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "to_comprehension",
+      "passed": true,
+      "wall_s": 2.12,
+      "impl_chars": 70,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmph4dt4463\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "split_function",
+      "passed": true,
+      "wall_s": 6.51,
+      "impl_chars": 688,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp0phrkxgg\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "param_object",
+      "passed": false,
+      "wall_s": 4.49,
+      "impl_chars": 438,
+      "tail": "^^^^\nE   TypeError: create_user() takes 1 positional argument but 7 were given\n=========================== short test summary info ===========================\nFAILED test_x.py::test - TypeError: create_user() takes 1 positional argument...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    }
+  ],
+  "passed": 5,
+  "total": 6
+}

@@ -1,0 +1,135 @@
+{
+  "model": "coder-3b",
+  "cases": [
+    {
+      "id": "off_by_one_window",
+      "gt": [
+        "OFF_BY_ONE"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.17,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "sql_injection",
+      "gt": [
+        "SQL_INJECTION"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.07,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "path_traversal",
+      "gt": [
+        "PATH_TRAVERSAL"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.07,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "resource_leak",
+      "gt": [
+        "RESOURCE_LEAK"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.05,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "null_deref",
+      "gt": [
+        "NULL_DEREF"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.07,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "race_condition",
+      "gt": [
+        "RACE"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.06,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "wrong_operator",
+      "gt": [
+        "TYPE_ERROR",
+        "WRONG_OPERATOR"
+      ],
+      "pred": [
+        "WRONG_OPERATOR"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.08,
+      "resp_short": "WRONG_OPERATOR"
+    },
+    {
+      "id": "clean_correct",
+      "gt": [],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 0.06,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "infinite_loop",
+      "gt": [
+        "INFINITE_LOOP"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.06,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "missing_return",
+      "gt": [
+        "MISSING_RETURN"
+      ],
+      "pred": [
+        "WRONG_OPERATOR"
+      ],
+      "tp": 0,
+      "fp": 1,
+      "fn": 1,
+      "wall_s": 0.08,
+      "resp_short": "WRONG_OPERATOR"
+    }
+  ],
+  "tp": 1,
+  "fp": 1,
+  "fn": 9,
+  "tn": 1,
+  "precision": 0.5,
+  "recall": 0.1,
+  "f1": 0.167
+}
