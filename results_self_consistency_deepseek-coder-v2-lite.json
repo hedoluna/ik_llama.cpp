@@ -1,0 +1,47 @@
+{
+  "model": "deepseek-coder-v2-lite",
+  "task": "task3_nested_sum",
+  "n_runs": 5,
+  "temp": 0.6,
+  "pass_at_n": 4,
+  "unique_impls": 4,
+  "unique_passing_impls": 3,
+  "pass_rate": 0.8,
+  "runs": [
+    {
+      "run": 0,
+      "seed": 42,
+      "passed": true,
+      "impl_hash": "b3c4ebe3e6",
+      "wall_s": 8.1
+    },
+    {
+      "run": 1,
+      "seed": 43,
+      "passed": true,
+      "impl_hash": "54b6c63a71",
+      "wall_s": 6.0
+    },
+    {
+      "run": 2,
+      "seed": 44,
+      "passed": true,
+      "impl_hash": "54b6c63a71",
+      "wall_s": 6.1
+    },
+    {
+      "run": 3,
+      "seed": 45,
+      "passed": true,
+      "impl_hash": "94a6d3dbbf",
+      "wall_s": 6.29
+    },
+    {
+      "run": 4,
+      "seed": 46,
+      "passed": false,
+      "impl_hash": "5d594b554b",
+      "wall_s": 6.22
+    }
+  ]
+}

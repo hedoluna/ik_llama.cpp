@@ -1,0 +1,56 @@
+{
+  "model": "qwen3-14b",
+  "cases": [
+    {
+      "id": "stack_pop_empty",
+      "passed": true,
+      "wall_s": 129.82,
+      "impl_chars": 507,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpf_v3d1cg\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.03s ==============================\n"
+    },
+    {
+      "id": "lru_cache",
+      "passed": false,
+      "wall_s": 180.03,
+      "impl_chars": 0,
+      "tail": "ERR: ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=1234): Read timed out. (read timeout=180)"
+    },
+    {
+      "id": "parse_duration",
+      "passed": false,
+      "wall_s": 180.01,
+      "impl_chars": 0,
+      "tail": "ERR: ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=1234): Read timed out. (read timeout=180)"
+    },
+    {
+      "id": "rate_limiter_window",
+      "passed": true,
+      "wall_s": 20.76,
+      "impl_chars": 580,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp46mudjd1\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 1.08s ==============================\n"
+    },
+    {
+      "id": "topo_sort",
+      "passed": false,
+      "wall_s": 180.01,
+      "impl_chars": 0,
+      "tail": "ERR: ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=1234): Read timed out. (read timeout=180)"
+    },
+    {
+      "id": "url_parse",
+      "passed": false,
+      "wall_s": 180.01,
+      "impl_chars": 0,
+      "tail": "ERR: ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=1234): Read timed out. (read timeout=180)"
+    },
+    {
+      "id": "retry_decorator",
+      "passed": false,
+      "wall_s": 180.0,
+      "impl_chars": 0,
+      "tail": "ERR: ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=1234): Read timed out. (read timeout=180)"
+    }
+  ],
+  "passed": 2,
+  "total": 7
+}

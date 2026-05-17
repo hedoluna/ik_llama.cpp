@@ -1,0 +1,37 @@
+{
+  "model": "deepseek-coder-v2-lite",
+  "cases": [
+    {
+      "id": "simple_rename",
+      "passed": true,
+      "wall_s": 2.3,
+      "diff_chars": 0
+    },
+    {
+      "id": "add_imports",
+      "passed": false,
+      "wall_s": 9.47,
+      "diff_chars": 72
+    },
+    {
+      "id": "delete_block",
+      "passed": false,
+      "wall_s": 2.0,
+      "diff_chars": 37
+    },
+    {
+      "id": "two_hunks",
+      "passed": false,
+      "wall_s": 3.87,
+      "diff_chars": 57
+    },
+    {
+      "id": "context_only_block_move",
+      "passed": false,
+      "wall_s": 5.8,
+      "diff_chars": 175
+    }
+  ],
+  "passed": 1,
+  "total": 5
+}

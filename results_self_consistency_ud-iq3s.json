@@ -1,0 +1,47 @@
+{
+  "model": "ud-iq3s",
+  "task": "task3_nested_sum",
+  "n_runs": 5,
+  "temp": 0.6,
+  "pass_at_n": 5,
+  "unique_impls": 2,
+  "unique_passing_impls": 2,
+  "pass_rate": 1.0,
+  "runs": [
+    {
+      "run": 0,
+      "seed": 42,
+      "passed": true,
+      "impl_hash": "058b98de06",
+      "wall_s": 6.92
+    },
+    {
+      "run": 1,
+      "seed": 43,
+      "passed": true,
+      "impl_hash": "f2b0cfb3f9",
+      "wall_s": 5.47
+    },
+    {
+      "run": 2,
+      "seed": 44,
+      "passed": true,
+      "impl_hash": "f2b0cfb3f9",
+      "wall_s": 5.39
+    },
+    {
+      "run": 3,
+      "seed": 45,
+      "passed": true,
+      "impl_hash": "f2b0cfb3f9",
+      "wall_s": 5.53
+    },
+    {
+      "run": 4,
+      "seed": 46,
+      "passed": true,
+      "impl_hash": "f2b0cfb3f9",
+      "wall_s": 5.48
+    }
+  ]
+}
