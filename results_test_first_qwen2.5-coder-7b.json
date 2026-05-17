@@ -1,0 +1,56 @@
+{
+  "model": "qwen2.5-coder-7b",
+  "cases": [
+    {
+      "id": "stack_pop_empty",
+      "passed": true,
+      "wall_s": 3.6,
+      "impl_chars": 501,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpd2h7lw85\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "lru_cache",
+      "passed": true,
+      "wall_s": 4.66,
+      "impl_chars": 737,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp7b70ovgt\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "parse_duration",
+      "passed": false,
+      "wall_s": 3.24,
+      "impl_chars": 392,
+      "tail": " ^^^^^^^^^^^^^^\nE   ValueError: invalid literal for int() with base 10: '1h30'\n=========================== short test summary info ===========================\nFAILED test_x.py::test_parse_duration - ValueError: invalid literal for int()...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    },
+    {
+      "id": "rate_limiter_window",
+      "passed": true,
+      "wall_s": 4.57,
+      "impl_chars": 510,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpbtkive5t\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 1.07s ==============================\n"
+    },
+    {
+      "id": "topo_sort",
+      "passed": false,
+      "wall_s": 2.53,
+      "impl_chars": 313,
+      "tail": " where <built-in method index of list object at 0x000002310BDD4040> = ['d', 'c', 'b', 'a'].index\n=========================== short test summary info ===========================\nFAILED test_x.py::test_toposort - AssertionError: assert 3 < 2\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    },
+    {
+      "id": "url_parse",
+      "passed": false,
+      "wall_s": 3.83,
+      "impl_chars": 559,
+      "tail": "^^^\nE   ValueError: invalid literal for int() with base 10: 'pass@example.com'\n=========================== short test summary info ===========================\nFAILED test_x.py::test_url - ValueError: invalid literal for int() with base ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    },
+    {
+      "id": "retry_decorator",
+      "passed": false,
+      "wall_s": 2.92,
+      "impl_chars": 424,
+      "tail": "rror: cannot access local variable 'e' where it is not associated with a value\n=========================== short test summary info ===========================\nFAILED test_x.py::test_retry - UnboundLocalError: cannot access local variabl...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    }
+  ],
+  "passed": 3,
+  "total": 7
+}

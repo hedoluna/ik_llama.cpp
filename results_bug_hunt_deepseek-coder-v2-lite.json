@@ -1,0 +1,131 @@
+{
+  "model": "deepseek-coder-v2-lite",
+  "cases": [
+    {
+      "id": "off_by_one_window",
+      "gt": [
+        "OFF_BY_ONE"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 1.12,
+      "resp_short": " NONE"
+    },
+    {
+      "id": "sql_injection",
+      "gt": [
+        "SQL_INJECTION"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 2.41,
+      "resp_short": "egraphics{file}\ndef process_data(data):\n    if data is None:\n        return None\n    result = []\n    for item in data:\n "
+    },
+    {
+      "id": "path_traversal",
+      "gt": [
+        "PATH_TRAVERSAL"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 2.45,
+      "resp_short": "egraphics{file}\ndef process_data(data):\n    if data is None:\n        return None\n    result = []\n    for item in data:\n "
+    },
+    {
+      "id": "resource_leak",
+      "gt": [
+        "RESOURCE_LEAK"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 3.62,
+      "resp_short": "egraphics{data/bug_examples/example1.png}\n```\n\n```python\nimport sqlite3\n\ndef get_user_info(username):\n    conn = sqlite3"
+    },
+    {
+      "id": "null_deref",
+      "gt": [
+        "NULL_DEREF"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 3.63,
+      "resp_short": "egraphics{file}\ndef process_data(data):\n    result = []\n    for item in data:\n        if item > 10:\n            result.a"
+    },
+    {
+      "id": "race_condition",
+      "gt": [
+        "RACE"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 2.65,
+      "resp_short": "egraphics{data}\ndef process_data(data):\n    if data is None:\n        return None\n    result = []\n    for item in data:\n "
+    },
+    {
+      "id": "wrong_operator",
+      "gt": [
+        "TYPE_ERROR",
+        "WRONG_OPERATOR"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "wall_s": 3.65,
+      "resp_short": "egraphics{file}\ndef process_data(data):\n    if data is None:\n        return None\n    result = []\n    for item in data:\n "
+    },
+    {
+      "id": "clean_correct",
+      "gt": [],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 3.63,
+      "resp_short": "egraphics{file}\n\ndef process_data(data):\n    result = []\n    for item in data:\n        if item > 10:\n            result."
+    },
+    {
+      "id": "infinite_loop",
+      "gt": [
+        "INFINITE_LOOP"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 3.93,
+      "resp_short": "egraphics{file}\ndef find_max(numbers):\n    if len(numbers) == 0:\n        return None\n    max_num = numbers[0]\n    for nu"
+    },
+    {
+      "id": "missing_return",
+      "gt": [
+        "MISSING_RETURN"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 4.16,
+      "resp_short": "egraphics{filename}\n\ndef process_data(data):\n    result = []\n    for item in data:\n        if item > 10:\n            res"
+    }
+  ],
+  "tp": 0,
+  "fp": 0,
+  "fn": 10,
+  "tn": 1,
+  "precision": 0,
+  "recall": 0.0,
+  "f1": 0
+}

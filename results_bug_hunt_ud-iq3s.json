@@ -1,0 +1,150 @@
+{
+  "model": "ud-iq3s",
+  "cases": [
+    {
+      "id": "off_by_one_window",
+      "gt": [
+        "OFF_BY_ONE"
+      ],
+      "pred": [
+        "OFF_BY_ONE"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 1.68,
+      "resp_short": "OFF_BY_ONE"
+    },
+    {
+      "id": "sql_injection",
+      "gt": [
+        "SQL_INJECTION"
+      ],
+      "pred": [
+        "SQL_INJECTION"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 1.25,
+      "resp_short": "SQL_INJECTION"
+    },
+    {
+      "id": "path_traversal",
+      "gt": [
+        "PATH_TRAVERSAL"
+      ],
+      "pred": [
+        "NULL_DEREF",
+        "PATH_TRAVERSAL"
+      ],
+      "tp": 1,
+      "fp": 1,
+      "fn": 0,
+      "wall_s": 1.37,
+      "resp_short": "PATH_TRAVERSAL,NULL_DEREF"
+    },
+    {
+      "id": "resource_leak",
+      "gt": [
+        "RESOURCE_LEAK"
+      ],
+      "pred": [
+        "RESOURCE_LEAK"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 1.21,
+      "resp_short": "RESOURCE_LEAK"
+    },
+    {
+      "id": "null_deref",
+      "gt": [
+        "NULL_DEREF"
+      ],
+      "pred": [
+        "NULL_DEREF"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 1.48,
+      "resp_short": "NULL_DEREF,INDEX_OUT_OF_BOUNDS"
+    },
+    {
+      "id": "race_condition",
+      "gt": [
+        "RACE"
+      ],
+      "pred": [
+        "RACE"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 1.89,
+      "resp_short": "RACE"
+    },
+    {
+      "id": "wrong_operator",
+      "gt": [
+        "TYPE_ERROR",
+        "WRONG_OPERATOR"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "wall_s": 1.67,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "clean_correct",
+      "gt": [],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 1.9,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "infinite_loop",
+      "gt": [
+        "INFINITE_LOOP"
+      ],
+      "pred": [
+        "INFINITE_LOOP",
+        "NULL_DEREF",
+        "RACE"
+      ],
+      "tp": 1,
+      "fp": 2,
+      "fn": 0,
+      "wall_s": 2.31,
+      "resp_short": "NULL_DEREF,RACE,INFINITE_LOOP"
+    },
+    {
+      "id": "missing_return",
+      "gt": [
+        "MISSING_RETURN"
+      ],
+      "pred": [
+        "MISSING_RETURN"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 2.01,
+      "resp_short": "MISSING_RETURN"
+    }
+  ],
+  "tp": 8,
+  "fp": 3,
+  "fn": 2,
+  "tn": 1,
+  "precision": 0.727,
+  "recall": 0.8,
+  "f1": 0.762
+}

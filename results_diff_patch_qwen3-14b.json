@@ -1,0 +1,37 @@
+{
+  "model": "qwen3-14b",
+  "cases": [
+    {
+      "id": "simple_rename",
+      "passed": true,
+      "wall_s": 51.83,
+      "diff_chars": 0
+    },
+    {
+      "id": "add_imports",
+      "passed": true,
+      "wall_s": 47.91,
+      "diff_chars": 0
+    },
+    {
+      "id": "delete_block",
+      "passed": true,
+      "wall_s": 58.01,
+      "diff_chars": 0
+    },
+    {
+      "id": "two_hunks",
+      "passed": true,
+      "wall_s": 48.3,
+      "diff_chars": 0
+    },
+    {
+      "id": "context_only_block_move",
+      "passed": true,
+      "wall_s": 65.9,
+      "diff_chars": 0
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

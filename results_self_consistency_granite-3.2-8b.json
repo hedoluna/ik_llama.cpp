@@ -1,0 +1,47 @@
+{
+  "model": "granite-3.2-8b",
+  "task": "task3_nested_sum",
+  "n_runs": 5,
+  "temp": 0.6,
+  "pass_at_n": 1,
+  "unique_impls": 5,
+  "unique_passing_impls": 1,
+  "pass_rate": 0.2,
+  "runs": [
+    {
+      "run": 0,
+      "seed": 42,
+      "passed": false,
+      "impl_hash": "f482b85d28",
+      "wall_s": 3.81
+    },
+    {
+      "run": 1,
+      "seed": 43,
+      "passed": true,
+      "impl_hash": "3f1d8d0c09",
+      "wall_s": 4.09
+    },
+    {
+      "run": 2,
+      "seed": 44,
+      "passed": false,
+      "impl_hash": "330f022317",
+      "wall_s": 3.53
+    },
+    {
+      "run": 3,
+      "seed": 45,
+      "passed": false,
+      "impl_hash": "d0a3fed320",
+      "wall_s": 4.01
+    },
+    {
+      "run": 4,
+      "seed": 46,
+      "passed": false,
+      "impl_hash": "b3e171f255",
+      "wall_s": 4.9
+    }
+  ]
+}

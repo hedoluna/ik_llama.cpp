@@ -1,0 +1,56 @@
+{
+  "model": "granite-3.2-8b",
+  "cases": [
+    {
+      "id": "stack_pop_empty",
+      "passed": true,
+      "wall_s": 5.4,
+      "impl_chars": 549,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp0lrmynue\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.03s ==============================\n"
+    },
+    {
+      "id": "lru_cache",
+      "passed": true,
+      "wall_s": 6.45,
+      "impl_chars": 639,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpxng258e3\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.03s ==============================\n"
+    },
+    {
+      "id": "parse_duration",
+      "passed": false,
+      "wall_s": 3.56,
+      "impl_chars": 223,
+      "tail": "       ^^^^^^^^\nE   ValueError: invalid literal for int() with base 10: '1h30'\n=========================== short test summary info ===========================\nFAILED test_x.py::test_parse_duration - ValueError: invalid literal for int()...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    },
+    {
+      "id": "rate_limiter_window",
+      "passed": true,
+      "wall_s": 7.25,
+      "impl_chars": 649,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpyiok5k99\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 1.08s ==============================\n"
+    },
+    {
+      "id": "topo_sort",
+      "passed": false,
+      "wall_s": 6.69,
+      "impl_chars": 620,
+      "tail": " where <built-in method index of list object at 0x000001F71E0396C0> = ['d', 'c', 'b', 'a'].index\n=========================== short test summary info ===========================\nFAILED test_x.py::test_toposort - AssertionError: assert 3 < 2\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    },
+    {
+      "id": "url_parse",
+      "passed": false,
+      "wall_s": 5.17,
+      "impl_chars": 450,
+      "tail": "   TypeError: Got unexpected field names: ['host', 'port', 'user', 'password']\n=========================== short test summary info ===========================\nFAILED test_x.py::test_url - TypeError: Got unexpected field names: ['host', ...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.13s ==============================\n"
+    },
+    {
+      "id": "retry_decorator",
+      "passed": true,
+      "wall_s": 4.16,
+      "impl_chars": 507,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp8_u6qkzk\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    }
+  ],
+  "passed": 4,
+  "total": 7
+}
