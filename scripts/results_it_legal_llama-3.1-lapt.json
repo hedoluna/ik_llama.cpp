@@ -1,0 +1,230 @@
+{
+  "model": "llama-3.1-lapt",
+  "base_url": "http://127.0.0.1:18080",
+  "temperature": 0.1,
+  "total": 20,
+  "pass": 14,
+  "score_pct": 70.0,
+  "wall_total_s": 135.9,
+  "per_category": {
+    "art_specifico": {
+      "pass": 4,
+      "total": 7,
+      "pct": 57.1
+    },
+    "brocardo": {
+      "pass": 3,
+      "total": 4,
+      "pct": 75.0
+    },
+    "citation": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "classificazione": {
+      "pass": 2,
+      "total": 3,
+      "pct": 66.7
+    },
+    "applicazione": {
+      "pass": 2,
+      "total": 3,
+      "pct": 66.7
+    }
+  },
+  "results": [
+    {
+      "id": "A1_art2043CC",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 10.38,
+      "response": "L'articolo 2043 del Codice Civile italiano stabilisce il principio della responsabilità civile per fatto illecito, affermando che chiunque ha cagionato ad altri un danno ingiusto è tenuto a risarcirlo. Questo articolo sottolinea l'obbligo di risarcimento del danno in caso di violazione di un dovere giuridico o di un comportamento colposo che abbia causato un pregiudizio ad un'altra persona. La norma si applica sia ai soggetti privati che alle persone giuridiche.  L'articolo 2043 è fondamentale per la tutela dei diritti dei cittadini e per la riparazione dei danni causati da comportamenti illeciti.  L'articolo 2043 del Codice Civile italiano stabilisce il principio della responsabilità civile per fatto illecito, affermando che chiunque ha cagionato ad altri un danno ingiusto è tenuto a risarcirlo. Questo articolo sottolinea l'obbligo di risarcimento del danno in caso di violazione di un dovere giuridico o di un comportamento colposo che abbia causato un pregiudizio ad un'altra persona. La norma si applica sia ai soggetti privati che alle persone giuridiche.  L'articolo 2043 è fondamentale per la tutela dei diritti dei cittadini e per la riparazione dei danni causati da comportamenti illeciti.  L'articolo 2043 del Codice Civile italiano stabilisce il principio della responsabilità civile per fatto illecito, affermando che chiunque ha cagionato ad altri un danno ingiusto",
+      "ok": true
+    },
+    {
+      "id": "A2_art595CP",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 10.44,
+      "response": "L'articolo 595 del Codice Penale italiano punisce la diffamazione, che consiste nel diffondere notizie false e tendenziose che danneggiano l'onore o la reputazione di una persona. La pena prevista varia a seconda della gravità del fatto e può includere l'arresto fino a un anno o l'ammenda fino a €5.000. La legge mira a proteggere la dignità e l'immagine delle persone, prevenendo atti che possano ledere la loro reputazione. \n\nL'articolo 595 stabilisce che la diffamazione sia punibile solo se commessa con dolo, ovvero con la consapevole volontà di danneggiare l'altra persona. Inoltre, la pena può essere aumentata se la condotta è commessa con l'uso di mezzi di informazione o se riguarda persone in stato di inferiorità fisica o psichica. \n\nLa legge prevede anche che la persona offesa possa richiedere il risarcimento del danno morale subito, che sarà valutato dal giudice in base alle circostanze del caso. In sintesi, l'articolo 595 mira a tutelare l'onore e la reputazione delle persone, sanzionando chi diffama intenzionalmente. \n\nL'articolo 595 del Codice Penale italiano punisce la diffamazione, che consiste nel diffondere notizie false e tendenziose che danneggiano l'onore o la reputazione di una persona. La pena prevista varia a seconda della gravità del fatto e può includere l'arresto fino a un anno o l'ammenda fino a €5.000. La legge mira a proteggere la dignità e",
+      "ok": true
+    },
+    {
+      "id": "A3_art416bisCP",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(associazion\\w+\\s+(di\\s+tipo\\s+)?mafios|mafia|intimidaz)"
+      ],
+      "wall_s": 10.47,
+      "response": "L'articolo 416 bis del Codice Penale italiano disciplina il reato di associazione per delinquere finalizzata alla commissione di più delitti, prevedendo pene più severe per i membri di associazioni criminali. Questo articolo stabilisce che chiunque partecipa ad un'associazione con finalità delinquenziali è punito con la reclusione da 3 a 10 anni. Inoltre, l'articolo prevede l'applicazione di misure di prevenzione personali e patrimoniali nei confronti dei membri dell'associazione. L'articolo 416 bis è stato introdotto per affrontare il fenomeno delle organizzazioni criminali strutturate e per garantire una risposta penale più efficace. \n\nL'articolo 416 bis del Codice Penale italiano è stato introdotto per affrontare il fenomeno delle organizzazioni criminali strutturate e per garantire una risposta penale più efficace. Questo articolo stabilisce che chiunque partecipa ad un'associazione con finalità delinquenziali è punito con la reclusione da 3 a 10 anni. Inoltre, l'articolo prevede l'applicazione di misure di prevenzione personali e patrimoniali nei confronti dei membri dell'associazione. L'articolo 416 bis è stato introdotto per affrontare il fenomeno delle organizzazioni criminali strutturate e per garantire una risposta penale più efficace. \n\nL'articolo 416 bis del Codice Penale italiano disciplina il reato di associazione per delinquere finalizzata alla commissione di più delitti, prevedendo pene più severe per",
+      "ok": true
+    },
+    {
+      "id": "A4_art2697CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\bonere\\s+(della\\s+)?prova"
+      ],
+      "wall_s": 10.37,
+      "response": "L'articolo 2697 del Codice Civile stabilisce che la prova dell'errore, dolo o colpa in materia di obbligazioni grava colui che li invoca. Ciò significa che chi vuole dimostrare che un'obbligazione è stata adempiuta in modo errato, con dolo o colpa, ha l'onere di fornire la prova a proprio carico. Questo principio è fondamentale nel sistema giuridico italiano per determinare chi deve dimostrare quale fatto in un contesto di obbligazioni.  L'articolo 2697 si inserisce nel più ampio contesto degli articoli 1218 e 1220 del Codice Civile, che disciplinano rispettivamente l'errore e il dolo nell'adempimento delle obbligazioni.  L'articolo 1220, in particolare, stabilisce che l'adempimento deve essere eseguito secondo le modalità previste dal contratto, e che l'errore, il dolo o la colpa nell'adempimento possono esonerare il debitore dall'obbligazione solo se impediscono l'adempimento stesso.  L'articolo 2697, quindi, è un principio generale che si applica a tutte le obbligazioni e non solo a quelle derivanti da contratto.  L'articolo 2697 si applica anche alle obbligazioni naturali, come quelle derivanti da un torto o da un'offesa, e non solo a quelle derivanti da contratto.  L'articolo 2697 si applica anche alle obbligazioni solidali, come quelle derivanti da un contratto di società, e non solo a quelle individuali.  L'articolo 2697",
+      "ok": true
+    },
+    {
+      "id": "A5_art18StatLav",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 10.24,
+      "response": "L'articolo 18 dello Statuto dei Lavoratori (legge 300/1970) riguarda il diritto dei lavoratori a ricorrere alle commissioni di conciliazione per risolvere le controversie individuali di lavoro. Dopo il Jobs Act, l'articolo 18 è stato modificato per introdurre la clausola di salvaguardia, che prevede che le modifiche apportate non possano ridurre i diritti dei lavoratori già acquisiti. Inoltre, è stato introdotto il concetto di \"flessibilità in uscita\", che consente ai lavoratori di andare in pensione anticipata con una riduzione dell'indennità di disoccupazione. Tuttavia, l'articolo 18 rimane fondamentale per garantire il rispetto dei diritti dei lavoratori e la tutela delle loro condizioni di lavoro. (Art. 18 Statuto dei Lavoratori; Jobs Act - Legge Fornero). \n\nL'articolo 18 dello Statuto dei Lavoratori prevede che i lavoratori abbiano il diritto di ricorrere alle commissioni di conciliazione per risolvere le controversie individuali di lavoro. Dopo il Jobs Act, l'articolo 18 è stato modificato per introdurre la clausola di salvaguardia, che prevede che le modifiche apportate non possano ridurre i diritti dei lavoratori già acquisiti. Inoltre, è stato introdotto il concetto di \"flessibilità in uscita\", che consente ai lavoratori di andare in pensione anticipata con una riduzione dell'indennità di disoccupazione. Tuttavia, l'articolo 18 rimane fondamentale per garantire il rispetto dei dir",
+      "ok": true
+    },
+    {
+      "id": "A6_art32Cost",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 10.41,
+      "response": "L'articolo 32 della Costituzione italiana tutela la salute come fondamentale diritto dell'individuo e interesse della collettività, garantendo il diritto a prestazioni sanitarie gratuite o a condizioni agevolate per i soggetti più bisognosi. Inoltre, l'articolo prevede il diritto all'assistenza, alla prevenzione e alla guarigione, nonché il divieto di discriminazioni per motivi di razza, di lingua, di religione, di opinioni politiche o di condizioni personali e sociali. L'articolo 32 sottolinea l'importanza di un sistema sanitario pubblico e universalistico, accessibile a tutti i cittadini.  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32 Cost. it.)  (Art. 32",
+      "ok": true
+    },
+    {
+      "id": "A7_art1322CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(meritevol|tipic|atipic)"
+      ],
+      "wall_s": 10.45,
+      "response": "L'articolo 1322 del Codice Civile italiano stabilisce che l'autonomia contrattuale consente ai contraenti di regolare liberamente il loro rapporto, salvo i limiti imposti dalla legge. In particolare, l'articolo prevede che i contraenti possono scegliere il tipo di obbligazione, le modalità di esecuzione e le condizioni del contratto, purché non siano in contrasto con norme imperative o con l'ordine pubblico. Questo principio garantisce la libertà negoziale, ma deve essere esercitato nel rispetto delle norme di legge. L'articolo 1322, quindi, sottolinea l'importanza della volontà delle parti nel definire il contenuto del contratto, ma anche la necessità di non violare i principi fondamentali del diritto. \n\nL'articolo 1322 del Codice Civile italiano stabilisce che l'autonomia contrattuale consente ai contraenti di regolare liberamente il loro rapporto, salvo i limiti imposti dalla legge. In particolare, l'articolo prevede che i contraenti possono scegliere il tipo di obbligazione, le modalità di esecuzione e le condizioni del contratto, purché non siano in contrasto con norme imperative o con l'ordine pubblico. Questo principio garantisce la libertà negoziale, ma deve essere esercitato nel rispetto delle norme di legge. L'articolo 1322, quindi, sottolinea l'importanza della volontà delle parti nel definire il contenuto del contratto, ma anche la necessità di non violare i principi fondamentali del diritto. \n\nL'articolo 1322 del Codice",
+      "ok": true
+    },
+    {
+      "id": "B1_nemo_iudex",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(nessuno|non).{0,40}\\b(giudic|giudice).{0,80}\\b(propri[oa]|sua|causa)"
+      ],
+      "wall_s": 10.37,
+      "response": "Il brocardo latino \"nemo iudex in causa sua\" significa che nessun giudice può giudicare una causa in cui ha un interesse personale. Questo principio garantisce l'imparzialità e l'indipendenza del giudice nel processo giudiziario. In Italia, tale principio è sancito dall'articolo 6 della Convenzione Europea dei Diritti dell'Uomo e dall'articolo 101 del Codice di Procedura Civile.  L'articolo 101 prevede che il giudice non possa partecipare al giudizio se ha un interesse diretto o indiretto nella causa.  In caso di conflitto di interessi, il giudice deve astenersi o chiedere l'assegnazione del procedimento ad un altro giudice.  Questo principio è fondamentale per garantire la giustizia e l'equità del processo giudiziario.  L'articolo 101 del Codice di Procedura Civile stabilisce che il giudice deve astenersi se ha un interesse diretto o indiretto nella causa.  In caso di conflitto di interessi, il giudice deve astenersi o chiedere l'assegnazione del procedimento ad un altro giudice.  Questo principio è fondamentale per garantire la giustizia e l'equità del processo giudiziario.  L'articolo 101 del Codice di Procedura Civile stabilisce che il giudice deve astenersi se ha un interesse diretto o indiretto nella causa.  In caso di conflitto di interessi, il giudice deve astenersi o chiedere l'assegnazione del procedimento ad un altro giudice.  Questo",
+      "ok": true
+    },
+    {
+      "id": "B2_ne_bis_in_idem",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 10.5,
+      "response": "Il principio 'ne bis in idem' nel diritto penale italiano impedisce la doppia punizione per lo stesso fatto, garantendo il diritto del soggetto a non essere processato o condannato più volte per lo stesso reato. Questo principio è sancito dall'articolo 649 del Codice di Procedura Penale. In pratica, una volta che un soggetto è stato giudicato per un determinato reato, non può essere nuovamente perseguito per lo stesso fatto, a meno che non siano emerse nuove prove o circostanze che giustifichino un nuovo processo. Questo principio è fondamentale per evitare abusi processuali e garantire la certezza del diritto.  L'articolo 649 c.p.p. recita: \"Non è ammesso il bis in idem, cioè non è possibile procedere nuovamente per lo stesso fatto giudicato con sentenza passata in giudicato\".  Inoltre, l'articolo 6 della Convenzione Europea dei Diritti dell'Uomo (CEDU) protegge il principio del ne bis in idem, stabilendo che \"nessuno può essere giudicato due volte per lo stesso reato\".  Il principio del ne bis in idem è quindi un principio fondamentale del diritto penale italiano e internazionale.  In caso di violazione del ne bis in idem, è possibile ricorrere in Cassazione o avviare un'azione di risarcimento del danno.  Il principio del ne bis in idem è applicabile anche in ambito civile e amministrativo, ma con modalità e limiti diversi.  In ambito penale, il principio del ne bis in idem si applica anche in caso di condanne all",
+      "ok": true
+    },
+    {
+      "id": "B3_in_dubio_pro_reo",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 11.46,
+      "response": "\"In dubio pro reo\" è un principio fondamentale del diritto penale italiano, che impone di decidere a favore dell'imputato in caso di dubbio. Questo principio è sancito dall'articolo 27 della Costituzione italiana e si riflette nell'articolo 533 del codice di procedura penale, che stabilisce che in caso di incertezza sul fatto o sulla sua qualificazione giuridica, il giudice deve pronunciarsi a favore dell'imputato. Questo principio assicura il principio di presunzione di innocenza e il diritto alla difesa. \n\nIn pratica, significa che se il giudice ha dei dubbi sulle prove o sulla loro interpretazione, deve optare per una decisione che non danneggi l'imputato. Questo principio è particolarmente importante in un sistema giuridico che si basa sulla prova oltre ogni ragionevole dubbio. \n\nIn sintesi, \"in dubio pro reo\" significa che in caso di dubbio, il giudice deve decidere a favore dell'imputato, garantendo così il rispetto dei principi fondamentali del diritto penale italiano. \n\n(Art. 27 Costituzione Italiana; Art. 533 Codice di Procedura Penale) \n\n(Art. 27 Costituzione Italiana; Art. 533 Codice di Procedura Penale) \n\n(Art. 27 Costituzione Italiana; Art. 533 Codice di Procedura Penale) \n\n(Art. 27 Costituzione Italiana; Art. 533 Codice di Procedura Penale) \n\n(Art. 27 Costituzione Italiana; Art. 533 Codice di Procedura Penale) \n\n(Art. 27 Costituzione Italiana;",
+      "ok": true
+    },
+    {
+      "id": "B4_pacta_sunt_servanda",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 12.15,
+      "response": "Il principio \"pacta sunt servanda\" nel diritto civile esprime il concetto che i patti o gli accordi stipulati tra le parti devono essere rispettati. Questo principio è fondamentale per garantire la certezza del diritto e la fiducia tra le parti in un contratto. In particolare, l'articolo 1372 del Codice Civile italiano stabilisce che \"il contratto deve essere eseguito secondo le clausole stabilite dalle parti\". Questo principio è applicabile a tutti i tipi di contratti e si basa sull'idea che le parti hanno il dovere di mantenere le promesse fatte. In caso di inadempimento, le parti possono agire in giudizio per ottenere il rispetto del contratto. Inoltre, l'articolo 1453 del Codice Civile stabilisce che \"il contratto deve essere eseguito con la diligenza del buon padre di famiglia\". Questo principio sottolinea l'importanza del rispetto delle norme di diligenza e buonafede nel corso dell'esecuzione del contratto. In sintesi, il principio \"pacta sunt servanda\" è fondamentale per garantire la certezza del diritto e la fiducia tra le parti in un contratto. L'articolo 1372 del Codice Civile stabilisce che il contratto deve essere eseguito secondo le clausole stabilite dalle parti, mentre l'articolo 1453 sottolinea l'importanza del rispetto delle norme di diligenza e buonafede. Questi principi sono applicabili a tutti i tipi di contratti e sono fondamentali per garantire la certezza del diritto e la fiducia tra le parti",
+      "ok": true
+    },
+    {
+      "id": "C1_citation_2043",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.96,
+      "response": "L'articolo principale citato nel testo è l'art. 2043 del Codice Civile. \n\nRisposta: art. 2043 CODICE. 2043. 2043. 2043. 2043. 2043. 204",
+      "ok": true
+    },
+    {
+      "id": "C2_citation_416bis",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.36,
+      "response": "L'articolo principale citato nel testo è l'art. 416-bis c.p. (Codice Penale). \n\nRisposta: art. 416-bis c.p. (Codice Penale) 416-bis c.p. (Codice Pen",
+      "ok": true
+    },
+    {
+      "id": "C3_citation_constitution",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.59,
+      "response": "L'articolo principale della Costituzione citato nel testo è l'art. 32 Cost. che tutela la salute come fondamentale diritto dell'individuo e interesse della collettività.  L'articolo 32 stabilisce che la Repubb",
+      "ok": true
+    },
+    {
+      "id": "D1_class_civile",
+      "category": "classificazione",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)^\\s*civile\\s*\\.?\\s*$|^\\s*civile\\b"
+      ],
+      "wall_s": 0.9,
+      "response": "Commerciale. \n\nIl contratto di mutuo è un contratto commerciale, e la",
+      "ok": true
+    },
+    {
+      "id": "D2_class_penale",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.64,
+      "response": "Penale. \n\nLa denuncia per furto è un reato penale, e l'",
+      "ok": true
+    },
+    {
+      "id": "D3_class_lavoro",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.66,
+      "response": "Lavoro. \n\nLa questione riguarda un licenziamento e la sua imp",
+      "ok": true
+    },
+    {
+      "id": "E1_prescrizione_ordinaria",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.95,
+      "response": "Il termine ordinario di prescrizione dei diritti nel Codice Civile italiano è di dieci anni, come stabilito dall'articolo 2946 del Codice Civile. \n\nArt. 2946 CC: \"La prescrizione ordinaria è di dieci anni\". \n\nTuttavia, è importante notare che esistono diverse prescrizioni speciali per determinati diritti, che possono variare in base alla natura del diritto stesso",
+      "ok": true
+    },
+    {
+      "id": "E2_prescrizione_risarcimento_extracontrattuale",
+      "category": "applicazione",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: \\b5\\s*anni\\b|\\bcinque\\s+anni\\b"
+      ],
+      "wall_s": 2.85,
+      "response": "Il termine di prescrizione del diritto al risarcimento del danno extracontrattuale è di dieci anni, come stabilito dall'articolo 2947 del Codice Civile. Tuttavia, è importante notare che la prescrizione può essere sospesa in determinate circostanze, ad esempio se il danneggiato non è a conoscenza del danno o se il responsabile del danno si trova all",
+      "ok": true
+    },
+    {
+      "id": "E3_appello_civile_termine",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.77,
+      "response": "Il termine breve per proporre appello civile dalla notificazione della sentenza di primo grado è di 30 giorni, come previsto dall'articolo 325 del Codice di Procedura Civile (CPC).  L'articolo 327 del CPC stabilisce che il termine per l'appello è di 30 giorni dalla notificazione della sentenza, salvo che non sia diversamente stabilito per legge.  L'articolo",
+      "ok": true
+    }
+  ]
+}

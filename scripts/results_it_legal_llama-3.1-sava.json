@@ -1,0 +1,238 @@
+{
+  "model": "llama-3.1-sava",
+  "base_url": "http://127.0.0.1:18080",
+  "temperature": 0.1,
+  "total": 20,
+  "pass": 10,
+  "score_pct": 50.0,
+  "wall_total_s": 21.9,
+  "per_category": {
+    "art_specifico": {
+      "pass": 1,
+      "total": 7,
+      "pct": 14.3
+    },
+    "brocardo": {
+      "pass": 2,
+      "total": 4,
+      "pct": 50.0
+    },
+    "citation": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "classificazione": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "applicazione": {
+      "pass": 1,
+      "total": 3,
+      "pct": 33.3
+    }
+  },
+  "results": [
+    {
+      "id": "A1_art2043CC",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.75,
+      "response": " L'articolo 2043 del Codice Civile italiano stabilisce che il debitore è tenuto a restituire la cosa oggetto del prestito, salvo il diritto del creditore di trattenere la cosa stessa se questa è deteriorata. Il debitore deve restituire la cosa nello stato in cui si trova, salvo il diritto del creditore di pretendere il risarcimento del danno.",
+      "ok": true
+    },
+    {
+      "id": "A2_art595CP",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\bdiffamaz(ione|atorio)"
+      ],
+      "wall_s": 1.72,
+      "response": " L'articolo 595 del Codice Penale italiano punisce il furto. Si configura quando una persona, con dolo, sottrae una cosa mobile altrui, al fine di appropriarsene o di darla a un terzo. La pena prevista è l'arresto fino a quattro anni o l'ammenda fino a 1.023 euro.",
+      "ok": true
+    },
+    {
+      "id": "A3_art416bisCP",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(associazion\\w+\\s+(di\\s+tipo\\s+)?mafios|mafia|intimidaz)"
+      ],
+      "wall_s": 1.44,
+      "response": " L'articolo 416 bis del Codice Penale italiano disciplina il reato di violenza sessuale di gruppo, che consiste nell'aver commesso un atto sessuale con più persone, anche in successione, mediante violenza o minaccia o comunque al di fuori dei casi previsti dall'articolo 609-bis.",
+      "ok": true
+    },
+    {
+      "id": "A4_art2697CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\bonere\\s+(della\\s+)?prova"
+      ],
+      "wall_s": 1.36,
+      "response": " L'articolo 2697 del Codice Civile stabilisce che chi agisce in giudizio deve provare i fatti che sostengono le proprie richieste, mentre l'altro contraente è tenuto a provare i fatti che costituiscono eccezione o contestazione. Questo principio si applica a tutte le controversie civili e commerciali.",
+      "ok": true
+    },
+    {
+      "id": "A5_art18StatLav",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(licenziamento|reintegra|tutel\\w+)"
+      ],
+      "wall_s": 2.0,
+      "response": " L'articolo 18 dello Statuto dei Lavoratori prevede che il lavoratore ha diritto a un congedo di paternità di 15 giorni retribuiti, che possono essere fruiti entro i 5 mesi successivi alla nascita del figlio. Dopo l'introduzione delle modifiche introdotte dal Jobs Act, il diritto al congedo di paternità è stato esteso anche ai lavoratori autonomi e ai lavoratori a tempo determinato.",
+      "ok": true
+    },
+    {
+      "id": "A6_art32Cost",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(salute|diritto\\s+(fondamentale\\s+)?alla\\s+salute)"
+      ],
+      "wall_s": 1.99,
+      "response": " L'articolo 32 della Costituzione italiana tutela la libertà di manifestazione del pensiero, di stampa e di ogni altra forma di espressione. Questo diritto include la libertà di opinione, la libertà di stampa e la libertà di comunicazione. La legge non può limitare tali libertà se non per disposizione espressa e nei limiti di quanto è strettamente necessario per la sicurezza pubblica, per l'ordine pubblico, per la difesa dello Stato e per la prevenzione dei reati.",
+      "ok": true
+    },
+    {
+      "id": "A7_art1322CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(meritevol|tipic|atipic)"
+      ],
+      "wall_s": 2.12,
+      "response": " L'articolo 1322 del Codice Civile italiano stabilisce che l'autonomia contrattuale è il principio secondo il quale le parti possono liberamente concordare le clausole del contratto, purché queste non siano in contrasto con norme imperative o con l'ordine pubblico. Le parti possono quindi definire i termini e le condizioni del contratto in base alle loro esigenze e preferenze, purché ciò non leda i diritti fondamentali dei contraenti o non violi norme di legge.",
+      "ok": true
+    },
+    {
+      "id": "B1_nemo_iudex",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.27,
+      "response": " Il brocardo latino \"nemo iudex in causa sua\" significa che nessuno può essere giudice in una causa che lo coinvolge personalmente. Questo principio è fondamentale nel diritto processuale per garantire l'imparzialità e l'equità del processo.",
+      "ok": true
+    },
+    {
+      "id": "B2_ne_bis_in_idem",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(non|nessuno)\\b.{0,60}(due\\s+volte|nuovamente|secondo|reiterat)"
+      ],
+      "wall_s": 1.82,
+      "response": " Il principio 'ne bis in idem' nel diritto penale italiano è espresso nell'articolo 6 della Convenzione europea dei diritti dell'uomo e nel nostro ordinamento è garantito dall'articolo 111 del Codice di procedura penale. Esso vieta la duplicazione di processi per la stessa accusa, impedendo che una persona sia giudicata e condannata più volte per lo stesso fatto.",
+      "ok": true
+    },
+    {
+      "id": "B3_in_dubio_pro_reo",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.37,
+      "response": " \"In dubio pro reo\" significa che, in caso di dubbio, si deve optare a favore dell'imputato. Questo principio si basa sull'articolo 26 della Costituzione italiana, che garantisce il diritto di difesa e il principio del \"non colpevolezza fino a sentenza definitiva\".",
+      "ok": true
+    },
+    {
+      "id": "B4_pacta_sunt_servanda",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(osservat|rispettat|adempiut|vincolant|forza\\s+di\\s+legge)"
+      ],
+      "wall_s": 1.08,
+      "response": " Il principio \"pacta sunt servanda\" nel diritto civile italiano esprime l'obbligo di rispettare gli accordi e i contratti stipulati, sottolineando l'importanza della fiducia e della buona fede tra le parti coinvolte.",
+      "ok": true
+    },
+    {
+      "id": "C1_citation_2043",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.28,
+      "response": " art. 2043 CC",
+      "ok": true
+    },
+    {
+      "id": "C2_citation_416bis",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.34,
+      "response": " art. 416-bis c.p.",
+      "ok": true
+    },
+    {
+      "id": "C3_citation_constitution",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.25,
+      "response": " art. 32 Cost.",
+      "ok": true
+    },
+    {
+      "id": "D1_class_civile",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.12,
+      "response": " civile",
+      "ok": true
+    },
+    {
+      "id": "D2_class_penale",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.1,
+      "response": " Penale",
+      "ok": true
+    },
+    {
+      "id": "D3_class_lavoro",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.1,
+      "response": " Lavoro",
+      "ok": true
+    },
+    {
+      "id": "E1_prescrizione_ordinaria",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.63,
+      "response": " Il termine ordinario di prescrizione dei diritti nel Codice Civile italiano è di dieci anni (art. 2946 CC).",
+      "ok": true
+    },
+    {
+      "id": "E2_prescrizione_risarcimento_extracontrattuale",
+      "category": "applicazione",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: \\b5\\s*anni\\b|\\bcinque\\s+anni\\b"
+      ],
+      "wall_s": 0.86,
+      "response": " Il termine di prescrizione per il diritto al risarcimento del danno extracontrattuale, ai sensi dell'articolo 2947 del Codice Civile, è di tre anni.",
+      "ok": true
+    },
+    {
+      "id": "E3_appello_civile_termine",
+      "category": "applicazione",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: \\b30\\s*giorni\\b|\\btrenta\\s+giorni\\b"
+      ],
+      "wall_s": 1.32,
+      "response": " Il termine breve per proporre appello civile dalla notificazione della sentenza di primo grado è di 10 giorni. L'articolo 325 del Codice di Procedura Civile (CPC) stabilisce che \"l'appello deve essere proposto entro dieci giorni dalla notificazione della sentenza\".",
+      "ok": true
+    }
+  ]
+}
