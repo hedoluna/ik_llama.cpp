@@ -1,0 +1,228 @@
+{
+  "model": "daily-winner-q36",
+  "base_url": "http://127.0.0.1:18080",
+  "temperature": 0.1,
+  "total": 20,
+  "pass": 15,
+  "score_pct": 75.0,
+  "wall_total_s": 47.3,
+  "per_category": {
+    "art_specifico": {
+      "pass": 6,
+      "total": 7,
+      "pct": 85.7
+    },
+    "brocardo": {
+      "pass": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    "citation": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "classificazione": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "applicazione": {
+      "pass": 2,
+      "total": 3,
+      "pct": 66.7
+    }
+  },
+  "results": [
+    {
+      "id": "A1_art2043CC",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 3.78,
+      "response": "L'articolo 2043 del Codice Civile italiano stabilisce il principio generale della responsabilità extracontrattuale, disponendo che \"qualunque fatto doloso o colposo, che cagiona ad altri un danno ingiusto, obbliglia colui che ha commesso il fatto a risarcire il danno\". Tale norma fissa il fondamento della tutela risarcitoria per i danni ingiusti provocati da condotte illecite, indipendentemente dall'esistenza di un rapporto contrattuale tra le parti.",
+      "ok": true
+    },
+    {
+      "id": "A2_art595CP",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\bdiffamaz(ione|atorio)"
+      ],
+      "wall_s": 3.1,
+      "response": "L'articolo 595 del Codice Penale italiano punisce il reato di ingiuria, definito come l'offesa all'onore o al prestigio di una persona commessa fuori della presenza di terzi. La sanzione prevista è l'ammenda, la cui entità varia in base alla gravità dell'offesa e alle circostanze specifiche del caso. Tale norma è stata oggetto di numerose modifiche e limitazioni, in particolare per quanto riguarda le offese rivolte a pubblici ufficiali o a persone in servizio pubblico.",
+      "ok": true
+    },
+    {
+      "id": "A3_art416bisCP",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 3.57,
+      "response": "L'articolo 416-bis c.p. disciplina il reato di associazione di tipo mafioso, punendo chi partecipa a un'organizzazione caratterizzata dalla forza di intimidazione derivante dall'attitudine all'uccisione, dalla violenza alle persone e dal controllo del territorio o di attività economiche. La norma richiede l'esistenza di un vincolo di omertà e la capacità dell'ente di intimidire l'opinione pubblica o di imporre il proprio potere attraverso metodi di forza e intimidazione. La pena prevista è la reclusione da sette a venti anni per i partecipanti all'associazione.",
+      "ok": true
+    },
+    {
+      "id": "A4_art2697CC",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 3.03,
+      "response": "L'articolo 2697 del Codice Civile stabilisce il principio generale secondo cui colui che vuole far valere un proprio diritto deve provare i fatti costitutivi di tale pretesa.\nDi conseguenza, la parte convenuta ha l'onere di provare i fatti impeditivi, modificativi o estintivi del diritto fatto valere dall'attore.\nQuesta norma disciplina quindi la ripartione dell'onere della prova tra le parti del processo civile.",
+      "ok": true
+    },
+    {
+      "id": "A5_art18StatLav",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 5.28,
+      "response": "L'articolo 18 della Legge 300/1970, come modificato dal Jobs Act (D.Lgs. 23/2015), disciplina la tutela contro il licenziamento illegittimo distinguendo tra recesso per giusta causa/giustificato motivo oggettivo e licenziamento discriminatorio o nullo. Per i contratti stipulati dopo il 7 marzo 2015, in caso di licenziamento illegittimo, il lavoratore ha diritto al risarcimento del danno calcolato secondo i criteri di cui all'articolo 18, comma 4, con un importo minimo pari a cinque e massimo a quindici mensilità dell'ultima retribuzione globale di fatto. Tale risarcimento è dovuto anche nei casi di licenziamento nullo o discriminatorio, salvo che il giudice non ordini la reintegra nel caso di nullità assoluta.",
+      "ok": true
+    },
+    {
+      "id": "A6_art32Cost",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.68,
+      "response": "L'articolo 32 della Costituzione italiana tutela la salute come diritto fondamentale dell'individuo e interesse della collettività. Esso garantisce l'accesso alle cure gratuite per gli indigenti e vieta qualsiasi obbligo sanitario imposto dalla legge, fatta eccezione per i casi previsti dalla legge stessa. Inoltre, la legge non può in nessun caso violare i limiti imposti dal rispetto della persona umana.",
+      "ok": true
+    },
+    {
+      "id": "A7_art1322CC",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 3.02,
+      "response": "L'articolo 1322 del Codice Civile stabilisce che le parti possono liberamente determinare il contenuto del contratto nei limiti imposti dalla legge. Le parti possono anche sottoporre il contratto a tipi non appartenenti a quelli aventi una regolamentazione specifica, purché siano diretti a realizzare interessi meritevoli di tutela secondo l'ordinamento giuridico. Tale norma sancisce quindi il principio di autonomia contrattuale, consentendo la creazione di contratti atipici.",
+      "ok": true
+    },
+    {
+      "id": "B1_nemo_iudex",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(nessuno|non).{0,40}\\b(giudic|giudice).{0,80}\\b(propri[oa]|sua|causa)"
+      ],
+      "wall_s": 2.55,
+      "response": "Il brocardo *nemo iudex in causa sua* sancisce il principio di imparzialità del giudice, vietando a chi è parte in una controversia di esercitare la funzione giurisdizionale su di essa. Tale norma garantisce l'oggettività del processo, impedendo conflitti di interessi e assicurando che la decisione sia assunta da un terzo imparziale.",
+      "ok": true
+    },
+    {
+      "id": "B2_ne_bis_in_idem",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(non|nessuno)\\b.{0,60}(due\\s+volte|nuovamente|secondo|reiterat)"
+      ],
+      "wall_s": 2.67,
+      "response": "Il principio *ne bis in idem*, sancito dall'art. 649 c.p., impedisce che una persona sia sottoposta a un nuovo processo o subisca una nuova pena per lo stesso fatto già definito con sentenza irrevocabile. Esso garantisce la certezza del diritto e la tutela dall'arbitrio dello Stato contro la duplicazione delle sanzioni penali per la stessa condotta.",
+      "ok": true
+    },
+    {
+      "id": "B3_in_dubio_pro_reo",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.85,
+      "response": "Il principio *in dubio pro reo* stabilisce che, in caso di dubbio insuperabile sull'innocenza dell'imputato, il giudice deve pronunciare un assoluzione a favore dell'indagato. Tale regola, radicata nell'art. 533 c.p.p., garantisce che ogni dubbio ragionevole vada interpretato a vantaggio dell'imputato, escludendo la condanna.",
+      "ok": true
+    },
+    {
+      "id": "B4_pacta_sunt_servanda",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(osservat|rispettat|adempiut|vincolant|forza\\s+di\\s+legge)"
+      ],
+      "wall_s": 2.82,
+      "response": "Il principio *pacta sunt servanda*, sancito dall'articolo 1173 del codice civile, esprime l'obbligatorietà generale dei contratti, in base alla quale le parti sono tenute a eseguire le prestazioni pattuite secondo il contenuto dell'accordo e la buona fede. Tale principio costituisce la base della sicurezza giuridica nelle relazioni giuridiche private, garantendo il rispetto degli accordi liberamente stipulati.",
+      "ok": true
+    },
+    {
+      "id": "C1_citation_2043",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.05,
+      "response": "art. 2043 CC",
+      "ok": true
+    },
+    {
+      "id": "C2_citation_416bis",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.06,
+      "response": "art. 416-bis c.p.",
+      "ok": true
+    },
+    {
+      "id": "C3_citation_constitution",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.95,
+      "response": "art. 32 Cost.",
+      "ok": true
+    },
+    {
+      "id": "D1_class_civile",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.82,
+      "response": "civile",
+      "ok": true
+    },
+    {
+      "id": "D2_class_penale",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.8,
+      "response": "penale",
+      "ok": true
+    },
+    {
+      "id": "D3_class_lavoro",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.84,
+      "response": "lavoro",
+      "ok": true
+    },
+    {
+      "id": "E1_prescrizione_ordinaria",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.85,
+      "response": "Il termine ordinario di prescrizione dei diritti nel Codice Civile italiano è di **10 anni**.\n\nAi sensi dell'articolo 2946 del Codice Civile, tutti i diritti si estinguono per effetto della prescrizione quando il titolare non ne ha fatto uso per il tempo determinato dalla legge. Per i diritti non soggetti a termini di prescrizione più brevi o più lunghi espressamente previsti da altre norme, si applica il termine generale di dieci anni.",
+      "ok": true
+    },
+    {
+      "id": "E2_prescrizione_risarcimento_extracontrattuale",
+      "category": "applicazione",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: \\b5\\s*anni\\b|\\bcinque\\s+anni\\b"
+      ],
+      "wall_s": 1.7,
+      "response": "Il termine di prescrizione del diritto al risarcimento del danno extracontrattuale, ai sensi dell'articolo 2947 del Codice Civile (fattispecie ordinaria), è di **3 anni**.",
+      "ok": true
+    },
+    {
+      "id": "E3_appello_civile_termine",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.92,
+      "response": "Il termine breve per proporre appello civile dalla notificazione della sentenza di primo grado è di **30 giorni**.\n\nAi sensi dell'art. 325, comma 1, del Codice di Procedura Civile, tale termine decorre dalla notificazione della sentenza.",
+      "ok": true
+    }
+  ]
+}

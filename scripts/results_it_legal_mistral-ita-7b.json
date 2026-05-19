@@ -1,0 +1,241 @@
+{
+  "model": "mistral-ita-7b",
+  "base_url": "http://127.0.0.1:18080",
+  "temperature": 0.1,
+  "total": 20,
+  "pass": 9,
+  "score_pct": 45.0,
+  "wall_total_s": 32.3,
+  "per_category": {
+    "art_specifico": {
+      "pass": 0,
+      "total": 7,
+      "pct": 0.0
+    },
+    "brocardo": {
+      "pass": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    "citation": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "classificazione": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "applicazione": {
+      "pass": 2,
+      "total": 3,
+      "pct": 66.7
+    }
+  },
+  "results": [
+    {
+      "id": "A1_art2043CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(danno|responsabilit[aà])\\b",
+        "missing required pattern: (?i)\\b(colpa|dolo|ingiusto|risarc)"
+      ],
+      "wall_s": 2.15,
+      "response": "INST: L'art. 2043 del Codice Civile italiano regola l'obbligo di eredità tra figli e discendenza, stabilendo che, in assenza di testamento, la metà del patrimonio va a figli viventi e la seconda metà a discendenza ulteriore.\n\n<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "A2_art595CP",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\bdiffamaz(ione|atorio)"
+      ],
+      "wall_s": 1.77,
+      "response": "INST: L'art. 595 del Codice Penale italiano sanziona l'usura, comportamento ingannevole che induce a un'ingiusta prelieva di vantaggio. La pena massima è il carcere fino a 5 anni.\n\n<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "A3_art416bisCP",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(associazion\\w+\\s+(di\\s+tipo\\s+)?mafios|mafia|intimidaz)"
+      ],
+      "wall_s": 1.52,
+      "response": "INST: Art. 416 bis disciplina l'evasione fiscale attraverso l'uso di società fantasma o strumenti finanziari complessi, con pene detentive da 2 a 6 anni.<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "A4_art2697CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(fatt[oi]|fonda|costitu)"
+      ],
+      "wall_s": 2.29,
+      "response": "INST: Art. 2697 del Codice Civile assegna l'onere della prova alla parte che ha la maggiore probabilità di averne la conoscenza, promuovendo la giustizia e la razionalità nel processo giudiziario. La regola si applica per equità e in assenza di motivi di contrasto.\n\n<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "A5_art18StatLav",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(licenziamento|reintegra|tutel\\w+)"
+      ],
+      "wall_s": 1.73,
+      "response": "INST. 18 regola l'esercizio del diritto di sciopero, garantendo la protezione dei lavoratori e la previsione di avvisi adeguati. L'art. 27-bis Jobs Act modifica alcuni dettagli. <|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "A6_art32Cost",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(salute|diritto\\s+(fondamentale\\s+)?alla\\s+salute)"
+      ],
+      "wall_s": 1.53,
+      "response": "INST: L'art. 32 cost. ital. garantisce la libertà individuale, inclusa la privanza della vita, la protezione dalle perquisizioni illecite e il diritto a un processo regolare.\n\n<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "A7_art1322CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(meritevol|tipic|atipic)"
+      ],
+      "wall_s": 1.94,
+      "response": "INST: L'art. 1322 del Codice Civile promuove l'autonomia contrattuale, affermando che le parti sono liberi di stabilire liberamente i propri obblighi, purché non contravvengano a leggi o a buone fede.\n\n<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "B1_nemo_iudex",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(nessuno|non).{0,40}\\b(giudic|giudice).{0,80}\\b(propri[oa]|sua|causa)"
+      ],
+      "wall_s": 2.16,
+      "response": "INSTANZE: 'Nemo iudex in causa sua' significa l'esclusione dell'imparzialità giudiziale in cause in cui il giudice potrebbe avere un interesse personale, garantendo l'equità del processo. (Art. 24, c. 2, C.P.P.)<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "B2_ne_bis_in_idem",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(non|nessuno)\\b.{0,60}(due\\s+volte|nuovamente|secondo|reiterat)"
+      ],
+      "wall_s": 1.75,
+      "response": "INST: Il principio \"ne bis in idem\" nel diritto penale italiano proibisce la ripetizione di un processo penale per lo stesso fatto o per conseguenze penali già sanzionate. (art. 623 c.p.p.)<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "B3_in_dubio_pro_reo",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.01,
+      "response": "INST \"In dubio pro reo\" indica che, nel processo penale, ogni incertezza di fatto o di diritto deve essere risolta a favore dell'imputato. Art. 250 c.p.p.\n\n<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "B4_pacta_sunt_servanda",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(osservat|rispettat|adempiut|vincolant|forza\\s+di\\s+legge)"
+      ],
+      "wall_s": 1.73,
+      "response": "INSTANZE: Nel diritto civile, il principio \"pacta sunt servanda\" afferma l'obbligo di rispettare gli accordi contrattuali.\n\nArticolo rilevante: Nessuno.\n<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "C1_citation_2043",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.81,
+      "response": ": art. 2043 Codice Civile\n<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "C2_citation_416bis",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.63,
+      "response": ": art. 416-bis c.p.\n\n# Nota\nL'assistente ha indicato solo il riferimento all'articolo specifico nel testo fornito, senza fornire il codice del testo legislativo",
+      "ok": true
+    },
+    {
+      "id": "C3_citation_constitution",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.4,
+      "response": ": art. 32 Cost.",
+      "ok": true
+    },
+    {
+      "id": "D1_class_civile",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.45,
+      "response": " Civile <|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "D2_class_penale",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.35,
+      "response": " Penale <|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "D3_class_lavoro",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.37,
+      "response": " Lavoro <|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "E1_prescrizione_ordinaria",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.67,
+      "response": "INSTANZA: Il termine ordinario di prescrizione dei diritti nel Codice Civile italiano è stabilito nell'articolo 2946, dove si afferma che la prescrizione ha luogo dopo dieci anni dalla nascita del diritto. L'articolo 2947 specifica che, per alcuni diritti, la prescrizione può essere diversa.\n\n[/",
+      "ok": true
+    },
+    {
+      "id": "E2_prescrizione_risarcimento_extracontrattuale",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.24,
+      "response": "INSTANZE DI PRESCRIZIONE: per il danno extracontrattuale secondo l'articolo 2947 del Codice Civile, la prescrizione è ordinaria di cinque anni (art. 2946, comma 1).<|im_end|>",
+      "ok": true
+    },
+    {
+      "id": "E3_appello_civile_termine",
+      "category": "applicazione",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: \\b30\\s*giorni\\b|\\btrenta\\s+giorni\\b"
+      ],
+      "wall_s": 2.8,
+      "response": "INSTANZIA DI REVINSTIA: per appello civile, il termine è stabilito dall'art. 647 c.p.c. e dura 45 giorni dalla notifica della sentenza di primo grado.\n\nL'articolo citato riguarda il diritto civile italiano e specifica il termine per presentare un appello in caso di sentenza di primo grado. L'ist",
+      "ok": true
+    }
+  ]
+}
