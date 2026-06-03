@@ -1,0 +1,522 @@
+INFO [                    main] build info | tid="36128" timestamp=1778524969 build=4468 commit="9a26522a"
+INFO [                    main] system info | tid="36128" timestamp=1778524969 n_threads=8 n_threads_batch=-1 total_threads=32 system_info="AVX = 1 | AVX_VNNI = 0 | AVX2 = 1 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | AVX512_BF16 = 0 | FMA = 1 | NEON = 0 | SVE = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 1 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | MATMUL_INT8 = 0 | "
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA RTX A2000, compute capability 8.6, VMM: yes, VRAM: 6137 MiB
+CUDA0: using device CUDA0 - 5126 MiB free
+llama_model_loader: loaded meta data with 34 key-value pairs and 427 tensors from F:\LLM_Models\lm-studio\models\lmstudio-community\Qwen3.5-9B-GGUF\Qwen3.5-9B-Q4_K_M.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = qwen35
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Qwen_Qwen3.5 9B
+llama_model_loader: - kv   3:                           general.basename str              = Qwen_Qwen3.5
+llama_model_loader: - kv   4:                         general.size_label str              = 9B
+llama_model_loader: - kv   5:                         qwen35.block_count u32              = 32
+llama_model_loader: - kv   6:                      qwen35.context_length u32              = 262144
+llama_model_loader: - kv   7:                    qwen35.embedding_length u32              = 4096
+llama_model_loader: - kv   8:                 qwen35.feed_forward_length u32              = 12288
+llama_model_loader: - kv   9:                qwen35.attention.head_count u32              = 16
+llama_model_loader: - kv  10:             qwen35.attention.head_count_kv u32              = 4
+llama_model_loader: - kv  11:             qwen35.rope.dimension_sections arr[i32,4]       = [11, 11, 10, 0]
+llama_model_loader: - kv  12:                      qwen35.rope.freq_base f32              = 10000000.000000
+llama_model_loader: - kv  13:    qwen35.attention.layer_norm_rms_epsilon f32              = 0.000001
+llama_model_loader: - kv  14:                qwen35.attention.key_length u32              = 256
+llama_model_loader: - kv  15:              qwen35.attention.value_length u32              = 256
+llama_model_loader: - kv  16:                     qwen35.ssm.conv_kernel u32              = 4
+llama_model_loader: - kv  17:                      qwen35.ssm.state_size u32              = 128
+llama_model_loader: - kv  18:                     qwen35.ssm.group_count u32              = 16
+llama_model_loader: - kv  19:                  qwen35.ssm.time_step_rank u32              = 32
+llama_model_loader: - kv  20:                      qwen35.ssm.inner_size u32              = 4096
+llama_model_loader: - kv  21:             qwen35.full_attention_interval u32              = 4
+llama_model_loader: - kv  22:                qwen35.rope.dimension_count u32              = 64
+llama_model_loader: - kv  23:                       tokenizer.ggml.model str              = gpt2
+llama_model_loader: - kv  24:                         tokenizer.ggml.pre str              = qwen35
+llama_model_loader: - kv  25:                      tokenizer.ggml.tokens arr[str,248320]  = ["!", "\"", "#", "$", "%", "&", "'", ...
+llama_model_loader: - kv  26:                  tokenizer.ggml.token_type arr[i32,248320]  = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+llama_model_loader: - kv  27:                      tokenizer.ggml.merges arr[str,247587]  = ["Ġ Ġ", "ĠĠ ĠĠ", "i n", "Ġ t",...
+llama_model_loader: - kv  28:                tokenizer.ggml.eos_token_id u32              = 248046
+llama_model_loader: - kv  29:            tokenizer.ggml.padding_token_id u32              = 248044
+llama_model_loader: - kv  30:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  31:                    tokenizer.chat_template str              = {%- set image_count = namespace(value...
+llama_model_loader: - kv  32:               general.quantization_version u32              = 2
+llama_model_loader: - kv  33:                          general.file_type u32              = 15
+llama_model_loader: - type  f32:  177 tensors
+llama_model_loader: - type q4_K:  204 tensors
+llama_model_loader: - type q5_K:   24 tensors
+llama_model_loader: - type q6_K:   22 tensors
+load: 0 unused tokens
+load: printing all EOG tokens:
+load:   - 248044 ('<|endoftext|>')
+load:   - 248046 ('<|im_end|>')
+load:   - 248063 ('<|fim_pad|>')
+load:   - 248064 ('<|repo_name|>')
+load:   - 248065 ('<|file_sep|>')
+load: special tokens cache size = 33
+load: token to piece cache size = 1.7581 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = qwen35
+llm_load_print_meta: n_ctx_train      = 262144
+llm_load_print_meta: n_embd           = 4096
+llm_load_print_meta: n_layer          = 32
+llm_load_print_meta: n_head           = 16
+llm_load_print_meta: n_head_kv        = 4
+llm_load_print_meta: n_rot            = 64
+llm_load_print_meta: n_swa            = 0
+llm_load_print_meta: n_swa_pattern    = 1
+llm_load_print_meta: n_embd_head_k    = 256
+llm_load_print_meta: n_embd_head_v    = 256
+llm_load_print_meta: n_gqa            = 4
+llm_load_print_meta: n_embd_k_gqa     = 1024
+llm_load_print_meta: n_embd_v_gqa     = 1024
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-06
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 12288
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 40
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 10000000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 262144
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: mrope sections   = [11, 11, 10, 0]
+llm_load_print_meta: ssm_d_conv       = 4
+llm_load_print_meta: ssm_d_inner      = 4096
+llm_load_print_meta: ssm_d_state      = 128
+llm_load_print_meta: ssm_dt_rank      = 32
+llm_load_print_meta: ssm_n_group      = 16
+llm_load_print_meta: model type       = 9B
+llm_load_print_meta: model ftype      = Q4_K - Medium
+llm_load_print_meta: model params     = 8.954 B
+llm_load_print_meta: model size       = 5.230 GiB (5.018 BPW) 
+llm_load_print_meta: repeating layers = 3.920 GiB (4.867 BPW, 6.920 B parameters)
+llm_load_print_meta: general.name     = Qwen_Qwen3.5 9B
+print_info: vocab type            = BPE
+print_info: n_vocab               = 248320
+print_info: n_merges              = 247587
+print_info: BOS token             = 11 ','
+print_info: EOS token             = 248046 '<|im_end|>'
+print_info: EOT token             = 248046 '<|im_end|>'
+print_info: PAD token             = 248044 '<|endoftext|>'
+print_info: LF token              = 198 'Ċ'
+print_info: FIM PRE token         = 248060 '<|fim_prefix|>'
+print_info: FIM SUF token         = 248062 '<|fim_suffix|>'
+print_info: FIM MID token         = 248061 '<|fim_middle|>'
+print_info: FIM PAD token         = 248063 '<|fim_pad|>'
+print_info: FIM REP token         = 248064 '<|repo_name|>'
+print_info: FIM SEP token         = 248065 '<|file_sep|>'
+print_info: EOG token             = 248044 '<|endoftext|>'
+print_info: EOG token             = 248046 '<|im_end|>'
+print_info: EOG token             = 248063 '<|fim_pad|>'
+print_info: EOG token             = 248064 '<|repo_name|>'
+print_info: EOG token             = 248065 '<|file_sep|>'
+print_info: max token length      = 256
+======================================= HAVE_FANCY_SIMD is NOT defined
+------------------- Layer sizes:
+Layer  0:    133.67,      2.09,    135.77       72.00  MiB
+Layer  1:    133.67,      2.09,    135.77       72.00  MiB
+Layer  2:    133.67,      2.09,    135.77       72.00  MiB
+Layer  3:    125.94,     64.00,    189.94       72.00  MiB
+Layer  4:    121.30,      2.09,    123.39       72.00  MiB
+Layer  5:    121.30,      2.09,    123.39       72.00  MiB
+Layer  6:    133.67,      2.09,    135.77       72.00  MiB
+Layer  7:    113.56,     64.00,    177.56       72.00  MiB
+Layer  8:    121.30,      2.09,    123.39       72.00  MiB
+Layer  9:    133.67,      2.09,    135.77       72.00  MiB
+Layer 10:    121.30,      2.09,    123.39       72.00  MiB
+Layer 11:    113.56,     64.00,    177.56       72.00  MiB
+Layer 12:    133.67,      2.09,    135.77       72.00  MiB
+Layer 13:    121.30,      2.09,    123.39       72.00  MiB
+Layer 14:    121.30,      2.09,    123.39       72.00  MiB
+Layer 15:    125.94,     64.00,    189.94       72.00  MiB
+Layer 16:    121.30,      2.09,    123.39       72.00  MiB
+Layer 17:    121.30,      2.09,    123.39       72.00  MiB
+Layer 18:    133.67,      2.09,    135.77       72.00  MiB
+Layer 19:    112.53,     64.00,    176.53       72.00  MiB
+Layer 20:    121.30,      2.09,    123.39       72.00  MiB
+Layer 21:    133.67,      2.09,    135.77       72.00  MiB
+Layer 22:    121.30,      2.09,    123.39       72.00  MiB
+Layer 23:    112.53,     64.00,    176.53       72.00  MiB
+Layer 24:    133.67,      2.09,    135.77       72.00  MiB
+Layer 25:    121.30,      2.09,    123.39       72.00  MiB
+Layer 26:    121.30,      2.09,    123.39       72.00  MiB
+Layer 27:    125.94,     64.00,    189.94       72.00  MiB
+Layer 28:    133.67,      2.09,    135.77       72.00  MiB
+Layer 29:    133.67,      2.09,    135.77       72.00  MiB
+Layer 30:    133.67,      2.09,    135.77       72.00  MiB
+Layer 31:    124.91,     64.00,    188.91       72.00  MiB
+Layer 32:    795.70,    413.00,   1208.70 MiB (output layer)
+--------------------------------------------------------------------------
+Total   :   4014.56,    975.25,   4989.81 MiB
+Memory required for model tensors + cache: 5786 MiB
+Memory available on all devices - compute: 4030 MiB
+llm_load_tensors: ggml ctx size =    0.37 MiB
+llm_load_tensors: offloading 32 repeating layers to GPU
+llm_load_tensors: offloading non-repeating layers to GPU
+llm_load_tensors: offloaded 33/33 layers to GPU
+llm_load_tensors:  CUDA_Host buffer size =   545.62 MiB
+llm_load_tensors:      CUDA0 buffer size =  4810.28 MiB
+............................................................................~ggml_backend_cuda_context: have 0 graphs
+.
+llama_init_from_model: n_ctx         = 16384
+llama_init_from_model: n_batch       = 2048
+llama_init_from_model: n_ubatch      = 512
+llama_init_from_model: flash_attn    = 1
+llama_init_from_model: attn_max_b    = 0
+llama_init_from_model: fused_moe     = 1
+llama_init_from_model: grouped er    = 0
+llama_init_from_model: fused_up_gate = 1
+llama_init_from_model: fused_mmad    = 1
+llama_init_from_model: rope_cache    = 0
+llama_init_from_model: graph_reuse   = 1
+llama_init_from_model: k_cache_hadam = 0
+llama_init_from_model: v_cache_hadam = 0
+llama_init_from_model: split_mode_graph_scheduling = 0
+llama_init_from_model: reduce_type   = f16
+llama_init_from_model: sched_async   = 0
+llama_init_from_model: ser           = -1, 0
+llama_init_from_model: freq_base     = 10000000.0
+llama_init_from_model: freq_scale    = 1
+llama_kv_cache_init:      CUDA0 KV buffer size =   562.25 MiB
+llama_init_from_model: KV self size  =  512.00 MiB, K (f16):  256.00 MiB, V (f16):  256.00 MiB
+llama_init_from_model:  CUDA_Host  output buffer size =     0.95 MiB
+llama_init_from_model:      CUDA0 compute buffer size =   501.00 MiB
+llama_init_from_model:  CUDA_Host compute buffer size =    24.01 MiB
+llama_init_from_model: graph nodes  = 1517
+llama_init_from_model: graph splits = 2
+llama_init_from_model: enabling only_active_experts scheduling
+INFO [                    init] initializing slots | tid="36128" timestamp=1778525035 n_slots=1
+INFO [                    init] new slot | tid="36128" timestamp=1778525035 id_slot=0 n_ctx_slot=16384
+srv          init: Exclude reasoning tokens when selecting slot based on similarity: start: <think>, end: </think>
+use `--reasoning-tokens none` to disable.
+no implementations specified for speculative decoding
+slot         init: id  0 | task -1 | speculative decoding context not initialized
+prompt cache is enabled, size limit: 8192 MiB
+use `--cache-ram 0` to disable the prompt cache
+init: chat template, example_format: '<|im_start|>system
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+Hello<|im_end|>
+<|im_start|>assistant
+Hi there<|im_end|>
+<|im_start|>user
+How are you?<|im_end|>
+<|im_start|>assistant
+<think>
+'
+INFO [                    main] model loaded | tid="36128" timestamp=1778525035
+INFO [                    main] HTTP server listening | tid="36128" timestamp=1778525035 hostname="127.0.0.1" port="1234" n_threads_http="31"
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525035
+INFO [      log_server_request] request | tid="29660" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62877 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="33896" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=26604 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="1400" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62876 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28204" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=43232 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35148" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62881 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36612" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62880 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="25132" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62879 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="17880" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62927 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="26156" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62883 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="29660" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62891 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="33572" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62885 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="22912" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62888 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="29288" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62886 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="1400" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62895 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28068" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62892 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="33896" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62894 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="12164" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62896 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="12088" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62897 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35780" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62884 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28204" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62928 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="6464" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62931 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="35148" timestamp=1778525035 remote_addr="127.0.0.1" remote_port=62930 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36612" timestamp=1778525036 remote_addr="127.0.0.1" remote_port=62933 status=200 method="GET" path="/v1/models" params={}
+======== Prompt cache: cache size: 0, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.00, cache_ram_similarity: 0.50
+WARN [   launch_slot_with_task] %s
+ | ="ctx_shift is not supported by recurrent model, it will be disabled"
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525036 id_slot=0 id_task=0
+======== Cache: cache_size = 0, n_past0 =  0, n_past1 =  0, n_past_prompt1 = 0,  n_past2 =  0, n_past_prompt2 =  0
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525036 id_slot=0 id_task=0 p0=0
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525036 id_slot=0 id_task=0 p0=37
+slot print_timing: id  0 | task 0 | 
+prompt eval time =     449.31 ms /    42 tokens (   10.70 ms per token,    93.48 tokens per second)
+       eval time =   16608.36 ms /   311 tokens (   53.40 ms per token,    18.73 tokens per second)
+      total time =   17057.67 ms /   353 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525053 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 0 | created context checkpoint 1 of 32 (pos_min = 351, pos_max = 351, n_tokens = 352, size = 50.254 MiB, took 21.46 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525053 id_slot=0 id_task=0 n_ctx=16384 n_past=352 n_system_tokens=0 n_cache_tokens=352 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525053
+======== Prompt cache: cache size: 352, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.60, cache_ram_similarity: 0.50
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525053 id_slot=0 id_task=313
+======== Cache: cache_size = 352, n_past0 =  30, n_past1 =  30, n_past_prompt1 = 30,  n_past2 =  30, n_past_prompt2 =  30
+Common part does not match fully
+cache : 
+<|im_start|>user
+Rispondi solo: ok<|im_end|>
+<|im_start|>assistant
+<think>
+The user is asking me to respond only with "ok" in Italian
+prompt: 
+<|im_start|>user
+Scrivi una funzione Python chiamata `fizzbuzz(n)` che:
+- Ritorna "Fizz" se n è divisibile
+slot apply_checkp: id  0 | task 313 | n_past = 30, slot.prompt.tokens.size() = 352, seq_id = 0, pos_min = 351
+slot apply_checkp: id  0 | task 313 | forcing full prompt re-processing due to lack of cache data (likely due to SWA, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+slot apply_checkp: id  0 | task 313 | erased invalidated context checkpoint (pos_min = 351, pos_max = 351, size = 50.254 MiB)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525053 id_slot=0 id_task=313 p0=0
+slot create_check: id  0 | task 313 | created context checkpoint 1 of 32 (pos_min = 120, pos_max = 120, n_tokens = 121, size = 50.252 MiB, took 47.34 ms)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525053 id_slot=0 id_task=313 p0=121
+slot print_timing: id  0 | task 313 | 
+prompt eval time =     605.39 ms /   126 tokens (    4.80 ms per token,   208.13 tokens per second)
+       eval time =   15038.18 ms /   281 tokens (   53.52 ms per token,    18.69 tokens per second)
+      total time =   15643.57 ms /   407 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525069 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 313 | created context checkpoint 2 of 32 (pos_min = 405, pos_max = 405, n_tokens = 406, size = 50.254 MiB, took 12.59 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525069 id_slot=0 id_task=313 n_ctx=16384 n_past=406 n_system_tokens=0 n_cache_tokens=406 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525069
+======== Prompt cache: cache size: 406, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.18, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 406, total state size = 62.942 MiB
+prompt cache save took 42.28 ms
+ - looking for better prompt, base f_keep = 0.180, sim = 0.206, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 163.448 MiB (limits: 8192.000 MiB, 0 tokens, 20348 est)
+   - prompt 0000025E3A3CB2C0:     406 tokens,       0 discarded, checkpoints:  2,   163.448 MiB
+prompt cache load took 0.14 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525069 id_slot=0 id_task=596
+======== Cache: cache_size = 406, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache :  funzione Python chiamata `fizzbuzz(n)` che:
+- Ritorna "Fizz" se n è divisibile per 3
+- Ritorna
+prompt:  funzione Python chiamata `find_duplicates(lst)` che:
+- Prende una lista di elementi
+- Ritorna una lista con SOLO gli elementi che
+slot apply_checkp: id  0 | task 596 | n_past = 37, slot.prompt.tokens.size() = 406, seq_id = 0, pos_min = 405
+slot apply_checkp: id  0 | task 596 | forcing full prompt re-processing due to lack of cache data (likely due to SWA, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+slot apply_checkp: id  0 | task 596 | erased invalidated context checkpoint (pos_min = 120, pos_max = 120, size = 50.252 MiB)
+slot apply_checkp: id  0 | task 596 | erased invalidated context checkpoint (pos_min = 405, pos_max = 405, size = 50.254 MiB)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525069 id_slot=0 id_task=596 p0=0
+slot create_check: id  0 | task 596 | created context checkpoint 1 of 32 (pos_min = 148, pos_max = 148, n_tokens = 149, size = 50.252 MiB, took 51.99 ms)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525069 id_slot=0 id_task=596 p0=149
+slot print_timing: id  0 | task 596 | 
+prompt eval time =     654.53 ms /   154 tokens (    4.25 ms per token,   235.28 tokens per second)
+       eval time =   16151.51 ms /   302 tokens (   53.48 ms per token,    18.70 tokens per second)
+      total time =   16806.04 ms /   456 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525086 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 596 | created context checkpoint 2 of 32 (pos_min = 454, pos_max = 454, n_tokens = 455, size = 50.255 MiB, took 13.31 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525086 id_slot=0 id_task=596 n_ctx=16384 n_past=455 n_system_tokens=0 n_cache_tokens=455 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525086
+======== Prompt cache: cache size: 455, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.19, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 455, total state size = 64.473 MiB
+prompt cache save took 46.55 ms
+ - looking for better prompt, base f_keep = 0.191, sim = 0.181, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 328.429 MiB (limits: 8192.000 MiB, 0 tokens, 21475 est)
+   - prompt 0000025E3A3CB2C0:     406 tokens,       0 discarded, checkpoints:  2,   163.448 MiB
+   - prompt 0000025E3A3CB380:     455 tokens,       0 discarded, checkpoints:  2,   164.981 MiB
+prompt cache load took 0.22 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525086 id_slot=0 id_task=900
+======== Cache: cache_size = 455, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache :  funzione Python chiamata `find_duplicates(lst)` che:
+- Prende una lista di elementi
+- Ritorna una lista con SOLO gli elementi che
+prompt:  funzione Python chiamata `sum_nested_values(data, key)` che:
+- Prende un dizionario (possibilmente nested/annidato) e
+slot apply_checkp: id  0 | task 900 | n_past = 37, slot.prompt.tokens.size() = 455, seq_id = 0, pos_min = 454
+slot apply_checkp: id  0 | task 900 | forcing full prompt re-processing due to lack of cache data (likely due to SWA, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+slot apply_checkp: id  0 | task 900 | erased invalidated context checkpoint (pos_min = 148, pos_max = 148, size = 50.252 MiB)
+slot apply_checkp: id  0 | task 900 | erased invalidated context checkpoint (pos_min = 454, pos_max = 454, size = 50.255 MiB)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525086 id_slot=0 id_task=900 p0=0
+slot create_check: id  0 | task 900 | created context checkpoint 1 of 32 (pos_min = 208, pos_max = 208, n_tokens = 209, size = 50.253 MiB, took 51.63 ms)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525086 id_slot=0 id_task=900 p0=209
+slot create_check: id  0 | task 900 | created context checkpoint 2 of 32 (pos_min = 511, pos_max = 511, n_tokens = 512, size = 50.255 MiB, took 12.96 ms)
+slot create_check: id  0 | task 900 | created context checkpoint 3 of 32 (pos_min = 1022, pos_max = 1022, n_tokens = 1023, size = 50.259 MiB, took 17.07 ms)
+slot create_check: id  0 | task 900 | created context checkpoint 4 of 32 (pos_min = 1533, pos_max = 1533, n_tokens = 1534, size = 50.263 MiB, took 16.55 ms)
+slot create_check: id  0 | task 900 | created context checkpoint 5 of 32 (pos_min = 2044, pos_max = 2044, n_tokens = 2045, size = 50.267 MiB, took 14.17 ms)
+slot print_timing: id  0 | task 900 | 
+prompt eval time =     852.86 ms /   214 tokens (    3.99 ms per token,   250.92 tokens per second)
+       eval time =  112285.45 ms /  2048 tokens (   54.83 ms per token,    18.24 tokens per second)
+      total time =  113138.31 ms /  2262 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525199 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 900 | created context checkpoint 6 of 32 (pos_min = 2260, pos_max = 2260, n_tokens = 2261, size = 50.268 MiB, took 17.32 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525199 id_slot=0 id_task=900 n_ctx=16384 n_past=2261 n_system_tokens=0 n_cache_tokens=2261 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525199
+======== Prompt cache: cache size: 2261, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.02, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 2261, total state size = 120.925 MiB
+prompt cache save took 115.52 ms
+ - looking for better prompt, base f_keep = 0.016, sim = 0.030, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.191, sim = 0.199, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 585.938 MiB (limits: 8192.000 MiB, 0 tokens, 37287 est)
+   - prompt 0000025E3A3CB2C0:     406 tokens,       0 discarded, checkpoints:  2,   163.448 MiB
+   - prompt 0000025F92C99BF0:    2261 tokens,       0 discarded, checkpoints:  6,   422.490 MiB
+prompt cache load took 33.09 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525199 id_slot=0 id_task=2950
+======== Cache: cache_size = 455, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache :  funzione Python chiamata `find_duplicates(lst)` che:
+- Prende una lista di elementi
+- Ritorna una lista con SOLO gli elementi che
+prompt:  funzione Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste annidate a qualsiasi profond
+slot apply_checkp: id  0 | task 2950 | n_past = 37, slot.prompt.tokens.size() = 455, seq_id = 0, pos_min = 454
+slot apply_checkp: id  0 | task 2950 | forcing full prompt re-processing due to lack of cache data (likely due to SWA, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+slot apply_checkp: id  0 | task 2950 | erased invalidated context checkpoint (pos_min = 148, pos_max = 148, size = 50.252 MiB)
+slot apply_checkp: id  0 | task 2950 | erased invalidated context checkpoint (pos_min = 454, pos_max = 454, size = 50.255 MiB)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525199 id_slot=0 id_task=2950 p0=0
+slot create_check: id  0 | task 2950 | created context checkpoint 1 of 32 (pos_min = 171, pos_max = 171, n_tokens = 172, size = 50.253 MiB, took 55.09 ms)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525200 id_slot=0 id_task=2950 p0=172
+slot create_check: id  0 | task 2950 | created context checkpoint 2 of 32 (pos_min = 511, pos_max = 511, n_tokens = 512, size = 50.255 MiB, took 12.10 ms)
+slot print_timing: id  0 | task 2950 | 
+prompt eval time =     747.74 ms /   177 tokens (    4.22 ms per token,   236.71 tokens per second)
+       eval time =   23739.19 ms /   429 tokens (   55.34 ms per token,    18.07 tokens per second)
+      total time =   24486.93 ms /   606 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525224 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 2950 | created context checkpoint 3 of 32 (pos_min = 604, pos_max = 604, n_tokens = 605, size = 50.256 MiB, took 11.51 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525224 id_slot=0 id_task=2950 n_ctx=16384 n_past=605 n_system_tokens=0 n_cache_tokens=605 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525224
+======== Prompt cache: cache size: 605, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.16, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 605, total state size = 69.162 MiB
+prompt cache save took 39.95 ms
+ - looking for better prompt, base f_keep = 0.163, sim = 0.179, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.180, sim = 0.189, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 642.416 MiB (limits: 8192.000 MiB, 0 tokens, 36546 est)
+   - prompt 0000025F92C99BF0:    2261 tokens,       0 discarded, checkpoints:  6,   422.490 MiB
+   - prompt 0000025F92C989F0:     605 tokens,       0 discarded, checkpoints:  3,   219.926 MiB
+prompt cache load took 15.64 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525224 id_slot=0 id_task=3381
+======== Cache: cache_size = 406, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache :  funzione Python chiamata `fizzbuzz(n)` che:
+- Ritorna "Fizz" se n è divisibile per 3
+- Ritorna
+prompt:  funzione Python chiamata `parse_config(text)` che:
+- Prende una stringa con righe nel formato "chiave=valore" separate da
+slot apply_checkp: id  0 | task 3381 | n_past = 37, slot.prompt.tokens.size() = 406, seq_id = 0, pos_min = 405
+slot apply_checkp: id  0 | task 3381 | forcing full prompt re-processing due to lack of cache data (likely due to SWA, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+slot apply_checkp: id  0 | task 3381 | erased invalidated context checkpoint (pos_min = 120, pos_max = 120, size = 50.252 MiB)
+slot apply_checkp: id  0 | task 3381 | erased invalidated context checkpoint (pos_min = 405, pos_max = 405, size = 50.254 MiB)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525224 id_slot=0 id_task=3381 p0=0
+slot create_check: id  0 | task 3381 | created context checkpoint 1 of 32 (pos_min = 181, pos_max = 181, n_tokens = 182, size = 50.253 MiB, took 46.94 ms)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525224 id_slot=0 id_task=3381 p0=182
+slot create_check: id  0 | task 3381 | created context checkpoint 2 of 32 (pos_min = 511, pos_max = 511, n_tokens = 512, size = 50.255 MiB, took 11.36 ms)
+slot print_timing: id  0 | task 3381 | 
+prompt eval time =     767.63 ms /   187 tokens (    4.10 ms per token,   243.61 tokens per second)
+       eval time =   36013.65 ms /   642 tokens (   56.10 ms per token,    17.83 tokens per second)
+      total time =   36781.29 ms /   829 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525260 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 3381 | created context checkpoint 3 of 32 (pos_min = 827, pos_max = 827, n_tokens = 828, size = 50.258 MiB, took 11.63 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525260 id_slot=0 id_task=3381 n_ctx=16384 n_past=828 n_system_tokens=0 n_cache_tokens=828 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525260
+======== Prompt cache: cache size: 828, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.14, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 828, total state size = 76.133 MiB
+prompt cache save took 47.38 ms
+ - looking for better prompt, base f_keep = 0.142, sim = 0.171, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.163, sim = 0.185, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 649.388 MiB (limits: 8192.000 MiB, 0 tokens, 38967 est)
+   - prompt 0000025F92C99BF0:    2261 tokens,       0 discarded, checkpoints:  6,   422.490 MiB
+   - prompt 0000025E3A3CA180:     828 tokens,       0 discarded, checkpoints:  3,   226.898 MiB
+prompt cache load took 14.53 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525260 id_slot=0 id_task=4025
+======== Cache: cache_size = 605, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache :  funzione Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste annidate a qualsiasi profond
+prompt:  funzione Python chiamata `merge_intervals(intervals)` che:
+- Prende una lista di intervalli, ognuno rappresentato come lista [inizio, fine]
+slot apply_checkp: id  0 | task 4025 | n_past = 37, slot.prompt.tokens.size() = 605, seq_id = 0, pos_min = 604
+slot apply_checkp: id  0 | task 4025 | forcing full prompt re-processing due to lack of cache data (likely due to SWA, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+slot apply_checkp: id  0 | task 4025 | erased invalidated context checkpoint (pos_min = 171, pos_max = 171, size = 50.253 MiB)
+slot apply_checkp: id  0 | task 4025 | erased invalidated context checkpoint (pos_min = 511, pos_max = 511, size = 50.255 MiB)
+slot apply_checkp: id  0 | task 4025 | erased invalidated context checkpoint (pos_min = 604, pos_max = 604, size = 50.256 MiB)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525260 id_slot=0 id_task=4025 p0=0
+slot create_check: id  0 | task 4025 | created context checkpoint 1 of 32 (pos_min = 167, pos_max = 167, n_tokens = 168, size = 50.253 MiB, took 147.47 ms)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525261 id_slot=0 id_task=4025 p0=168
+slot create_check: id  0 | task 4025 | created context checkpoint 2 of 32 (pos_min = 511, pos_max = 511, n_tokens = 512, size = 50.255 MiB, took 11.55 ms)
+slot print_timing: id  0 | task 4025 | 
+prompt eval time =     809.91 ms /   173 tokens (    4.68 ms per token,   213.60 tokens per second)
+       eval time =   40085.40 ms /   713 tokens (   56.22 ms per token,    17.79 tokens per second)
+      total time =   40895.32 ms /   886 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525301 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 4025 | created context checkpoint 3 of 32 (pos_min = 884, pos_max = 884, n_tokens = 885, size = 50.258 MiB, took 13.77 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525301 id_slot=0 id_task=4025 n_ctx=16384 n_past=885 n_system_tokens=0 n_cache_tokens=885 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525301
+======== Prompt cache: cache size: 885, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.13, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 885, total state size = 77.914 MiB
+prompt cache save took 60.10 ms
+ - looking for better prompt, base f_keep = 0.132, sim = 0.166, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.142, sim = 0.174, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 651.170 MiB (limits: 8192.000 MiB, 0 tokens, 39578 est)
+   - prompt 0000025F92C99BF0:    2261 tokens,       0 discarded, checkpoints:  6,   422.490 MiB
+   - prompt 0000025F9A973930:     885 tokens,       0 discarded, checkpoints:  3,   228.680 MiB
+prompt cache load took 20.72 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525301 id_slot=0 id_task=4740
+======== Cache: cache_size = 828, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache :  funzione Python chiamata `parse_config(text)` che:
+- Prende una stringa con righe nel formato "chiave=valore" separate da
+prompt:  funzione Python chiamata `balanced_brackets(s)` che:
+- Prende una stringa contenente parentesi di tre tipi: (), [], {}
+
+slot apply_checkp: id  0 | task 4740 | n_past = 37, slot.prompt.tokens.size() = 828, seq_id = 0, pos_min = 827
+slot apply_checkp: id  0 | task 4740 | forcing full prompt re-processing due to lack of cache data (likely due to SWA, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+slot apply_checkp: id  0 | task 4740 | erased invalidated context checkpoint (pos_min = 181, pos_max = 181, size = 50.253 MiB)
+slot apply_checkp: id  0 | task 4740 | erased invalidated context checkpoint (pos_min = 511, pos_max = 511, size = 50.255 MiB)
+slot apply_checkp: id  0 | task 4740 | erased invalidated context checkpoint (pos_min = 827, pos_max = 827, size = 50.258 MiB)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525301 id_slot=0 id_task=4740 p0=0
+slot create_check: id  0 | task 4740 | created context checkpoint 1 of 32 (pos_min = 159, pos_max = 159, n_tokens = 160, size = 50.252 MiB, took 45.92 ms)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525302 id_slot=0 id_task=4740 p0=160
+slot create_check: id  0 | task 4740 | created context checkpoint 2 of 32 (pos_min = 511, pos_max = 511, n_tokens = 512, size = 50.255 MiB, took 12.33 ms)
+slot print_timing: id  0 | task 4740 | 
+prompt eval time =     720.12 ms /   165 tokens (    4.36 ms per token,   229.13 tokens per second)
+       eval time =   25295.73 ms /   450 tokens (   56.21 ms per token,    17.79 tokens per second)
+      total time =   26015.85 ms /   615 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525327 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 4740 | created context checkpoint 3 of 32 (pos_min = 613, pos_max = 613, n_tokens = 614, size = 50.256 MiB, took 13.27 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525328 id_slot=0 id_task=4740 n_ctx=16384 n_past=614 n_system_tokens=0 n_cache_tokens=614 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525328
+======== Prompt cache: cache size: 614, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.14, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 614, total state size = 69.443 MiB
+prompt cache save took 50.07 ms
+ - looking for better prompt, base f_keep = 0.136, sim = 0.155, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 871.377 MiB (limits: 8192.000 MiB, 0 tokens, 35348 est)
+   - prompt 0000025F92C99BF0:    2261 tokens,       0 discarded, checkpoints:  6,   422.490 MiB
+   - prompt 0000025F9A973930:     885 tokens,       0 discarded, checkpoints:  3,   228.680 MiB
+   - prompt 0000025E3A3CA900:     614 tokens,       0 discarded, checkpoints:  3,   220.207 MiB
+prompt cache load took 0.54 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="36128" timestamp=1778525328 id_slot=0 id_task=5192
+======== Cache: cache_size = 614, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache :  funzione Python chiamata `balanced_brackets(s)` che:
+- Prende una stringa contenente parentesi di tre tipi: (), [], {}
+
+prompt:  funzione Python chiamata `deep_merge(dict1, dict2)` che:
+- Prende due dizionari e li unisce ricorsivamente
+
+slot apply_checkp: id  0 | task 5192 | n_past = 37, slot.prompt.tokens.size() = 614, seq_id = 0, pos_min = 613
+slot apply_checkp: id  0 | task 5192 | forcing full prompt re-processing due to lack of cache data (likely due to SWA, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)
+slot apply_checkp: id  0 | task 5192 | erased invalidated context checkpoint (pos_min = 159, pos_max = 159, size = 50.252 MiB)
+slot apply_checkp: id  0 | task 5192 | erased invalidated context checkpoint (pos_min = 511, pos_max = 511, size = 50.255 MiB)
+slot apply_checkp: id  0 | task 5192 | erased invalidated context checkpoint (pos_min = 613, pos_max = 613, size = 50.256 MiB)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525328 id_slot=0 id_task=5192 p0=0
+slot create_check: id  0 | task 5192 | created context checkpoint 1 of 32 (pos_min = 199, pos_max = 199, n_tokens = 200, size = 50.253 MiB, took 63.42 ms)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="36128" timestamp=1778525328 id_slot=0 id_task=5192 p0=200
+slot create_check: id  0 | task 5192 | created context checkpoint 2 of 32 (pos_min = 511, pos_max = 511, n_tokens = 512, size = 50.255 MiB, took 15.97 ms)
+slot print_timing: id  0 | task 5192 | 
+prompt eval time =     850.18 ms /   205 tokens (    4.15 ms per token,   241.13 tokens per second)
+       eval time =   28360.45 ms /   502 tokens (   56.49 ms per token,    17.70 tokens per second)
+      total time =   29210.63 ms /   707 tokens
+INFO [      log_server_request] request | tid="34388" timestamp=1778525357 remote_addr="127.0.0.1" remote_port=62935 status=200 method="POST" path="/v1/chat/completions" params={}
+slot create_check: id  0 | task 5192 | created context checkpoint 3 of 32 (pos_min = 705, pos_max = 705, n_tokens = 706, size = 50.257 MiB, took 12.57 ms)
+INFO [           release_slots] slot released | tid="36128" timestamp=1778525357 id_slot=0 id_task=5192 n_ctx=16384 n_past=706 n_system_tokens=0 n_cache_tokens=706 truncated=false
+INFO [              slots_idle] all slots are idle | tid="36128" timestamp=1778525357

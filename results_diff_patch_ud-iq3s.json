@@ -1,0 +1,37 @@
+{
+  "model": "ud-iq3s",
+  "cases": [
+    {
+      "id": "simple_rename",
+      "passed": true,
+      "wall_s": 4.49,
+      "diff_chars": 0
+    },
+    {
+      "id": "add_imports",
+      "passed": true,
+      "wall_s": 2.59,
+      "diff_chars": 0
+    },
+    {
+      "id": "delete_block",
+      "passed": true,
+      "wall_s": 3.07,
+      "diff_chars": 0
+    },
+    {
+      "id": "two_hunks",
+      "passed": true,
+      "wall_s": 3.64,
+      "diff_chars": 0
+    },
+    {
+      "id": "context_only_block_move",
+      "passed": true,
+      "wall_s": 5.29,
+      "diff_chars": 0
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

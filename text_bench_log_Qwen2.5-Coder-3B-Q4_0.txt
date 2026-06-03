@@ -1,0 +1,9 @@
+== text_bench label=Qwen2.5-Coder-3B-Q4_0 ==
+  summarization          -> 4/6 (2.12s)  missing=['Lagarde', '2,1']
+  ner_json               -> 4/4 (0.99s)  missing=[]
+  sentiment_5            -> 5/5 (0.42s)  missing=[]
+  translation_it_en      -> 7/7 (0.37s)  missing=[]
+  invoice_extraction     -> 9/9 (2.07s)  missing=[]
+
+TOTAL: 29/31  time=5.97s
+

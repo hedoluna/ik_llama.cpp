@@ -1,0 +1,37 @@
+{
+  "model": "qwen2.5-coder-7b",
+  "cases": [
+    {
+      "id": "simple_rename",
+      "passed": true,
+      "wall_s": 1.44,
+      "diff_chars": 0
+    },
+    {
+      "id": "add_imports",
+      "passed": true,
+      "wall_s": 0.64,
+      "diff_chars": 0
+    },
+    {
+      "id": "delete_block",
+      "passed": true,
+      "wall_s": 0.88,
+      "diff_chars": 0
+    },
+    {
+      "id": "two_hunks",
+      "passed": true,
+      "wall_s": 0.94,
+      "diff_chars": 0
+    },
+    {
+      "id": "context_only_block_move",
+      "passed": true,
+      "wall_s": 1.65,
+      "diff_chars": 0
+    }
+  ],
+  "passed": 5,
+  "total": 5
+}

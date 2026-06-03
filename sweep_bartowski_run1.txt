@@ -1,0 +1,66 @@
+
+=== Qwen2.5-Coder-1.5B-bartowski-Q4_K_M ===
+  ready in 0.9s — running bench...
+{
+  "label": "Qwen2.5-Coder-1.5B-bartowski-Q4_K_M",
+  "model_path": "F:\\LLM_Models\\lm-studio\\models\\bartowski\\Qwen2.5-Coder-1.5B-Instruct-GGUF\\Qwen2.5-Coder-1.5B-Instruct-Q4_K_M.gguf",
+  "runtime": "ik",
+  "load_time": 0.9,
+  "bench_time": 4.57,
+  "passed": 41,
+  "total": 51,
+  "passed_of_51": 41,
+  "total_time_s": 4.22,
+  "valid": false,
+  "per_task": [
+    {
+      "verdict": "PASS",
+      "passed": 8,
+      "total": 8,
+      "time_s": 0.6
+    },
+    {
+      "verdict": "FAIL",
+      "passed": 0,
+      "total": 6,
+      "time_s": 0.3
+    },
+    {
+      "verdict": "FAIL",
+      "passed": 1,
+      "total": 5,
+      "time_s": 0.6
+    },
+    {
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 0.4
+    },
+    {
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 0.3
+    },
+    {
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 0.7
+    },
+    {
+      "verdict": "PASS",
+      "passed": 8,
+      "total": 8,
+      "time_s": 0.7
+    },
+    {
+      "verdict": "PASS",
+      "passed": 6,
+      "total": 6,
+      "time_s": 0.6
+    }
+  ],
+  "status": "ok"
+}

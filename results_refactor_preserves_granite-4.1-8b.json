@@ -1,0 +1,49 @@
+{
+  "model": "granite-4.1-8b",
+  "cases": [
+    {
+      "id": "extract_constant",
+      "passed": true,
+      "wall_s": 5.53,
+      "impl_chars": 369,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp92s90754\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.03s ==============================\n"
+    },
+    {
+      "id": "remove_dup",
+      "passed": false,
+      "wall_s": 3.55,
+      "impl_chars": 277,
+      "tail": "se\nE   AssertionError: assert None is False\nE    +  where None = validate_admin({'email': 'a@b'})\n=========================== short test summary info ===========================\nFAILED test_x.py::test - AssertionError: assert None is False\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    },
+    {
+      "id": "early_return",
+      "passed": true,
+      "wall_s": 3.17,
+      "impl_chars": 269,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmph0k3p7bi\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "to_comprehension",
+      "passed": true,
+      "wall_s": 1.96,
+      "impl_chars": 70,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp4bu8hc2s\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "split_function",
+      "passed": true,
+      "wall_s": 8.1,
+      "impl_chars": 680,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpsogts1k6\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "param_object",
+      "passed": false,
+      "wall_s": 5.06,
+      "impl_chars": 436,
+      "tail": "^^^^\nE   TypeError: create_user() takes 1 positional argument but 7 were given\n=========================== short test summary info ===========================\nFAILED test_x.py::test - TypeError: create_user() takes 1 positional argument...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    }
+  ],
+  "passed": 4,
+  "total": 6
+}

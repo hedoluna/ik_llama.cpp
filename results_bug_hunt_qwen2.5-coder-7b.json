@@ -1,0 +1,139 @@
+{
+  "model": "qwen2.5-coder-7b",
+  "cases": [
+    {
+      "id": "off_by_one_window",
+      "gt": [
+        "OFF_BY_ONE"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.36,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "sql_injection",
+      "gt": [
+        "SQL_INJECTION"
+      ],
+      "pred": [
+        "SQL_INJECTION"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 0.15,
+      "resp_short": "SQL_INJECTION"
+    },
+    {
+      "id": "path_traversal",
+      "gt": [
+        "PATH_TRAVERSAL"
+      ],
+      "pred": [
+        "PATH_TRAVERSAL"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 0.17,
+      "resp_short": "PATH_TRAVERSAL"
+    },
+    {
+      "id": "resource_leak",
+      "gt": [
+        "RESOURCE_LEAK"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.1,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "null_deref",
+      "gt": [
+        "NULL_DEREF"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.1,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "race_condition",
+      "gt": [
+        "RACE"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.1,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "wrong_operator",
+      "gt": [
+        "TYPE_ERROR",
+        "WRONG_OPERATOR"
+      ],
+      "pred": [
+        "WRONG_OPERATOR"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.15,
+      "resp_short": "WRONG_OPERATOR"
+    },
+    {
+      "id": "clean_correct",
+      "gt": [],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 0.12,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "infinite_loop",
+      "gt": [
+        "INFINITE_LOOP"
+      ],
+      "pred": [],
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "wall_s": 0.12,
+      "resp_short": "NONE"
+    },
+    {
+      "id": "missing_return",
+      "gt": [
+        "MISSING_RETURN"
+      ],
+      "pred": [
+        "MISSING_RETURN"
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "wall_s": 0.17,
+      "resp_short": "MISSING_RETURN"
+    }
+  ],
+  "tp": 4,
+  "fp": 0,
+  "fn": 6,
+  "tn": 1,
+  "precision": 1.0,
+  "recall": 0.4,
+  "f1": 0.571
+}

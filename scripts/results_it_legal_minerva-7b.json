@@ -1,0 +1,227 @@
+{
+  "model": "minerva-7b",
+  "base_url": "http://127.0.0.1:18080",
+  "temperature": 0.1,
+  "total": 20,
+  "pass": 16,
+  "score_pct": 80.0,
+  "wall_total_s": 19.3,
+  "per_category": {
+    "art_specifico": {
+      "pass": 6,
+      "total": 7,
+      "pct": 85.7
+    },
+    "brocardo": {
+      "pass": 3,
+      "total": 4,
+      "pct": 75.0
+    },
+    "citation": {
+      "pass": 2,
+      "total": 3,
+      "pct": 66.7
+    },
+    "classificazione": {
+      "pass": 2,
+      "total": 3,
+      "pct": 66.7
+    },
+    "applicazione": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    }
+  },
+  "results": [
+    {
+      "id": "A1_art2043CC",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.79,
+      "response": " L'articolo 2043 del Codice Civile italiano stabilisce che chiunque cagiona ad altri un danno ingiusto è tenuto a risarcirlo.",
+      "ok": true
+    },
+    {
+      "id": "A2_art595CP",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.71,
+      "response": " L'articolo 595 del Codice Penale italiano punisce il reato di diffamazione, che consiste nell'offendere l'onore e la reputazione di una persona mediante l'uso del linguaggio, scritto o verbale, in assenza della persona offesa. La pena prevista è la reclusione fino a un anno o la multa fino a 1.032 euro.",
+      "ok": true
+    },
+    {
+      "id": "A3_art416bisCP",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.75,
+      "response": " L'articolo 416 bis del Codice Penale italiano disciplina il reato di associazione di tipo mafioso. In particolare, stabilisce che chiunque faccia parte di un'associazione di tipo mafioso è punito con la reclusione da 10 a 15 anni. Inoltre, prevede la confisca dei beni utilizzati per commettere il reato e la possibilità di applicare misure di prevenzione come la sorveglianza speciale.",
+      "ok": true
+    },
+    {
+      "id": "A4_art2697CC",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.52,
+      "response": " L'articolo 2697 del Codice Civile stabilisce che \"chi vuol far valere un diritto in giudizio deve provare i fatti che ne costituiscono il fondamento.\". In altre parole, l'onere della prova spetta a colui che intende far valere un diritto in giudizio e deve fornire la prova dei fatti che ne costituiscono il fondamento.",
+      "ok": true
+    },
+    {
+      "id": "A5_art18StatLav",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.0,
+      "response": " L'articolo 18 dello Statuto dei Lavoratori (legge 300/1970) prevede che il datore di lavoro, in caso di licenziamento illegittimo, debba reintegrare il lavoratore nel posto di lavoro e corrispondergli un'indennità risarcitoria, non superiore a 12 mensilità dell'ultima retribuzione globale di fatto, a meno che il lavoratore non opti per l'indennità sostitutiva della reintegrazione.",
+      "ok": true
+    },
+    {
+      "id": "A6_art32Cost",
+      "category": "art_specifico",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.22,
+      "response": " L'articolo 32 della Costituzione italiana tutela il diritto alla salute come diritto fondamentale dell'individuo e interesse della collettività. Esso stabilisce che la Repubblica tutela la salute come fondamentale diritto dell'individuo e interesse della collettività, e garantisce cure gratuite agli indigenti.",
+      "ok": true
+    },
+    {
+      "id": "A7_art1322CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(autonomia|libert[aà])\\b.*\\b(contr|negozi)",
+        "missing required pattern: (?i)\\b(meritevol|tipic|atipic)"
+      ],
+      "wall_s": 0.69,
+      "response": " L'articolo 1322 del Codice Civile italiano stabilisce che le parti possono liberamente determinare il contenuto del contratto nei limiti imposti dalla legge.",
+      "ok": true
+    },
+    {
+      "id": "B1_nemo_iudex",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(nessuno|non).{0,40}\\b(giudic|giudice).{0,80}\\b(propri[oa]|sua|causa)"
+      ],
+      "wall_s": 1.71,
+      "response": " Il brocardo latino \"nemo iudex in causa sua\" significa che nessun giudice può essere parte in causa sua. In altre parole, un giudice non può essere coinvolto in un processo che riguarda la sua stessa posizione o le sue azioni. Questo principio è fondamentale nel diritto processuale per garantire l'imparzialità e l'indipendenza del giudice.",
+      "ok": true
+    },
+    {
+      "id": "B2_ne_bis_in_idem",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.86,
+      "response": " Il principio 'ne bis in idem' nel diritto penale italiano esprime il divieto di essere perseguiti o condannati due volte per lo stesso reato. In altre parole, una persona non può essere giudicata o punita due volte per lo stesso fatto, a meno che non si tratti di un reato diverso e più grave. Questo principio è sancito dall'articolo 649 del codice penale italiano.",
+      "ok": true
+    },
+    {
+      "id": "B3_in_dubio_pro_reo",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.74,
+      "response": " 'In dubio pro reo' significa che, in caso di dubbio sulla colpevolezza dell'imputato, si deve ritenere che sia innocente fino a prova contraria. Questo principio è fondamentale nel processo penale italiano, in quanto garantisce il rispetto del principio di presunzione di innocenza e l'applicazione di misure cautelari solo in caso di assoluta certezza della colpevolezza.",
+      "ok": true
+    },
+    {
+      "id": "B4_pacta_sunt_servanda",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.39,
+      "response": " Il principio 'pacta sunt servanda' esprime il concetto che i contratti devono essere rispettati e eseguiti secondo quanto stabilito dalle parti. In altre parole, i contratti devono essere adempiuti in modo fedele e puntuale, senza eccezioni o modifiche unilaterali da parte di una delle parti.",
+      "ok": true
+    },
+    {
+      "id": "C1_citation_2043",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.28,
+      "response": " art. 2043 Codice Civile",
+      "ok": true
+    },
+    {
+      "id": "C2_citation_416bis",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.33,
+      "response": " art. 416-bis c.p.",
+      "ok": true
+    },
+    {
+      "id": "C3_citation_constitution",
+      "category": "citation",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\bart\\.?\\s*32\\b.*(cost|costituzion)"
+      ],
+      "wall_s": 0.2,
+      "response": " art. 2 Cost.",
+      "ok": true
+    },
+    {
+      "id": "D1_class_civile",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.11,
+      "response": " Civile",
+      "ok": true
+    },
+    {
+      "id": "D2_class_penale",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.08,
+      "response": " penale",
+      "ok": true
+    },
+    {
+      "id": "D3_class_lavoro",
+      "category": "classificazione",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)^\\s*lavoro\\s*\\.?\\s*$|^\\s*lavoro\\b"
+      ],
+      "wall_s": 0.08,
+      "response": " Civile",
+      "ok": true
+    },
+    {
+      "id": "E1_prescrizione_ordinaria",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.46,
+      "response": " Il termine ordinario di prescrizione dei diritti nel Codice Civile italiano è di 10 anni.",
+      "ok": true
+    },
+    {
+      "id": "E2_prescrizione_risarcimento_extracontrattuale",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.68,
+      "response": " Il termine di prescrizione del diritto al risarcimento del danno extracontrattuale (art. 2947 CC) è di 5 anni.",
+      "ok": true
+    },
+    {
+      "id": "E3_appello_civile_termine",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.74,
+      "response": " Il termine breve per proporre appello civile dalla notificazione della sentenza di primo grado è di 30 giorni (art. 325 CPC).",
+      "ok": true
+    }
+  ]
+}

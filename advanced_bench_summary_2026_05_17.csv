@@ -1,0 +1,9 @@
+bench,daily-winner,granite-4.1-8b,coder-3b,coder-1.5b
+bug_hunt_F1,0.82,0.44,0.17,0.00
+bug_hunt_P,1.00,0.50,0.50,0.00
+bug_hunt_R,0.70,0.40,0.10,0.00
+test_first,7/7,5/7,3/7,2/7
+refactor_preserves,5/6,4/6,3/6,4/6
+diff_patch,5/5,2/5,5/5,4/5
+self_consistency_pass5,5/5,5/5,2/5,1/5
+self_consistency_unique_impls,3,3,5,5

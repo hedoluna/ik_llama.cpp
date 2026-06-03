@@ -1,5 +1,70 @@
 [
   {
+    "label": "Qwen2.5-Coder-0.5B-Q4_K_M",
+    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen2.5-Coder-0.5B-Instruct-GGUF\\Qwen2.5-Coder-0.5B-Instruct-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 0.84,
+    "bench_time": 6.49,
+    "passed": 32,
+    "total": 45,
+    "passed_of_51": 32,
+    "total_time_s": 6.05,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 5,
+        "total": 6,
+        "time_s": 0.3
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 2,
+        "total": 6,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 6,
+        "total": 8,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 1.2
+      }
+    ],
+    "status": "ok",
+    "tier": 0,
+    "timestamp": "2026-06-03 23:19:00"
+  },
+  {
     "label": "Qwen3-0.6B-Q8_0",
     "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen3-0.6B-GGUF\\Qwen3-0.6B-Q8_0.gguf",
     "runtime": "ik",
@@ -45,7 +110,7 @@
         "verdict": "FAIL",
         "passed": 3,
         "total": 6,
-        "time_s": 7.0
+        "time_s": 7
       },
       {
         "verdict": "FAIL",
@@ -130,6 +195,526 @@
     "timestamp": "2026-06-03 23:14:42"
   },
   {
+    "label": "Yi-Coder-1.5B-Chat-Q4_K_M",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Yi-Coder-1.5B-Chat-GGUF\\Yi-Coder-1.5B-Chat-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 12.61,
+    "bench_time": 6.71,
+    "passed": 47,
+    "total": 51,
+    "passed_of_51": 47,
+    "total_time_s": 5.23,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 1,
+        "total": 5,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.8
+      }
+    ],
+    "status": "ok",
+    "tier": 1,
+    "timestamp": "2026-05-11 20:08:08"
+  },
+  {
+    "label": "Qwen2.5-Coder-1.5B-Q4_K_M",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\migarcoes\\Qwen-Qwen2.5-Coder-1.5B-Instruct\\Qwen-Qwen2.5-Coder-1.5B-Instruct-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 12.56,
+    "bench_time": 5.17,
+    "passed": 51,
+    "total": 51,
+    "passed_of_51": 51,
+    "total_time_s": 4.81,
+    "valid": true,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1
+      }
+    ],
+    "status": "ok",
+    "tier": 1,
+    "timestamp": "2026-05-11 20:08:27"
+  },
+  {
+    "label": "DeepCoder-1.5B-Preview-Q8_0",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\DeepCoder-1.5B-Preview-GGUF\\DeepCoder-1.5B-Preview-Q8_0.gguf",
+    "runtime": "ik",
+    "load_time": 20.18,
+    "bench_time": 108.84,
+    "passed": 37,
+    "total": 37,
+    "passed_of_51": 37,
+    "total_time_s": 105.47,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 3.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 14.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 15.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 10.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 4.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 11.6
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 22.3
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 22.2
+      }
+    ],
+    "status": "ok",
+    "tier": 1,
+    "timestamp": "2026-05-11 20:10:37"
+  },
+  {
+    "label": "gemma-3-1B-it-qat-Q4_0",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\gemma-3-1B-it-qat-GGUF\\gemma-3-1B-it-QAT-Q4_0.gguf",
+    "runtime": "ik",
+    "load_time": 11.24,
+    "bench_time": 10.97,
+    "passed": 43,
+    "total": 51,
+    "passed_of_51": 43,
+    "total_time_s": 9.73,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 2,
+        "total": 5,
+        "time_s": 1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.7
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 1,
+        "total": 6,
+        "time_s": 1.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.2
+      }
+    ],
+    "status": "ok",
+    "tier": 2,
+    "timestamp": "2026-05-11 20:12:14"
+  },
+  {
+    "label": "SmolLM2-1.7B-Instruct-Q8_0",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\RichardErkhov\\HuggingFaceTB_-_SmolLM2-1.7B-Instruct-gguf\\SmolLM2-1.7B-Instruct.Q8_0.gguf",
+    "runtime": "ik",
+    "load_time": 25.3,
+    "bench_time": 6.81,
+    "passed": 46,
+    "total": 51,
+    "passed_of_51": 46,
+    "total_time_s": 6.3,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 1,
+        "total": 5,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.7
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 5,
+        "total": 6,
+        "time_s": 1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1
+      }
+    ],
+    "status": "ok",
+    "tier": 2,
+    "timestamp": "2026-05-11 20:12:48"
+  },
+  {
+    "label": "gemma-2-2b-it-Q4_K_M",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\gemma-2-2b-it-GGUF\\gemma-2-2b-it-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 18.89,
+    "bench_time": 10.48,
+    "passed": 42,
+    "total": 51,
+    "passed_of_51": 42,
+    "total_time_s": 10.08,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.8
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 1,
+        "total": 5,
+        "time_s": 1.2
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.2
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 5,
+        "total": 6,
+        "time_s": 1.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 1.5
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 2,
+        "total": 6,
+        "time_s": 1.6
+      }
+    ],
+    "status": "ok",
+    "tier": 2,
+    "timestamp": "2026-05-11 20:13:18"
+  },
+  {
+    "label": "granite-3.3-2b-instruct-Q6_K",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\granite-3.3-2b-instruct-GGUF\\granite-3.3-2b-instruct-Q6_K.gguf",
+    "runtime": "main",
+    "load_time": 23.81,
+    "bench_time": 9.34,
+    "passed": 51,
+    "total": 51,
+    "passed_of_51": 51,
+    "total_time_s": 8.96,
+    "valid": true,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 1.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 1.2
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 1.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.3
+      }
+    ],
+    "status": "ok",
+    "tier": 2,
+    "timestamp": "2026-05-11 20:13:53"
+  },
+  {
+    "label": "Qwen2.5-Coder-3B-Q4_0",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\Qwen\\Qwen2.5-Coder-3B-Instruct-GGUF\\qwen2.5-coder-3b-instruct-q4_0.gguf",
+    "runtime": "ik",
+    "load_time": 24.96,
+    "bench_time": 8.81,
+    "passed": 51,
+    "total": 51,
+    "passed_of_51": 51,
+    "total_time_s": 8.43,
+    "valid": true,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.8
+      }
+    ],
+    "status": "ok",
+    "tier": 3,
+    "timestamp": "2026-05-11 20:14:47"
+  },
+  {
     "label": "stable-code-instruct-3B-Q6_K",
     "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\bartowski\\stable-code-instruct-3b-GGUF\\stable-code-instruct-3b-Q6_K.gguf",
     "runtime": "ik",
@@ -151,7 +736,7 @@
         "verdict": "FAIL",
         "passed": 0,
         "total": 6,
-        "time_s": 4.0
+        "time_s": 4
       },
       {
         "verdict": "FAIL",
@@ -195,6 +780,136 @@
     "timestamp": "2026-06-03 23:16:02"
   },
   {
+    "label": "granite-4.1-3B-Q4_K_S",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\unsloth\\granite-4.1-3b-GGUF\\granite-4.1-3b-Q4_K_S.gguf",
+    "runtime": "main",
+    "load_time": 20.75,
+    "bench_time": 7.75,
+    "passed": 51,
+    "total": 51,
+    "passed_of_51": 51,
+    "total_time_s": 7.36,
+    "valid": true,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 1.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.2
+      }
+    ],
+    "status": "ok",
+    "tier": 3,
+    "timestamp": "2026-05-11 20:16:29"
+  },
+  {
+    "label": "Phi-3.5-mini-Q4_K_S",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\bartowski\\Phi-3.5-mini-instruct-GGUF\\Phi-3.5-mini-instruct-Q4_K_S.gguf",
+    "runtime": "ik",
+    "load_time": 26.4,
+    "bench_time": 21.44,
+    "passed": 38,
+    "total": 45,
+    "passed_of_51": 38,
+    "total_time_s": 20.52,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 1.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 4.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 2.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 1.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 3.3
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 1,
+        "total": 8,
+        "time_s": 2.2
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 3.2
+      }
+    ],
+    "status": "ok",
+    "tier": 3,
+    "timestamp": "2026-05-11 20:17:18"
+  },
+  {
     "label": "Qwen3.5-0.8B-Q8_0",
     "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen3.5-0.8B-GGUF\\Qwen3.5-0.8B-Q8_0.gguf",
     "runtime": "ik",
@@ -228,13 +943,13 @@
         "verdict": "FAIL",
         "passed": 0,
         "total": 6,
-        "time_s": 16.0
+        "time_s": 16
       },
       {
         "verdict": "FAIL",
         "passed": 0,
         "total": 6,
-        "time_s": 16.0
+        "time_s": 16
       },
       {
         "verdict": "FAIL",
@@ -260,68 +975,458 @@
     "timestamp": "2026-06-03 23:18:41"
   },
   {
-    "label": "Qwen2.5-Coder-0.5B-Q4_K_M",
-    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen2.5-Coder-0.5B-Instruct-GGUF\\Qwen2.5-Coder-0.5B-Instruct-Q4_K_M.gguf",
-    "runtime": "ik",
-    "load_time": 0.84,
-    "bench_time": 6.49,
-    "passed": 32,
-    "total": 45,
-    "passed_of_51": 32,
-    "total_time_s": 6.05,
+    "label": "granite-4.0-h-tiny-Q4_K_M",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\granite-4.0-h-tiny-GGUF\\granite-4.0-h-tiny-Q4_K_M.gguf",
+    "runtime": "main",
+    "load_time": 46.67,
+    "bench_time": 6.88,
+    "passed": 50,
+    "total": 51,
+    "passed_of_51": 50,
+    "total_time_s": 6.35,
     "valid": false,
     "per_task": [
       {
         "verdict": "PASS",
         "passed": 8,
         "total": 8,
-        "time_s": 0.4
+        "time_s": 0.8
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
         "time_s": 0.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 4,
+        "total": 5,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1
+      }
+    ],
+    "status": "ok",
+    "tier": 4,
+    "timestamp": "2026-05-11 20:41:37"
+  },
+  {
+    "label": "granite-4.1-8B-Q4_K_S",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\unsloth\\granite-4.1-8b-GGUF\\granite-4.1-8b-Q4_K_S.gguf",
+    "runtime": "main",
+    "load_time": 49.67,
+    "bench_time": 20.53,
+    "passed": 50,
+    "total": 51,
+    "passed_of_51": 50,
+    "total_time_s": 20.07,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 2.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.7
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 4,
+        "total": 5,
+        "time_s": 3.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 3.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.7
+      }
+    ],
+    "status": "ok",
+    "tier": 4,
+    "timestamp": "2026-05-11 20:42:48"
+  },
+  {
+    "label": "Qwen3.5-9B-Q4_K_M",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen3.5-9B-GGUF\\Qwen3.5-9B-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 66.92,
+    "bench_time": 321.07,
+    "passed": 40,
+    "total": 46,
+    "passed_of_51": 40,
+    "total_time_s": 303.71,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 15.7
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 16.9
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 5,
+        "time_s": 113.2
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 24.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 36.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 41
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 26.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 29.3
+      }
+    ],
+    "status": "ok",
+    "tier": 4,
+    "timestamp": "2026-05-11 20:49:18"
+  },
+  {
+    "label": "gemma-4-E2B-it-Q4_K_M",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\gemma-4-E2B-it-GGUF\\gemma-4-E2B-it-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 40,
+    "bench_time": 496.28,
+    "passed": 51,
+    "total": 51,
+    "passed_of_51": 51,
+    "total_time_s": 473.44,
+    "valid": true,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 40.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 62.1
       },
       {
         "verdict": "PASS",
         "passed": 5,
         "total": 5,
-        "time_s": 0.4
+        "time_s": 76.7
       },
       {
-        "verdict": "FAIL",
-        "passed": 0,
-        "total": 6,
-        "time_s": 1.0
-      },
-      {
-        "verdict": "FAIL",
-        "passed": 5,
-        "total": 6,
-        "time_s": 0.3
-      },
-      {
-        "verdict": "FAIL",
-        "passed": 2,
-        "total": 6,
-        "time_s": 1.1
-      },
-      {
-        "verdict": "FAIL",
+        "verdict": "PASS",
         "passed": 6,
-        "total": 8,
-        "time_s": 1.1
+        "total": 6,
+        "time_s": 43.8
       },
       {
-        "verdict": "FAIL",
-        "passed": 0,
+        "verdict": "PASS",
+        "passed": 6,
         "total": 6,
-        "time_s": 1.2
+        "time_s": 57.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 60.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 59.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 73.4
       }
     ],
     "status": "ok",
-    "tier": 0,
-    "timestamp": "2026-06-03 23:19:00"
+    "tier": 5,
+    "timestamp": "2026-05-11 21:03:44"
+  },
+  {
+    "label": "gemma-4-E4B-it-Q4_K_M",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\gemma-4-E4B-it-GGUF\\gemma-4-E4B-it-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 57.7,
+    "bench_time": 211.67,
+    "passed": 41,
+    "total": 51,
+    "passed_of_51": 41,
+    "total_time_s": 211.06,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 9.2
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 10.7
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 1,
+        "total": 5,
+        "time_s": 44.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 14.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 27.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 50.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 27.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 26.7
+      }
+    ],
+    "status": "ok",
+    "tier": 5,
+    "timestamp": "2026-05-11 21:08:15"
+  },
+  {
+    "label": "gemma-4-26B-A4B-it-Q4_K_M",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\lmstudio-community\\gemma-4-26B-A4B-it-GGUF\\gemma-4-26B-A4B-it-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 172.32,
+    "bench_time": 506.56,
+    "passed": 40,
+    "total": 46,
+    "passed_of_51": 40,
+    "total_time_s": 492.91,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 38.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 25.8
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 5,
+        "time_s": 103.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 25.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 100.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 44.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 63.6
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 89.8
+      }
+    ],
+    "status": "ok",
+    "tier": 5,
+    "timestamp": "2026-05-11 21:19:35"
+  },
+  {
+    "label": "Qwen3-Coder-Next-UD-Q2_K_XL",
+    "model_path": "F:\\LLM_Models\\lm-studio\\models\\unsloth\\Qwen3-Coder-Next-GGUF\\Qwen3-Coder-Next-UD-Q2_K_XL.gguf",
+    "runtime": "ik",
+    "load_time": 15.95,
+    "bench_time": 84.28,
+    "passed": 50,
+    "total": 51,
+    "passed_of_51": 50,
+    "total_time_s": 82.1,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 8.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 7.9
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 4,
+        "total": 5,
+        "time_s": 13.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 7.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 8.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 13.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 11.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 11
+      }
+    ],
+    "status": "ok",
+    "tier": 6,
+    "timestamp": "2026-05-12 00:53:44"
   }
 ]

@@ -1,0 +1,107 @@
+{
+  "label": "olmocr_7b",
+  "results": [
+    {
+      "fixture": "sgam",
+      "dt_s": 151.32,
+      "score": 0,
+      "of": 8,
+      "math_ok": false,
+      "verdict": "JSON_PARSE_FAIL",
+      "raw_preview": "{\n  \"supplierName\": \"CDF SRL\",\n  \"supplierVat\": \"IT09614021007\",\n  \"invoiceNumber\": \"128.969/2025\",\n  \"invoiceDate\": \"2025-08-11\",\n  \"totalAmount\": \"3554.17\",\n  \"taxAmount\": \"640.92\",\n  \"netAmount\": \"2913.25\",\n  \"currency\": \"EUR\",\n  \"lineItems\": [\n    {\n      \"description\": \"100CL E.N. (1 X 12 BT)-4"
+    },
+    {
+      "fixture": "fiorucci",
+      "dt_s": 94.26,
+      "score": 3,
+      "of": 8,
+      "math_ok": false,
+      "scores": {
+        "supplierName": {
+          "ok": true,
+          "note": "exact",
+          "expected": "Fiorucci S.p.A."
+        },
+        "supplierVat": {
+          "ok": true,
+          "note": "exact",
+          "expected": "IT11980969"
+        },
+        "invoiceNumber": {
+          "ok": false,
+          "note": "got='FAT-2024-001'",
+          "expected": "3511054052"
+        },
+        "invoiceDate": {
+          "ok": false,
+          "note": "got='2024-03-12'",
+          "expected": "2025-08-11"
+        },
+        "totalAmount": {
+          "ok": false,
+          "note": "got='131096.00'",
+          "expected": "996.19"
+        },
+        "taxAmount": {
+          "ok": false,
+          "note": "got='131096.00'",
+          "expected": "90.56"
+        },
+        "netAmount": {
+          "ok": false,
+          "note": "got='131096.00'",
+          "expected": "905.63"
+        },
+        "currency": {
+          "ok": true,
+          "note": "exact",
+          "expected": "EUR"
+        }
+      },
+      "raw_json": {
+        "supplierName": "Fiorucci S.p.A.",
+        "supplierVat": "IT11980969",
+        "invoiceNumber": "FAT-2024-001",
+        "invoiceDate": "2024-03-12",
+        "totalAmount": "131096.00",
+        "taxAmount": "131096.00",
+        "netAmount": "131096.00",
+        "currency": "EUR",
+        "lineItems": [
+          {
+            "description": "UNGHERESE META SV 1,5 KG",
+            "quantity": "61,640",
+            "unitPrice": "20,90",
+            "total": "131096.00"
+          },
+          {
+            "description": "SALAME VENTRICINA 1/2 SV",
+            "quantity": "33,470",
+            "unitPrice": "22,22",
+            "total": "744,94"
+          },
+          {
+            "description": "SALAME NAPOLI",
+            "quantity": "16,518",
+            "unitPrice": "18,15",
+            "total": "299,97"
+          },
+          {
+            "description": "WURSTEL SUILLO 250gr",
+            "quantity": "36,000",
+            "unitPrice": "3,52",
+            "total": "129,72"
+          },
+          {
+            "description": "PROSCIUTTO CRUDO 40g QB1",
+            "quantity": "16,000",
+            "unitPrice": "1,13",
+            "total": "17,92"
+          }
+        ]
+      }
+    }
+  ],
+  "total_correct": 3,
+  "total": 16
+}

@@ -1,0 +1,71 @@
+{
+  "args": {
+    "temp": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "presence_penalty": 1.5,
+    "frequency_penalty": 0.0,
+    "label": "daily_thinking_pp15"
+  },
+  "rows": [
+    {
+      "task": "task1_fizzbuzz",
+      "verdict": "PASS",
+      "passed": 8,
+      "of": 8,
+      "dt_s": 38.73
+    },
+    {
+      "task": "task2_duplicates",
+      "verdict": "FAIL",
+      "passed": 0,
+      "of": 6,
+      "dt_s": 48.56
+    },
+    {
+      "task": "task3_nested_sum",
+      "verdict": "FAIL",
+      "passed": 0,
+      "of": 5,
+      "dt_s": 51.18
+    },
+    {
+      "task": "task4_flatten",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 37.61
+    },
+    {
+      "task": "task5_parse_config",
+      "verdict": "FAIL",
+      "passed": 0,
+      "of": 6,
+      "dt_s": 53.09
+    },
+    {
+      "task": "task6_merge_intervals",
+      "verdict": "FAIL",
+      "passed": 0,
+      "of": 6,
+      "dt_s": 52.95
+    },
+    {
+      "task": "task7_balanced_brackets",
+      "verdict": "FAIL",
+      "passed": 0,
+      "of": 8,
+      "dt_s": 52.6
+    },
+    {
+      "task": "task8_deep_merge",
+      "verdict": "FAIL",
+      "passed": 0,
+      "of": 6,
+      "dt_s": 52.67
+    }
+  ],
+  "total_pass": 14,
+  "total": 51,
+  "wall_s": 387.38
+}

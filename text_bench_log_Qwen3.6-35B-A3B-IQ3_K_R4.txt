@@ -1,0 +1,9 @@
+== text_bench label=Qwen3.6-35B-A3B-IQ3_K_R4 ==
+  summarization          -> 4/6 (5.87s)  missing=['Lagarde', 'Germania']
+  ner_json               -> 4/4 (4.43s)  missing=[]
+  sentiment_5            -> 5/5 (1.49s)  missing=[]
+  translation_it_en      -> 7/7 (1.35s)  missing=[]
+  invoice_extraction     -> 9/9 (5.15s)  missing=[]
+
+TOTAL: 29/31  time=18.29s
+

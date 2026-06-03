@@ -1,0 +1,47 @@
+{
+  "model": "qwen3-14b",
+  "task": "task3_nested_sum",
+  "n_runs": 5,
+  "temp": 0.6,
+  "pass_at_n": 0,
+  "unique_impls": 2,
+  "unique_passing_impls": 0,
+  "pass_rate": 0.0,
+  "runs": [
+    {
+      "run": 0,
+      "seed": 42,
+      "passed": false,
+      "impl_hash": "e3b0c44298",
+      "wall_s": 137.82
+    },
+    {
+      "run": 1,
+      "seed": 43,
+      "passed": false,
+      "impl_hash": "2de8676057",
+      "wall_s": 12.21
+    },
+    {
+      "run": 2,
+      "seed": 44,
+      "passed": false,
+      "impl_hash": "2de8676057",
+      "wall_s": 12.6
+    },
+    {
+      "run": 3,
+      "seed": 45,
+      "passed": false,
+      "impl_hash": "2de8676057",
+      "wall_s": 12.59
+    },
+    {
+      "run": 4,
+      "seed": 46,
+      "passed": false,
+      "impl_hash": "2de8676057",
+      "wall_s": 12.53
+    }
+  ]
+}

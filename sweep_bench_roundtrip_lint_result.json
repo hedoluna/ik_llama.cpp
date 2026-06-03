@@ -1,0 +1,93 @@
+[
+  {
+    "task": "task1_fizzbuzz",
+    "func_pass": true,
+    "clean": false,
+    "n_issues": 3,
+    "issues_preview": [
+      "5: RET505 [*] Unnecessary `elif` after `return` statement",
+      "22: W292 [*] No newline at end of file",
+      "[*] 2 fixable with the `--fix` option."
+    ],
+    "dt_s": 0.74
+  },
+  {
+    "task": "task2_duplicates",
+    "func_pass": true,
+    "clean": false,
+    "n_issues": 4,
+    "issues_preview": [
+      "5: PLC0415 `import` should be at the top-level of a file",
+      "12: RET504 Unnecessary assignment to `duplicates` before `return` statement",
+      "22: W292 [*] No newline at end of file"
+    ],
+    "dt_s": 0.44
+  },
+  {
+    "task": "task3_nested_sum",
+    "func_pass": true,
+    "clean": false,
+    "n_issues": 2,
+    "issues_preview": [
+      "17: W292 [*] No newline at end of file",
+      "[*] 1 fixable with the `--fix` option."
+    ],
+    "dt_s": 0.59
+  },
+  {
+    "task": "task4_flatten",
+    "func_pass": true,
+    "clean": false,
+    "n_issues": 2,
+    "issues_preview": [
+      "18: W292 [*] No newline at end of file",
+      "[*] 1 fixable with the `--fix` option."
+    ],
+    "dt_s": 0.43
+  },
+  {
+    "task": "task5_parse_config",
+    "func_pass": true,
+    "clean": false,
+    "n_issues": 2,
+    "issues_preview": [
+      "89: W292 [*] No newline at end of file",
+      "[*] 1 fixable with the `--fix` option."
+    ],
+    "dt_s": 0.34
+  },
+  {
+    "task": "task6_merge_intervals",
+    "func_pass": true,
+    "clean": false,
+    "n_issues": 2,
+    "issues_preview": [
+      "18: W292 [*] No newline at end of file",
+      "[*] 1 fixable with the `--fix` option."
+    ],
+    "dt_s": 0.79
+  },
+  {
+    "task": "task7_balanced_brackets",
+    "func_pass": true,
+    "clean": false,
+    "n_issues": 3,
+    "issues_preview": [
+      "9: SIM102 Use a single `if` statement instead of nested `if` statements",
+      "21: W292 [*] No newline at end of file",
+      "[*] 1 fixable with the `--fix` option (1 hidden fix can be enabled with the `--unsafe-fixes` option)."
+    ],
+    "dt_s": 0.73
+  },
+  {
+    "task": "task8_deep_merge",
+    "func_pass": true,
+    "clean": false,
+    "n_issues": 2,
+    "issues_preview": [
+      "18: W292 [*] No newline at end of file",
+      "[*] 1 fixable with the `--fix` option."
+    ],
+    "dt_s": 0.7
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "model": "ud-iq3s",
+  "cases": [
+    {
+      "id": "stack_pop_empty",
+      "passed": true,
+      "wall_s": 10.13,
+      "impl_chars": 507,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpi6mkomf6\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "lru_cache",
+      "passed": true,
+      "wall_s": 12.1,
+      "impl_chars": 623,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpkpmchoj0\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "parse_duration",
+      "passed": true,
+      "wall_s": 11.73,
+      "impl_chars": 858,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpo8n08hpw\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "rate_limiter_window",
+      "passed": true,
+      "wall_s": 8.31,
+      "impl_chars": 583,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpi2mpx0po\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 1.08s ==============================\n"
+    },
+    {
+      "id": "topo_sort",
+      "passed": false,
+      "wall_s": 9.07,
+      "impl_chars": 676,
+      "tail": "^\ntest_x.py:22: in topo_sort\n    raise ValueError(\"Cycle detected\")\nE   ValueError: Cycle detected\n=========================== short test summary info ===========================\nFAILED test_x.py::test_toposort - ValueError: Cycle detected\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    },
+    {
+      "id": "url_parse",
+      "passed": true,
+      "wall_s": 7.72,
+      "impl_chars": 640,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpukcbq18a\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "retry_decorator",
+      "passed": true,
+      "wall_s": 8.01,
+      "impl_chars": 571,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpr69cgd8r\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.33s ==============================\n"
+    }
+  ],
+  "passed": 6,
+  "total": 7
+}

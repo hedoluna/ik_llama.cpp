@@ -1,0 +1,49 @@
+{
+  "model": "deepseek-coder-v2-lite",
+  "cases": [
+    {
+      "id": "extract_constant",
+      "passed": false,
+      "wall_s": 8.1,
+      "impl_chars": 260,
+      "tail": "t shipping(0.5, \"EU\") == 5\n           ^^^^^^^^\nE   NameError: name 'shipping' is not defined\n=========================== short test summary info ===========================\nFAILED test_x.py::test - NameError: name 'shipping' is not defined\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.13s ==============================\n"
+    },
+    {
+      "id": "remove_dup",
+      "passed": false,
+      "wall_s": 7.42,
+      "impl_chars": 374,
+      "tail": "\"}) is True\n           ^^^^^^^^^^^^^\nE   NameError: name 'validate_user' is not defined\n=========================== short test summary info ===========================\nFAILED test_x.py::test - NameError: name 'validate_user' is not defined\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    },
+    {
+      "id": "early_return",
+      "passed": true,
+      "wall_s": 4.05,
+      "impl_chars": 299,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpey3vnz89\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "to_comprehension",
+      "passed": true,
+      "wall_s": 2.17,
+      "impl_chars": 70,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpw6fzmzff\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "split_function",
+      "passed": false,
+      "wall_s": 12.22,
+      "impl_chars": 330,
+      "tail": "ocess_order(o)\n        ^^^^^^^^^^^^^\nE   NameError: name 'process_order' is not defined\n=========================== short test summary info ===========================\nFAILED test_x.py::test - NameError: name 'process_order' is not defined\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    },
+    {
+      "id": "param_object",
+      "passed": false,
+      "wall_s": 8.18,
+      "impl_chars": 682,
+      "tail": "^^^^\nE   TypeError: create_user() takes 1 positional argument but 7 were given\n=========================== short test summary info ===========================\nFAILED test_x.py::test - TypeError: create_user() takes 1 positional argument...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    }
+  ],
+  "passed": 2,
+  "total": 6
+}

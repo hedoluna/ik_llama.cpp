@@ -1,0 +1,9 @@
+== text_bench label=granite-4.1-3B-Q4_K_S ==
+  summarization          -> 4/6 (2.66s)  missing=['Lagarde', '2,1']
+  ner_json               -> 3/4 (1.20s)  missing=['date']
+  sentiment_5            -> 0/5 (0.40s)  missing=['item1', 'item2', 'item3', 'item4', 'item5']
+  translation_it_en      -> 7/7 (0.38s)  missing=[]
+  invoice_extraction     -> 9/9 (1.62s)  missing=[]
+
+TOTAL: 23/31  time=6.25s
+

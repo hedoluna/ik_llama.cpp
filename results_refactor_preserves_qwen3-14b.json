@@ -1,0 +1,49 @@
+{
+  "model": "qwen3-14b",
+  "cases": [
+    {
+      "id": "extract_constant",
+      "passed": false,
+      "wall_s": 180.03,
+      "impl_chars": 0,
+      "tail": "ERR: ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=1234): Read timed out. (read timeout=180)"
+    },
+    {
+      "id": "remove_dup",
+      "passed": true,
+      "wall_s": 102.68,
+      "impl_chars": 404,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpgjqkjqu0\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.03s ==============================\n"
+    },
+    {
+      "id": "early_return",
+      "passed": true,
+      "wall_s": 87.18,
+      "impl_chars": 269,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpw7nqfov4\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "to_comprehension",
+      "passed": true,
+      "wall_s": 42.36,
+      "impl_chars": 70,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmp9e3hxz7a\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    },
+    {
+      "id": "split_function",
+      "passed": false,
+      "wall_s": 180.01,
+      "impl_chars": 0,
+      "tail": "ERR: ReadTimeout: HTTPConnectionPool(host='127.0.0.1', port=1234): Read timed out. (read timeout=180)"
+    },
+    {
+      "id": "param_object",
+      "passed": false,
+      "wall_s": 110.71,
+      "impl_chars": 436,
+      "tail": "^^^^\nE   TypeError: create_user() takes 1 positional argument but 7 were given\n=========================== short test summary info ===========================\nFAILED test_x.py::test - TypeError: create_user() takes 1 positional argument...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    }
+  ],
+  "passed": 3,
+  "total": 6
+}

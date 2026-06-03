@@ -1,0 +1,47 @@
+{
+  "model": "daily-winner",
+  "task": "task3_nested_sum",
+  "n_runs": 5,
+  "temp": 0.6,
+  "pass_at_n": 5,
+  "unique_impls": 3,
+  "unique_passing_impls": 3,
+  "pass_rate": 1.0,
+  "runs": [
+    {
+      "run": 0,
+      "seed": 42,
+      "passed": true,
+      "impl_hash": "bf0d72c3df",
+      "wall_s": 3.33
+    },
+    {
+      "run": 1,
+      "seed": 43,
+      "passed": true,
+      "impl_hash": "f2b0cfb3f9",
+      "wall_s": 2.42
+    },
+    {
+      "run": 2,
+      "seed": 44,
+      "passed": true,
+      "impl_hash": "f2b0cfb3f9",
+      "wall_s": 2.34
+    },
+    {
+      "run": 3,
+      "seed": 45,
+      "passed": true,
+      "impl_hash": "f2b0cfb3f9",
+      "wall_s": 2.36
+    },
+    {
+      "run": 4,
+      "seed": 46,
+      "passed": true,
+      "impl_hash": "b4b16ecb5f",
+      "wall_s": 3.06
+    }
+  ]
+}

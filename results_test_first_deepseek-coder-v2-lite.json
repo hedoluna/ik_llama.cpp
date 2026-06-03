@@ -1,0 +1,56 @@
+{
+  "model": "deepseek-coder-v2-lite",
+  "cases": [
+    {
+      "id": "stack_pop_empty",
+      "passed": true,
+      "wall_s": 6.02,
+      "impl_chars": 495,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpqxrzl61k\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.03s ==============================\n"
+    },
+    {
+      "id": "lru_cache",
+      "passed": true,
+      "wall_s": 7.06,
+      "impl_chars": 619,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpdzy34atz\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.03s ==============================\n"
+    },
+    {
+      "id": "parse_duration",
+      "passed": false,
+      "wall_s": 6.65,
+      "impl_chars": 685,
+      "tail": "raise ValueError(\"Invalid duration string\")\nE   ValueError: Invalid duration string\n=========================== short test summary info ===========================\nFAILED test_x.py::test_parse_duration - ValueError: Invalid duration string\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    },
+    {
+      "id": "rate_limiter_window",
+      "passed": true,
+      "wall_s": 7.9,
+      "impl_chars": 651,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpp2aogx5o\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 1.08s ==============================\n"
+    },
+    {
+      "id": "topo_sort",
+      "passed": false,
+      "wall_s": 10.23,
+      "impl_chars": 962,
+      "tail": "d, stack)\ntest_x.py:15: in topological_sort_util\n    if not visited[i]:\n           ^^^^^^^^^^\nE   KeyError: 'd'\n=========================== short test summary info ===========================\nFAILED test_x.py::test_toposort - KeyError: 'd'\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.11s ==============================\n"
+    },
+    {
+      "id": "url_parse",
+      "passed": false,
+      "wall_s": 6.7,
+      "impl_chars": 671,
+      "tail": " ValueError: dictionary update sequence element #0 has length 1; 2 is required\n=========================== short test summary info ===========================\nFAILED test_x.py::test_url - ValueError: dictionary update sequence element #...\n!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!\n============================== 1 failed in 0.10s ==============================\n"
+    },
+    {
+      "id": "retry_decorator",
+      "passed": true,
+      "wall_s": 4.06,
+      "impl_chars": 433,
+      "tail": "============================= test session starts =============================\nplatform win32 -- Python 3.13.13, pytest-9.0.3, pluggy-1.6.0\nrootdir: R:\\TEMP\\tmpiykzimam\nplugins: anyio-4.13.0\ncollected 1 item\n\ntest_x.py .                                                              [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    }
+  ],
+  "passed": 4,
+  "total": 7
+}

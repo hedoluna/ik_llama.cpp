@@ -1,0 +1,447 @@
+INFO [                    main] build info | tid="21424" timestamp=1778523390 build=4468 commit="9a26522a"
+INFO [                    main] system info | tid="21424" timestamp=1778523390 n_threads=8 n_threads_batch=-1 total_threads=32 system_info="AVX = 1 | AVX_VNNI = 0 | AVX2 = 1 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | AVX512_BF16 = 0 | FMA = 1 | NEON = 0 | SVE = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 1 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | MATMUL_INT8 = 0 | "
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA RTX A2000, compute capability 8.6, VMM: yes, VRAM: 6137 MiB
+CUDA0: using device CUDA0 - 5126 MiB free
+llama_model_loader: loaded meta data with 40 key-value pairs and 197 tensors from F:\LLM_Models\lm-studio\models\bartowski\Phi-3.5-mini-instruct-GGUF\Phi-3.5-mini-instruct-Q4_K_S.gguf (version GGUF V3 (latest))
+llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
+llama_model_loader: - kv   0:                       general.architecture str              = phi3
+llama_model_loader: - kv   1:                               general.type str              = model
+llama_model_loader: - kv   2:                               general.name str              = Phi 3.5 Mini Instruct
+llama_model_loader: - kv   3:                           general.finetune str              = instruct
+llama_model_loader: - kv   4:                           general.basename str              = Phi-3.5
+llama_model_loader: - kv   5:                         general.size_label str              = mini
+llama_model_loader: - kv   6:                            general.license str              = mit
+llama_model_loader: - kv   7:                       general.license.link str              = https://huggingface.co/microsoft/Phi-...
+llama_model_loader: - kv   8:                               general.tags arr[str,3]       = ["nlp", "code", "text-generation"]
+llama_model_loader: - kv   9:                          general.languages arr[str,1]       = ["multilingual"]
+llama_model_loader: - kv  10:                        phi3.context_length u32              = 131072
+llama_model_loader: - kv  11:  phi3.rope.scaling.original_context_length u32              = 4096
+llama_model_loader: - kv  12:                      phi3.embedding_length u32              = 3072
+llama_model_loader: - kv  13:                   phi3.feed_forward_length u32              = 8192
+llama_model_loader: - kv  14:                           phi3.block_count u32              = 32
+llama_model_loader: - kv  15:                  phi3.attention.head_count u32              = 32
+llama_model_loader: - kv  16:               phi3.attention.head_count_kv u32              = 32
+llama_model_loader: - kv  17:      phi3.attention.layer_norm_rms_epsilon f32              = 0.000010
+llama_model_loader: - kv  18:                  phi3.rope.dimension_count u32              = 96
+llama_model_loader: - kv  19:                        phi3.rope.freq_base f32              = 10000.000000
+llama_model_loader: - kv  20:                          general.file_type u32              = 14
+llama_model_loader: - kv  21:              phi3.attention.sliding_window u32              = 262144
+llama_model_loader: - kv  22:              phi3.rope.scaling.attn_factor f32              = 1.190238
+llama_model_loader: - kv  23:                       tokenizer.ggml.model str              = llama
+llama_model_loader: - kv  24:                         tokenizer.ggml.pre str              = default
+llama_model_loader: - kv  25:                      tokenizer.ggml.tokens arr[str,32064]   = ["<unk>", "<s>", "</s>", "<0x00>", "<...
+llama_model_loader: - kv  26:                      tokenizer.ggml.scores arr[f32,32064]   = [-1000.000000, -1000.000000, -1000.00...
+llama_model_loader: - kv  27:                  tokenizer.ggml.token_type arr[i32,32064]   = [3, 3, 4, 6, 6, 6, 6, 6, 6, 6, 6, 6, ...
+llama_model_loader: - kv  28:                tokenizer.ggml.bos_token_id u32              = 1
+llama_model_loader: - kv  29:                tokenizer.ggml.eos_token_id u32              = 32000
+llama_model_loader: - kv  30:            tokenizer.ggml.unknown_token_id u32              = 0
+llama_model_loader: - kv  31:            tokenizer.ggml.padding_token_id u32              = 32000
+llama_model_loader: - kv  32:               tokenizer.ggml.add_bos_token bool             = false
+llama_model_loader: - kv  33:               tokenizer.ggml.add_eos_token bool             = false
+llama_model_loader: - kv  34:                    tokenizer.chat_template str              = {% for message in messages %}{% if me...
+llama_model_loader: - kv  35:               general.quantization_version u32              = 2
+llama_model_loader: - kv  36:                      quantize.imatrix.file str              = /models_out/Phi-3.5-mini-instruct-GGU...
+llama_model_loader: - kv  37:                   quantize.imatrix.dataset str              = /training_dir/calibration_datav3.txt
+llama_model_loader: - kv  38:             quantize.imatrix.entries_count i32              = 128
+llama_model_loader: - kv  39:              quantize.imatrix.chunks_count i32              = 151
+llama_model_loader: - type  f32:   67 tensors
+llama_model_loader: - type q4_K:  125 tensors
+llama_model_loader: - type q5_K:    4 tensors
+llama_model_loader: - type q6_K:    1 tensors
+load: 0 unused tokens
+load: control-looking token:      2 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+load: printing all EOG tokens:
+load:   - 2 ('</s>')
+load:   - 32000 ('<|endoftext|>')
+load:   - 32007 ('<|end|>')
+load: special tokens cache size = 14
+load: token to piece cache size = 0.1685 MB
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = phi3
+llm_load_print_meta: n_ctx_train      = 131072
+llm_load_print_meta: n_embd           = 3072
+llm_load_print_meta: n_layer          = 32
+llm_load_print_meta: n_head           = 32
+llm_load_print_meta: n_head_kv        = 32
+llm_load_print_meta: n_rot            = 96
+llm_load_print_meta: n_swa            = 262144
+llm_load_print_meta: n_swa_pattern    = 1
+llm_load_print_meta: n_embd_head_k    = 96
+llm_load_print_meta: n_embd_head_v    = 96
+llm_load_print_meta: n_gqa            = 1
+llm_load_print_meta: n_embd_k_gqa     = 3072
+llm_load_print_meta: n_embd_v_gqa     = 3072
+llm_load_print_meta: f_norm_eps       = 0.0e+00
+llm_load_print_meta: f_norm_rms_eps   = 1.0e-05
+llm_load_print_meta: f_clamp_kqv      = 0.0e+00
+llm_load_print_meta: f_max_alibi_bias = 0.0e+00
+llm_load_print_meta: f_logit_scale    = 0.0e+00
+llm_load_print_meta: n_ff             = 8192
+llm_load_print_meta: n_expert         = 0
+llm_load_print_meta: n_expert_used    = 0
+llm_load_print_meta: causal attn      = 1
+llm_load_print_meta: pooling type     = 0
+llm_load_print_meta: rope type        = 2
+llm_load_print_meta: rope scaling     = linear
+llm_load_print_meta: freq_base_train  = 10000.0
+llm_load_print_meta: freq_scale_train = 1
+llm_load_print_meta: n_ctx_orig_yarn  = 4096
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: ssm_n_group      = 0
+llm_load_print_meta: model type       = 3B
+llm_load_print_meta: model ftype      = Q4_K - Small
+llm_load_print_meta: model params     = 3.821 B
+llm_load_print_meta: model size       = 2.038 GiB (4.581 BPW) 
+llm_load_print_meta: repeating layers = 1.911 GiB (4.529 BPW, 3.624 B parameters)
+llm_load_print_meta: general.name     = Phi 3.5 Mini Instruct
+print_info: vocab type            = SPM
+print_info: n_vocab               = 32064
+print_info: n_merges              = 0
+print_info: BOS token             = 1 '<s>'
+print_info: EOS token             = 32000 '<|endoftext|>'
+print_info: EOT token             = 32007 '<|end|>'
+print_info: UNK token             = 0 '<unk>'
+print_info: PAD token             = 32000 '<|endoftext|>'
+print_info: LF token              = 13 '<0x0A>'
+print_info: EOG token             = 2 '</s>'
+print_info: EOG token             = 32000 '<|endoftext|>'
+print_info: EOG token             = 32007 '<|end|>'
+print_info: max token length      = 48
+======================================= HAVE_FANCY_SIMD is NOT defined
+Oops: tensor with strange name rope_factors_long.weight
+Oops: tensor with strange name rope_factors_short.weight
+------------------- Layer sizes:
+Layer  0:     63.77,    192.00,    255.77       50.00  MiB
+Layer  1:     63.77,    192.00,    255.77       50.00  MiB
+Layer  2:     60.77,    192.00,    252.77       50.00  MiB
+Layer  3:     60.77,    192.00,    252.77       50.00  MiB
+Layer  4:     60.77,    192.00,    252.77       50.00  MiB
+Layer  5:     60.77,    192.00,    252.77       50.00  MiB
+Layer  6:     60.77,    192.00,    252.77       50.00  MiB
+Layer  7:     60.77,    192.00,    252.77       50.00  MiB
+Layer  8:     60.77,    192.00,    252.77       50.00  MiB
+Layer  9:     60.77,    192.00,    252.77       50.00  MiB
+Layer 10:     63.77,    192.00,    255.77       50.00  MiB
+Layer 11:     63.77,    192.00,    255.77       50.00  MiB
+Layer 12:     60.77,    192.00,    252.77       50.00  MiB
+Layer 13:     60.77,    192.00,    252.77       50.00  MiB
+Layer 14:     60.77,    192.00,    252.77       50.00  MiB
+Layer 15:     60.77,    192.00,    252.77       50.00  MiB
+Layer 16:     60.77,    192.00,    252.77       50.00  MiB
+Layer 17:     60.77,    192.00,    252.77       50.00  MiB
+Layer 18:     60.77,    192.00,    252.77       50.00  MiB
+Layer 19:     60.77,    192.00,    252.77       50.00  MiB
+Layer 20:     60.77,    192.00,    252.77       50.00  MiB
+Layer 21:     60.77,    192.00,    252.77       50.00  MiB
+Layer 22:     60.77,    192.00,    252.77       50.00  MiB
+Layer 23:     60.77,    192.00,    252.77       50.00  MiB
+Layer 24:     60.77,    192.00,    252.77       50.00  MiB
+Layer 25:     60.77,    192.00,    252.77       50.00  MiB
+Layer 26:     60.77,    192.00,    252.77       50.00  MiB
+Layer 27:     60.77,    192.00,    252.77       50.00  MiB
+Layer 28:     60.77,    192.00,    252.77       50.00  MiB
+Layer 29:     60.77,    192.00,    252.77       50.00  MiB
+Layer 30:     60.77,    192.00,    252.77       50.00  MiB
+Layer 31:     60.77,    192.00,    252.77       50.00  MiB
+Layer 32:     77.06,     12.62,     89.68 MiB (output layer)
+--------------------------------------------------------------------------
+Total   :   1956.75,   6156.62,   8113.38 MiB
+Memory required for model tensors + cache: 8190 MiB
+Memory available on all devices - compute: 4052 MiB
+llm_load_tensors: ggml ctx size =    0.21 MiB
+llm_load_tensors: offloading 32 repeating layers to GPU
+llm_load_tensors: offloading non-repeating layers to GPU
+llm_load_tensors: offloaded 33/33 layers to GPU
+llm_load_tensors:  CUDA_Host buffer size =    52.84 MiB
+llm_load_tensors:      CUDA0 buffer size =  2033.84 MiB
+.....................................................................................~ggml_backend_cuda_context: have 0 graphs
+.
+llama_init_from_model: n_ctx         = 16384
+llama_init_from_model: n_batch       = 2048
+llama_init_from_model: n_ubatch      = 512
+llama_init_from_model: flash_attn    = 1
+llama_init_from_model: attn_max_b    = 0
+llama_init_from_model: fused_moe     = 1
+llama_init_from_model: grouped er    = 0
+llama_init_from_model: fused_up_gate = 1
+llama_init_from_model: fused_mmad    = 1
+llama_init_from_model: rope_cache    = 0
+llama_init_from_model: graph_reuse   = 1
+llama_init_from_model: k_cache_hadam = 0
+llama_init_from_model: v_cache_hadam = 0
+llama_init_from_model: split_mode_graph_scheduling = 0
+llama_init_from_model: reduce_type   = f16
+llama_init_from_model: sched_async   = 0
+llama_init_from_model: ser           = -1, 0
+llama_init_from_model: freq_base     = 10000.0
+llama_init_from_model: freq_scale    = 1
+llama_kv_cache_init:      CUDA0 KV buffer size =  6144.00 MiB
+llama_init_from_model: KV self size  = 6144.00 MiB, K (f16): 3072.00 MiB, V (f16): 3072.00 MiB
+llama_init_from_model:  CUDA_Host  output buffer size =     0.12 MiB
+llama_init_from_model:      CUDA0 compute buffer size =    76.00 MiB
+llama_init_from_model:  CUDA_Host compute buffer size =    22.01 MiB
+llama_init_from_model: graph nodes  = 773
+llama_init_from_model: graph splits = 2
+llama_init_from_model: enabling only_active_experts scheduling
+INFO [                    init] initializing slots | tid="21424" timestamp=1778523416 n_slots=1
+INFO [                    init] new slot | tid="21424" timestamp=1778523416 id_slot=0 n_ctx_slot=16384
+srv          init: Exclude reasoning tokens when selecting slot based on similarity: start: <think>, end: </think>
+use `--reasoning-tokens none` to disable.
+no implementations specified for speculative decoding
+slot         init: id  0 | task -1 | speculative decoding context not initialized
+prompt cache is enabled, size limit: 8192 MiB
+use `--cache-ram 0` to disable the prompt cache
+init: chat template, example_format: '<|system|>
+You are a helpful assistant<|end|>
+<|user|>
+Hello<|end|>
+<|assistant|>
+Hi there<|end|>
+<|user|>
+How are you?<|end|>
+<|assistant|>
+'
+INFO [                    main] model loaded | tid="21424" timestamp=1778523416
+INFO [                    main] HTTP server listening | tid="21424" timestamp=1778523416 hostname="127.0.0.1" port="1234" n_threads_http="31"
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523416
+INFO [      log_server_request] request | tid="36836" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37081 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="32640" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37082 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="9456" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37078 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="33520" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37079 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="28240" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37084 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="11488" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37085 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="5388" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37086 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="36180" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37116 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="17708" timestamp=1778523416 remote_addr="127.0.0.1" remote_port=37117 status=200 method="GET" path="/v1/models" params={}
+======== Prompt cache: cache size: 0, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.00, cache_ram_similarity: 0.50
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523416 id_slot=0 id_task=0
+======== Cache: cache_size = 0, n_past0 =  0, n_past1 =  0, n_past_prompt1 = 0,  n_past2 =  0, n_past_prompt2 =  0
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523416 id_slot=0 id_task=0 p0=0
+slot print_timing: id  0 | task 0 | 
+prompt eval time =     122.61 ms /    47 tokens (    2.61 ms per token,   383.34 tokens per second)
+       eval time =     506.94 ms /    28 tokens (   18.10 ms per token,    55.23 tokens per second)
+      total time =     629.54 ms /    75 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523417 id_slot=0 id_task=0 n_ctx=16384 n_past=74 n_system_tokens=0 n_cache_tokens=74 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523417
+INFO [      log_server_request] request | tid="29536" timestamp=1778523417 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 74, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.46, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 74, total state size = 27.751 MiB
+prompt cache save took 16.66 ms
+ - looking for better prompt, base f_keep = 0.459, sim = 0.305, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 27.751 MiB (limits: 8192.000 MiB, 0 tokens, 21844 est)
+   - prompt 000001E98C37F210:      74 tokens,       0 discarded, checkpoints:  0,    27.751 MiB
+prompt cache load took 0.07 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523417 id_slot=0 id_task=29
+======== Cache: cache_size = 74, n_past0 =  34, n_past1 =  34, n_past_prompt1 = 34,  n_past2 =  34, n_past_prompt2 =  34
+Common part does not match fully
+cache : 
+<|user|> 
+Rispondi solo: ok<|end|> 
+<|assistant|> 
+```python
+print("OK")
+```
+Espressione
+prompt: 
+<|user|> 
+Scrivi una funzione Python chiamata `fizzbuzz(n)` che:
+- Ritorna "F
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523417 id_slot=0 id_task=29 p0=34
+slot print_timing: id  0 | task 29 | 
+prompt eval time =     126.38 ms /   115 tokens (    1.10 ms per token,   909.97 tokens per second)
+       eval time =    1658.53 ms /    89 tokens (   18.64 ms per token,    53.66 tokens per second)
+      total time =    1784.91 ms /   204 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523419 id_slot=0 id_task=29 n_ctx=16384 n_past=237 n_system_tokens=0 n_cache_tokens=237 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523419
+INFO [      log_server_request] request | tid="29536" timestamp=1778523419 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 237, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.19, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 237, total state size = 88.878 MiB
+prompt cache save took 30.05 ms
+ - looking for better prompt, base f_keep = 0.186, sim = 0.212, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.459, sim = 0.269, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 88.878 MiB (limits: 8192.000 MiB, 0 tokens, 21844 est)
+   - prompt 000001E98C37EE50:     237 tokens,       0 discarded, checkpoints:  0,    88.878 MiB
+prompt cache load took 5.50 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523419 id_slot=0 id_task=119
+======== Cache: cache_size = 74, n_past0 =  34, n_past1 =  34, n_past_prompt1 = 34,  n_past2 =  34, n_past_prompt2 =  34
+Common part does not match fully
+cache : 
+<|user|> 
+Rispondi solo: ok<|end|> 
+<|assistant|> 
+```python
+print("OK")
+```
+Espressione
+prompt: 
+<|user|> 
+Scrivi una funzione Python chiamata `find_duplicates(lst)` che:
+- Prende una lista
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523419 id_slot=0 id_task=119 p0=34
+slot print_timing: id  0 | task 119 | 
+prompt eval time =     154.36 ms /   145 tokens (    1.06 ms per token,   939.39 tokens per second)
+       eval time =    4078.60 ms /   191 tokens (   21.35 ms per token,    46.83 tokens per second)
+      total time =    4232.95 ms /   336 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523423 id_slot=0 id_task=119 n_ctx=16384 n_past=369 n_system_tokens=0 n_cache_tokens=369 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523423
+INFO [      log_server_request] request | tid="29536" timestamp=1778523423 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 369, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.12, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 369, total state size = 138.379 MiB
+prompt cache save took 52.80 ms
+ - looking for better prompt, base f_keep = 0.119, sim = 0.142, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.186, sim = 0.180, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 138.379 MiB (limits: 8192.000 MiB, 0 tokens, 21844 est)
+   - prompt 000001E98C37FC90:     369 tokens,       0 discarded, checkpoints:  0,   138.379 MiB
+prompt cache load took 16.80 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523423 id_slot=0 id_task=311
+======== Cache: cache_size = 237, n_past0 =  44, n_past1 =  44, n_past_prompt1 = 44,  n_past2 =  44, n_past_prompt2 =  44
+Common part does not match fully
+cache : Python chiamata `fizzbuzz(n)` che:
+- Ritorna "Fizz" se n è divisibile per 3
+prompt: Python chiamata `sum_nested_values(data, key)` che:
+- Prende un dizionario (possibilmente nested
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523423 id_slot=0 id_task=311 p0=44
+slot print_timing: id  0 | task 311 | 
+prompt eval time =     216.12 ms /   207 tokens (    1.04 ms per token,   957.79 tokens per second)
+       eval time =    2080.10 ms /    92 tokens (   22.61 ms per token,    44.23 tokens per second)
+      total time =    2296.22 ms /   299 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523425 id_slot=0 id_task=311 n_ctx=16384 n_past=342 n_system_tokens=0 n_cache_tokens=342 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523425
+INFO [      log_server_request] request | tid="29536" timestamp=1778523425 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 342, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.13, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 342, total state size = 128.253 MiB
+prompt cache save took 42.28 ms
+ - looking for better prompt, base f_keep = 0.129, sim = 0.161, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 266.632 MiB (limits: 8192.000 MiB, 0 tokens, 21844 est)
+   - prompt 000001E98C37FC90:     369 tokens,       0 discarded, checkpoints:  0,   138.379 MiB
+   - prompt 000001E98C37FE10:     342 tokens,       0 discarded, checkpoints:  0,   128.253 MiB
+prompt cache load took 0.28 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523425 id_slot=0 id_task=404
+======== Cache: cache_size = 342, n_past0 =  44, n_past1 =  44, n_past_prompt1 = 44,  n_past2 =  44, n_past_prompt2 =  44
+Common part does not match fully
+cache : Python chiamata `sum_nested_values(data, key)` che:
+- Prende un dizionario (possibilmente nested
+prompt: Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste ann
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523425 id_slot=0 id_task=404 p0=44
+slot print_timing: id  0 | task 404 | 
+prompt eval time =     165.73 ms /   160 tokens (    1.04 ms per token,   965.41 tokens per second)
+       eval time =    1611.14 ms /    80 tokens (   20.14 ms per token,    49.65 tokens per second)
+      total time =    1776.87 ms /   240 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523427 id_slot=0 id_task=404 n_ctx=16384 n_past=283 n_system_tokens=0 n_cache_tokens=283 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523427
+INFO [      log_server_request] request | tid="29536" timestamp=1778523427 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 283, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.16, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 283, total state size = 106.128 MiB
+prompt cache save took 42.48 ms
+ - looking for better prompt, base f_keep = 0.155, sim = 0.174, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 372.760 MiB (limits: 8192.000 MiB, 0 tokens, 21844 est)
+   - prompt 000001E98C37FC90:     369 tokens,       0 discarded, checkpoints:  0,   138.379 MiB
+   - prompt 000001E98C37FE10:     342 tokens,       0 discarded, checkpoints:  0,   128.253 MiB
+   - prompt 000001E98C380110:     283 tokens,       0 discarded, checkpoints:  0,   106.128 MiB
+prompt cache load took 0.34 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523427 id_slot=0 id_task=485
+======== Cache: cache_size = 283, n_past0 =  44, n_past1 =  44, n_past_prompt1 = 44,  n_past2 =  44, n_past_prompt2 =  44
+Common part does not match fully
+cache : Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste ann
+prompt: Python chiamata `parse_config(text)` che:
+- Prende una stringa con righe nel formato "chiave=
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523427 id_slot=0 id_task=485 p0=44
+slot print_timing: id  0 | task 485 | 
+prompt eval time =     184.46 ms /   179 tokens (    1.03 ms per token,   970.38 tokens per second)
+       eval time =    1297.45 ms /    63 tokens (   20.59 ms per token,    48.56 tokens per second)
+      total time =    1481.91 ms /   242 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523429 id_slot=0 id_task=485 n_ctx=16384 n_past=285 n_system_tokens=0 n_cache_tokens=285 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523429
+INFO [      log_server_request] request | tid="29536" timestamp=1778523429 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 285, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.15, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 285, total state size = 106.878 MiB
+prompt cache save took 36.25 ms
+ - looking for better prompt, base f_keep = 0.154, sim = 0.182, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.155, sim = 0.183, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 373.510 MiB (limits: 8192.000 MiB, 0 tokens, 21844 est)
+   - prompt 000001E98C37FC90:     369 tokens,       0 discarded, checkpoints:  0,   138.379 MiB
+   - prompt 000001E98C37FE10:     342 tokens,       0 discarded, checkpoints:  0,   128.253 MiB
+   - prompt 000001E98C37F690:     285 tokens,       0 discarded, checkpoints:  0,   106.878 MiB
+prompt cache load took 20.03 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523429 id_slot=0 id_task=549
+======== Cache: cache_size = 283, n_past0 =  44, n_past1 =  44, n_past_prompt1 = 44,  n_past2 =  44, n_past_prompt2 =  44
+Common part does not match fully
+cache : Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste ann
+prompt: Python chiamata `merge_intervals(intervals)` che:
+- Prende una lista di intervalli, ognuno rappresentato
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523429 id_slot=0 id_task=549 p0=44
+slot print_timing: id  0 | task 549 | 
+prompt eval time =     160.79 ms /   154 tokens (    1.04 ms per token,   957.77 tokens per second)
+       eval time =    3105.12 ms /   145 tokens (   21.41 ms per token,    46.70 tokens per second)
+      total time =    3265.91 ms /   299 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523432 id_slot=0 id_task=549 n_ctx=16384 n_past=342 n_system_tokens=0 n_cache_tokens=342 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523432
+INFO [      log_server_request] request | tid="29536" timestamp=1778523432 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 342, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.13, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 342, total state size = 128.253 MiB
+prompt cache save took 41.76 ms
+ - looking for better prompt, base f_keep = 0.129, sim = 0.164, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.154, sim = 0.184, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 394.885 MiB (limits: 8192.000 MiB, 0 tokens, 21844 est)
+   - prompt 000001E98C37FC90:     369 tokens,       0 discarded, checkpoints:  0,   138.379 MiB
+   - prompt 000001E98C37FE10:     342 tokens,       0 discarded, checkpoints:  0,   128.253 MiB
+   - prompt 000001E98C37ECD0:     342 tokens,       0 discarded, checkpoints:  0,   128.253 MiB
+prompt cache load took 25.70 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523432 id_slot=0 id_task=695
+======== Cache: cache_size = 285, n_past0 =  44, n_past1 =  44, n_past_prompt1 = 44,  n_past2 =  44, n_past_prompt2 =  44
+Common part does not match fully
+cache : Python chiamata `parse_config(text)` che:
+- Prende una stringa con righe nel formato "chiave=
+prompt: Python chiamata `balanced_brackets(s)` che:
+- Prende una stringa contenente parentesi di tre tipi
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523432 id_slot=0 id_task=695 p0=44
+slot print_timing: id  0 | task 695 | 
+prompt eval time =     158.82 ms /   150 tokens (    1.06 ms per token,   944.48 tokens per second)
+       eval time =    1964.59 ms /    97 tokens (   20.25 ms per token,    49.37 tokens per second)
+      total time =    2123.41 ms /   247 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523434 id_slot=0 id_task=695 n_ctx=16384 n_past=290 n_system_tokens=0 n_cache_tokens=290 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523434
+INFO [      log_server_request] request | tid="29536" timestamp=1778523434 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 290, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.15, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 290, total state size = 108.753 MiB
+prompt cache save took 27.42 ms
+ - looking for better prompt, base f_keep = 0.152, sim = 0.163, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 4 prompts, 503.638 MiB (limits: 8192.000 MiB, 0 tokens, 21844 est)
+   - prompt 000001E98C37FC90:     369 tokens,       0 discarded, checkpoints:  0,   138.379 MiB
+   - prompt 000001E98C37FE10:     342 tokens,       0 discarded, checkpoints:  0,   128.253 MiB
+   - prompt 000001E98C37ECD0:     342 tokens,       0 discarded, checkpoints:  0,   128.253 MiB
+   - prompt 000001E98C37F150:     290 tokens,       0 discarded, checkpoints:  0,   108.753 MiB
+prompt cache load took 0.29 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="21424" timestamp=1778523434 id_slot=0 id_task=793
+======== Cache: cache_size = 290, n_past0 =  44, n_past1 =  44, n_past_prompt1 = 44,  n_past2 =  44, n_past_prompt2 =  44
+Common part does not match fully
+cache : Python chiamata `balanced_brackets(s)` che:
+- Prende una stringa contenente parentesi di tre tipi
+prompt: Python chiamata `deep_merge(dict1, dict2)` che:
+- Prende due dizionari e li unisce
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="21424" timestamp=1778523434 id_slot=0 id_task=793 p0=44
+slot print_timing: id  0 | task 793 | 
+prompt eval time =     212.55 ms /   206 tokens (    1.03 ms per token,   969.17 tokens per second)
+       eval time =    2948.05 ms /   128 tokens (   23.03 ms per token,    43.42 tokens per second)
+      total time =    3160.60 ms /   334 tokens
+INFO [           release_slots] slot released | tid="21424" timestamp=1778523437 id_slot=0 id_task=793 n_ctx=16384 n_past=377 n_system_tokens=0 n_cache_tokens=377 truncated=false
+INFO [              slots_idle] all slots are idle | tid="21424" timestamp=1778523437
+INFO [      log_server_request] request | tid="29536" timestamp=1778523437 remote_addr="127.0.0.1" remote_port=37119 status=200 method="POST" path="/v1/chat/completions" params={}

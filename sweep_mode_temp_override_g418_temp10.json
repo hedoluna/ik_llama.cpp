@@ -1,0 +1,71 @@
+{
+  "args": {
+    "temp": 1.0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0,
+    "label": "g418_temp10"
+  },
+  "rows": [
+    {
+      "task": "task1_fizzbuzz",
+      "verdict": "PASS",
+      "passed": 8,
+      "of": 8,
+      "dt_s": 2.17
+    },
+    {
+      "task": "task2_duplicates",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 1.61
+    },
+    {
+      "task": "task3_nested_sum",
+      "verdict": "FAIL",
+      "passed": 4,
+      "of": 5,
+      "dt_s": 3.8
+    },
+    {
+      "task": "task4_flatten",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 1.39
+    },
+    {
+      "task": "task5_parse_config",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 1.44
+    },
+    {
+      "task": "task6_merge_intervals",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 2.86
+    },
+    {
+      "task": "task7_balanced_brackets",
+      "verdict": "PASS",
+      "passed": 8,
+      "of": 8,
+      "dt_s": 3.29
+    },
+    {
+      "task": "task8_deep_merge",
+      "verdict": "PASS",
+      "passed": 6,
+      "of": 6,
+      "dt_s": 2.82
+    }
+  ],
+  "total_pass": 50,
+  "total": 51,
+  "wall_s": 19.39
+}

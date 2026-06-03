@@ -1,0 +1,241 @@
+{
+  "model": "llamantino-anita",
+  "base_url": "http://127.0.0.1:18080",
+  "temperature": 0.1,
+  "total": 20,
+  "pass": 9,
+  "score_pct": 45.0,
+  "wall_total_s": 31.9,
+  "per_category": {
+    "art_specifico": {
+      "pass": 0,
+      "total": 7,
+      "pct": 0.0
+    },
+    "brocardo": {
+      "pass": 1,
+      "total": 4,
+      "pct": 25.0
+    },
+    "citation": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "classificazione": {
+      "pass": 3,
+      "total": 3,
+      "pct": 100.0
+    },
+    "applicazione": {
+      "pass": 2,
+      "total": 3,
+      "pct": 66.7
+    }
+  },
+  "results": [
+    {
+      "id": "A1_art2043CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(colpa|dolo|ingiusto|risarc)"
+      ],
+      "wall_s": 3.26,
+      "response": "L'articolo 2043 del Codice Civile italiano stabilisce che la responsabilità del debitore principale si estende anche ai terzi obbligati, salvo che non vi sia stata la loro separata accettazione del debito o la loro dichiarata inesistenza del vincolo obbligatorio. Inoltre, il debitore principale è tenuto a pagare il credito anche se il terzo obbligato lo ha pagato, salvo che non vi sia stata la sua rinuncia al credito.",
+      "ok": true
+    },
+    {
+      "id": "A2_art595CP",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\bdiffamaz(ione|atorio)"
+      ],
+      "wall_s": 2.31,
+      "response": "L'articolo 595 del Codice Penale italiano punisce la calunnia, definita come l'azione di diffamare una persona affermando fatti falsi, con l'intento di lesioni o di disonore, ovvero con la speranza di causare lesioni o di disonore. La pena prevista è la reclusione da sei mesi a tre anni.",
+      "ok": true
+    },
+    {
+      "id": "A3_art416bisCP",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(associazion\\w+\\s+(di\\s+tipo\\s+)?mafios|mafia|intimidaz)"
+      ],
+      "wall_s": 2.62,
+      "response": "L'articolo 416 bis del Codice Penale italiano disciplina la \"Costretta partecipazione a reato\" e punita con la reclusione da 2 a 6 anni, se la partecipazione è stata ottenuta con minaccia, violenza o coazione, e con la reclusione da 1 a 3 anni, se la partecipazione è stata ottenuta con altri mezzi di coercizione.",
+      "ok": true
+    },
+    {
+      "id": "A4_art2697CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\bonere\\s+(della\\s+)?prova"
+      ],
+      "wall_s": 2.75,
+      "response": "L'articolo 2697 del Codice Civile stabilisce che in generale, in caso di controversia, la prova spetta a chi afferma il fatto, salvo che la legge stabilisca un'eccezione. Ciò significa che il ricorrente ha l'onere di provare i fatti costitutivi del suo diritto, mentre il resistente, se lo vuole, può limitarsi a negare e non a provare il contrario.",
+      "ok": true
+    },
+    {
+      "id": "A5_art18StatLav",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(licenziamento|reintegra|tutel\\w+)"
+      ],
+      "wall_s": 2.57,
+      "response": "L'articolo 18 del Statuto dei Lavoratori prevede il diritto all'intervallo di riposo e al riposo giornaliero, stabilendo che il lavoratore ha diritto a un intervallo di almeno mezz'ora e a un riposo di almeno 11 ore consecutive entro i 24 ore, salvo che per i lavoratori notturni (art. 18, comma 1 e 2).",
+      "ok": true
+    },
+    {
+      "id": "A6_art32Cost",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(salute|diritto\\s+(fondamentale\\s+)?alla\\s+salute)"
+      ],
+      "wall_s": 2.61,
+      "response": "L'articolo 32 della Costituzione italiana tutela la libertà di associazione, riconoscendo il diritto di ogni cittadino di associarsi con altri per finalità politiche, sindacali, culturali, sportive o di altro genere (art. 32, comma 1). Tale libertà è garantita, inoltre, senza limiti di numero o di categoria (art. 32, comma 2).",
+      "ok": true
+    },
+    {
+      "id": "A7_art1322CC",
+      "category": "art_specifico",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(autonomia|libert[aà])\\b.*\\b(contr|negozi)",
+        "missing required pattern: (?i)\\b(meritevol|tipic|atipic)"
+      ],
+      "wall_s": 3.13,
+      "response": "L'articolo 1322 del Codice Civile italiano stabilisce che \"le clausole contrattuali devono essere valutate in base al loro contenuto e non in base al titolo che le qualificano\" e che \"le disposizioni dei contratti non possono essere viziose per il fatto che siano state concordate in modo ingiusto o lessicalmente impreciso\". Ciò significa che la validità di una clausola contrattuale è determinata dal suo contenuto effettivo, non dalla sua denominazione.",
+      "ok": true
+    },
+    {
+      "id": "B1_nemo_iudex",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(nessuno|non).{0,40}\\b(giudic|giudice).{0,80}\\b(propri[oa]|sua|causa)"
+      ],
+      "wall_s": 2.62,
+      "response": "Il brocardo \"nemo iudex in causa sua\" (nessun giudice in causa sua) significa che un giudice non può giudicare un caso in cui abbia un interesse personale, diretto e sostanziale, in conformità all'art. 99 c.p.c. (Codice di Procedura Civile). Ciò garantisce l'imparzialità e l'indipendenza del giudice.",
+      "ok": true
+    },
+    {
+      "id": "B2_ne_bis_in_idem",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(non|nessuno)\\b.{0,60}(due\\s+volte|nuovamente|secondo|reiterat)"
+      ],
+      "wall_s": 1.87,
+      "response": "Nel diritto penale italiano, il principio \"ne bis in idem\" (art. 649 c.p.p.) esprime l'irrogabilità di due pene o di due procedimenti penali per lo stesso fatto, con la stessa qualità di reato e con la stessa persona imputata.",
+      "ok": true
+    },
+    {
+      "id": "B3_in_dubio_pro_reo",
+      "category": "brocardo",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 2.27,
+      "response": "\"Nel dubbio, in favore dell'imputato\" (in dubio pro reo) è un principio fondamentale del processo penale italiano, che impone al giudice di optare per l'assoluzione se, alla luce delle prove, non vi sia la certezza della colpevolezza dell'imputato (Art. 530, III c.p.).",
+      "ok": true
+    },
+    {
+      "id": "B4_pacta_sunt_servanda",
+      "category": "brocardo",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: (?i)\\b(patti|accord|contratt)"
+      ],
+      "wall_s": 1.65,
+      "response": "Il principio \"pacta sunt servanda\" (art. 1375 c.c.) esprime l'obbligo di osservare le pattuicole e le convenzioni stabilite tra le parti, in quanto vincolanti e vincolanti per entrambe le parti.",
+      "ok": true
+    },
+    {
+      "id": "C1_citation_2043",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.4,
+      "response": "art. 2043 C.c.",
+      "ok": true
+    },
+    {
+      "id": "C2_citation_416bis",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.32,
+      "response": "art. 416-bis cp.",
+      "ok": true
+    },
+    {
+      "id": "C3_citation_constitution",
+      "category": "citation",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.3,
+      "response": "art. 32 Cost.",
+      "ok": true
+    },
+    {
+      "id": "D1_class_civile",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.23,
+      "response": "civile",
+      "ok": true
+    },
+    {
+      "id": "D2_class_penale",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.13,
+      "response": "penale",
+      "ok": true
+    },
+    {
+      "id": "D3_class_lavoro",
+      "category": "classificazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.19,
+      "response": "lavoro",
+      "ok": true
+    },
+    {
+      "id": "E1_prescrizione_ordinaria",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 1.11,
+      "response": "Secondo l'art. 2946, comma 1, del Codice Civile italiano, il termine ordinario di prescrizione dei diritti è di dieci anni.",
+      "ok": true
+    },
+    {
+      "id": "E2_prescrizione_risarcimento_extracontrattuale",
+      "category": "applicazione",
+      "pass": false,
+      "reasons": [
+        "missing required pattern: \\b5\\s*anni\\b|\\bcinque\\s+anni\\b"
+      ],
+      "wall_s": 1.35,
+      "response": "In base all'art. 2947, comma 1, del Codice Civile, il termine di prescrizione per il diritto al risarcimento del danno extracontrattuale è di 3 anni.",
+      "ok": true
+    },
+    {
+      "id": "E3_appello_civile_termine",
+      "category": "applicazione",
+      "pass": true,
+      "reasons": [],
+      "wall_s": 0.18,
+      "response": "30 giorni.",
+      "ok": true
+    }
+  ]
+}
