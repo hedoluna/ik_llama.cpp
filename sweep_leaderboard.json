@@ -1,0 +1,327 @@
+[
+  {
+    "label": "Qwen3-0.6B-Q8_0",
+    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen3-0.6B-GGUF\\Qwen3-0.6B-Q8_0.gguf",
+    "runtime": "ik",
+    "load_time": 12.63,
+    "bench_time": 59.11,
+    "passed": 30,
+    "total": 38,
+    "passed_of_51": 30,
+    "total_time_s": 58.37,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 3.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 6.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 5,
+        "time_s": 11.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 3.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 5,
+        "total": 6,
+        "time_s": 4.9
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 3,
+        "total": 6,
+        "time_s": 7.0
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 11.8
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 2,
+        "total": 6,
+        "time_s": 9.9
+      }
+    ],
+    "status": "ok",
+    "tier": 0,
+    "timestamp": "2026-06-03 23:12:13"
+  },
+  {
+    "label": "deepseek-coder-1.3B-kexer-Q4_K_M",
+    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\deepseek-coder-1.3B-kexer-GGUF\\deepseek-coder-1.3B-kexer-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 10.69,
+    "bench_time": 134.55,
+    "passed": 5,
+    "total": 13,
+    "passed_of_51": 5,
+    "total_time_s": 120.31,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 14.3
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 14.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 14.9
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 15.2
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 15.6
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 15.2
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 15.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 15.4
+      }
+    ],
+    "status": "ok",
+    "tier": 1,
+    "timestamp": "2026-06-03 23:14:42"
+  },
+  {
+    "label": "stable-code-instruct-3B-Q6_K",
+    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\bartowski\\stable-code-instruct-3b-GGUF\\stable-code-instruct-3b-Q6_K.gguf",
+    "runtime": "ik",
+    "load_time": 29.62,
+    "bench_time": 47.51,
+    "passed": 8,
+    "total": 8,
+    "passed_of_51": 8,
+    "total_time_s": 46.58,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 7.2
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 4.0
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 5,
+        "time_s": 5.9
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 4.2
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 6.8
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 5.7
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 4.5
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 8.4
+      }
+    ],
+    "status": "ok",
+    "tier": 3,
+    "timestamp": "2026-06-03 23:16:02"
+  },
+  {
+    "label": "Qwen3.5-0.8B-Q8_0",
+    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen3.5-0.8B-GGUF\\Qwen3.5-0.8B-Q8_0.gguf",
+    "runtime": "ik",
+    "load_time": 12.62,
+    "bench_time": 143.1,
+    "passed": 0,
+    "total": 0,
+    "passed_of_51": 0,
+    "total_time_s": 127.59,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 15.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 15.9
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 5,
+        "time_s": 16.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 16.0
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 16.0
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 16.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 15.9
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 15.8
+      }
+    ],
+    "status": "ok",
+    "tier": 4,
+    "timestamp": "2026-06-03 23:18:41"
+  },
+  {
+    "label": "Qwen2.5-Coder-0.5B-Q4_K_M",
+    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen2.5-Coder-0.5B-Instruct-GGUF\\Qwen2.5-Coder-0.5B-Instruct-Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 0.84,
+    "bench_time": 6.49,
+    "passed": 32,
+    "total": 45,
+    "passed_of_51": 32,
+    "total_time_s": 6.05,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 1.0
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 5,
+        "total": 6,
+        "time_s": 0.3
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 2,
+        "total": 6,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 6,
+        "total": 8,
+        "time_s": 1.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 1.2
+      }
+    ],
+    "status": "ok",
+    "tier": 0,
+    "timestamp": "2026-06-03 23:19:00"
+  }
+]
