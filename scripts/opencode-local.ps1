@@ -25,13 +25,12 @@ if (-not $NoStart) {
 
 New-Item -ItemType Directory -Path $stateDir -Force | Out-Null
 
+# In 'auto' the request goes to the router shim (model 'llama-swap/auto'), which
+# picks the best model per prompt - for both interactive and non-interactive runs.
 $effectiveMode = $Mode
-if ($Mode -eq "auto" -and $Run) {
-  $effectiveMode = "fast"
-}
 
 $modelByMode = @{
-  auto = "llama-swap/qwen36-iq3"
+  auto = "llama-swap/auto"
   fast = "llama-swap/qwen-small"
   coding = "llama-swap/qwen36-iq3"
   review = "llama-swap/qwen36-iq3"
@@ -44,7 +43,7 @@ $modelByMode = @{
 }
 
 $agentByMode = @{
-  auto = "coding"
+  auto = "auto"
   fast = "fast"
   coding = "coding"
   review = "review"
