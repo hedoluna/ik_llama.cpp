@@ -7,7 +7,11 @@ param(
   [switch]$Tui,
   [switch]$Restart,
   [switch]$NoStart,
-  [int]$WebPort = 4097
+  [switch]$Stop,
+  [int]$WebPort = 4097,
+  [int]$RouterPort = 8291,
+  [int]$SwapPort = 8292,
+  [int]$ClassifierPort = 9998
 )
 
 $ErrorActionPreference = "Stop"
@@ -17,6 +21,27 @@ $tuiBrokenMarker = Join-Path $stateDir "opentui-broken.marker"
 $startScript = "D:\repos\ik_llama.cpp\scripts\start-opencode-local.ps1"
 if (-not (Test-Path -LiteralPath $startScript)) {
   throw "start-opencode-local.ps1 not found at $startScript"
+}
+
+if ($Stop) {
+  Write-Host "Stopping OpenCode local stack (router $RouterPort / swap $SwapPort / classifier $ClassifierPort)..."
+  # Kill ONLY our processes: llama-swap + llama-server under this repo + the
+  # router owning RouterPort. NEVER blanket-kill node/python/claude.
+  $repo = "D:\repos\ik_llama.cpp"
+  Get-Process llama-swap -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+  Get-Process llama-server -ErrorAction SilentlyContinue |
+    Where-Object { $_.Path -and $_.Path.StartsWith($repo, [System.StringComparison]::OrdinalIgnoreCase) } |
+    Stop-Process -Force -ErrorAction SilentlyContinue
+  $routerPid = (Get-NetTCPConnection -State Listen -LocalPort $RouterPort -ErrorAction SilentlyContinue).OwningProcess
+  if ($routerPid) { Stop-Process -Id $routerPid -Force -ErrorAction SilentlyContinue }
+  Start-Sleep -Milliseconds 600
+  $stillUp = Get-NetTCPConnection -State Listen -LocalPort $RouterPort, $SwapPort, $ClassifierPort -ErrorAction SilentlyContinue
+  if ($stillUp) {
+    Write-Warning "Some listeners still up: $(($stillUp.LocalPort | Sort-Object -Unique) -join ', ')"
+    exit 1
+  }
+  Write-Host "OpenCode local stack stopped."
+  exit 0
 }
 
 if (-not $NoStart) {

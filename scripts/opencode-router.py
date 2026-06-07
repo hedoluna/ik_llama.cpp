@@ -31,8 +31,8 @@ from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 # ===================== CONFIG (tune AFTER real data) =====================
-LISTEN_HOST, LISTEN_PORT = "127.0.0.1", 9291
-SWAP_BASE = "http://127.0.0.1:9292"
+LISTEN_HOST, LISTEN_PORT = "127.0.0.1", 8291
+SWAP_BASE = "http://127.0.0.1:8292"
 CLASSIFIER_BASE = "http://127.0.0.1:9998"
 CLASSIFIER_MODEL = "qwen-small"
 LOG_DIR = r"D:\repos\ik_llama.cpp\bench-opencode-local"

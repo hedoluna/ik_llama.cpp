@@ -1,12 +1,12 @@
 param(
-  [string]$Listen = "127.0.0.1:9292",
+  [string]$Listen = "127.0.0.1:8292",
   [string]$Config = "D:\repos\ik_llama.cpp\llama-swap.config.yaml",
   [switch]$Restart,
   [switch]$Background,
   [int]$TimeoutSeconds = 30,
   [switch]$WithRouter = $true,
   [int]$ClassifierPort = 9998,
-  [int]$RouterPort = 9291,
+  [int]$RouterPort = 8291,
   [int]$ClassifierThreads = 8,
   [string]$SmallGguf = "D:\repos\ik_llama.cpp\models\Qwen_Qwen3.5-4B-Q4_K_M.gguf",
   [string]$LlamaServer = "D:\repos\ik_llama.cpp\build\bin\Release\llama-server.exe",
@@ -158,7 +158,7 @@ if ($Restart) {
   Start-Sleep -Seconds 1
 }
 
-# --- Ensure llama-swap (9292) is up ---------------------------------------
+# --- Ensure llama-swap (8292) is up ---------------------------------------
 $swapUp = $false
 if (Test-LocalPort -HostName $hostName -Port $port) {
   if (Test-LlamaSwapEndpoint -Listen $Listen) {
@@ -195,7 +195,7 @@ if (-not $swapUp) {
   Write-Host "llama-swap started on http://$Listen"
 }
 
-# --- Ensure classifier (9998) + router (9291) -----------------------------
+# --- Ensure classifier (9998) + router (8291) -----------------------------
 if ($WithRouter) {
   Start-Classifier -ListenHost $hostName -Port $ClassifierPort -Gguf $SmallGguf `
     -Exe $LlamaServer -Threads $ClassifierThreads -LogDir $logDir -TimeoutSeconds $TimeoutSeconds
