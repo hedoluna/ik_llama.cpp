@@ -1,5 +1,5 @@
 param(
-  [ValidateSet("auto", "fast", "coding", "review", "italian", "max", "quality", "qwen-coder-next", "granite", "oss")]
+  [ValidateSet("auto", "fast", "coding", "review", "italian", "max", "quality", "quality-iq3", "qwen36-mtp", "qwopus9", "mellum", "mellum-thinking", "qwen-coder-next", "granite", "oss")]
   [string]$Mode = "auto",
   [string]$Project = (Get-Location).Path,
   [string]$Run,
@@ -37,6 +37,11 @@ $modelByMode = @{
   italian = "llama-swap/cerbero-ita"
   max = "llama-swap/qwen-opus-q8"
   quality = "llama-swap/qwen36-opus-iq4"
+  "quality-iq3" = "llama-swap/qwen36-opus-iq3"
+  "qwen36-mtp" = "llama-swap/qwen36-mtp"
+  qwopus9 = "llama-swap/qwopus9-mtp"
+  mellum = "llama-swap/mellum2-instruct"
+  "mellum-thinking" = "llama-swap/mellum2-thinking"
   "qwen-coder-next" = "llama-swap/qwen-coder"
   granite = "llama-swap/granite-fast"
   oss = "llama-swap/gpt-oss-20b"
@@ -50,6 +55,11 @@ $agentByMode = @{
   italian = "italian"
   max = "max"
   quality = "quality"
+  "quality-iq3" = $null
+  "qwen36-mtp" = $null
+  qwopus9 = $null
+  mellum = $null
+  "mellum-thinking" = $null
   "qwen-coder-next" = "qwen-coder-next"
   granite = $null
   oss = $null
