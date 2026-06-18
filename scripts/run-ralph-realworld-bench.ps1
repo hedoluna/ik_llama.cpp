@@ -11,7 +11,7 @@ param(
   [switch]$Restart,
   [switch]$NoStart,
   [switch]$StopAfter,
-  [int]$SmokeMaxTokens = 32
+  [int]$SmokeMaxTokens = 160
 )
 
 $ErrorActionPreference = "Stop"

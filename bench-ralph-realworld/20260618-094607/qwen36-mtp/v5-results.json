@@ -1,0 +1,99 @@
+{
+  "endpoint": "http://127.0.0.1:8292/v1/chat/completions",
+  "results": [
+    {
+      "id": "react_query_use_invoices_with_offline",
+      "category": "react_query",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 23.31
+    },
+    {
+      "id": "drizzle_idempotent_migration",
+      "category": "drizzle_migration",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 10.5
+    },
+    {
+      "id": "tanstack_optimistic_update",
+      "category": "tanstack_mutation",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 16.8
+    },
+    {
+      "id": "ts_discriminated_union_state",
+      "category": "ts_discriminated_union",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 15.63
+    },
+    {
+      "id": "js_async_iterator_paginated",
+      "category": "js_async_iterator",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 17.1
+    },
+    {
+      "id": "zod_refine_transform_iban",
+      "category": "zod_refine_transform",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 10.76
+    },
+    {
+      "id": "ts_template_literal_types",
+      "category": "ts_template_literal",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 15.21
+    },
+    {
+      "id": "express_rate_limit_middleware",
+      "category": "express_ratelimit",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 17.76
+    }
+  ],
+  "summary": {
+    "total_passed": 8,
+    "total": 8,
+    "by_category": {
+      "react_query": [
+        1,
+        1
+      ],
+      "drizzle_migration": [
+        1,
+        1
+      ],
+      "tanstack_mutation": [
+        1,
+        1
+      ],
+      "ts_discriminated_union": [
+        1,
+        1
+      ],
+      "js_async_iterator": [
+        1,
+        1
+      ],
+      "zod_refine_transform": [
+        1,
+        1
+      ],
+      "ts_template_literal": [
+        1,
+        1
+      ],
+      "express_ratelimit": [
+        1,
+        1
+      ]
+    }
+  }
+}

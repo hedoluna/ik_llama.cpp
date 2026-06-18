@@ -1,0 +1,110 @@
+{
+  "endpoint": "http://127.0.0.1:8292/v1/chat/completions",
+  "results": [
+    {
+      "id": "gilded_rose_refactor_with_conjured",
+      "category": "refactor",
+      "pass": false,
+      "msg": "missing classes",
+      "elapsed_s": 118.67
+    },
+    {
+      "id": "drizzle_invoices_filter_active",
+      "category": "drizzle_multitenant",
+      "pass": false,
+      "msg": "missing import",
+      "elapsed_s": 46.46
+    },
+    {
+      "id": "apperror_create_customer_service",
+      "category": "apperror_pattern",
+      "pass": false,
+      "msg": "missing import",
+      "elapsed_s": 39.38
+    },
+    {
+      "id": "advisory_lock_invoice_number",
+      "category": "advisory_lock",
+      "pass": false,
+      "msg": "missing import",
+      "elapsed_s": 48.02
+    },
+    {
+      "id": "monetary_invoice_total",
+      "category": "monetary_rounding",
+      "pass": false,
+      "msg": "missing function",
+      "elapsed_s": 48.72
+    },
+    {
+      "id": "crypto_aes_gcm_iban",
+      "category": "crypto_aes_gcm",
+      "pass": false,
+      "msg": "runtime:   File \"R:\\TEMP\\tmpx9fkt_qi.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n",
+      "elapsed_s": 53.67
+    },
+    {
+      "id": "state_machine_invoice",
+      "category": "state_machine",
+      "pass": false,
+      "msg": "no InvoiceState enum",
+      "elapsed_s": 69.28
+    },
+    {
+      "id": "piva_validator_italian",
+      "category": "piva_validator",
+      "pass": false,
+      "msg": "missing function",
+      "elapsed_s": 61.45
+    },
+    {
+      "id": "vitest4_integration_test_pattern",
+      "category": "vitest4_integration",
+      "pass": false,
+      "msg": "missing import",
+      "elapsed_s": 62.43
+    }
+  ],
+  "summary": {
+    "total_passed": 0,
+    "total": 9,
+    "by_category": {
+      "refactor": [
+        0,
+        1
+      ],
+      "drizzle_multitenant": [
+        0,
+        1
+      ],
+      "apperror_pattern": [
+        0,
+        1
+      ],
+      "advisory_lock": [
+        0,
+        1
+      ],
+      "monetary_rounding": [
+        0,
+        1
+      ],
+      "crypto_aes_gcm": [
+        0,
+        1
+      ],
+      "state_machine": [
+        0,
+        1
+      ],
+      "piva_validator": [
+        0,
+        1
+      ],
+      "vitest4_integration": [
+        0,
+        1
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "timestamp": "20260618-100206",
+  "bench_url": "http://127.0.0.1:8292/v1/chat/completions",
+  "suite": "both",
+  "ralph_dir": "D:\\repos\\ralph\\local_ralph",
+  "python": "C:\\WINDOWS\\py.exe",
+  "models": [
+    {
+      "model": "qwopus9-mtp",
+      "smoke": {
+        "ok": true,
+        "elapsed_s": 6.95,
+        "content": "OK",
+        "reasoning_chars": 194,
+        "usage": {
+          "completion_tokens": 45,
+          "prompt_tokens": 16,
+          "total_tokens": 61,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      "suites": [
+        {
+          "suite": "v4",
+          "exit_code": 0
+        },
+        {
+          "suite": "v5",
+          "exit_code": 0
+        }
+      ]
+    }
+  ]
+}
