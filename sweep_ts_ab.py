@@ -5,6 +5,7 @@ Each model: start server, run vanilla+recipe variants of each script, parse scor
 """
 from __future__ import annotations
 import json
+import argparse
 import re
 import subprocess
 import sys
@@ -72,7 +73,7 @@ def start_server_custom(label: str, path: Path, runtime: str, extra: list[str]) 
 
 def parse_score(output: str) -> dict:
     m = re.search(r"score:\s*(\d+)/(\d+)", output)
-    t = re.search(r"elapsed:\s*([\d.]+)s", output)
+    t = re.search(r"(?:elapsed|latency):\s*([\d.]+)s", output)
     miss = re.search(r"missing:\s*\[(.*?)\]", output)
     return {
         "score": int(m.group(1)) if m else None,
@@ -127,21 +128,49 @@ def run_one_model(label: str, path: Path, runtime: str, extra: list[str]) -> dic
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--model", action="append", default=[], help="Run only this model label. Repeatable.")
+    ap.add_argument("--task", action="append", default=[], help="Run only this task prefix, e.g. asynciter. Repeatable.")
+    args = ap.parse_args()
+
     results = []
     if LEADERBOARD.exists():
         results = json.loads(LEADERBOARD.read_text())
 
     all_models = MODELS + [DAILY_WINNER]
+    if args.model:
+        wanted = set(args.model)
+        all_models = [m for m in all_models if m[0] in wanted]
+    global TS_SCRIPTS
+    if args.task:
+        wanted_tasks = set(args.task)
+        TS_SCRIPTS = [s for s in TS_SCRIPTS if s[0] in wanted_tasks]
+
     for entry in all_models:
         label, path, rt, extra = entry
         print(f"\n=== TS A/B: {label} ===")
         r = run_one_model(label, path, rt, extra)
         r["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
-        results.append(r)
+        idx = next((i for i, x in enumerate(results) if x.get("label") == label), -1)
+        if idx >= 0:
+            if args.task and results[idx].get("status") == "ok" and r.get("status") == "ok":
+                old_tasks = {x.get("task"): x for x in results[idx].get("per_task", [])}
+                for task_row in r.get("per_task", []):
+                    old_tasks[task_row.get("task")] = task_row
+                results[idx]["per_task"] = list(old_tasks.values())
+                results[idx]["total_score"] = sum(x.get("score") or 0 for x in results[idx]["per_task"])
+                results[idx]["total_max"] = sum(x.get("total") or 0 for x in results[idx]["per_task"])
+                results[idx]["total_time_s"] = round(sum(x.get("elapsed") or 0 for x in results[idx]["per_task"]), 2)
+                results[idx]["load_time"] = r.get("load_time", results[idx].get("load_time"))
+                results[idx]["timestamp"] = r["timestamp"]
+            else:
+                results[idx] = r
+        else:
+            results.append(r)
         LEADERBOARD.write_text(json.dumps(results, indent=2))
 
     print("\n=== SUMMARY ===")
-    for r in results[-len(all_models):]:
+    for r in [x for x in results if not args.model or x.get("label") in set(args.model)]:
         print(f"  {r['label']:42s} -> {r.get('total_score','?')}/{r.get('total_max','?')}  time={r.get('total_time_s','?')}s  status={r.get('status')}")
 
 

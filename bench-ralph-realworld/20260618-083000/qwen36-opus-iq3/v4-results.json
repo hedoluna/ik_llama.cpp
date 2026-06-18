@@ -1,0 +1,110 @@
+{
+  "endpoint": "http://127.0.0.1:8292/v1/chat/completions",
+  "results": [
+    {
+      "id": "gilded_rose_refactor_with_conjured",
+      "category": "refactor",
+      "pass": false,
+      "msg": "4 mismatches: +5 Dexterity Vest(0,20): got [-1, 19], want [-1, 18]; Aged Brie(-1,49): got [-2, 51], want [-2, 50]; Backstage passes to a TAF(0,20): got [-1, 20], want [-1, 0]",
+      "elapsed_s": 35.32
+    },
+    {
+      "id": "drizzle_invoices_filter_active",
+      "category": "drizzle_multitenant",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 15.25
+    },
+    {
+      "id": "apperror_create_customer_service",
+      "category": "apperror_pattern",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 15.37
+    },
+    {
+      "id": "advisory_lock_invoice_number",
+      "category": "advisory_lock",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 16.45
+    },
+    {
+      "id": "monetary_invoice_total",
+      "category": "monetary_rounding",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 21.9
+    },
+    {
+      "id": "crypto_aes_gcm_iban",
+      "category": "crypto_aes_gcm",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 38.69
+    },
+    {
+      "id": "state_machine_invoice",
+      "category": "state_machine",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 27.94
+    },
+    {
+      "id": "piva_validator_italian",
+      "category": "piva_validator",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 24.45
+    },
+    {
+      "id": "vitest4_integration_test_pattern",
+      "category": "vitest4_integration",
+      "pass": true,
+      "msg": "ok",
+      "elapsed_s": 36.72
+    }
+  ],
+  "summary": {
+    "total_passed": 8,
+    "total": 9,
+    "by_category": {
+      "refactor": [
+        0,
+        1
+      ],
+      "drizzle_multitenant": [
+        1,
+        1
+      ],
+      "apperror_pattern": [
+        1,
+        1
+      ],
+      "advisory_lock": [
+        1,
+        1
+      ],
+      "monetary_rounding": [
+        1,
+        1
+      ],
+      "crypto_aes_gcm": [
+        1,
+        1
+      ],
+      "state_machine": [
+        1,
+        1
+      ],
+      "piva_validator": [
+        1,
+        1
+      ],
+      "vitest4_integration": [
+        1,
+        1
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "elapsed_s": 7.21,
+  "content": "OK",
+  "reasoning_chars": 0,
+  "usage": {
+    "completion_tokens": 2,
+    "prompt_tokens": 18,
+    "total_tokens": 20,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    }
+  }
+}
