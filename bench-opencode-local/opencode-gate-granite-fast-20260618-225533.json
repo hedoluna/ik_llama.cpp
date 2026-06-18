@@ -1,0 +1,94 @@
+{
+  "model": "llama-swap/granite-fast",
+  "project": "D:\\repos\\ik_llama.cpp",
+  "status": "fail",
+  "passed": 0,
+  "total": 3,
+  "timestamp": "2026-06-18 22:56:12",
+  "results": [
+    {
+      "id": "explain-bug",
+      "pass": false,
+      "verdict": "FAIL_CHECKS",
+      "exit_code": 0,
+      "elapsed_s": 15.02,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "reasoning": 0,
+        "cache": {
+          "write": 0,
+          "read": 0
+        }
+      },
+      "output_chars": 0,
+      "output": "",
+      "checks": {
+        "mentions_cache": false,
+        "mentions_user_name": false,
+        "mentions_store_user": false
+      },
+      "missing": [
+        "mentions_cache",
+        "mentions_user_name",
+        "mentions_store_user"
+      ]
+    },
+    {
+      "id": "write-patch",
+      "pass": false,
+      "verdict": "FAIL_CHECKS",
+      "exit_code": 0,
+      "elapsed_s": 11.98,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "reasoning": 0,
+        "cache": {
+          "write": 0,
+          "read": 0
+        }
+      },
+      "output_chars": 0,
+      "output": "",
+      "checks": {
+        "mentions_nullish_type": false,
+        "guards_input": false,
+        "keeps_slug_ops": false
+      },
+      "missing": [
+        "mentions_nullish_type",
+        "guards_input",
+        "keeps_slug_ops"
+      ]
+    },
+    {
+      "id": "review",
+      "pass": false,
+      "verdict": "FAIL_CHECKS",
+      "exit_code": 0,
+      "elapsed_s": 11.86,
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "reasoning": 0,
+        "cache": {
+          "write": 0,
+          "read": 0
+        }
+      },
+      "output_chars": 0,
+      "output": "",
+      "checks": {
+        "mentions_cstr": false,
+        "mentions_dangling_or_lifetime": false,
+        "mentions_string_copy": false
+      },
+      "missing": [
+        "mentions_cstr",
+        "mentions_dangling_or_lifetime",
+        "mentions_string_copy"
+      ]
+    }
+  ]
+}

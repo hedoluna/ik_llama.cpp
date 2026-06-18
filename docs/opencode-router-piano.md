@@ -5,12 +5,12 @@ Stato: **IMPLEMENTATO** (v1). Scegliere il modello giusto per ogni prompt senza 
 ## Architettura
 
 ```
-OpenCode -> shim 127.0.0.1:9291 -> llama-swap :9292 -> llama-server :9999 (uno per volta, GPU)
+OpenCode -> shim 127.0.0.1:8291 -> llama-swap :8292 -> llama-server :9999 (uno per volta, GPU)
               |
               +-> classifier llama-server :9998 (qwen-small, -ngl 0, CPU, mai scaricato, fuori da llama-swap)
 ```
 
-- **Shim** (`scripts/opencode-router.py`, Python stdlib): proxy OpenAI-compatible. Se `model` = `auto` (o `llama-swap/auto`) sceglie un modello concreto e inoltra a llama-swap; ogni altro id passa invariato (bypass = override manuale). Streaming SSE passthrough. Log decisioni in `bench-opencode-local/router-*.jsonl`.
+- **Shim** (`scripts/opencode-router.py`, Python stdlib): proxy OpenAI-compatible. Se `model` = `auto` (o `llama-swap/auto`) sceglie un modello concreto e inoltra a llama-swap; ogni altro id passa invariato (bypass = override manuale). Streaming SSE passthrough di default. Log decisioni in `bench-opencode-local/router-*.jsonl`.
 - **Classifier**: istanza qwen-small dedicata su :9998, CPU (`-ngl 0`), sempre accesa, FUORI da llama-swap cosi L2 non sfratta mai il modello GPU principale. Sfrutta i 128 GB di RAM (zero VRAM).
 - **Plugin** OpenCode (`~/.config/opencode/plugin/router-hints.ts`): solo stub best-effort (gli hook stabili non danno header per-turno). Il sistema funziona senza.
 
@@ -50,10 +50,12 @@ ocl -Run "..."        # non interattivo, anch'esso instradato dal router
 
 Override inline dentro il prompt: iniziare con `!max`, `!quality`, `!coder`, `!ita`, `!small`, ecc.
 
+Diagnostica streaming: `OPENCODE_ROUTER_NONSTREAM_MODELS=granite-fast` forza solo i modelli indicati a chiamare llama-swap in non-streaming e riconfezionare la risposta come SSE. Usarlo solo per debug di output vuoto/token 0: sblocca il parsing OpenCode in alcuni casi, ma puo aumentare molto la latenza e non e default operativo.
+
 ## Verifica
 
-- Unit offline (no rete): `py scripts/test-router-routing.py` (14 casi: gate L1, override, L2 mockato, sticky).
-- Integrazione: `Invoke-RestMethod http://127.0.0.1:9291/v1/models` deve mostrare `auto`; POST `model=auto` sui 4 archetipi e controllare l'ultimo `bench-opencode-local/router-*.jsonl`.
+- Unit offline (no rete): `py scripts/test-router-routing.py` (gate L1, override, L2 mockato, sticky, adapter SSE diagnostico).
+- Integrazione: `Invoke-RestMethod http://127.0.0.1:8291/v1/models` deve mostrare `auto`; POST `model=auto` sui 4 archetipi e controllare l'ultimo `bench-opencode-local/router-*.jsonl`.
 - Latenza warm/cold swap e run 20-40 prompt reali: da eseguire nel tempo, log nel bench dir.
 
 ## Stato dettagliato

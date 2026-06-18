@@ -45,7 +45,7 @@ CHARS_PER_TOKEN = 4
 MODEL_CTX = {
     "qwen-small": 32768, "qwen36-iq3": 32768, "qwen-coder": 32768,
     "qwen36-opus-iq4": 24576, "qwen36-q5": 24576, "qwen-opus-q8": 24576,
-    "cerbero-ita": 16384, "granite-fast": 16384, "gpt-oss-20b": 24576,
+    "cerbero-ita": 16384, "granite-fast": 32768, "gpt-oss-20b": 24576,
 }
 CTX_SAFETY_FRAC = 0.75
 TRIVIAL_TOKENS = 60
@@ -85,6 +85,11 @@ CLASSIFY_TIMEOUT_S = 4.0
 # relaunches a llama-server, ~20-40s) PLUS the entire generation. A dead PORT
 # still fails instantly (connection refused), so a generous value is safe locally.
 UPSTREAM_TIMEOUT = 900.0
+FORCE_NONSTREAM_STREAM_MODELS = {
+    item.strip()
+    for item in os.environ.get("OPENCODE_ROUTER_NONSTREAM_MODELS", "").split(",")
+    if item.strip()
+}
 
 BIG_MODELS = {
     "qwen36-iq3", "qwen36-opus-iq4", "qwen36-q5", "qwen-opus-q8",
@@ -106,6 +111,42 @@ def _safe_int(value):
         return int(value)
     except (TypeError, ValueError):
         return 0
+
+
+def _sse_data(payload):
+    return ("data: %s\n\n" % json.dumps(payload, separators=(",", ":"))).encode()
+
+
+def chat_completion_to_sse_chunks(response, fallback_model):
+    """Convert a non-streaming chat completion into OpenAI-style SSE chunks."""
+    choice = (response.get("choices") or [{}])[0]
+    message = choice.get("message") or {}
+    content = message.get("content") or ""
+    finish_reason = choice.get("finish_reason") or "stop"
+    created = response.get("created") or int(time.time())
+    model = response.get("model") or fallback_model
+    chunk_id = response.get("id") or ("chatcmpl-router-%d" % created)
+    base = {
+        "id": chunk_id,
+        "object": "chat.completion.chunk",
+        "created": created,
+        "model": model,
+    }
+    chunks = []
+    start = dict(base)
+    start["choices"] = [{"index": 0, "delta": {"role": "assistant"}, "finish_reason": None}]
+    chunks.append(_sse_data(start))
+    if content:
+        text = dict(base)
+        text["choices"] = [{"index": 0, "delta": {"content": content}, "finish_reason": None}]
+        chunks.append(_sse_data(text))
+    final = dict(base)
+    final["choices"] = [{"index": 0, "delta": {}, "finish_reason": finish_reason}]
+    if response.get("usage"):
+        final["usage"] = response["usage"]
+    chunks.append(_sse_data(final))
+    chunks.append(b"data: [DONE]\n\n")
+    return chunks
 
 
 def _join_parts(content):
@@ -404,7 +445,7 @@ class Handler(BaseHTTPRequestHandler):
             self._emit_log({"session": None}, body, chosen, "bypass",
                            "explicit", "-", 0.0, t0)
 
-        self._forward(path, json.dumps(body).encode(), bool(body.get("stream")))
+        self._forward(path, json.dumps(body).encode(), bool(body.get("stream")), body.get("model"))
 
     def _emit_log(self, hint, body, chosen, tier, reason, gate, cms, t0):
         log_decision({
@@ -419,7 +460,10 @@ class Handler(BaseHTTPRequestHandler):
             "total_ms": round((time.time() - t0) * 1000.0, 1),
         })
 
-    def _forward(self, path, raw, stream):
+    def _forward(self, path, raw, stream, model=None):
+        if stream and model in FORCE_NONSTREAM_STREAM_MODELS:
+            return self._forward_nonstream_as_sse(path, raw, model)
+
         req = urllib.request.Request(
             SWAP_BASE + path, data=raw, method="POST",
             headers={
@@ -477,6 +521,54 @@ class Handler(BaseHTTPRequestHandler):
                 self.wfile.write(d)
             except Exception:
                 pass
+
+    def _forward_nonstream_as_sse(self, path, raw, model):
+        try:
+            body = json.loads(raw)
+            body["stream"] = False
+            upstream_raw = json.dumps(body).encode()
+        except Exception as e:
+            return self._send_json(400, {"error": "bad json: %s" % e})
+
+        req = urllib.request.Request(
+            SWAP_BASE + path, data=upstream_raw, method="POST",
+            headers={
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            })
+        try:
+            resp = urllib.request.urlopen(req, timeout=UPSTREAM_TIMEOUT)
+            data = resp.read()
+            resp.close()
+            completion = json.loads(data)
+        except urllib.error.HTTPError as e:
+            b = e.read()
+            self.send_response(e.code)
+            self.send_header("Content-Type", e.headers.get("Content-Type", "application/json"))
+            self.send_header("Content-Length", str(len(b)))
+            self.end_headers()
+            try:
+                self.wfile.write(b)
+            except Exception:
+                pass
+            return
+        except Exception as e:
+            return self._send_json(502, {"error": "upstream nonstream: %s" % e})
+
+        self.send_response(200)
+        self.send_header("Content-Type", "text/event-stream")
+        self.send_header("Cache-Control", "no-cache")
+        self.send_header("Connection", "keep-alive")
+        self.send_header("Transfer-Encoding", "chunked")
+        self.end_headers()
+        try:
+            for chunk in chat_completion_to_sse_chunks(completion, model):
+                self.wfile.write(b"%X\r\n" % len(chunk) + chunk + b"\r\n")
+                self.wfile.flush()
+            self.wfile.write(b"0\r\n\r\n")
+            self.wfile.flush()
+        except (BrokenPipeError, ConnectionResetError):
+            pass
 
 
 def main():

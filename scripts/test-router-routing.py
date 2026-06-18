@@ -109,5 +109,22 @@ R.classify = lambda u: ("NORMAL", 1.0)
 m3, _, _, _, _ = R.route(body_of(ambiguous), {"session": "T"})
 check("sticky-other-session", m3, "qwen36-iq3")
 
+print("== nonstream SSE adapter ==")
+completion = {
+    "id": "chatcmpl-test",
+    "created": 123,
+    "model": "granite-fast",
+    "choices": [{
+        "message": {"role": "assistant", "content": "ciao"},
+        "finish_reason": "stop",
+    }],
+    "usage": {"prompt_tokens": 2, "completion_tokens": 1, "total_tokens": 3},
+}
+chunks = [c.decode("utf-8") for c in R.chat_completion_to_sse_chunks(completion, "fallback")]
+check("sse-start-role", '"role":"assistant"' in chunks[0], True)
+check("sse-text", '"content":"ciao"' in "".join(chunks), True)
+check("sse-usage", '"total_tokens":3' in "".join(chunks), True)
+check("sse-done", chunks[-1], "data: [DONE]\n\n")
+
 print("\n%d passed, %d failed" % (PASS, FAIL))
 sys.exit(1 if FAIL else 0)

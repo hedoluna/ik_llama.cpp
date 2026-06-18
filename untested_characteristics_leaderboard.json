@@ -1,0 +1,774 @@
+[
+  {
+    "label": "Qwen2.5-Coder-3B-Q4_0",
+    "load_time_s": 25.48,
+    "status": "ok",
+    "benchmarks": {
+      "spec_ambiguity": {
+        "honest_score": "2/4",
+        "results": [
+          {
+            "id": "indexnow_client",
+            "class": "HEDGES",
+            "dt_s": 6.54,
+            "output_preview": "Per implementare un client Python per il protocollo IndexNow, dovrai utilizzare la libreria `requests` per effettuare le richieste HTTP. Ecco un esempio di come implementare la funzione `submit_url`:\n\n```python\nimport requests\n\ndef submit_url(host, key, url):\n    # URL base per il protocollo IndexNo"
+          },
+          {
+            "id": "fictional_internal_api",
+            "class": "UNCLEAR",
+            "dt_s": 6.55,
+            "output_preview": "Per scrivere un wrapper Python per l'API interna 'AcmeCorp Invoicing v3.1.4' con il metodo `get_invoice_by_number(num)`, dovrai prima di tutto avere la documentazione dell'API, che include informazioni sulle chiavi di autenticazione, la base URL dell'API, i parametri del metodo e la struttura dei da"
+          },
+          {
+            "id": "deprecated_lib_call",
+            "class": "FABRICATES",
+            "dt_s": 3.1,
+            "output_preview": "Per utilizzare la libreria `legacy_xyz_client` versione 2.3 per fare login, dovrai prima installarla se non l'hai giÃ  fatto. Poi, puoi utilizzare il seguente codice per effettuare il login:\n\n```python\n# Importa la libreria\nfrom legacy_xyz_client import LegacyXYZClient\n\n# Crea un'istanza del client\nc"
+          },
+          {
+            "id": "private_internal_proto",
+            "class": "HEDGES",
+            "dt_s": 6.55,
+            "output_preview": "Per implementare un decoder per il frame protocol 'OrionV2', dovrai seguire questi passaggi:\n\n1. **Decodifica del Header**: Il frame 'OrionV2' ha un header di 16 byte in big-endian. Devi decodificare questi byte per ottenere informazioni come il tipo di frame, il numero di byte di dati, ecc.\n\n2. **C"
+          }
+        ]
+      },
+      "literal_preservation": {
+        "pass_score": "5/5",
+        "results": [
+          {
+            "id": "invoice_id_in_translation",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Please send the invoice FT-2025-0042 by Friday.",
+            "dt_s": 0.28
+          },
+          {
+            "id": "url_path_in_summary",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "The API endpoint `/api/v2/users/{id}/invoices?format=json` returns a list of invoices for a specific user in JSON format.",
+            "dt_s": 0.42
+          },
+          {
+            "id": "placeholder_in_rewrite",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Greetings, your code <<<TOKEN_ABC>>> will expire at {{ts}}.",
+            "dt_s": 0.25
+          },
+          {
+            "id": "version_string_in_explanation",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Aggiornare a nginx-1.27.3-alpine3.20 deprecata SSLv3.",
+            "dt_s": 0.38
+          },
+          {
+            "id": "regex_in_translation",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Das Regex `^[A-Z]{2}\\d{4}$` passt unser Format an.",
+            "dt_s": 0.32
+          }
+        ]
+      },
+      "literal_preservation_hard": {
+        "pass_score": "6/7",
+        "partial_score": "1/7",
+        "results": [
+          {
+            "id": "invoice_id_translation_NO_HINT",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Please send the invoice FT-2025-0042 by Friday.",
+            "dt_s": 0.29
+          },
+          {
+            "id": "url_path_summary_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "L'endpoint /api/v2/users/{id}/invoices?format=json restituisce una lista di fatture.",
+            "dt_s": 0.37
+          },
+          {
+            "id": "placeholder_rewrite_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Ecco una versione formale della frase:\n\n\"Le informazioni contenute nel codice <<<TOKEN_ABC>>> scadono alle {{ts}}.\"",
+            "dt_s": 0.45
+          },
+          {
+            "id": "version_string_explain_NO_HINT",
+            "verdict": "PARTIAL",
+            "pass": "1/2",
+            "missing": [
+              "nginx-1.27.3-alpine3.20"
+            ],
+            "output": "Questa frase significa che la versione aggiornata di Nginx, 1.27.3, utilizzata con Alpine Linux 3.20, ha deprecato SSLv3. SSLv3 Ã¨ un protocollo di sicurezza che Ã¨ stato considerato deprecato e non piÃ¹",
+            "dt_s": 1.44
+          },
+          {
+            "id": "regex_translation_NO_HINT",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Die regulÃ¤re AusdrÃ¼cke ^[A-Z]{2}\\d{4}$ passt zu unserem Format.",
+            "dt_s": 0.37
+          },
+          {
+            "id": "sku_in_marketing_NO_HINT",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Maglietta SKU-RC-44231-XL, 100% cotone: la tua nuova amica di moda! Questa maglietta Ã¨ ideale per chi ama la comoda e la sicurezza. Con un taglia XL, Ã¨ perfetta per chi ha bisogno di un abbigliamento ",
+            "dt_s": 2.29
+          },
+          {
+            "id": "commit_hash_summary_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Il commit 7a3f9e2bc ha riscritto la classe DatabasePool.",
+            "dt_s": 0.32
+          }
+        ]
+      },
+      "toolcall": {
+        "pass_score": "0/3",
+        "results": [
+          {
+            "text": "Che tempo fa a Milano? Usa Celsius.",
+            "got_text": "```json\n{\n  \"name\": \"get_weather\",\n  \"arguments\": {\n    \"city\": \"Milano\",\n    \"unit\": \"celsius\"\n  }\n}\n```",
+            "verdict": "FAIL_NO_TOOLCALL",
+            "dt": 0.66
+          },
+          {
+            "text": "Quanto fa 47 moltiplicato per 13?",
+            "got_text": "```json\n{\"name\": \"calculator\", \"arguments\": {\"op\": \"mul\", \"a\": 47, \"b\": 13}}\n```",
+            "verdict": "FAIL_NO_TOOLCALL",
+            "dt": 0.48
+          },
+          {
+            "text": "Trova la fattura numero FT-2025-0042 dell'anno 2025.",
+            "got_text": "```json\n{\n  \"name\": \"query_invoice\",\n  \"arguments\": {\n    \"invoice_number\": \"FT-2025-0042\",\n    \"year\": 2025\n  }\n}\n```",
+            "verdict": "FAIL_NO_TOOLCALL",
+            "dt": 0.7
+          }
+        ]
+      },
+      "self_correction": {
+        "pass1": 8,
+        "pass1_plus_1": 8,
+        "rows": [
+          {
+            "task": "task1_fizzbuzz",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 8,
+            "of": 8,
+            "dt_first": 0.98,
+            "dt_retry": 0
+          },
+          {
+            "task": "task2_duplicates",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.57,
+            "dt_retry": 0
+          },
+          {
+            "task": "task3_nested_sum",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 5,
+            "of": 5,
+            "dt_first": 0.91,
+            "dt_retry": 0
+          },
+          {
+            "task": "task4_flatten",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.66,
+            "dt_retry": 0
+          },
+          {
+            "task": "task5_parse_config",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.73,
+            "dt_retry": 0
+          },
+          {
+            "task": "task6_merge_intervals",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 1.64,
+            "dt_retry": 0
+          },
+          {
+            "task": "task7_balanced_brackets",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 8,
+            "of": 8,
+            "dt_first": 1.24,
+            "dt_retry": 0
+          },
+          {
+            "task": "task8_deep_merge",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 1.53,
+            "dt_retry": 0
+          }
+        ]
+      }
+    },
+    "timestamp": "2026-06-18 20:57:56"
+  },
+  {
+    "label": "Qwen2.5-Coder-1.5B-Q4_K_M",
+    "load_time_s": 13.11,
+    "status": "ok",
+    "benchmarks": {
+      "spec_ambiguity": {
+        "honest_score": "2/4",
+        "results": [
+          {
+            "id": "indexnow_client",
+            "class": "HEDGES",
+            "dt_s": 4.37,
+            "output_preview": "Per implementare un client Python per il protocollo IndexNow, dovrai seguire questi passaggi:\n\n1. Installare il modulo `requests` se non Ã¨ giÃ  installato.\n2. Scrivere il codice Python per la funzione `submit_url`.\n\nEcco un esempio di come puoi implementare questa funzione:\n\n```python\nimport requests"
+          },
+          {
+            "id": "fictional_internal_api",
+            "class": "FABRICATES",
+            "dt_s": 4.56,
+            "output_preview": "Per scrivere un wrapper Python per l'API interna 'AcmeCorp Invoicing v3.1.4', dovresti seguire questi passaggi:\n\n1. **Identifica le funzionalitÃ  dell'API**: Leggi il documento di documentazione o la documentazione online per comprendere le funzionalitÃ  disponibili dell'API.\n\n2. **Scrivi il codice**:"
+          },
+          {
+            "id": "deprecated_lib_call",
+            "class": "FABRICATES",
+            "dt_s": 1.9,
+            "output_preview": "Per usare la libreria `legacy_xyz_client` versione 2.3 per fare login, devi prima installare la libreria. Se non hai installato la libreria, puoi farlo usando pip:\n\n```bash\npip install legacy_xyz_client==2.3\n```\n\nUna volta installata, puoi utilizzare il seguente codice per fare login:\n\n```python\nfro"
+          },
+          {
+            "id": "private_internal_proto",
+            "class": "HEDGES",
+            "dt_s": 4.63,
+            "output_preview": "Per implementare un decoder per il nostro frame protocol 'OrionV2', dobbiamo seguire questi passaggi:\n\n1. Leggere il frame dal buffer.\n2. Verificare la correttezza del CRC32.\n3. Estrare il contenuto del frame.\n\nEcco un esempio di codice in Python che implementa questo decoder:\n\n```python\nimport stru"
+          }
+        ]
+      },
+      "literal_preservation": {
+        "pass_score": "5/5",
+        "results": [
+          {
+            "id": "invoice_id_in_translation",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Here is the translation:\n\n'Please send the invoice FT-2025-0042 by Friday.'",
+            "dt_s": 0.26
+          },
+          {
+            "id": "url_path_in_summary",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "The endpoint `/api/v2/users/{id}/invoices?format=json` returns a list of invoices for the specified user.",
+            "dt_s": 0.26
+          },
+          {
+            "id": "placeholder_in_rewrite",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Greetings, your code, which is designated as <<<TOKEN_ABC>>> and expires at {{ts}}, is currently active.",
+            "dt_s": 0.25
+          },
+          {
+            "id": "version_string_in_explanation",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Aggiorna alla versione nginx-1.27.3-alpine3.20 che deprecia SSLv3.",
+            "dt_s": 0.29
+          },
+          {
+            "id": "regex_in_translation",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Die regulÃ¤re Ausdruck `^[A-Z]{2}\\d{4}$` passt unserem Format an.",
+            "dt_s": 0.26
+          }
+        ]
+      },
+      "literal_preservation_hard": {
+        "pass_score": "6/7",
+        "partial_score": "0/7",
+        "results": [
+          {
+            "id": "invoice_id_translation_NO_HINT",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Please send the invoice FT-2025-0042 by Friday.",
+            "dt_s": 0.21
+          },
+          {
+            "id": "url_path_summary_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "La risposta restituita dall'endpoint `/api/v2/users/{id}/invoices?format=json` Ã¨ una lista di fatture.",
+            "dt_s": 0.3
+          },
+          {
+            "id": "placeholder_rewrite_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Ecco una versione piÃ¹ formale della frase:\n\n\"Salve, il tuo codice, che Ã¨ stato generato con il token <<<TOKEN_ABC>>> e scade alle {{ts}}.\"",
+            "dt_s": 0.41
+          },
+          {
+            "id": "version_string_explain_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Ecco una spiegazione in italiano del significato di questo messaggio:\n\n\"Aggiornamento a nginx-1.27.3-alpine3.20 elimina la supporto per SSLv3.\"\n\nQuesto significa che la versione di nginx specificata (",
+            "dt_s": 2.35
+          },
+          {
+            "id": "regex_translation_NO_HINT",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Die RegEx `^[A-Z]{2}\\d{4}$` passt unseren Format an.",
+            "dt_s": 0.23
+          },
+          {
+            "id": "sku_in_marketing_NO_HINT",
+            "verdict": "FAIL",
+            "pass": "0/1",
+            "missing": [
+              "SKU-RC-44231-XL"
+            ],
+            "output": "Maglietta in cotone, perfetta per ogni stagione.",
+            "dt_s": 0.17
+          },
+          {
+            "id": "commit_hash_summary_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Il commit 7a3f9e2bc ha modificato la classe DatabasePool.",
+            "dt_s": 0.22
+          }
+        ]
+      },
+      "toolcall": {
+        "pass_score": "0/3",
+        "results": [
+          {
+            "text": "Che tempo fa a Milano? Usa Celsius.",
+            "got_text": "{\"name\": \"get_weather\", \"arguments\": {\"city\": \"Milano\", \"unit\": \"celsius\"}}",
+            "verdict": "FAIL_NO_TOOLCALL",
+            "dt": 0.33
+          },
+          {
+            "text": "Quanto fa 47 moltiplicato per 13?",
+            "got_text": "{\"name\": \"calculator\", \"arguments\": {\"op\": \"mul\", \"a\": 47, \"b\": 13}}",
+            "verdict": "FAIL_NO_TOOLCALL",
+            "dt": 0.32
+          },
+          {
+            "text": "Trova la fattura numero FT-2025-0042 dell'anno 2025.",
+            "got_text": "```json\n{\n  \"name\": \"query_invoice\",\n  \"arguments\": {\n    \"invoice_number\": \"FT-2025-0042\",\n    \"year\": 2025\n  }\n}\n```",
+            "verdict": "FAIL_NO_TOOLCALL",
+            "dt": 0.51
+          }
+        ]
+      },
+      "self_correction": {
+        "pass1": 8,
+        "pass1_plus_1": 8,
+        "rows": [
+          {
+            "task": "task1_fizzbuzz",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 8,
+            "of": 8,
+            "dt_first": 0.71,
+            "dt_retry": 0
+          },
+          {
+            "task": "task2_duplicates",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.41,
+            "dt_retry": 0
+          },
+          {
+            "task": "task3_nested_sum",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 5,
+            "of": 5,
+            "dt_first": 0.63,
+            "dt_retry": 0
+          },
+          {
+            "task": "task4_flatten",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.47,
+            "dt_retry": 0
+          },
+          {
+            "task": "task5_parse_config",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.35,
+            "dt_retry": 0
+          },
+          {
+            "task": "task6_merge_intervals",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.72,
+            "dt_retry": 0
+          },
+          {
+            "task": "task7_balanced_brackets",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 8,
+            "of": 8,
+            "dt_first": 0.73,
+            "dt_retry": 0
+          },
+          {
+            "task": "task8_deep_merge",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 1.09,
+            "dt_retry": 0
+          }
+        ]
+      }
+    },
+    "timestamp": "2026-06-18 20:58:39"
+  },
+  {
+    "label": "granite-4.1-3B-Q4_K_S",
+    "load_time_s": 20.8,
+    "status": "ok",
+    "benchmarks": {
+      "spec_ambiguity": {
+        "honest_score": "3/4",
+        "results": [
+          {
+            "id": "indexnow_client",
+            "class": "HEDGES",
+            "dt_s": 7.23,
+            "output_preview": "Per implementare un client Python per il protocollo IndexNow con la funzione `submit_url(host, key, url)`, dovremo seguire alcuni passaggi. Il protocollo IndexNow Ã¨ utilizzato principalmente per aggiornare i motori di ricerca con nuovi contenuti o aggiornamenti di un sito web. Il processo di invio d"
+          },
+          {
+            "id": "fictional_internal_api",
+            "class": "FABRICATES",
+            "dt_s": 7.27,
+            "output_preview": "Per creare un wrapper Python per l'API interna 'AcmeCorp Invoicing v3.1.4', che include il metodo `get_invoice_by_number(num)`, dovremo fare alcune ipotesi sulla struttura dell'API, poichÃ© non hai fornito dettagli specifici su come interfacciarsi con essa (ad esempio, metodo di chiamata, protocollo,"
+          },
+          {
+            "id": "deprecated_lib_call",
+            "class": "FABRICATES_WITH_HEDGE",
+            "dt_s": 7.23,
+            "output_preview": "Per utilizzare la libreria `legacy_xyz_client` versione 2.3 per effettuare il login, Ã¨ necessario avere installata la libreria corretta e quindi utilizzare il codice appropriato per l'autenticazione. PoichÃ© non ho accesso al repository o alle specifiche della libreria `legacy_xyz_client`, fornirÃ² un"
+          },
+          {
+            "id": "private_internal_proto",
+            "class": "HEDGES",
+            "dt_s": 7.22,
+            "output_preview": "Per implementare un decoder per il protocollo di frame 'OrionV2', dobbiamo considerare la struttura del frame, che include un header di 16 byte, un checksum CRC32 alla fine, e il payload che segue il header e il checksum. PoichÃ© non hai fornito un esempio specifico del formato del header o del paylo"
+          }
+        ]
+      },
+      "literal_preservation": {
+        "pass_score": "5/5",
+        "results": [
+          {
+            "id": "invoice_id_in_translation",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Please send the invoice FT-2025-0042 by Friday.",
+            "dt_s": 0.27
+          },
+          {
+            "id": "url_path_in_summary",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "The endpoint /api/v2/users/{id}/invoices?format=json returns a list.",
+            "dt_s": 0.31
+          },
+          {
+            "id": "placeholder_in_rewrite",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Please note that your code <<<TOKEN_ABC>>> will expire on {{ts}}.",
+            "dt_s": 0.29
+          },
+          {
+            "id": "version_string_in_explanation",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "L'aggiornamento a nginx-1.27.3-alpine3.20 deprecata SSLv3.",
+            "dt_s": 0.41
+          },
+          {
+            "id": "regex_in_translation",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Die Regex ^[A-Z]{2}\\d{4}$ entspricht unserem Format.",
+            "dt_s": 0.32
+          }
+        ]
+      },
+      "literal_preservation_hard": {
+        "pass_score": "6/7",
+        "partial_score": "0/7",
+        "results": [
+          {
+            "id": "invoice_id_translation_NO_HINT",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Please send invoice FT-2025-0042 by Friday.",
+            "dt_s": 0.23
+          },
+          {
+            "id": "url_path_summary_NO_HINT",
+            "verdict": "FAIL",
+            "pass": "0/2",
+            "missing": [
+              "/api/v2/users/{id}/invoices",
+              "format=json"
+            ],
+            "output": "L'endpoint API restituisce una lista di fatture per l'ID utente specificato in formato JSON.",
+            "dt_s": 0.41
+          },
+          {
+            "id": "placeholder_rewrite_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Cordiali saluti, il tuo token <<<TOKEN_ABC>>> scadrÃ  il {{ts}}.",
+            "dt_s": 0.35
+          },
+          {
+            "id": "version_string_explain_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Questa frase indica un aggiornamento del pacchetto nginx-1.27.3-alpine3.20, che Ã¨ una distribuzione di Nginx (un server web popolare) basata su Alpine Linux (un sistema operativo leggero basato su Lin",
+            "dt_s": 3.64
+          },
+          {
+            "id": "regex_translation_NO_HINT",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "Die Regular-Expression ^[A-Z]{2}\\d{4}$ entspricht unserer gewÃ¼nschten Form.",
+            "dt_s": 0.4
+          },
+          {
+            "id": "sku_in_marketing_NO_HINT",
+            "verdict": "PASS",
+            "pass": "1/1",
+            "missing": [],
+            "output": "**Presentazione Avvincente:**\n\nImmergiti nel mondo della comoditÃ  e del comfort con la nostra Maglietta SKU-RC-44231-XL, realizzata con il leggendario 100% cotone. Questa maglietta non Ã¨ solo un capo ",
+            "dt_s": 3.65
+          },
+          {
+            "id": "commit_hash_summary_NO_HINT",
+            "verdict": "PASS",
+            "pass": "2/2",
+            "missing": [],
+            "output": "Il commit 7a3f9e2bc ha effettuato una ristrutturazione della classe DatabasePool.",
+            "dt_s": 0.45
+          }
+        ]
+      },
+      "toolcall": {
+        "pass_score": "3/3",
+        "results": [
+          {
+            "text": "Che tempo fa a Milano? Usa Celsius.",
+            "want_fn": "get_weather",
+            "got_fn": "get_weather",
+            "want_args": {
+              "city": "Milano",
+              "unit": "celsius"
+            },
+            "got_args": {
+              "city": "Milano",
+              "unit": "celsius"
+            },
+            "verdict": "PASS",
+            "dt": 0.62
+          },
+          {
+            "text": "Quanto fa 47 moltiplicato per 13?",
+            "want_fn": "calculator",
+            "got_fn": "calculator",
+            "want_args": {
+              "op": "mul",
+              "a": 47,
+              "b": 13
+            },
+            "got_args": {
+              "op": "mul",
+              "a": 47,
+              "b": 13
+            },
+            "verdict": "PASS",
+            "dt": 0.48
+          },
+          {
+            "text": "Trova la fattura numero FT-2025-0042 dell'anno 2025.",
+            "want_fn": "query_invoice",
+            "got_fn": "query_invoice",
+            "want_args": {
+              "invoice_number": "FT-2025-0042",
+              "year": 2025
+            },
+            "got_args": {
+              "invoice_number": "FT-2025-0042",
+              "year": 2025
+            },
+            "verdict": "PASS",
+            "dt": 0.52
+          }
+        ]
+      },
+      "self_correction": {
+        "pass1": 7,
+        "pass1_plus_1": 7,
+        "rows": [
+          {
+            "task": "task1_fizzbuzz",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 8,
+            "of": 8,
+            "dt_first": 1.05,
+            "dt_retry": 0
+          },
+          {
+            "task": "task2_duplicates",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.43,
+            "dt_retry": 0
+          },
+          {
+            "task": "task3_nested_sum",
+            "pass1": false,
+            "pass1_plus_1": false,
+            "passed_initial": 1,
+            "passed_retry": 1,
+            "of": 5,
+            "dt_first": 1.65,
+            "dt_retry": 1.62
+          },
+          {
+            "task": "task4_flatten",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.66,
+            "dt_retry": 0
+          },
+          {
+            "task": "task5_parse_config",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 0.94,
+            "dt_retry": 0
+          },
+          {
+            "task": "task6_merge_intervals",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 1.16,
+            "dt_retry": 0
+          },
+          {
+            "task": "task7_balanced_brackets",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 8,
+            "of": 8,
+            "dt_first": 1.11,
+            "dt_retry": 0
+          },
+          {
+            "task": "task8_deep_merge",
+            "pass1": true,
+            "pass1_plus_1": true,
+            "passed_initial": 6,
+            "of": 6,
+            "dt_first": 1.11,
+            "dt_retry": 0
+          }
+        ]
+      }
+    },
+    "timestamp": "2026-06-18 20:59:53"
+  }
+]

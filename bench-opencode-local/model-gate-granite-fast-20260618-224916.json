@@ -1,0 +1,110 @@
+{
+  "model": "granite-fast",
+  "url": "http://127.0.0.1:8292/v1/chat/completions",
+  "status": "pass",
+  "smoke": {
+    "pass": true,
+    "verdict": "PASS",
+    "content": "OK",
+    "elapsed_s": 4.68,
+    "usage": {
+      "completion_tokens": 2,
+      "prompt_tokens": 21,
+      "total_tokens": 23,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  },
+  "tool_use": {
+    "passed": 5,
+    "total": 5,
+    "results": [
+      {
+        "id": "weather_milan",
+        "pass": true,
+        "verdict": "PASS",
+        "want_fn": "get_weather",
+        "got_fn": "get_weather",
+        "want_args": {
+          "city": "Milano",
+          "unit": "celsius"
+        },
+        "got_args": {
+          "city": "Milano",
+          "unit": "celsius"
+        },
+        "missing_or_wrong": [],
+        "elapsed_s": 3.84
+      },
+      {
+        "id": "math_mul",
+        "pass": true,
+        "verdict": "PASS",
+        "want_fn": "calculator",
+        "got_fn": "calculator",
+        "want_args": {
+          "op": "mul",
+          "a": 47,
+          "b": 13
+        },
+        "got_args": {
+          "op": "mul",
+          "a": 47,
+          "b": 13
+        },
+        "missing_or_wrong": [],
+        "elapsed_s": 2.38
+      },
+      {
+        "id": "invoice_lookup",
+        "pass": true,
+        "verdict": "PASS",
+        "want_fn": "query_invoice",
+        "got_fn": "query_invoice",
+        "want_args": {
+          "invoice_number": "FT-2025-0042",
+          "year": 2025
+        },
+        "got_args": {
+          "invoice_number": "FT-2025-0042",
+          "year": 2025
+        },
+        "missing_or_wrong": [],
+        "elapsed_s": 2.88
+      },
+      {
+        "id": "support_ticket",
+        "pass": true,
+        "verdict": "PASS",
+        "want_fn": "create_ticket",
+        "got_fn": "create_ticket",
+        "want_args": {
+          "priority": "high"
+        },
+        "got_args": {
+          "title": "backup database failed",
+          "priority": "high"
+        },
+        "missing_or_wrong": [],
+        "elapsed_s": 2.41
+      },
+      {
+        "id": "customer_search",
+        "pass": true,
+        "verdict": "PASS",
+        "want_fn": "search_customer",
+        "got_fn": "search_customer",
+        "want_args": {
+          "email": "mario.rossi@example.com"
+        },
+        "got_args": {
+          "email": "mario.rossi@example.com"
+        },
+        "missing_or_wrong": [],
+        "elapsed_s": 2.23
+      }
+    ]
+  },
+  "timestamp": "2026-06-18 22:49:34"
+}
