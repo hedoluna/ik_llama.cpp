@@ -253,6 +253,10 @@ void autoparser::collect_preserved_tokens() {
     add_token(tools.format.section_end);
     add_token(tools.format.per_call_start);
     add_token(tools.format.per_call_end);
+    if (tools.format.per_call_start == "<tool_call>") {
+        add_token("```json");
+        add_token("```");
+    }
     add_token(tools.function.name_prefix);
     add_token(tools.function.name_suffix);
     add_token(tools.function.close);

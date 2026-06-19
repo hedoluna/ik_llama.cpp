@@ -1,5 +1,5 @@
 param(
-  [string]$Base = "http://127.0.0.1:9292/v1",
+  [string]$Base = "http://127.0.0.1:8291/v1",
   [string]$Provider = "llama-swap",
   [string[]]$ExpectedModels = @(
     "qwen36-iq3",

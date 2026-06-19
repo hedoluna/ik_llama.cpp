@@ -649,6 +649,72 @@ result_timings server_slot::get_timings() const {
     return timings;
 }
 
+// Fallback tool-call recovery. Some models (e.g. Qwen2.5-Coder) emit a correct
+// tool call as plain JSON content — either bare {"name":...,"arguments":...} or
+// fenced in ```json ... ``` — WITHOUT the <tool_call> wrapper the active PEG
+// parser expects, so common_chat_parse leaves tool_calls empty and the call ends
+// up as text. When a tool-capable format produced no tool_calls, recover them
+// from the content here. Only runs on the final (non-partial) message.
+static void promote_json_tool_call_fallback(common_chat_msg & msg, const common_chat_parser_params & params) {
+    // parse_tool_calls is true only when the request actually carried tools
+    // (set in oaicompat_chat_params_parse). That is our gate — NOT the format:
+    // models like Qwen2.5-Coder whose bundled template lacks a tool section get
+    // format=CONTENT_ONLY yet still emit a tool call via injected instructions.
+    if (!params.parse_tool_calls) return;
+    if (!msg.tool_calls.empty() || msg.content.empty()) return;
+
+    auto trim = [](std::string & x) {
+        size_t i = x.find_first_not_of(" \t\r\n");
+        size_t j = x.find_last_not_of(" \t\r\n");
+        x = (i == std::string::npos) ? std::string() : x.substr(i, j - i + 1);
+    };
+
+    std::string s = msg.content;
+    trim(s);
+    // Strip a single ```json ... ``` (or ``` ... ```) fence if present.
+    if (s.rfind("```", 0) == 0) {
+        size_t nl = s.find('\n');
+        if (nl != std::string::npos) s = s.substr(nl + 1);
+        size_t close = s.rfind("```");
+        if (close != std::string::npos) s = s.substr(0, close);
+        trim(s);
+    }
+    if (s.empty() || (s.front() != '{' && s.front() != '[')) return;
+
+    nlohmann::ordered_json parsed;
+    try {
+        parsed = nlohmann::ordered_json::parse(s);
+    } catch (const std::exception &) {
+        return;
+    }
+
+    auto add_one = [&](const nlohmann::ordered_json & o) -> bool {
+        if (!o.is_object() || !o.contains("name") || !o.at("name").is_string()) return false;
+        std::string name = o.at("name").get<std::string>();
+        if (name.empty()) return false;
+        std::string args = "{}";
+        if (o.contains("arguments")) {
+            const auto & a = o.at("arguments");
+            args = a.is_string() ? a.get<std::string>() : a.dump();
+        }
+        common_chat_tool_call tc;
+        tc.name = name;
+        tc.arguments = args;
+        msg.tool_calls.push_back(tc);
+        return true;
+    };
+
+    bool any = false;
+    if (parsed.is_array()) {
+        for (const auto & o : parsed) any = add_one(o) || any;
+    } else {
+        any = add_one(parsed);
+    }
+    if (any) {
+        msg.content.clear();
+    }
+}
+
 const common_chat_msg& server_slot::update_chat_msg(bool is_partial, std::vector<common_chat_msg_diff>& diffs,
     bool filter_tool_calls) {
     auto msg_prv_copy = chat_msg;
@@ -656,6 +722,9 @@ const common_chat_msg& server_slot::update_chat_msg(bool is_partial, std::vector
         generated_text,
         /* is_partial= */ stop != STOP_TYPE_EOS,
         params.chat_parser_params);
+    if (!is_partial) {
+        promote_json_tool_call_fallback(new_msg, params.chat_parser_params);
+    }
     if (!new_msg.empty()) {
         //new_msg.ensure_tool_call_ids_set(generated_tool_call_ids, gen_tool_call_id);
         new_msg.set_tool_call_ids(generated_tool_call_ids, gen_tool_call_id);

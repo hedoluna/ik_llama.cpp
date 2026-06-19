@@ -13,7 +13,7 @@ using json = nlohmann::ordered_json;
 // Based on original llama.cpp Qwen-Qwen3-0.6B.jinja template
 //
 
-// Check if the model is Qwen3
+// Check if the model is Qwen3 or Qwen2.5
 inline bool is_qwen3_model(const std::string & model_name) {
     if (model_name.empty()) {
         return false;
@@ -23,10 +23,15 @@ inline bool is_qwen3_model(const std::string & model_name) {
     std::string lower_model = model_name;
     std::transform(lower_model.begin(), lower_model.end(), lower_model.begin(), ::tolower);
     
-    // Check if the model name contains "qwen3" or "qwen-3"
+    // Check if the model name contains Qwen3 or Qwen2.5 markers
     return lower_model.find("qwen3") != std::string::npos || 
            lower_model.find("qwen-3") != std::string::npos ||
-           lower_model.find("qwen_3") != std::string::npos;
+           lower_model.find("qwen_3") != std::string::npos ||
+           lower_model.find("qwen2.5") != std::string::npos ||
+           lower_model.find("qwen-2.5") != std::string::npos ||
+           lower_model.find("qwen_2.5") != std::string::npos ||
+           lower_model.find("qwen25") != std::string::npos ||
+           lower_model.find("qwen-coder") != std::string::npos;
 }
 
 // Generate Qwen3 tool format instructions (XML format like Hermes)
