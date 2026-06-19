@@ -1,5 +1,6 @@
 #include "server-chat.h"
 #include "server-common.h"
+// Force compile qwen3_tools.hpp changes
 
 #include <sstream>
 
