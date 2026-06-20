@@ -1,0 +1,6 @@
+== phi-4-14b ==
+  PASS bit_reverse (12.9s)
+  FAIL find_peak_frequency (142.7s) parse fail
+  PASS parsons_code (143.5s)
+  PASS dft (172.2s)
+TOTAL: 3/4, time: 471.34s

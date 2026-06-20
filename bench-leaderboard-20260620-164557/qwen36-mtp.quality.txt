@@ -1,0 +1,6 @@
+== qwen36-mtp ==
+  PASS bit_reverse (4.3s)
+  PASS find_peak_frequency (8.3s)
+  PASS parsons_code (8.4s)
+  PASS dft (17.5s)
+TOTAL: 4/4, time: 38.44s

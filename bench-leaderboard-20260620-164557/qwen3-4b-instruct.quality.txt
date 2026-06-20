@@ -1,0 +1,6 @@
+== qwen3-4b-instruct ==
+  PASS bit_reverse (1.0s)
+  PASS find_peak_frequency (1.8s)
+  PASS parsons_code (1.9s)
+  PASS dft (4.9s)
+TOTAL: 4/4, time: 9.53s

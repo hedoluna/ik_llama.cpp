@@ -1,0 +1,6 @@
+== quality-iq3 ==
+  PASS bit_reverse (4.0s)
+  PASS find_peak_frequency (7.5s)
+  PASS parsons_code (7.8s)
+  PASS dft (15.6s)
+TOTAL: 4/4, time: 34.97s

@@ -1,0 +1,10 @@
+ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
+ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+ggml_cuda_init: found 1 CUDA devices:
+  Device 0: NVIDIA RTX A2000, compute capability 8.6, VMM: yes, VRAM: 6137 MiB
+| model                          |       size |     params | backend    | ngl | type_k | type_v |          test |              t/s |
+| ------------------------------ | ---------: | ---------: | ---------- | --: | -----: | -----: | ------------: | ---------------: |
+| phi3 14B Q4_K - Medium         |   8.43 GiB |    14.66 B | CUDA       |   8 |   q8_0 |   q8_0 |         pp128 |   168.51 ± 11.22 |
+| phi3 14B Q4_K - Medium         |   8.43 GiB |    14.66 B | CUDA       |   8 |   q8_0 |   q8_0 |          tg64 |      4.32 ± 0.21 |
+
+build: 6209394f (4676)

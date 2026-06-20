@@ -1,6 +1,6 @@
 # Graduatoria modelli testati
 
-Ultimo aggiornamento: 2026-06-18.
+Ultimo aggiornamento: 2026-06-20.
 
 Questa e l'unica graduatoria locale da aggiornare. I file JSON/CSV restano dati raw; README e guide operative devono linkare questa pagina invece di duplicare classifiche. La memoria di cosa abbiamo imparato e cosa evitare sta in [docs/benchmark-memory.md](D:/repos/ik_llama.cpp/docs/benchmark-memory.md).
 
@@ -20,33 +20,44 @@ Hardware locale rilevante: Ryzen 9 5950X, 128GB RAM, RTX A2000 6GB VRAM.
 | `bench-opencode-local/summary-*.csv` | OpenCode end-to-end | Alta per flusso reale, ma pochi task. |
 | `D:\repos\ralph\local_ralph\BENCHMARK_v4_v5_LEADERBOARD.md` | coding realistico su pattern TS/Python reali | Alta per qualita: GildedRose, Drizzle, TanStack, Zod, Vitest, fiscal/crypto/state machine. |
 | `D:\repos\ralph\local_ralph\coding_benchmark_v4_realworld.py` + `coding_benchmark_v5_ts_focus.py` | harness rieseguibile contro endpoint OpenAI-compatible | Alta per confronto A/B; usare `BENCH_URL` e `BENCH_MODEL`. |
+| `D:\repos\ralph\local_ralph\BENCHMARK_v4_v5_LEADERBOARD.md` (sezione FFT) | 4 task algoritmici FFT-domain, qualita e durata end-to-end | Media: ottimo segnale di dominio, ma copertura stretta e non equivalente a Ralph v4/v5. |
+| `bench-llama-20260620-160611.txt` | throughput puro `pp128`/`tg64` sul runtime aggiornato, Qwen3.5-4B | Alta per velocita del runtime su quel modello; non misura qualita o latenza OpenCode. |
+| `bench-leaderboard-20260620-164557/SUMMARY.md` | throughput uniforme e gate FFT corrente sui primi profili | Alta per velocita relativa; media per qualita perche FFT copre solo 4 task di dominio. |
 | Smoke API manuali | caricamento, compatibilita e tok/s su prompt breve | Alta per sanity check, non per qualita. |
 
 ## Leaderboard operativa
 
 Questa e la tabella da usare per decidere routing, ritest e priorita. Ordine scelto pesando: qualita su task realistici, affidabilita OpenCode, velocita osservata e rischio operativo. Le righe con solo smoke o benchmark parziali non devono superare profili che hanno gia passato OpenCode/Ralph realistico.
 
+### Come leggere il rank e la velocita
+
+- Il rank e una priorita operativa, non una media tra suite diverse: Ralph v4/v5 e OpenCode end-to-end pesano piu di sweep sintetici, smoke e test di dominio.
+- `tok/s gen` o `tg` misura il decode ed e il dato migliore per confrontare la velocita percepita, ma solo a parita di modello, profilo e runtime. `pp` misura il prompt processing. `s/task` e `s/suite` includono anche generazione, harness e talvolta avvio.
+- Tempi e tok/s ottenuti con harness o profili differenti restano esplicitamente etichettati e non vengono convertiti in un punteggio comune.
+- Un risultato parziale, uno smoke o un `4/4` di dominio non dimostrano qualita generale. In assenza di Ralph/OpenCode il modello viene tenuto sotto candidati con copertura piu ampia, anche se e piu veloce.
+- Le varianti storiche dominate da un profilo corrente migliore della stessa famiglia non occupano una riga separata; restano nelle fonti per confronto.
+
 | Rank | Modello / profilo | Qualita osservata | Velocita osservata | Caso d'uso consigliato | Stato operativo |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | `quality-iq3` / `llama-swap/qwen36-opus-iq3` | Ralph v4 `8/9`, v5 `8/8`, totale `16/17` | API ~`32.4 tok/s` prompt, ~`26.1 tok/s` gen | Quality locale, refactor, TS/Python realistico, task dove conta il primo colpo | Miglior candidato quality; promuovere solo dopo gate OpenCode breve dedicato |
-| 2 | `qwen36-mtp` / `llama-swap/qwen36-mtp` | Con prompt generali: Ralph v4 `8/9`, v5 `8/8`, totale `16/17` | API ~`20.6 tok/s` gen; MTP `draft_n=1`, `draft_n_accepted=1` | Quality sperimentale, coding medio-difficile, confronto MTP | Competitivo ma sperimentale; non sostituire il default senza OpenCode gate |
-| 3 | `qwen36-iq3` / `coding`, `review` | Text `29/31`, TS `55/58`, OpenCode `3/3`; Ralph aggiornato `15/17` | OpenCode `64-97s/task`; Text `18.29s`; TS `53.34s` | Default quotidiano, review, contesto lungo 32k, workflow OpenCode stabile | Default robusto attuale |
-| 4 | `qwen-small` / `fast` | OpenCode `3/3` sui task brevi | `7.77-11.85s/task` | Classifier, prompt corti, comandi banali, titoli, routing helper | Fast path consigliato |
-| 5 | `phi-4 14B Q4_K_M` | Ralph storico v4 `9/9`, v5 `4/8`, totale `13/17`; unico a passare GildedRose+Conjured | ~`5 tok/s` storico | Hard refactor, rule reasoning, confronto quality lento | Forte ma non configurato come profilo OpenCode locale |
-| 6 | `Qwen3-4B-Instruct-2507-Q4_K_M` | TS `55/58`, Text `23/31`; `asynciter` recuperato a `4/4` | Text `8.25s`; TS `30.07s` | Modello leggero per TS e repair piccoli | Buon candidato leggero, da configurare se serve |
-| 7 | `Qwen2.5-Coder-1.5B-Q4_K_M` | Advanced `16/17`, TS `50/58`, Text `25/31`; literal `5/5`, hard literal `6/7` | Text `4.92s`; Advanced `13.71s`; TS `29.27s` | Small coding economico, batch rapidi, test locali piccoli | Efficiente nei bench storici, non ancora OpenCode-top |
-| 8 | `Qwen2.5-Coder-3B-Q4_0` | Text `29/31`, Advanced `15/17`, TS `48/58`; literal `5/5`, hard literal `6/7` | Text `5.97s`; Advanced `21.67s`; TS `30.12s` | Coding leggero/medio e task testuali brevi | Buono nei bench piccoli, non routing principale |
-| 9 | `granite-4.1-3B-Q4_K_S` | Advanced `15/17`, TS `46/58`, Text `23/31`; toolcall isolato `3/3` | Text `6.25s`; Advanced `20.25s`; TS `25.45s` | Candidato Granite piccolo per tool/API e sweep mirati | Interessante ma non trasferire i risultati al profilo `granite-fast` 8B |
+| 1 | `quality-iq3` / `llama-swap/qwen36-opus-iq3` | Ralph v4 `8/9`, v5 `8/8`, totale `16/17`; FFT corrente `4/4` | Corrente base: `pp128 200.19 +/- 53.92`, `tg64 16.29 +/- 1.58 tok/s`; FFT `34.97s`; API storico ~`26.1 tok/s` gen | Quality locale, refactor, TS/Python realistico, task dove conta il primo colpo | Miglior candidato quality; promuovere solo dopo gate OpenCode breve dedicato |
+| 2 | `qwen36-mtp` / `llama-swap/qwen36-mtp` | Con prompt generali: Ralph v4 `8/9`, v5 `8/8`, totale `16/17`; FFT corrente `4/4` | Target base: `pp128 161.09 +/- 39.13`, `tg64 13.78 +/- 1.02 tok/s`; FFT con MTP `38.44s`; API storico ~`20.6 tok/s` gen | Quality sperimentale, coding medio-difficile, confronto MTP | Competitivo ma sperimentale; `llama-bench` non include il guadagno MTP |
+| 3 | `qwen36-iq3` / `coding`, `review` | Text `29/31`, TS `55/58`, OpenCode `3/3`; Ralph aggiornato `15/17`; FFT corrente `4/4` | Corrente: `pp128 197.50 +/- 48.85`, `tg64 15.37 +/- 1.26 tok/s`; FFT `41.95s`; OpenCode storico `64-97s/task` | Default quotidiano, review, contesto lungo 32k, workflow OpenCode stabile | Default robusto attuale |
+| 4 | `qwen-small` / `fast` (`Qwen3.5-4B`) | OpenCode storico `3/3`; FFT corrente `3/4`, fallisce `bit_reverse` | Corrente: `pp128 1486.63 +/- 359.12`, `tg64 54.40 +/- 0.31 tok/s`; FFT `22.19s`; OpenCode storico `7.77-11.85s/task` | Classifier, prompt corti, comandi banali, titoli, routing helper | Fast path operativo, ma non il miglior 4B per coding algoritmico |
+| 5 | `phi-4 14B Q4_K_M` | Ralph storico v4 `9/9`, v5 `4/8`, totale `13/17`; FFT corrente `3/4` per output non parsabile | Corrente: `pp128 168.51 +/- 11.22`, `tg64 4.32 +/- 0.21 tok/s`; FFT `471.34s` | Hard refactor, rule reasoning, confronto quality lento | Forte sul gate storico difficile, ma troppo lento per uso quotidiano |
+| 6 | `Qwen3-4B-Instruct-2507-Q4_K_M` | TS `55/58`, Text `23/31`; `asynciter` `4/4`; FFT corrente `4/4` | Corrente: `pp128 1704.35 +/- 435.35`, `tg64 66.11 +/- 0.27 tok/s`; FFT `9.53s`; TS `30.07s` | Coding leggero, TS, repair piccoli e algoritmi FFT/DSP | Miglior 4B corrente per rapporto velocita/qualita; candidato da configurare |
+| 7 | `Qwen2.5-Coder-1.5B-Q4_K_M` | Advanced `16/17`, TS `50/58`, Text `25/31`; literal `5/5`, hard literal `6/7` | Text `4.92s`; Advanced `13.71s`; TS `29.07s` | Small coding economico, batch rapidi, test locali piccoli | Efficiente nei bench storici, non ancora OpenCode-top |
+| 8 | `Qwen2.5-Coder-3B-Q4_0` | Text `29/31`, Advanced `15/17`, TS `48/58`; literal `5/5`, hard literal `6/7` | Text `5.97s`; Advanced `21.67s`; TS `29.80s` | Coding leggero/medio e task testuali brevi | Buono nei bench piccoli, non routing principale |
+| 9 | `granite-4.1-3B-Q4_K_S` | Advanced `15/17`, TS `46/58`, Text `23/31`; toolcall isolato `3/3` | Text `6.25s`; Advanced `20.25s`; TS `24.02s` | Candidato Granite piccolo per tool/API e sweep mirati | Interessante ma non trasferire i risultati al profilo `granite-fast` 8B |
 | 10 | `mellum2-instruct` / `llama-swap/mellum2-instruct` | Smoke API OK su runtime IK | Smoke `2.98s`; API ~`53.4 tok/s` gen | Solo investigazione su runtime IK; possibile coding specialist | Fuori routing finche non passa OpenCode/Ralph |
-| 11 | `qwen-coder` corretto / Qwen3-Coder-Next Q2 Unsloth | Smoke OK dopo fix GGUF + `--cpu-moe` | Smoke `13.89s` | Da ritestare su OpenCode/Ralph leggero; possibile coder specialist | Recuperato tecnicamente, non promosso |
+| 11 | `qwen-coder` corretto / Qwen3-Coder-Next Q2 Unsloth | Smoke OK dopo fix GGUF + `--cpu-moe` | Smoke `13.89s`; tok/s non registrato | Da ritestare su OpenCode/Ralph leggero; possibile coder specialist | Recuperato tecnicamente, non promosso |
 | 12 | `granite-fast` corretto 8B Unsloth | API smoke PASS, tool-use `5/5`; OpenCode breve `0/3` con output vuoto | Gate API ~`11s`; smoke `4.68s`; toolcall `2.4-3.8s/case`; OpenCode vuoto `11.9-15s/task` | Tool specialist API isolato, non coding agent | Non promuovere OpenCode; problema streaming OpenCode/AI SDK isolato |
 | 13 | `gpt-oss-20b` | API OK, vecchio OpenCode `0/3` | API ~`72.3 tok/s` prompt, ~`16.8 tok/s` gen; vecchio OpenCode `1.03-19.88s` | Da ritestare se serve modello reasoning/OSS | Fuori routing finche non passa OpenCode |
 | 14 | `qwopus9-mtp` | Smoke OK; Ralph v4 `0/9`, v5 `2/8` | API ~`13.9 tok/s` gen; `draft_n=20`, `draft_n_accepted=17` | Nessun uso automatico; solo debug reasoning/budget | Bocciato dai gate realistici |
 | 15 | vecchio `granite-fast` 8B bartowski+IK | Ralph `0/17`, toolcall API `0/3`, output degenerato | Ralph `40-127s/task`; toolcall ~`21s/case` | Nessuno | Bocciato; non riusare |
-| 16 | `Qwen2.5-Coder-0.5B-Q4_K_M` | Coding sweep parziale `32/45` | `6.49s` | Esperimenti tiny/latency | Qualita limitata e test parziale |
-| 17 | `Qwen3-0.6B-Q8_0` | Coding sweep parziale `30/38` | `59.11s` | Nessun uso prioritario | Non competitivo |
-| 18 | `deepseek-coder-1.3B-kexer-Q4_K_M` | Coding sweep `5/13` | `134.55s` | Nessuno | Segnale negativo |
-| 19 | `Qwen3.5-0.8B-Q8_0` | Coding sweep `0/51` | `143.10s` | Nessuno | Segnale negativo |
+| 16 | `Qwen2.5-Coder-0.5B-Q4_K_M` | Coding sweep parziale `32/45` | `6.49s/suite parziale`; tok/s non registrato | Esperimenti tiny/latency | Qualita limitata e test parziale |
+| 17 | `Qwen3-0.6B-Q8_0` | Coding sweep parziale `30/38` | `59.11s/suite parziale`; tok/s non registrato | Nessun uso prioritario | Non competitivo |
+| 18 | `deepseek-coder-1.3B-kexer-Q4_K_M` | Coding sweep `5/13` | `134.55s/suite parziale`; tok/s non registrato | Nessuno | Segnale negativo |
+| 19 | `Qwen3.5-0.8B-Q8_0` | Coding sweep senza risultati validi (`0/0` registrato; target suite `51`) | `143.10s` prima dell'aborto; tok/s non registrato | Nessuno | Run non valido: non interpretare come `0/51`, ritestare solo per diagnosi |
 
 ## Caselle OpenCode top 5
 
@@ -57,6 +68,20 @@ Questa e la tabella da usare per decidere routing, ritest e priorita. Ordine sce
 | Fast / classifier | `fast` | `llama-swap/qwen-small` | OpenCode OK `3/3`, `7.77-11.85s` | Piena per smoke/OpenCode breve | Usare per prompt corti, classificazione e comandi banali. |
 | MTP sperimentale | `qwen36-mtp` | `llama-swap/qwen36-mtp` | Ralph v4 `8/9`, v5 `8/8`, totale `16/17` | Piena | Ora competitivo con prompt generali; resta aperto GildedRose. |
 | Hard refactor storico | non configurata | `phi-4 14B Q4_K_M` | Ralph v4 `9/9`, v5 `4/8`, totale `13/17` | Piena storica, manca profilo OpenCode locale | Miglior segnale su refactor/rule reasoning; lenta e da aggiungere a `llama-swap` solo se serve. |
+
+## Benchmark runtime aggiornato 2026-06-20
+
+Il runtime `ik_llama.cpp` al commit `6209394f` e stato ricompilato in Release con CUDA 13.1, architettura CUDA 86, e misurato su RTX A2000 6GB con `Qwen_Qwen3.5-4B-Q4_K_M.gguf` (4.84B parametri, 3.15 GiB), `-p 128 -n 64 -ngl 999 -fa 1 -r 3`.
+
+| Misura | Risultato | Lettura operativa |
+| --- | ---: | --- |
+| Prompt processing `pp128` | `1197.82 +/- 553.44 tok/s` | Media poco stabile: la dispersione e troppo alta per dichiarare una regressione o un miglioramento. |
+| Token generation `tg64` | `55.45 +/- 0.39 tok/s` | Misura stabile; velocita molto buona per un modello locale compatto. |
+| Qualita collegata disponibile | FFT-domain `4/4`, `18.6s` end-to-end | Segnale positivo ma stretto: non equivale a Ralph v4/v5, TS completo o OpenCode. |
+
+Il risultato FFT usa lo stesso nome modello/famiglia riportato nel leaderboard Ralph, ma la fonte storica non registra hash e dimensione esatta del GGUF. Per prudenza la qualita FFT e il throughput corrente sono mostrati insieme come evidenze complementari, non come prova che il file binario sia identico.
+
+Il re-benchmark comparativo successivo sui primi modelli e salvato in `bench-leaderboard-20260620-164557/SUMMARY.md`. Usa 5 ripetizioni e KV `q8_0`; sostituisce, per i confronti correnti tra questi sei GGUF, il singolo run Qwen3.5 riportato sopra.
 
 ## Caselle verificate 2026-06-18
 
@@ -130,6 +155,8 @@ Questa e la tabella da usare per decidere routing, ritest e priorita. Ordine sce
 - Miglior candidato quality da promuovere: `quality-iq3`.
 - Miglior candidato MTP: `qwen36-mtp` e ora competitivo (`16/17`); `qwopus9` resta fuori nonostante smoke OK.
 - Miglior fast path: `qwen-small`.
+- Miglior 4B corrente per copertura e velocita: `Qwen3-4B-Instruct-2507-Q4_K_M`, FFT `4/4`, `66.11 tok/s` in generazione.
+- `Qwen3.5-4B-Q4_K_M`/`qwen-small` resta utile come fast path (`54.40 tok/s`), ma il nuovo FFT `3/4` smentisce il vecchio vantaggio di dominio.
 - Da non mettere in routing coding automatico per ora: `mellum`, `granite-fast`, `qwen-coder`, `Qwen3-Coder-Next` pesante, finche non passano un gate OpenCode/Ralph.
 - Il vecchio `tools` -> `granite-fast` era sbagliato; il profilo corretto passa il gate atomico tool-use `5/5`, ma fallisce OpenCode breve `0/3`. Eventuale routing solo come tool specialist, non coding.
 - `gpt-oss-20b` e tornato API-OK nello smoke 2026-06-18, ma resta fuori dal routing finche non passa un test OpenCode vero.
@@ -145,11 +172,18 @@ Obiettivo: promuovere solo profili che migliorano davvero il routing locale senz
 - Tenere `quality-iq3` e `qwen36-mtp` come override manuali quality/sperimentali.
 - Non aggiungere `granite-fast`, `qwen-coder`, `mellum`, `gpt-oss-20b`, `qwopus9-mtp` al routing coding automatico.
 
+### Fase 0.5 - Identita artefatto e baseline velocita
+
+- Prima di confrontare Qwen3.5-4B con il risultato FFT storico, registrare path, dimensione e SHA-256 del GGUF corrente; la sola etichetta del modello non garantisce che quantizzazione e conversione siano identiche.
+- Ripetere `llama-bench` a macchina scarica con almeno 10 ripetizioni. Considerare affidabile `pp128` solo se la dispersione si riduce sensibilmente rispetto a `1197.82 +/- 553.44 tok/s`.
+- Tenere fissi commit runtime, modello, `-p`, `-n`, `-ngl`, flash attention e stato termico per ogni confronto A/B.
+- Non cambiare rank di qualita usando solo throughput, tempo di caricamento o smoke API.
+
 ### Fase 1 - Gate atomico obbligatorio
 
 - Per ogni candidato eseguire prima `scripts/model_profile_gate.py`: smoke + tool-use breve, JSON persistente, exit code non ambiguo.
 - Se fallisce smoke, template, caricamento o `message.tool_calls`, fermarsi: niente Ralph, niente OpenCode, niente Optuna.
-- Candidati immediati: `quality-iq3`, `qwen36-mtp`, `qwen-coder` corretto, `mellum2-instruct`.
+- Candidati immediati: `quality-iq3`, `qwen36-mtp`, `Qwen3.5-4B-Q4_K_M`, `qwen-coder` corretto, `mellum2-instruct`.
 
 ### Fase 2 - Gate OpenCode breve
 
@@ -162,6 +196,7 @@ Obiettivo: promuovere solo profili che migliorano davvero il routing locale senz
 - Da `D:\repos\ralph\local_ralph`, usare v4/v5 solo dopo OpenCode breve passato.
 - Prima run leggera: v5 TS-focus o subset mirato, poi v4 real-world.
 - Gate minimo per promozione quality: almeno `15/17` complessivo senza trucchi specifici del task.
+- Per `Qwen3.5-4B`, partire dai task discriminanti `GildedRose`, `React Query`, `async iterator` e `P.IVA`; eseguire l'intero `17/17` solo se il subset non mostra errori strutturali o output troncato.
 
 ### Fase 4 - Promozione controllata
 
@@ -169,6 +204,7 @@ Obiettivo: promuovere solo profili che migliorano davvero il routing locale senz
 - `qwen36-mtp`: mantenere sperimentale finche non conferma OpenCode breve e non mostra regressioni di formato.
 - `qwen-coder`: ritestare solo col Q2 Unsloth + `--cpu-moe`; non usare il Q3 locale corrotto.
 - `mellum2-instruct`: testare solo su IK o runtime con supporto `mellum`; mainline generico e escluso.
+- `Qwen3.5-4B`: mantenere uso manuale FFT/DSP fino a OpenCode `3/3` e almeno un gate Ralph generale; promuoverlo a fast coding solo se migliora il rapporto qualita/tempo rispetto a `Qwen3-4B-Instruct-2507`.
 
 ### Fase 5 - Tuning solo dopo stabilita
 

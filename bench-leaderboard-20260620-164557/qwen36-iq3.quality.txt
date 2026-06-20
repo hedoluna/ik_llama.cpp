@@ -1,0 +1,6 @@
+== qwen36-iq3 ==
+  PASS bit_reverse (4.5s)
+  PASS find_peak_frequency (8.6s)
+  PASS parsons_code (9.9s)
+  PASS dft (18.8s)
+TOTAL: 4/4, time: 41.95s
