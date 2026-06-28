@@ -2477,6 +2477,24 @@ class DFlashDraftModel(Qwen3Model):
 
         self.gguf_writer.add_uint32(f"{arch}.dflash.n_target_features", n_target_features)
 
+        # DFlash drafts may be trained with sliding-window attention (for long-context). When the
+        # source config enables it, emit the window size + the per-layer SWA pattern so the runtime
+        # activates the kq_mask_swa path. These drafts are typically all sliding-window except a
+        # final full-attention (global) layer, so honor layer_types when present; fall back to
+        # all-SWA only when it is absent. Absent/false use_sliding_window => dense draft (unchanged).
+        use_sliding_window = self.hparams.get("use_sliding_window")
+        sliding_window = self.hparams.get("sliding_window")
+        if use_sliding_window and sliding_window:
+            n_swa_layers = int(self.hparams.get("num_hidden_layers", self.block_count))
+            layer_types = self.hparams.get("layer_types")
+            if layer_types:
+                swa_pattern = [str(t) == "sliding_attention" for t in layer_types]
+            else:
+                swa_pattern = [True] * n_swa_layers
+            self.gguf_writer.add_sliding_window(int(sliding_window))
+            self.gguf_writer.add_sliding_window_pattern(swa_pattern)
+            logger.info("DFlashDraftModel: sliding_window=%d, SWA pattern=%s", int(sliding_window), swa_pattern)
+
         logger.info(
             "DFlashDraftModel metadata: block_size=%s mask_token_id=%s target_layer_ids=%s n_target_features=%s",
             block_size,
@@ -5427,6 +5445,12 @@ class LagunaModel(Model):
         rope_params = hparams.get("rope_parameters", {})
         full_rope = rope_params.get("full_attention", rope_params)
         swa_rope = rope_params.get("sliding_attention", {})
+        # Laguna can specify different rotary widths for full-attention and SWA layers.
+        # M.1 uses the full-attention value from rope_parameters; XS.2 SWA omits the key
+        # because those layers rotate the whole head.
+        partial_rotary_factor = float(hparams.get("partial_rotary_factor", 1.0))
+        partial_rotary_factor_full = float(full_rope.get("partial_rotary_factor", partial_rotary_factor))
+        partial_rotary_factor_swa = float(swa_rope.get("partial_rotary_factor", 1.0))
 
         self.gguf_writer.add_context_length(int(hparams["max_position_embeddings"]))
         self.gguf_writer.add_embedding_length(int(hparams["hidden_size"]))
@@ -5443,8 +5467,11 @@ class LagunaModel(Model):
         self.gguf_writer.add_file_type(self.ftype)
 
         self.gguf_writer.add_sliding_window(int(hparams["sliding_window"]))
-        self.gguf_writer.add_rope_dimension_count(head_dim // 2)
-        self.gguf_writer.add_uint32(f"{arch}.rope.dimension_count_swa", head_dim)
+        # GGUF's rope.dimension_count is the number of scalar Q/K dimensions
+        # that ggml_rope_ext should rotate. It is not the number of RoPE pairs;
+        # the frequency table uses dimension_count / 2 entries later.
+        self.gguf_writer.add_rope_dimension_count(int(head_dim * partial_rotary_factor_full))
+        self.gguf_writer.add_uint32(f"{arch}.rope.dimension_count_swa", int(head_dim * partial_rotary_factor_swa))
         self.gguf_writer.add_rope_freq_base(float(full_rope.get("rope_theta", 500000.0)))
         self.gguf_writer.add_float32(f"{arch}.rope.freq_base_swa", float(swa_rope.get("rope_theta", 10000.0)))
         if full_rope.get("rope_type") == "yarn":
@@ -5454,7 +5481,9 @@ class LagunaModel(Model):
                 "original_max_position_embeddings",
                 rope_params.get("original_max_position_embeddings", hparams["max_position_embeddings"]),
             )))
-            self.gguf_writer.add_rope_scaling_yarn_ext_factor(float(full_rope.get("factor", 1.0)))
+            # GGUF's YaRN ext_factor is the config's extrapolation_factor. The main
+            # factor above is the context-extension scale and should not be mirrored here.
+            self.gguf_writer.add_rope_scaling_yarn_ext_factor(float(full_rope.get("extrapolation_factor", 1.0)))
             self.gguf_writer.add_rope_scaling_yarn_attn_factor(float(full_rope.get("attention_factor", 1.0)))
             self.gguf_writer.add_rope_scaling_yarn_beta_fast(float(full_rope.get("beta_fast", 32.0)))
             self.gguf_writer.add_rope_scaling_yarn_beta_slow(float(full_rope.get("beta_slow", 1.0)))
