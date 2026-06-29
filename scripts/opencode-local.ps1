@@ -1,5 +1,5 @@
 param(
-  [ValidateSet("auto", "fast", "coding", "review", "italian", "max", "quality", "quality-iq3", "qwen36-mtp", "qwopus9", "mellum", "mellum-thinking", "qwen-coder-next", "granite", "oss")]
+  [ValidateSet("auto", "fast", "coding", "review", "italian", "max", "quality", "quality-iq3", "qwen36-mtp", "qwopus9", "mellum", "mellum-thinking", "qwen-coder-next", "granite", "oss", "cloud", "kimi", "deepseek", "llama70b", "gptoss", "qwencloud")]
   [string]$Mode = "auto",
   [string]$Project = (Get-Location).Path,
   [string]$Run,
@@ -70,6 +70,14 @@ $modelByMode = @{
   "qwen-coder-next" = "llama-swap/qwen-coder"
   granite = "llama-swap/granite-fast"
   oss = "llama-swap/gpt-oss-20b"
+  # Cloud tier (NVIDIA NIM), opt-in. Router maps the alias -> real catalog id and
+  # forwards to build.nvidia.com. Requires NVIDIA_API_KEY in the router env.
+  cloud = "llama-swap/nvidia-kimi"
+  kimi = "llama-swap/nvidia-kimi"
+  deepseek = "llama-swap/nvidia-deepseek"
+  llama70b = "llama-swap/nvidia-llama70b"
+  gptoss = "llama-swap/nvidia-gptoss"
+  qwencloud = "llama-swap/nvidia-qwen"
 }
 
 $agentByMode = @{
@@ -88,6 +96,12 @@ $agentByMode = @{
   "qwen-coder-next" = "qwen-coder-next"
   granite = $null
   oss = $null
+  cloud = "kimi-cloud"
+  kimi = "kimi-cloud"
+  deepseek = $null
+  llama70b = $null
+  gptoss = $null
+  qwencloud = $null
 }
 
 $model = $modelByMode[$effectiveMode]

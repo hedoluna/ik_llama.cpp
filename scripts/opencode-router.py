@@ -96,6 +96,35 @@ BIG_MODELS = {
     "qwen-coder", "gpt-oss-20b",
 }
 STICKY_TURNS_TTL_S = 1800
+
+# ---- Cloud tier: NVIDIA NIM (OpenAI-compatible). OPT-IN via overrides only. ----
+# Never auto-selected: the local stack stays the default. A cloud override sends
+# the request to build.nvidia.com instead of llama-swap. Bypasses sticky + ctx
+# guard (cloud models hold far more context than the local 35B).
+#
+# Key MUST be in the router process env (NVIDIA_API_KEY). start-opencode-local.ps1
+# is responsible for exporting it; without it a cloud request returns HTTP 400.
+NVIDIA_BASE = os.environ.get("NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1").rstrip("/")
+# _forward appends `path` (e.g. /v1/chat/completions); strip a trailing /v1 so we
+# don't emit /v1/v1/chat/completions.
+NVIDIA_ROOT = NVIDIA_BASE[:-3] if NVIDIA_BASE.endswith("/v1") else NVIDIA_BASE
+NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY", "").strip()
+
+# Router-side alias -> real NVIDIA catalog id. The alias is what the router/logs
+# emit; the real id is what gets sent upstream. Prefer tool-use-capable models for
+# agentic OpenCode work (verify each on the model card; ids here are tunable).
+CLOUD_MODELS = {
+    "nvidia-kimi":     "moonshotai/kimi-k2.6",
+    "nvidia-deepseek": "deepseek-ai/deepseek-v4-pro",
+    "nvidia-llama70b": "meta/llama-3.3-70b-instruct",
+    "nvidia-gptoss":   "openai/gpt-oss-20b",
+    "nvidia-qwen":     "qwen/qwen3.5-397b-a17b",
+}
+CLOUD_DEFAULT = "nvidia-kimi"
+CLOUD_OVERRIDES = {
+    "!cloud": CLOUD_DEFAULT, "!kimi": "nvidia-kimi", "!deepseek": "nvidia-deepseek",
+    "!llama70b": "nvidia-llama70b", "!gptoss": "nvidia-gptoss", "!qwencloud": "nvidia-qwen",
+}
 # ========================================================================
 
 _LOCK = threading.Lock()
@@ -284,6 +313,19 @@ def _commit(hint, toks, model, tier, reason, gate, ms,
     return model, tier, reason, gate, ms
 
 
+def resolve_target(model):
+    """Map a chosen model id to (base_url, real_model, extra_headers).
+
+    Cloud aliases route to NVIDIA NIM (with bearer auth and the real catalog id);
+    every other id stays on the local llama-swap upstream, unchanged.
+    """
+    real = CLOUD_MODELS.get(model)
+    if real is not None:
+        headers = {"Authorization": "Bearer " + NVIDIA_API_KEY} if NVIDIA_API_KEY else {}
+        return NVIDIA_ROOT, real, headers
+    return SWAP_BASE, model, {}
+
+
 def route(body, hint=None):
     """Pure routing decision. Returns (model, tier, reason, gate, classify_ms)."""
     hint = hint or {}
@@ -292,6 +334,10 @@ def route(body, hint=None):
     toks = estimate_tokens(full)
     low = user.lower().strip()
 
+    # Cloud opt-in override (checked first; bypasses sticky/ctx guard entirely).
+    for tok, m in CLOUD_OVERRIDES.items():
+        if low.startswith(tok) or (" " + tok) in low:
+            return m, "cloud", "override %s" % tok, "gate", 0.0
     # Explicit manual override anywhere in the user text.
     for tok, m in OVERRIDE_TOKENS.items():
         if low.startswith(tok) or (" " + tok) in low:
@@ -404,6 +450,16 @@ class Handler(BaseHTTPRequestHandler):
                     "id": "auto", "object": "model",
                     "owned_by": "router", "created": int(now),
                 })
+            # Advertise cloud aliases only when the key is present, so they don't
+            # show up as selectable-but-broken when NVIDIA_API_KEY is unset.
+            if NVIDIA_API_KEY:
+                have = {m.get("id") for m in data["data"]}
+                for alias in CLOUD_MODELS:
+                    if alias not in have:
+                        data["data"].append({
+                            "id": alias, "object": "model",
+                            "owned_by": "nvidia", "created": int(now),
+                        })
             fresh = json.dumps(data).encode()
             with _LOCK:
                 _MODELS_CACHE["ts"] = now
@@ -445,7 +501,15 @@ class Handler(BaseHTTPRequestHandler):
             self._emit_log({"session": None}, body, chosen, "bypass",
                            "explicit", "-", 0.0, t0)
 
-        self._forward(path, json.dumps(body).encode(), bool(body.get("stream")), body.get("model"))
+        # Resolve cloud vs local AFTER logging so the log keeps the router alias.
+        base, real_model, xtra = resolve_target(chosen)
+        if base != SWAP_BASE and not NVIDIA_API_KEY:
+            return self._send_json(400, {"error":
+                "cloud model '%s' requested but NVIDIA_API_KEY is not set in the "
+                "router process env" % chosen})
+        body["model"] = real_model
+        self._forward(path, json.dumps(body).encode(), bool(body.get("stream")),
+                      real_model, base, xtra)
 
     def _emit_log(self, hint, body, chosen, tier, reason, gate, cms, t0):
         log_decision({
@@ -460,16 +524,16 @@ class Handler(BaseHTTPRequestHandler):
             "total_ms": round((time.time() - t0) * 1000.0, 1),
         })
 
-    def _forward(self, path, raw, stream, model=None):
+    def _forward(self, path, raw, stream, model=None, base=SWAP_BASE, extra_headers=None):
         if stream and model in FORCE_NONSTREAM_STREAM_MODELS:
-            return self._forward_nonstream_as_sse(path, raw, model)
+            return self._forward_nonstream_as_sse(path, raw, model, base, extra_headers)
 
-        req = urllib.request.Request(
-            SWAP_BASE + path, data=raw, method="POST",
-            headers={
-                "Content-Type": "application/json",
-                "Accept": "text/event-stream" if stream else "application/json",
-            })
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "text/event-stream" if stream else "application/json",
+        }
+        headers.update(extra_headers or {})
+        req = urllib.request.Request(base + path, data=raw, method="POST", headers=headers)
         try:
             resp = urllib.request.urlopen(req, timeout=UPSTREAM_TIMEOUT)
         except urllib.error.HTTPError as e:
@@ -522,7 +586,7 @@ class Handler(BaseHTTPRequestHandler):
             except Exception:
                 pass
 
-    def _forward_nonstream_as_sse(self, path, raw, model):
+    def _forward_nonstream_as_sse(self, path, raw, model, base=SWAP_BASE, extra_headers=None):
         try:
             body = json.loads(raw)
             body["stream"] = False
@@ -530,12 +594,9 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as e:
             return self._send_json(400, {"error": "bad json: %s" % e})
 
-        req = urllib.request.Request(
-            SWAP_BASE + path, data=upstream_raw, method="POST",
-            headers={
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            })
+        headers = {"Content-Type": "application/json", "Accept": "application/json"}
+        headers.update(extra_headers or {})
+        req = urllib.request.Request(base + path, data=upstream_raw, method="POST", headers=headers)
         try:
             resp = urllib.request.urlopen(req, timeout=UPSTREAM_TIMEOUT)
             data = resp.read()

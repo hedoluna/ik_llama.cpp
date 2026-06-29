@@ -131,6 +131,20 @@ function Start-Router {
   }
   if (-not (Test-Path -LiteralPath $Script)) { throw "router script not found at $Script" }
 
+  # Cloud tier (NVIDIA NIM) is opt-in via !cloud/!kimi/... overrides. The router
+  # child inherits this process env; the key lives in D:\repos\.env (not a machine
+  # var), so load it best-effort. Local-only routing is unaffected if it's absent.
+  if (-not $env:NVIDIA_API_KEY) {
+    $envFile = 'D:\repos\.env'
+    if (Test-Path -LiteralPath $envFile) {
+      $line = Select-String -LiteralPath $envFile -Pattern '^\s*NVIDIA_API_KEY\s*=' -ErrorAction SilentlyContinue | Select-Object -First 1
+      if ($line) {
+        $env:NVIDIA_API_KEY = ($line.Line -replace '^\s*NVIDIA_API_KEY\s*=\s*', '').Trim().Trim('"')
+        Write-Host "cloud tier enabled (NVIDIA_API_KEY loaded from $envFile)"
+      }
+    }
+  }
+
   $out = Join-Path $LogDir "router.out.log"
   $err = Join-Path $LogDir "router.err.log"
   Start-Process -FilePath "py" -ArgumentList @($Script) -WindowStyle Hidden `

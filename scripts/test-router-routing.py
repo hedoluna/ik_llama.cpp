@@ -79,6 +79,24 @@ case("override-max", "!max design a quick thing", "qwen-opus-q8", "L1")
 reset_sticky()
 case("override-coder", "!coder write a parser", "qwen-coder", "L1")
 
+print("== cloud tier (NVIDIA, opt-in) ==")
+reset_sticky()
+case("cloud-default", "!cloud summarize this whole repo", R.CLOUD_DEFAULT, "cloud")
+reset_sticky()
+case("cloud-kimi", "!kimi explain the architecture", "nvidia-kimi", "cloud")
+reset_sticky()
+case("cloud-inline", "please !deepseek review this design", "nvidia-deepseek", "cloud")
+# resolve_target: cloud alias -> NVIDIA root + real catalog id + bearer header shape
+b, real, hdr = R.resolve_target("nvidia-kimi")
+check("resolve-cloud-base", b, R.NVIDIA_ROOT)
+check("resolve-cloud-realid", real, R.CLOUD_MODELS["nvidia-kimi"])
+check("resolve-cloud-no-double-v1", b.endswith("/v1"), False)
+# local model -> swap base, id unchanged, no auth header
+b2, real2, hdr2 = R.resolve_target("qwen36-iq3")
+check("resolve-local-base", b2, R.SWAP_BASE)
+check("resolve-local-realid", real2, "qwen36-iq3")
+check("resolve-local-no-auth", hdr2, {})
+
 print("== L2 classifier (mocked) ==")
 ambiguous = ("I have a piece of logic that processes incoming records and updates "
              "several counters based on their category, then writes a summary to disk. "
