@@ -50,6 +50,26 @@ ocl -Run "..."        # non interattivo, anch'esso instradato dal router
 
 Override inline dentro il prompt: iniziare con `!max`, `!quality`, `!coder`, `!ita`, `!small`, ecc.
 
+## Cloud tier (NVIDIA NIM) — opt-in
+
+Tier cloud OpenAI-compatibile su `build.nvidia.com`, **mai auto-selezionato**: il locale resta default. Un override cloud inoltra a `https://integrate.api.nvidia.com/v1` con `Authorization: Bearer $NVIDIA_API_KEY`, riscrive l'id alias nel vero id catalogo, e **bypassa sticky + context guard** (i modelli cloud hanno context molto più ampio del 35B locale).
+
+Anche `ocl -Mode` espone i tier cloud: `-Mode cloud|kimi|deepseek|llama70b|gptoss|qwencloud`.
+
+| Override / `-Mode` | Alias router | Modello NVIDIA (verificato 2026-06-20) | Tool use |
+| --- | --- | --- | --- |
+| `!cloud` | `nvidia-kimi` (default) | `moonshotai/kimi-k2.6` | sì |
+| `!kimi` | `nvidia-kimi` | `moonshotai/kimi-k2.6` | sì |
+| `!deepseek` | `nvidia-deepseek` | `deepseek-ai/deepseek-v4-pro` | — |
+| `!llama70b` | `nvidia-llama70b` | `meta/llama-3.3-70b-instruct` | — |
+| `!gptoss` | `nvidia-gptoss` | `openai/gpt-oss-20b` (reasoning, lento) | — |
+| `!qwencloud` | `nvidia-qwen` | `qwen/qwen3.5-397b-a17b` | — |
+
+- **Key**: `NVIDIA_API_KEY` deve stare nell'env del processo router. `start-opencode-local.ps1` lo carica best-effort da `D:\repos\.env`; senza key una richiesta cloud torna HTTP 400 (nessun fallback silenzioso al locale).
+- **Caveat**: rate limit ~40 req/min (gli override sono manuali quindi raramente in burst); tool/function calling non garantito su tutti i modelli NIM → per il loop agentico OpenCode usare `nvidia-kimi` (tool-calling verificato). `gpt-oss-20b` è un reasoning model: prima risposta molto lenta. Gli id reali sono modificabili e vanno ri-verificati nel blocco `CLOUD_MODELS` di `scripts/opencode-router.py` (i modelli NIM hanno EOL: `qwen3-coder-480b` e `deepseek-v3.1` sono già spariti).
+- **Selezione esplicita**: con key presente, gli alias (`nvidia-kimi`, ...) compaiono anche in `/v1/models` e in `opencode.jsonc`, quindi sono selezionabili come modello esplicito in OpenCode (bypass), non solo via `!override`.
+- **Test/bench**: routing offline `py scripts/test-router-routing.py`; round-trip live `py scripts/test-router-cloud-integration.py`; latenza/throughput per modello + probe tool-use `py scripts/bench-nvidia-cloud.py`.
+
 Diagnostica streaming: `OPENCODE_ROUTER_NONSTREAM_MODELS=granite-fast` forza solo i modelli indicati a chiamare llama-swap in non-streaming e riconfezionare la risposta come SSE. Usarlo solo per debug di output vuoto/token 0: sblocca il parsing OpenCode in alcuni casi, ma puo aumentare molto la latenza e non e default operativo.
 
 ## Verifica
