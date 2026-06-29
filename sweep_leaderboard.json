@@ -263,19 +263,19 @@
     "label": "Qwen2.5-Coder-0.5B-Q4_K_M",
     "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\lmstudio-community\\Qwen2.5-Coder-0.5B-Instruct-GGUF\\Qwen2.5-Coder-0.5B-Instruct-Q4_K_M.gguf",
     "runtime": "ik",
-    "load_time": 6.59,
-    "bench_time": 6.47,
+    "load_time": 0.73,
+    "bench_time": 5.79,
     "passed": 32,
     "total": 45,
     "passed_of_51": 32,
-    "total_time_s": 5.69,
+    "total_time_s": 5.38,
     "valid": false,
     "per_task": [
       {
         "verdict": "PASS",
         "passed": 8,
         "total": 8,
-        "time_s": 0.6
+        "time_s": 0.4
       },
       {
         "verdict": "PASS",
@@ -322,7 +322,7 @@
     ],
     "status": "ok",
     "tier": 0,
-    "timestamp": "2026-06-29 23:51:06"
+    "timestamp": "2026-06-30 00:50:12"
   },
   {
     "label": "daily-Qwen3.6-35B-A3B-IQ3_K_R4",
@@ -518,5 +518,70 @@
     "status": "ok",
     "tier": 7,
     "timestamp": "2026-06-29 20:30:13"
+  },
+  {
+    "label": "deepseek-coder-1.3B-instruct-Q4_K_M",
+    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\TheBloke\\deepseek-coder-1.3b-instruct-GGUF\\deepseek-coder-1.3b-instruct.Q4_K_M.gguf",
+    "runtime": "ik",
+    "load_time": 0.73,
+    "bench_time": 4.49,
+    "passed": 39,
+    "total": 51,
+    "passed_of_51": 39,
+    "total_time_s": 4.02,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.5
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 0.2
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 5,
+        "time_s": 0.2
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.4
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 5,
+        "total": 6,
+        "time_s": 0.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 0.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 0.7
+      }
+    ],
+    "status": "ok",
+    "tier": 1,
+    "timestamp": "2026-06-30 00:49:46"
   }
 ]
