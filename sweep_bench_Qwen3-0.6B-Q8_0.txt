@@ -18,61 +18,86 @@ Modelli da testare: 1
 ============================================================
 TESTING: Qwen3-0.6B-Q8_0
 ============================================================
-  Warm-up... ok (0.4s)
+  Warm-up... ok (0.1s)
 
   [FACILE] FizzBuzz...
-    [PASS] - 8/8 test (2.1s)
+    [PASS] - 8/8 test (0.4s)
 
   [MEDIO] Trova Duplicati...
-    [FAIL] - 0/6 test (10.9s)
-    [!] Nessun codice generato
+    [FAIL] - 2/6 test (0.1s)
 
   [DIFFICILE] Somma Valori Nested...
-    [FAIL] - 0/5 test (11.0s)
-    [!] Nessun codice generato
+    [FAIL] - 1/5 test (0.3s)
 
   [MEDIO] Appiattisci Lista...
-    [PASS] - 6/6 test (3.6s)
+    [PASS] - 6/6 test (0.3s)
 
   [MEDIO] Parse Configurazione...
-    [FAIL] - 5/6 test (3.4s)
+    [FAIL] - 5/6 test (0.4s)
 
   [DIFFICILE] Unisci Intervalli...
-    [PASS] - 6/6 test (6.4s)
+    [PASS] - 6/6 test (0.5s)
 
   [DIFFICILE] Parentesi Bilanciate...
-    [PASS] - 8/8 test (5.4s)
+    [FAIL] - 4/8 test (0.4s)
 
   [MOLTO DIFFICILE] Merge Profondo Dizionari...
-    [FAIL] - 0/6 test (11.2s)
-    [!] Nessun codice generato
+    [FAIL] - 2/6 test (0.5s)
 
   RISULTATO: [X] SCARTATO
-  Test totali: 33/34
-  Tempo totale: 53.99s
+  Test totali: 34/51
+  Tempo totale: 2.93s
 
 ============================================================
 RISULTATI FINALI
 ============================================================
 
-[OK] MODELLI VALIDI PER CODING (15):
+[OK] MODELLI VALIDI PER CODING (43):
+   Qwen2.5-Coder-1.5B-Q4_K_M (4.79s)
+   granite-4.1-3B-Q4_K_S (7.36s)
    qwen2.5-coder-3b-instruct@q4_0 (7.81s)
+   Qwen2.5-Coder-3B-Q4_0 (8.43s)
+   granite-3.3-2b-instruct-Q6_K (8.96s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen3-4B-Instruct-2507-GGUF/Qwen3-4B-Instruct-2507-Q4_K_M.gguf (9.74s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/gemma-3-4B-it-qat-GGUF/gemma-3-4B-it-QAT-Q4_0.gguf (11.99s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen2.5-7B-Instruct-1M-GGUF/Qwen2.5-7B-Instruct-1M-Q4_K_M.gguf (14.07s)
+   opusd-iq2kr4-0530 (16.99s)
+   opusd-iq2kr4-2026-05-31 (17.65s)
+   reval-opusd-iq3kr4 (18.23s)
+   opusd-iq3kr4-2026-05-31 (19.67s)
    models/Qwen3.6-35B-A3B-IQ3_K_R4.gguf (20.7s)
+   Ornith-1.0-9B-Q4_K_M (20.87s)
+   reval-daily-iq3kr4 (21.13s)
+   reval-granite41-8b (21.34s)
+   granite-4.1-8b (21.85s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/granite-3.2-8b-instruct-GGUF/granite-3.2-8b-instruct-Q4_K_M.gguf (22.78s)
+   daily-Qwen3.6-35B-A3B-IQ3_K_R4 (23.56s)
+   qwen36-opus-distill-r4 (23.72s)
+   daily-rebench-2026-05-21 (23.77s)
+   rb0601-granite41-8b (23.78s)
+   daily-rebench-2026-05-30 (24.33s)
    iklama_winner (24.69s)
+   rb0601-opusd-iq3kr4 (27.09s)
+   rb0601-daily-iq3kr4 (28.5s)
+   nemotron3-nano-4b (28.9s)
+   daily-rebench-2026-05-22 (29.85s)
+   reval-nemotron4b (30.91s)
    meta-llama-3.1-8b-instruct (35.35s)
    stage_b_winner (40.99s)
    gemma-3-4b-it (41.06s)
+   opusd-iq4kr4-0530 (47.62s)
+   opusd-iq4ksr4-0530 (48.51s)
    phi-3.5-mini-instruct (49.19s)
    ibm/granite-3.2-8b (51.61s)
+   Ornith-1.0-35B-A3B-Q4_K_M (53.39s)
+   opusd-iq4kr4-2026-05-31 (56.2s)
+   qwen36-opus-distill (61.89s)
    mistralai/mistral-nemo-instruct-2407 (72.65s)
    microsoft/phi-4 (93.0s)
-   qwen3.5-4b-uncensored-hauhaucs-aggressive (150.93s)
+   mtp-n2-2026-05-21 (310.21s)
+   gemma-4-E2B-it-Q4_K_M (473.44s)
 
-[X] MODELLI SCARTATI (26):
+[X] MODELLI SCARTATI (65):
    qwen2.5-coder-7b-instruct
    qwen2.5-coder-3b-instruct@q8_0
    deepseek-coder-v2-lite-instruct
@@ -88,6 +113,7 @@ RISULTATI FINALI
    qwen2.5-coder-14b-instruct
    qwen/qwen3-8b
    deepseek-r1-distill-qwen-7b
+   qwen3.5-4b-uncensored-hauhaucs-aggressive
    qwen3.5-9b-deepseek-v4-flash
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF/Qwen2.5-Coder-7B-Instruct-Q4_K_M.gguf
@@ -99,6 +125,44 @@ RISULTATI FINALI
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Phi-4-reasoning-plus-GGUF/Phi-4-reasoning-plus-Q4_K_M.gguf
    Qwen2.5-Coder-0.5B-Q4_K_M
    Qwen3-0.6B-Q8_0
+   deepseek-coder-1.3B-kexer-Q4_K_M
+   Yi-Coder-1.5B-Chat-Q4_K_M
+   DeepCoder-1.5B-Preview-Q8_0
+   gemma-3-1B-it-qat-Q4_0
+   SmolLM2-1.7B-Instruct-Q8_0
+   gemma-2-2b-it-Q4_K_M
+   stable-code-instruct-3B-Q6_K
+   Phi-3.5-mini-Q4_K_S
+   Phi-4-mini-reasoning-Q4_K_M
+   Ministral-3-3B-2512-Q4_K_M
+   Hermes-3-Llama-3.2-3B-Q4_K_M
+   Qwen3.5-0.8B-Q8_0
+   granite-4.0-h-tiny-Q4_K_M
+   granite-4.1-8B-Q4_K_S
+   Qwen3.5-9B-Q4_K_M
+   gemma-4-E4B-it-Q4_K_M
+   gemma-4-26B-A4B-it-Q4_K_M
+   Qwen3-Coder-Next-UD-Q2_K_XL
+   Qwen2.5-Coder-1.5B-bartowski-Q4_K_M
+   qwen3.5-4b
+   qwen/qwen3.5-9b
+   qwen36-35b-a3b-fast
+   phi-4-mini-instruct
+   qwen3-claude-distill
+   qwopus35-9b
+   gpt-oss-20b
+   zaya1-8b
+   minicpm5-1b
+   lfm2.5-8b-a1b
+   reval-lfm25
+   reval-gptoss20b
+   granite41-8b-2026-05-31
+   rb0601-lfm25
+   rb0601-gptoss20b
+   gemma-4-26B-A4B-it-qat-UD-Q4_K_XL
+   lfm-coder
+   Ornith-1.0-35B-A3B-IQ3_K_R4
+   Ornith-1.0-35B-A3B-IQ3_K_R4-imat
 
 Risultati salvati in: D:\repos\ralph\local_ralph\coding_benchmark_results.json
 

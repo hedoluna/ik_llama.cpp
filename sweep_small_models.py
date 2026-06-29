@@ -45,7 +45,7 @@ TIERS = {
          "ik", []),
         ("Qwen3-0.6B-Q8_0",
          MODELS_CACHE / "lmstudio-community" / "Qwen3-0.6B-GGUF" / "Qwen3-0.6B-Q8_0.gguf",
-         "ik", []),
+         "ik", ["--reasoning", "off"]),  # thinking-mode routes code to reasoning_content -> empty content
     ],
     1: [  # small coder 1.3-1.5B
         ("deepseek-coder-1.3B-kexer-Q4_K_M",
@@ -104,7 +104,7 @@ TIERS = {
     4: [  # 7-9B (advanced bench challengers — Granite 4.1 8B, Qwen3.5 family)
         ("Qwen3.5-0.8B-Q8_0",
          MODELS_CACHE / "lmstudio-community" / "Qwen3.5-0.8B-GGUF" / "Qwen3.5-0.8B-Q8_0.gguf",
-         "ik", []),
+         "ik", ["--reasoning", "off"]),  # thinking-mode routes code to reasoning_content -> empty content
         ("granite-4.0-h-tiny-Q4_K_M",
          MODELS_CACHE / "lmstudio-community" / "granite-4.0-h-tiny-GGUF" / "granite-4.0-h-tiny-Q4_K_M.gguf",
          "main", []),
