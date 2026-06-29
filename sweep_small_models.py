@@ -51,6 +51,9 @@ TIERS = {
         ("deepseek-coder-1.3B-kexer-Q4_K_M",
          MODELS_CACHE / "lmstudio-community" / "deepseek-coder-1.3B-kexer-GGUF" / "deepseek-coder-1.3B-kexer-Q4_K_M.gguf",
          "ik", []),
+        ("deepseek-coder-1.3B-instruct-Q4_K_M",  # instruct sibling of kexer (Alpaca template in GGUF)
+         MODELS_CACHE / "TheBloke" / "deepseek-coder-1.3b-instruct-GGUF" / "deepseek-coder-1.3b-instruct.Q4_K_M.gguf",
+         "ik", []),
         ("Yi-Coder-1.5B-Chat-Q4_K_M",
          MODELS_CACHE / "lmstudio-community" / "Yi-Coder-1.5B-Chat-GGUF" / "Yi-Coder-1.5B-Chat-Q4_K_M.gguf",
          "ik", []),
