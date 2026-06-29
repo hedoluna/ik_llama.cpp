@@ -4,39 +4,39 @@
     "verdict": "PASS",
     "pass": "1/1",
     "missing": [],
-    "output": "Here is the translation:\n\n'Please send the invoice FT-2025-0042 by Friday.'",
-    "dt_s": 0.31
+    "output": "Please send the invoice FT-2025-0042 by Friday.",
+    "dt_s": 0.27
   },
   {
     "id": "url_path_in_summary",
     "verdict": "PASS",
     "pass": "2/2",
     "missing": [],
-    "output": "The endpoint `/api/v2/users/{id}/invoices?format=json` returns a list of invoices for the specified user.",
-    "dt_s": 0.25
+    "output": "The endpoint /api/v2/users/{id}/invoices?format=json returns a list.",
+    "dt_s": 0.31
   },
   {
     "id": "placeholder_in_rewrite",
     "verdict": "PASS",
     "pass": "2/2",
     "missing": [],
-    "output": "Greetings, your code, which is designated as <<<TOKEN_ABC>>> and expires at {{ts}}.",
-    "dt_s": 0.21
+    "output": "Please note that your code <<<TOKEN_ABC>>> will expire on {{ts}}.",
+    "dt_s": 0.29
   },
   {
     "id": "version_string_in_explanation",
     "verdict": "PASS",
     "pass": "2/2",
     "missing": [],
-    "output": "Aggiorna a nginx-1.27.3-alpine3.20 che deprecia SSLv3.",
-    "dt_s": 0.26
+    "output": "L'aggiornamento a nginx-1.27.3-alpine3.20 deprecata SSLv3.",
+    "dt_s": 0.41
   },
   {
     "id": "regex_in_translation",
     "verdict": "PASS",
     "pass": "1/1",
     "missing": [],
-    "output": "Die Reguläre Ausdruck `^[A-Z]{2}\\d{4}$` passt unserem Format an.",
-    "dt_s": 0.25
+    "output": "Die Regex ^[A-Z]{2}\\d{4}$ entspricht unserem Format.",
+    "dt_s": 0.32
   }
 ]
