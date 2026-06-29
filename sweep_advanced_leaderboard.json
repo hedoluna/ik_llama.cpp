@@ -1400,5 +1400,2654 @@
       }
     ],
     "timestamp": "2026-05-11 20:34:59"
+  },
+  {
+    "label": "daily-Qwen3.6-35B-A3B-IQ3_K_R4",
+    "status": "ok",
+    "load_time": 6.61,
+    "bench_time": 59.18,
+    "score": 17,
+    "total": 17,
+    "time_s": 60.16,
+    "profile": "Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns",
+    "by_category": [
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 1,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 0,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 1,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 1,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 1,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 0,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      }
+    ],
+    "timestamp": "2026-06-29 20:32:15"
+  },
+  {
+    "label": "Ornith-1.0-35B-A3B-Q4_K_M",
+    "status": "ok",
+    "load_time": 11.08,
+    "bench_time": 148.52,
+    "score": 17,
+    "total": 17,
+    "time_s": 60.16,
+    "profile": "Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns",
+    "by_category": [
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 1,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 0,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 1,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 1,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 1,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 0,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      }
+    ],
+    "timestamp": "2026-06-29 20:34:56"
+  },
+  {
+    "label": "Ornith-1.0-9B-Q4_K_M",
+    "status": "ok",
+    "load_time": 1.88,
+    "bench_time": 64.02,
+    "score": 16,
+    "total": 17,
+    "time_s": 60.16,
+    "profile": "Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns",
+    "by_category": [
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 1,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 2,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 0,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 1,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 1,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 1,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 2,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 0,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 0,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 3,
+        "total": 4
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      }
+    ],
+    "timestamp": "2026-06-29 20:36:04"
   }
 ]

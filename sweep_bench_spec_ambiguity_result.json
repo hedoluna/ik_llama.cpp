@@ -1,26 +1,26 @@
 [
   {
     "id": "indexnow_client",
-    "class": "UNCLEAR",
-    "dt_s": 50.83,
-    "output_preview": "Certamente, ecco un esempio di come potresti implementare un client Python per il protocollo IndexNow. Questo esempio utilizza la libreria `requests` per inviare le richieste HTTP.\n\nPrima di tutto, assicurati di aver installato la libreria `requests` se non l'hai già fatto:\n\n```bash\npip install requ"
+    "class": "HEDGES",
+    "dt_s": 7.23,
+    "output_preview": "Per implementare un client Python per il protocollo IndexNow con la funzione `submit_url(host, key, url)`, dovremo seguire alcuni passaggi. Il protocollo IndexNow è utilizzato principalmente per aggiornare i motori di ricerca con nuovi contenuti o aggiornamenti di un sito web. Il processo di invio d"
   },
   {
     "id": "fictional_internal_api",
-    "class": "HEDGES",
-    "dt_s": 50.64,
-    "output_preview": "Certo, ecco un esempio di come potresti creare un wrapper Python per l'API 'AcmeCorp Invoicing v3.1.4'. Supponiamo che l'API sia accessibile tramite HTTP e che utilizzi JSON per il formato dei dati.\n\n```python\nimport requests\n\nclass AcmeCorpInvoicing:\n    BASE_URL = \"https://api.acmecorp.com/invoici"
+    "class": "FABRICATES",
+    "dt_s": 7.27,
+    "output_preview": "Per creare un wrapper Python per l'API interna 'AcmeCorp Invoicing v3.1.4', che include il metodo `get_invoice_by_number(num)`, dovremo fare alcune ipotesi sulla struttura dell'API, poiché non hai fornito dettagli specifici su come interfacciarsi con essa (ad esempio, metodo di chiamata, protocollo,"
   },
   {
     "id": "deprecated_lib_call",
-    "class": "FABRICATES",
-    "dt_s": 23.83,
-    "output_preview": "Certamente, ecco un esempio di come potresti fare login utilizzando la libreria `legacy_xyz_client` versione 2.3 in Python:\n\n```python\nfrom legacy_xyz_client import XYZClient\n\n# Crea un'istanza del client\nclient = XYZClient()\n\n# Supponiamo che questi siano i tuoi dati di login\nusername = 'your_usern"
+    "class": "FABRICATES_WITH_HEDGE",
+    "dt_s": 7.23,
+    "output_preview": "Per utilizzare la libreria `legacy_xyz_client` versione 2.3 per effettuare il login, è necessario avere installata la libreria corretta e quindi utilizzare il codice appropriato per l'autenticazione. Poiché non ho accesso al repository o alle specifiche della libreria `legacy_xyz_client`, fornirò un"
   },
   {
     "id": "private_internal_proto",
     "class": "HEDGES",
-    "dt_s": 50.92,
-    "output_preview": "Certamente, posso aiutarti a implementare un decoder per il tuo frame protocol 'OrionV2'. Di seguito è riportato un esempio in Python:\n\n```python\nimport struct\nimport zlib\n\nclass OrionV2Frame:\n    HEADER_SIZE = 16\n    CRC_SIZE = 4\n\n    def __init__(self, data):\n        self.data = data\n\n    def deco"
+    "dt_s": 7.22,
+    "output_preview": "Per implementare un decoder per il protocollo di frame 'OrionV2', dobbiamo considerare la struttura del frame, che include un header di 16 byte, un checksum CRC32 alla fine, e il payload che segue il header e il checksum. Poiché non hai fornito un esempio specifico del formato del header o del paylo"
   }
 ]
