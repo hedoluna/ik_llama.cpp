@@ -1,6 +1,6 @@
 # Graduatoria modelli testati
 
-Ultimo aggiornamento: 2026-06-20.
+Ultimo aggiornamento: 2026-07-05.
 
 Questa e l'unica graduatoria locale da aggiornare. I file JSON/CSV restano dati raw; README e guide operative devono linkare questa pagina invece di duplicare classifiche. La memoria di cosa abbiamo imparato e cosa evitare sta in [docs/benchmark-memory.md](D:/repos/ik_llama.cpp/docs/benchmark-memory.md).
 
@@ -12,7 +12,7 @@ Hardware locale rilevante: Ryzen 9 5950X, 128GB RAM, RTX A2000 6GB VRAM.
 
 | File | Cosa misura | Affidabilita |
 | --- | --- | --- |
-| `sweep_leaderboard.json` | coding sweep piccolo/incompleto | Media-bassa: molte righe sono parziali. |
+| `sweep_leaderboard.json` | coding sweep piccolo/incompleto | Media: aggiornato 2026-07-05 sui candidati tier 7; molte righe storiche restano parziali. |
 | `sweep_advanced_leaderboard.json` | coding avanzato | Media: utile per confronto tra piccoli/3B. |
 | `sweep_text_leaderboard.json` | text/estrazione/traduzione | Alta per task testuali brevi. |
 | `sweep_ts_ab_leaderboard.json` | TypeScript/coding web | Media: punteggio e tempi aggiornati 2026-06-18. |
@@ -21,9 +21,47 @@ Hardware locale rilevante: Ryzen 9 5950X, 128GB RAM, RTX A2000 6GB VRAM.
 | `D:\repos\ralph\local_ralph\BENCHMARK_v4_v5_LEADERBOARD.md` | coding realistico su pattern TS/Python reali | Alta per qualita: GildedRose, Drizzle, TanStack, Zod, Vitest, fiscal/crypto/state machine. |
 | `D:\repos\ralph\local_ralph\coding_benchmark_v4_realworld.py` + `coding_benchmark_v5_ts_focus.py` | harness rieseguibile contro endpoint OpenAI-compatible | Alta per confronto A/B; usare `BENCH_URL` e `BENCH_MODEL`. |
 | `D:\repos\ralph\local_ralph\BENCHMARK_v4_v5_LEADERBOARD.md` (sezione FFT) | 4 task algoritmici FFT-domain, qualita e durata end-to-end | Media: ottimo segnale di dominio, ma copertura stretta e non equivalente a Ralph v4/v5. |
+| `D:\repos\ralph\local_ralph\ralph.ps1` (agente autonomo) | loop che scrive/corregge file da solo con test-gate + edit-based | Alta come esecutore end-to-end (harness aggiornato 2026-07-05, commit `28f3c46`/`8c13e22`); vedi sezione "Ralph autonomo". Distinto dalle suite di qualita `coding_benchmark_v4/v5`. |
 | `bench-llama-20260620-160611.txt` | throughput puro `pp128`/`tg64` sul runtime aggiornato, Qwen3.5-4B | Alta per velocita del runtime su quel modello; non misura qualita o latenza OpenCode. |
 | `bench-leaderboard-20260620-164557/SUMMARY.md` | throughput uniforme e gate FFT corrente sui primi profili | Alta per velocita relativa; media per qualita perche FFT copre solo 4 task di dominio. |
 | Smoke API manuali | caricamento, compatibilita e tok/s su prompt breve | Alta per sanity check, non per qualita. |
+
+## Coding sweep aggiornato 2026-07-05
+
+Run eseguito con `py -3 sweep_small_models.py --tier 7`, runtime locale `build\bin\Release\llama-server.exe`, endpoint `127.0.0.1:1234`, contesto `16384`, `-fa on`, e flag specifici definiti in `sweep_small_models.py`. Il risultato aggiorna `sweep_leaderboard.json` e i log `sweep_bench_*.txt`.
+
+### Risultato fresco tier 7
+
+| Rank sweep | Modello | Esito | Tempo suite | Tempo harness | Lettura operativa |
+| ---: | --- | ---: | ---: | ---: | --- |
+| 1 | `daily-Qwen3.6-35B-A3B-IQ3_K_R4` | `51/51`, valido | `21.48s` | `22.58s` | Miglior tier 7 fresco: qualita piena e tempo accettabile per MoE 35B IQ3. |
+| 2 | `Ornith-1.0-9B-Q4_K_M` | `51/51`, valido | `42.94s` | `43.81s` | Valido e stabile, ma piu lento del daily Qwen3.6 sullo stesso sweep. |
+| 3 | `Ornith-1.0-35B-A3B-IQ3_K_R4` | `50/51`, non valido | `20.04s` | `20.78s` | Molto veloce e quasi pieno, ma non supera la soglia valida del coding sweep. |
+| 4 | `Ornith-1.0-35B-A3B-IQ3_K_R4-imat` | `50/51`, non valido | `20.59s` | `21.52s` | Simile al 35B IQ3 base; nessun vantaggio evidente dall'imat in questo gate. |
+| 5 | `Qwen2.5-Coder-32B-Instruct-IQ3_M` | `50/51`, non valido | `447.49s` | `449.40s` | Quasi pieno ma troppo lento per routing quotidiano; resta candidato offline/specialistico. |
+| 6 | `Ornith-1.0-35B-A3B-Q4_K_M` | load failed | n/d | n/d | Non pronto entro `180s`; non interpretabile come risultato qualita. |
+| 7 | `DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M` | timeout/non parsato | n/d | `900.01s` | Non produce risultato utile entro timeout; fuori dalla shortlist. |
+
+### Leaderboard coding sweep corrente
+
+Questa tabella usa l'ultimo risultato disponibile per ogni modello in `sweep_leaderboard.json`, ordinato prima per `passed_of_51` e poi per tempo suite. E utile per scegliere candidati da ritestare, ma non sostituisce Ralph v4/v5 o OpenCode end-to-end.
+
+| Rank sweep | Modello | Ultimo run | Esito | Tempo suite | Stato |
+| ---: | --- | --- | ---: | ---: | --- |
+| 1 | `Qwen2.5-Coder-1.5B-Q4_K_M` | 2026-07-03 | `51/51` | `4.72s` | Valido; miglior speed/score nello sweep piccolo. |
+| 2 | `Yi-Coder-1.5B-Chat-Q4_K_M` | 2026-07-03 | `51/51` | `5.32s` | Valido nello sweep piccolo; advanced piu instabile, quindi da non promuovere da solo. |
+| 3 | `granite-4.1-3B-Q4_K_S` | 2026-07-03 | `51/51` | `7.27s` | Valido; buon candidato per gate mirati e tool/API. |
+| 4 | `granite-3.3-2b-instruct-Q6_K` | 2026-07-03 | `51/51` | `8.95s` | Valido; usa runtime mainline nello script. |
+| 5 | `Qwen3-Coder-Next-UD-Q2_K_XL` | 2026-07-03 | `51/51` | `14.42s` | Valido e sorprendentemente rapido nel gate piccolo; serve OpenCode/Ralph. |
+| 6 | `daily-Qwen3.6-35B-A3B-IQ3_K_R4` | 2026-07-05 | `51/51` | `21.48s` | Miglior candidato tier 7 fresco. |
+| 7 | `Ornith-1.0-9B-Q4_K_M` | 2026-07-05 | `51/51` | `42.94s` | Valido ma piu lento dei migliori sweep. |
+| 8 | `granite-4.0-h-tiny-Q4_K_M` | 2026-07-03 | `50/51` | `6.37s` | Quasi pieno ma non valido. |
+| 9 | `Ornith-1.0-35B-A3B-IQ3_K_R4` | 2026-07-05 | `50/51` | `20.04s` | Quasi pieno, non valido. |
+| 10 | `granite-4.1-8B-Q4_K_S` | 2026-07-03 | `50/51` | `20.48s` | Quasi pieno, non valido. |
+| 11 | `Ornith-1.0-35B-A3B-IQ3_K_R4-imat` | 2026-07-05 | `50/51` | `20.59s` | Quasi pieno, non valido. |
+| 12 | `gemma-4-26B-A4B-it-qat-UD-Q4_K_XL` | 2026-07-03 | `50/51` | `92.13s` | Quasi pieno, ma lento. |
+| 13 | `Qwen3.5-9B-Q4_K_M` | 2026-07-03 | `50/51` | `209.82s` | Quasi pieno, troppo lento per fast path. |
+| 14 | `Qwen2.5-Coder-32B-Instruct-IQ3_M` | 2026-07-05 | `50/51` | `447.49s` | Quasi pieno ma operativo solo per test offline. |
 
 ## Leaderboard operativa
 
@@ -132,6 +170,26 @@ Il re-benchmark comparativo successivo sui primi modelli e salvato in `bench-lea
 | `granite-fast` | API negativo | API: ~`53.7` tok/s prompt, ~`12.7` tok/s gen | Carica, ma genera solo spazi invisibili sul prompt breve. |
 | `qwen-coder` | API negativo | n/d | `llama-swap`: `upstream command exited prematurely`; probabile config/offload da rivedere. |
 
+## Ralph autonomo (harness ralph.ps1) 2026-07-05
+
+Questa sezione riguarda l'agente autonomo `ralph.ps1` (loop che scrive/corregge file da solo), distinto dalle suite di qualita `coding_benchmark_v4/v5` citate come "Ralph v4/v5" altrove. Aggiornamento harness + validazione end-to-end sul daily-winner. Non e un re-run v4/v5 e non cambia il ranking di qualita.
+
+Upgrade harness (repo `hedoluna/ralph-local`, commit `28f3c46` e `8c13e22`):
+
+- Test-gate posseduto dall'harness: il completamento e concesso solo su test verdi eseguiti da ralph. Prima dichiarava COMPLETE facendo substring-match del token `<promise>` citato nella narrazione, senza mai eseguire i test -> falsi positivi.
+- Fix corruzione here-string nella traduzione bash->PowerShell (i file con `||`/`&&`/`2>&1` venivano silenziosamente corrotti).
+- Scrittura edit-based (blocchi `<edit>` SEARCH/REPLACE) + file-injection del contenuto corrente: il modello corregge file esistenti con edit mirati invece di riscrivere tutto -> convergenza sui file grandi.
+
+Risultati autonomi end-to-end, modello `daily-Qwen3.6-35B-A3B-IQ3_K_R4` su `127.0.0.1:8091`, `--reasoning off`:
+
+| Task | Tipo | Esito | Iter | Note |
+| --- | --- | ---: | ---: | --- |
+| slugify (nuovo) | creazione, 5 test | `5/5` verde | 1 | test-gate verifica il verde reale |
+| textstats (nuovo, ~95 righe, 6 funzioni) | creazione, 10 test | `10/10` verde | 1 | one-shot: file medio senza iterazioni di fix |
+| credleak fix (esistente, 497 righe) | edit mirato, 56 test | `56/56` verde | 2 | 2 edit SEARCH/REPLACE, 0 riscritture whole-file, file byte-identico tranne la riga fixata |
+
+Lettura: con l'harness aggiornato il daily-winner completa autonomamente task di coding reali (creazione + fix su file da ~500 righe). Il regime file-grande, dove il vecchio ralph whole-file non convergeva (Mellum-12B: 4 iterazioni di soli commenti), e ora risolto via edit mirati. Segnale di esecutore end-to-end, non di ranking qualita.
+
 ## Ralph real-world 2026-06-18
 
 | Profilo | Suite | Esito | Note |
@@ -156,10 +214,15 @@ Il re-benchmark comparativo successivo sui primi modelli e salvato in `bench-lea
 - Miglior candidato MTP: `qwen36-mtp` e ora competitivo (`16/17`); `qwopus9` resta fuori nonostante smoke OK.
 - Miglior fast path: `qwen-small`.
 - Miglior 4B corrente per copertura e velocita: `Qwen3-4B-Instruct-2507-Q4_K_M`, FFT `4/4`, `66.11 tok/s` in generazione.
+- Miglior coding sweep piccolo corrente: `Qwen2.5-Coder-1.5B-Q4_K_M`, `51/51` in `4.72s`, ma non va promosso sopra i profili Ralph/OpenCode senza gate realistico.
+- Miglior candidato tier 7 fresco: `daily-Qwen3.6-35B-A3B-IQ3_K_R4`, `51/51` in `21.48s`; e il primo da portare a OpenCode/Ralph leggero tra i nuovi MoE.
+- Miglior Ornith fresco: `Ornith-1.0-9B-Q4_K_M`, `51/51` in `42.94s`; i 35B IQ3 fanno `50/51` e quindi restano sotto soglia nello sweep coding.
+- Da scartare dal run fresco: `Ornith-1.0-35B-A3B-Q4_K_M` per load timeout a `180s`, `DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M` per timeout harness a `900s`.
 - `Qwen3.5-4B-Q4_K_M`/`qwen-small` resta utile come fast path (`54.40 tok/s`), ma il nuovo FFT `3/4` smentisce il vecchio vantaggio di dominio.
 - Da non mettere in routing coding automatico per ora: `mellum`, `granite-fast`, `qwen-coder`, `Qwen3-Coder-Next` pesante, finche non passano un gate OpenCode/Ralph.
 - Il vecchio `tools` -> `granite-fast` era sbagliato; il profilo corretto passa il gate atomico tool-use `5/5`, ma fallisce OpenCode breve `0/3`. Eventuale routing solo come tool specialist, non coding.
 - `gpt-oss-20b` e tornato API-OK nello smoke 2026-06-18, ma resta fuori dal routing finche non passa un test OpenCode vero.
+- Harness `ralph.ps1` aggiornato 2026-07-05 (test-gate + edit-based): ora esegue i test da solo prima di dichiarare COMPLETE e converge su file grandi via edit mirati; il daily-winner completa autonomamente creazione + fix su file da ~500 righe (vedi "Ralph autonomo 2026-07-05").
 
 ## Piano progressivo
 
@@ -184,6 +247,7 @@ Obiettivo: promuovere solo profili che migliorano davvero il routing locale senz
 - Per ogni candidato eseguire prima `scripts/model_profile_gate.py`: smoke + tool-use breve, JSON persistente, exit code non ambiguo.
 - Se fallisce smoke, template, caricamento o `message.tool_calls`, fermarsi: niente Ralph, niente OpenCode, niente Optuna.
 - Candidati immediati: `quality-iq3`, `qwen36-mtp`, `Qwen3.5-4B-Q4_K_M`, `qwen-coder` corretto, `mellum2-instruct`.
+- Candidati da aggiungere dopo il run 2026-07-05: `daily-Qwen3.6-35B-A3B-IQ3_K_R4` e `Ornith-1.0-9B-Q4_K_M`.
 
 ### Fase 2 - Gate OpenCode breve
 
