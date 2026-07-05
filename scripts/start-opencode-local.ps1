@@ -89,12 +89,25 @@ function Test-Url {
   }
 }
 
+function Wait-Url {
+  param([string]$Url, [int]$TimeoutSeconds)
+
+  $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
+  while ((Get-Date) -lt $deadline) {
+    if (Test-Url $Url) {
+      return $true
+    }
+    Start-Sleep -Milliseconds 500
+  }
+  return $false
+}
+
 function Start-Classifier {
   param([string]$ListenHost, [int]$Port, [string]$Gguf, [string]$Exe,
         [int]$Threads, [string]$LogDir, [int]$TimeoutSeconds)
 
   if (Test-LocalPort -HostName $ListenHost -Port $Port) {
-    if (Test-Url "http://${ListenHost}:$Port/v1/models") {
+    if (Wait-Url "http://${ListenHost}:$Port/v1/models" -TimeoutSeconds ([Math]::Max($TimeoutSeconds, 15))) {
       Write-Host "classifier already responds on http://${ListenHost}:$Port"
       return
     }
@@ -115,6 +128,9 @@ function Start-Classifier {
 
   if (-not (Wait-LocalPort -HostName $ListenHost -Port $Port -TimeoutSeconds ([Math]::Max($TimeoutSeconds, 60)))) {
     throw "classifier did not start on http://${ListenHost}:$Port. Check $err"
+  }
+  if (-not (Wait-Url "http://${ListenHost}:$Port/v1/models" -TimeoutSeconds ([Math]::Max($TimeoutSeconds, 60)))) {
+    throw "classifier started a process, but http://${ListenHost}:$Port/v1/models did not respond. Check $err"
   }
   Write-Host "classifier (qwen-small, CPU) started on http://${ListenHost}:$Port"
 }

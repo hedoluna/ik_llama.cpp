@@ -35,6 +35,7 @@ LISTEN_HOST, LISTEN_PORT = "127.0.0.1", 8291
 SWAP_BASE = "http://127.0.0.1:8292"
 CLASSIFIER_BASE = "http://127.0.0.1:9998"
 CLASSIFIER_MODEL = "qwen-small"
+SMALL_MODEL = "qwen-small"
 LOG_DIR = r"D:\repos\ik_llama.cpp\bench-opencode-local"
 
 AUTO_IDS = {"auto", "llama-swap/auto"}
@@ -43,9 +44,10 @@ CHARS_PER_TOKEN = 4
 
 # Input-context budget per model (tokens). Used by the context guard.
 MODEL_CTX = {
-    "qwen-small": 32768, "qwen36-iq3": 32768, "qwen-coder": 32768,
+    "qwen-small": 32768, "qwen36-iq3": 24000, "qwen-coder": 32768,
     "qwen36-opus-iq4": 24576, "qwen36-q5": 24576, "qwen-opus-q8": 24576,
     "cerbero-ita": 16384, "granite-fast": 32768, "gpt-oss-20b": 24576,
+    "ornith-35b-iq3-imat": 24000,
 }
 CTX_SAFETY_FRAC = 0.75
 TRIVIAL_TOKENS = 60
@@ -57,9 +59,9 @@ LABEL_MODEL = {
     "TRIVIAL": "qwen-small", "NORMAL": "qwen36-iq3", "HARD": "qwen36-opus-iq4",
     "CODER": "qwen-coder", "ITALIAN": "cerbero-ita",
 }
-DEFAULT_MODEL = "qwen36-iq3"
-BIG_CAPABLE_MODEL = "qwen36-iq3"   # 32k window, used when context is huge
-SMALL_MODEL = "qwen-small"
+# Preferred default model (highest correctness from latest leaderboard)
+DEFAULT_MODEL = "daily-Qwen3.6-35B-A3B-IQ3_K_R4"
+BIG_CAPABLE_MODEL = "daily-Qwen3.6-35B-A3B-IQ3_K_R4"   # 32k window, used when context is huge
 
 HARD_KEYWORDS = [
     "refactor", "redesign", "architecture", "architettura", "design pattern",
@@ -75,7 +77,7 @@ OVERRIDE_TOKENS = {
     "!small": "qwen-small", "!fast": "qwen-small", "!coding": "qwen36-iq3",
     "!normal": "qwen36-iq3", "!quality": "qwen36-opus-iq4", "!hard": "qwen36-opus-iq4",
     "!max": "qwen-opus-q8", "!coder": "qwen-coder", "!ita": "cerbero-ita",
-    "!italian": "cerbero-ita",
+    "!italian": "cerbero-ita", "!ornith": "ornith-35b-iq3-imat",
 }
 
 CLASSIFY_TIMEOUT_S = 4.0
@@ -538,8 +540,19 @@ class Handler(BaseHTTPRequestHandler):
             resp = urllib.request.urlopen(req, timeout=UPSTREAM_TIMEOUT)
         except urllib.error.HTTPError as e:
             b = e.read()
-            self.send_response(e.code)
-            self.send_header("Content-Type", e.headers.get("Content-Type", "application/json"))
+            if b"exceeds the available context size" in b:
+                b = json.dumps({
+                    "error": {
+                        "message": "The request exceeds the available context size.",
+                        "type": "invalid_request_error",
+                        "code": "context_length_exceeded"
+                    }
+                }).encode("utf-8")
+                code = 400
+            else:
+                code = e.code
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
             self.send_header("Content-Length", str(len(b)))
             self.end_headers()
             try:
@@ -604,8 +617,19 @@ class Handler(BaseHTTPRequestHandler):
             completion = json.loads(data)
         except urllib.error.HTTPError as e:
             b = e.read()
-            self.send_response(e.code)
-            self.send_header("Content-Type", e.headers.get("Content-Type", "application/json"))
+            if b"exceeds the available context size" in b:
+                b = json.dumps({
+                    "error": {
+                        "message": "The request exceeds the available context size.",
+                        "type": "invalid_request_error",
+                        "code": "context_length_exceeded"
+                    }
+                }).encode("utf-8")
+                code = 400
+            else:
+                code = e.code
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
             self.send_header("Content-Length", str(len(b)))
             self.end_headers()
             try:

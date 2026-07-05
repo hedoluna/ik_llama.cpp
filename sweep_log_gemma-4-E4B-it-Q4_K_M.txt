@@ -1,11 +1,9 @@
-INFO [                    main] build info | tid="19856" timestamp=1778526224 build=4468 commit="9a26522a"
-INFO [                    main] system info | tid="19856" timestamp=1778526224 n_threads=8 n_threads_batch=-1 total_threads=32 system_info="AVX = 1 | AVX_VNNI = 0 | AVX2 = 1 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | AVX512_BF16 = 0 | FMA = 1 | NEON = 0 | SVE = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | BLAS = 1 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | MATMUL_INT8 = 0 | "
-ggml_cuda_init: GGML_CUDA_FORCE_MMQ:    no
-ggml_cuda_init: GGML_CUDA_FORCE_CUBLAS: no
+INFO [                    main] build info | tid="17296" timestamp=1783111931 build=4730 commit="f11da157"
+INFO [                    main] system info | tid="17296" timestamp=1783111931 n_threads=8 n_threads_batch=-1 total_threads=32 system_info="AVX = 1 | AVX_VNNI = 0 | AVX2 = 1 | AVX512 = 0 | AVX512_VBMI = 0 | AVX512_VNNI = 0 | AVX512_BF16 = 0 | FMA = 1 | NEON = 0 | SVE = 0 | ARM_FMA = 0 | F16C = 1 | FP16_VA = 0 | WASM_SIMD = 0 | SSE3 = 1 | SSSE3 = 1 | VSX = 0 | MATMUL_INT8 = 0 | "
 ggml_cuda_init: found 1 CUDA devices:
   Device 0: NVIDIA RTX A2000, compute capability 8.6, VMM: yes, VRAM: 6137 MiB
 CUDA0: using device CUDA0 - 5126 MiB free
-llama_model_loader: loaded meta data with 42 key-value pairs and 720 tensors from F:\LLM_Models\lm-studio\models\lmstudio-community\gemma-4-E4B-it-GGUF\gemma-4-E4B-it-Q4_K_M.gguf (version GGUF V3 (latest))
+llama_model_loader: loaded meta data with 42 key-value pairs and 720 tensors from F:\01_Modelli_AI\LLM_Models\lm-studio\models\lmstudio-community\gemma-4-E4B-it-GGUF\gemma-4-E4B-it-Q4_K_M.gguf (version GGUF V3 (latest))
 llama_model_loader: Dumping metadata keys/values. Note: KV overrides do not apply in this output.
 llama_model_loader: - kv   0:                       general.architecture str              = gemma4
 llama_model_loader: - kv   1:                               general.type str              = model
@@ -121,10 +119,6 @@ print_info: EOG token             = 50 '<|tool_response>'
 print_info: EOG token             = 106 '<turn|>'
 print_info: max token length      = 93
 ======================================= HAVE_FANCY_SIMD is NOT defined
-Oops: tensor with strange name per_layer_model_proj.weight
-Oops: tensor with strange name per_layer_proj_norm.weight
-Oops: tensor with strange name per_layer_token_embd.weight
-Oops: tensor with strange name rope_freqs.weight
 ------------------- Layer sizes:
 Layer  0:     56.74,     32.00,     88.74       55.00  MiB
 Layer  1:     56.74,     32.00,     88.74       55.00  MiB
@@ -168,19 +162,20 @@ Layer 38:     56.74,     32.00,     88.74       55.00  MiB
 Layer 39:     56.74,     32.00,     88.74       55.00  MiB
 Layer 40:     56.74,     32.00,     88.74       55.00  MiB
 Layer 41:     64.10,     64.00,    128.10       55.00  MiB
-Layer 42:    525.00,    457.00,    982.00 MiB (output layer)
+Layer 42:   2782.50,    457.00,   3239.50 MiB (output layer)
 --------------------------------------------------------------------------
 Total   :   2290.53,   2025.00,   4315.53 MiB
-Memory required for model tensors + cache: 4841 MiB
+Memory required for model tensors + cache: 7098 MiB
 Memory available on all devices - compute: 4047 MiB
-llm_load_tensors: ggml ctx size =    0.59 MiB
+llm_load_tensors: ggml ctx size =    0.67 MiB
 llm_load_tensors: offloading 42 repeating layers to GPU
 llm_load_tensors: offloading non-repeating layers to GPU
 llm_load_tensors: offloaded 43/43 layers to GPU
-llm_load_tensors:  CUDA_Host buffer size =   525.00 MiB
-llm_load_tensors:      CUDA0 buffer size =  5073.06 MiB
+llm_load_tensors:  CUDA_Host buffer size =  2730.00 MiB
+llm_load_tensors:      CUDA0 buffer size =  2868.06 MiB
 ............................................~ggml_backend_cuda_context: have 0 graphs
 .
+llm_scale_gate_inp_s: n_embd = 2560
 llama_init_from_model: n_ctx         = 16384
 llama_init_from_model: n_batch       = 2048
 llama_init_from_model: n_ubatch      = 512
@@ -203,18 +198,15 @@ llama_init_from_model: freq_scale    = 1
 llama_kv_cache_init:      CUDA0 KV buffer size =   896.00 MiB
 llama_init_from_model: KV self size  =  896.00 MiB, K (f16):  448.00 MiB, V (f16):  448.00 MiB
 llama_init_from_model:  CUDA_Host  output buffer size =     1.00 MiB
-llama_init_from_model:      CUDA0 compute buffer size =  1034.00 MiB
-llama_init_from_model:  CUDA_Host compute buffer size =  2258.01 MiB
-llama_init_from_model: graph nodes  = 1375
-llama_init_from_model: graph splits = 4
+llama_init_from_model:      CUDA0 compute buffer size =  1029.00 MiB
+llama_init_from_model:  CUDA_Host compute buffer size =    58.01 MiB
+llama_init_from_model: graph nodes  = 1332
+llama_init_from_model: graph splits = 2
 llama_init_from_model: enabling only_active_experts scheduling
-llm_scale_gate_inp_s: n_embd = 2560
-INFO [                    init] initializing slots | tid="19856" timestamp=1778526281 n_slots=1
-INFO [                    init] new slot | tid="19856" timestamp=1778526281 id_slot=0 n_ctx_slot=16384
+INFO [                    init] initializing slots | tid="17296" timestamp=1783111987 n_slots=1
+INFO [                    init] new slot | tid="17296" timestamp=1783111987 id_slot=0 n_ctx_slot=16384
 srv          init: Exclude reasoning tokens when selecting slot based on similarity: start: <think>, end: </think>
 use `--reasoning-tokens none` to disable.
-no implementations specified for speculative decoding
-slot         init: id  0 | task -1 | speculative decoding context not initialized
 prompt cache is enabled, size limit: 8192 MiB
 use `--cache-ram 0` to disable the prompt cache
 common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
@@ -229,63 +221,149 @@ How are you?<turn|>
 <|turn>model
 '
 common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
-INFO [                    main] model loaded | tid="19856" timestamp=1778526281
-INFO [                    main] HTTP server listening | tid="19856" timestamp=1778526281 hostname="127.0.0.1" port="1234" n_threads_http="31"
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526281
-INFO [      log_server_request] request | tid="34916" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7096 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="25808" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7128 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="19380" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7097 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="33452" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7159 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="35620" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7129 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="36584" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7127 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="33452" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=33601 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="25644" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7167 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="34552" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7163 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="2428" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=33598 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="36744" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=33606 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="34916" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7165 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="35260" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7198 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="36760" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=33596 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="25808" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=33600 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="19380" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=33597 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="35360" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7196 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="26476" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=33604 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="34648" timestamp=1778526281 remote_addr="127.0.0.1" remote_port=7197 status=200 method="GET" path="/v1/models" params={}
-INFO [      log_server_request] request | tid="35620" timestamp=1778526282 remote_addr="127.0.0.1" remote_port=33608 status=200 method="GET" path="/v1/models" params={}
+INFO [                    main] model loaded | tid="17296" timestamp=1783111987
+INFO [                    main] HTTP server listening | tid="17296" timestamp=1783111987 hostname="127.0.0.1" port="1234" n_threads_http="31"
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783111987
+INFO [      log_server_request] request | tid="5940" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37060 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="15136" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=3378 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="6000" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37058 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="8524" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37062 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="2864" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=3376 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="34604" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=3377 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="20720" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37065 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="22956" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37084 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="15136" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37085 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="3504" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37063 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="34524" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37059 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="8656" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37064 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="6000" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37088 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="3556" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37083 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="26324" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37061 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="23756" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37086 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="3524" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37087 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="5940" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37082 status=200 method="GET" path="/v1/models" params={}
+INFO [      log_server_request] request | tid="8524" timestamp=1783111987 remote_addr="127.0.0.1" remote_port=37089 status=200 method="GET" path="/v1/models" params={}
 common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
 ======== Prompt cache: cache size: 0, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.00, cache_ram_similarity: 0.50
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526282 id_slot=0 id_task=0
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783111987 id_slot=0 id_task=0
 ======== Cache: cache_size = 0, n_past0 =  0, n_past1 =  0, n_past_prompt1 = 0,  n_past2 =  0, n_past_prompt2 =  0
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526282 id_slot=0 id_task=0 p0=0
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783111987 id_slot=0 id_task=0 p0=0
+INFO [      log_server_request] request | tid="2864" timestamp=1783111988 remote_addr="127.0.0.1" remote_port=37090 status=200 method="GET" path="/v1/models" params={}
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
 slot print_timing: id  0 | task 0 | 
-prompt eval time =     219.65 ms /    43 tokens (    5.11 ms per token,   195.76 tokens per second)
-       eval time =     110.72 ms /     2 tokens (   55.36 ms per token,    18.06 tokens per second)
-      total time =     330.38 ms /    45 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526283 id_slot=0 id_task=0 n_ctx=16384 n_past=44 n_system_tokens=0 n_cache_tokens=44 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526283
-INFO [      log_server_request] request | tid="35652" timestamp=1778526283 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
+prompt eval time =     162.83 ms /   175 tokens (    0.93 ms per token,  1074.72 tokens per second)
+       eval time =    3599.08 ms /   155 tokens (   23.22 ms per token,    43.07 tokens per second)
+      total time =    3761.91 ms /   330 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783111991 id_slot=0 id_task=0 n_ctx=16384 n_past=329 n_system_tokens=0 n_cache_tokens=329 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783111991
+INFO [      log_server_request] request | tid="33388" timestamp=1783111991 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 329, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.10, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 329, total state size = 17.996 MiB
 common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 7.82 ms
+ - looking for better prompt, base f_keep = 0.097, sim = 0.172, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 17.996 MiB (limits: 8192.000 MiB, 0 tokens, 149767 est)
+   - prompt 00000192EDF6AF60:     329 tokens,       0 discarded, checkpoints:  0,    17.996 MiB
+prompt cache load took 0.11 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783111991 id_slot=0 id_task=42
+======== Cache: cache_size = 329, n_past0 =  32, n_past1 =  32, n_past_prompt1 = 32,  n_past2 =  32, n_past_prompt2 =  32
+Common part does not match fully
+cache : 
+<|turn>user
+Scrivi una funzione Python `crossover(parent1, parent2, point)` che:
+- Prende due cromos
+prompt: 
+<|turn>user
+Rispondi solo: ok<turn|>
+<|turn>model
+
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783111991 id_slot=0 id_task=42 p0=32
+slot print_timing: id  0 | task 42 | 
+prompt eval time =      35.12 ms /    11 tokens (    3.19 ms per token,   313.22 tokens per second)
+       eval time =      22.40 ms /     2 tokens (   11.20 ms per token,    89.28 tokens per second)
+      total time =      57.52 ms /    13 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783111991 id_slot=0 id_task=42 n_ctx=16384 n_past=44 n_system_tokens=0 n_cache_tokens=44 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783111991
+INFO [      log_server_request] request | tid="34604" timestamp=1783111991 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
 ======== Prompt cache: cache size: 44, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.73, cache_ram_similarity: 0.50
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526283 id_slot=0 id_task=3
+ - looking for better prompt, base f_keep = 0.727, sim = 0.303, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 17.996 MiB (limits: 8192.000 MiB, 0 tokens, 149767 est)
+   - prompt 00000192EDF6AF60:     329 tokens,       0 discarded, checkpoints:  0,    17.996 MiB
+prompt cache load took 0.10 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783111991 id_slot=0 id_task=157
 ======== Cache: cache_size = 44, n_past0 =  32, n_past1 =  32, n_past_prompt1 = 32,  n_past2 =  32, n_past_prompt2 =  32
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526283 id_slot=0 id_task=3 p0=32
-slot print_timing: id  0 | task 3 | 
-prompt eval time =     251.18 ms /   100 tokens (    2.51 ms per token,   398.12 tokens per second)
-       eval time =    8993.15 ms /    83 tokens (  108.35 ms per token,     9.23 tokens per second)
-      total time =    9244.33 ms /   183 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526292 id_slot=0 id_task=3 n_ctx=16384 n_past=214 n_system_tokens=0 n_cache_tokens=214 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526292
-INFO [      log_server_request] request | tid="35652" timestamp=1778526292 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783111991 id_slot=0 id_task=157 p0=32
 common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
-======== Prompt cache: cache size: 214, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.18, cache_ram_similarity: 0.50
+slot print_timing: id  0 | task 157 | 
+prompt eval time =      93.50 ms /   135 tokens (    0.69 ms per token,  1443.91 tokens per second)
+       eval time =    5503.07 ms /   235 tokens (   23.42 ms per token,    42.70 tokens per second)
+      total time =    5596.57 ms /   370 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783111997 id_slot=0 id_task=157 n_ctx=16384 n_past=401 n_system_tokens=0 n_cache_tokens=401 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783111997
+INFO [      log_server_request] request | tid="33388" timestamp=1783111997 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 401, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.09, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 401, total state size = 21.934 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 9.18 ms
+ - looking for better prompt, base f_keep = 0.092, sim = 0.139, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.112, sim = 0.161, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 1 prompts, 21.934 MiB (limits: 8192.000 MiB, 0 tokens, 149769 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+prompt cache load took 6.07 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783111997 id_slot=0 id_task=161
+======== Cache: cache_size = 329, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache : rivi una funzione Python `crossover(parent1, parent2, point)` che:
+- Prende due cromosomi (liste) e
+prompt: rivi una funzione Python chiamata `fizzbuzz(n)` che:
+- Ritorna "Fizz" se n è divisibile per 3
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783111997 id_slot=0 id_task=161 p0=37
+slot print_timing: id  0 | task 161 | 
+prompt eval time =      62.41 ms /    95 tokens (    0.66 ms per token,  1522.24 tokens per second)
+       eval time =    1928.68 ms /    83 tokens (   23.24 ms per token,    43.03 tokens per second)
+      total time =    1991.09 ms /   178 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783111999 id_slot=0 id_task=161 n_ctx=16384 n_past=214 n_system_tokens=0 n_cache_tokens=214 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783111999
+INFO [      log_server_request] request | tid="34604" timestamp=1783111999 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 214, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.17, cache_ram_similarity: 0.50
 updating prompt cache
  - saving prompt with length 214, total state size = 11.706 MiB
-prompt cache save took 4.37 ms
- - looking for better prompt, base f_keep = 0.182, sim = 0.210, n_keep = 0, n_discarded_prompt = 0
- - cache state: 1 prompts, 11.706 MiB (limits: 8192.000 MiB, 0 tokens, 149763 est)
-   - prompt 0000020AF2761AD0:     214 tokens,       0 discarded, checkpoints:  0,    11.706 MiB
-prompt cache load took 0.13 ms
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526292 id_slot=0 id_task=87
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 6.68 ms
+ - looking for better prompt, base f_keep = 0.173, sim = 0.208, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 33.639 MiB (limits: 8192.000 MiB, 0 tokens, 149766 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AD20:     214 tokens,       0 discarded, checkpoints:  0,    11.706 MiB
+prompt cache load took 0.20 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783111999 id_slot=0 id_task=396
+======== Cache: cache_size = 214, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache : rivi una funzione Python chiamata `fizzbuzz(n)` che:
+- Ritorna "Fizz" se n è divisibile per 3
+prompt: rivi una funzione Python `tournament_select(population, fitnesses, k, rng_seed)` che:
+- population: lista di cromos
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783111999 id_slot=0 id_task=396 p0=37
+slot print_timing: id  0 | task 396 | 
+prompt eval time =      71.28 ms /   104 tokens (    0.69 ms per token,  1459.12 tokens per second)
+       eval time =    6834.99 ms /   290 tokens (   23.57 ms per token,    42.43 tokens per second)
+      total time =    6906.27 ms /   394 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112006 id_slot=0 id_task=396 n_ctx=16384 n_past=430 n_system_tokens=0 n_cache_tokens=430 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112006
+INFO [      log_server_request] request | tid="33388" timestamp=1783112006 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 430, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.09, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 430, total state size = 23.520 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 9.47 ms
+ - looking for better prompt, base f_keep = 0.086, sim = 0.126, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.182, sim = 0.210, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 2 prompts, 45.454 MiB (limits: 8192.000 MiB, 0 tokens, 149769 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+prompt cache load took 3.20 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112006 id_slot=0 id_task=480
 ======== Cache: cache_size = 214, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
 Common part does not match fully
 cache :  funzione Python chiamata `fizzbuzz(n)` che:
@@ -294,166 +372,375 @@ cache :  funzione Python chiamata `fizzbuzz(n)` che:
 prompt:  funzione Python chiamata `find_duplicates(lst)` che:
 - Prende una lista di elementi
 - Ritorna una lista con SOLO gli
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526292 id_slot=0 id_task=87 p0=39
-slot print_timing: id  0 | task 87 | 
-prompt eval time =     284.71 ms /   118 tokens (    2.41 ms per token,   414.46 tokens per second)
-       eval time =   10433.90 ms /    96 tokens (  108.69 ms per token,     9.20 tokens per second)
-      total time =   10718.61 ms /   214 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526303 id_slot=0 id_task=87 n_ctx=16384 n_past=252 n_system_tokens=0 n_cache_tokens=252 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526303
-INFO [      log_server_request] request | tid="35652" timestamp=1778526303 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
-common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112006 id_slot=0 id_task=480 p0=39
+slot print_timing: id  0 | task 480 | 
+prompt eval time =      78.55 ms /   118 tokens (    0.67 ms per token,  1502.32 tokens per second)
+       eval time =    2229.63 ms /    96 tokens (   23.23 ms per token,    43.06 tokens per second)
+      total time =    2308.17 ms /   214 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112008 id_slot=0 id_task=480 n_ctx=16384 n_past=252 n_system_tokens=0 n_cache_tokens=252 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112008
+INFO [      log_server_request] request | tid="34604" timestamp=1783112008 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
 ======== Prompt cache: cache size: 252, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.15, cache_ram_similarity: 0.50
 updating prompt cache
  - saving prompt with length 252, total state size = 13.784 MiB
-prompt cache save took 4.52 ms
- - looking for better prompt, base f_keep = 0.155, sim = 0.165, n_keep = 0, n_discarded_prompt = 0
- - found better prompt with f_keep = 0.182, sim = 0.180, n_keep = 0, n_discarded_prompt = 0
- - cache state: 1 prompts, 13.784 MiB (limits: 8192.000 MiB, 0 tokens, 149765 est)
-   - prompt 0000020AF275F190:     252 tokens,       0 discarded, checkpoints:  0,    13.784 MiB
-prompt cache load took 2.73 ms
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526303 id_slot=0 id_task=184
-======== Cache: cache_size = 214, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
-Common part does not match fully
-cache :  funzione Python chiamata `fizzbuzz(n)` che:
-- Ritorna "Fizz" se n è divisibile per 3
--
-prompt:  funzione Python chiamata `sum_nested_values(data, key)` che:
-- Prende un dizionario (possibilmente nested/ann
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526303 id_slot=0 id_task=184 p0=39
-slot print_timing: id  0 | task 184 | 
-prompt eval time =     513.75 ms /   181 tokens (    2.84 ms per token,   352.31 tokens per second)
-       eval time =   44226.66 ms /   389 tokens (  113.69 ms per token,     8.80 tokens per second)
-      total time =   44740.42 ms /   570 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526347 id_slot=0 id_task=184 n_ctx=16384 n_past=608 n_system_tokens=0 n_cache_tokens=608 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526347
-INFO [      log_server_request] request | tid="35652" timestamp=1778526347 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
 common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
-======== Prompt cache: cache size: 608, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.06, cache_ram_similarity: 0.50
+prompt cache save took 5.64 ms
+ - looking for better prompt, base f_keep = 0.147, sim = 0.198, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 59.238 MiB (limits: 8192.000 MiB, 0 tokens, 149768 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6B920:     252 tokens,       0 discarded, checkpoints:  0,    13.784 MiB
+prompt cache load took 0.23 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112008 id_slot=0 id_task=771
+======== Cache: cache_size = 252, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache : rivi una funzione Python chiamata `find_duplicates(lst)` che:
+- Prende una lista di elementi
+- Ritorna una lista con
+prompt: rivi una funzione Python `normalize(data)` che:
+- Prende una lista di numeri
+- Applica min-max normalization: (x
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112008 id_slot=0 id_task=771 p0=37
+slot print_timing: id  0 | task 771 | 
+prompt eval time =      66.12 ms /    85 tokens (    0.78 ms per token,  1285.60 tokens per second)
+       eval time =    4384.60 ms /   186 tokens (   23.57 ms per token,    42.42 tokens per second)
+      total time =    4450.72 ms /   271 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112013 id_slot=0 id_task=771 n_ctx=16384 n_past=307 n_system_tokens=0 n_cache_tokens=307 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112013
+INFO [      log_server_request] request | tid="33388" timestamp=1783112013 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 307, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.12, cache_ram_similarity: 0.50
 updating prompt cache
- - saving prompt with length 608, total state size = 33.256 MiB
-prompt cache save took 10.54 ms
- - looking for better prompt, base f_keep = 0.064, sim = 0.099, n_keep = 0, n_discarded_prompt = 0
- - found better prompt with f_keep = 0.155, sim = 0.182, n_keep = 0, n_discarded_prompt = 0
- - cache state: 1 prompts, 33.256 MiB (limits: 8192.000 MiB, 0 tokens, 149771 est)
-   - prompt 0000020AF27602D0:     608 tokens,       0 discarded, checkpoints:  0,    33.256 MiB
-prompt cache load took 3.59 ms
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526347 id_slot=0 id_task=574
+ - saving prompt with length 307, total state size = 16.792 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 5.53 ms
+ - looking for better prompt, base f_keep = 0.121, sim = 0.140, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.155, sim = 0.165, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 62.246 MiB (limits: 8192.000 MiB, 0 tokens, 149768 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6AC60:     307 tokens,       0 discarded, checkpoints:  0,    16.792 MiB
+prompt cache load took 3.63 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112013 id_slot=0 id_task=868
 ======== Cache: cache_size = 252, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
 Common part does not match fully
 cache :  funzione Python chiamata `find_duplicates(lst)` che:
 - Prende una lista di elementi
 - Ritorna una lista con SOLO gli
-prompt:  funzione Python chiamata `flatten(data)` che:
-- Prende una lista che puo' contenere elementi o altre liste annidate a
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526347 id_slot=0 id_task=574 p0=39
-slot print_timing: id  0 | task 574 | 
-prompt eval time =     309.88 ms /   137 tokens (    2.26 ms per token,   442.11 tokens per second)
-       eval time =   14020.67 ms /   127 tokens (  110.40 ms per token,     9.06 tokens per second)
-      total time =   14330.55 ms /   264 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526362 id_slot=0 id_task=574 n_ctx=16384 n_past=302 n_system_tokens=0 n_cache_tokens=302 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526362
-INFO [      log_server_request] request | tid="35652" timestamp=1778526362 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
+prompt:  funzione Python chiamata `sum_nested_values(data, key)` che:
+- Prende un dizionario (possibilmente nested/ann
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112013 id_slot=0 id_task=868 p0=39
+slot print_timing: id  0 | task 868 | 
+prompt eval time =     109.79 ms /   181 tokens (    0.61 ms per token,  1648.65 tokens per second)
+       eval time =    7928.53 ms /   330 tokens (   24.03 ms per token,    41.62 tokens per second)
+      total time =    8038.31 ms /   511 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112021 id_slot=0 id_task=868 n_ctx=16384 n_past=549 n_system_tokens=0 n_cache_tokens=549 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112021
+INFO [      log_server_request] request | tid="34604" timestamp=1783112021 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 549, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.07, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 549, total state size = 30.029 MiB
 common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
-======== Prompt cache: cache size: 302, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.13, cache_ram_similarity: 0.50
+prompt cache save took 9.75 ms
+ - looking for better prompt, base f_keep = 0.067, sim = 0.109, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.124, sim = 0.175, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 3 prompts, 75.482 MiB (limits: 8192.000 MiB, 0 tokens, 149769 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+prompt cache load took 4.30 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112021 id_slot=0 id_task=1055
+======== Cache: cache_size = 307, n_past0 =  38, n_past1 =  38, n_past_prompt1 = 38,  n_past2 =  38, n_past_prompt2 =  38
+Common part does not match fully
+cache :  una funzione Python `normalize(data)` che:
+- Prende una lista di numeri
+- Applica min-max normalization: (x -
+prompt:  una funzione Python `euclidean_distance(p1, p2)` che:
+- Prende due punti come liste di coordinate (stessa
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112021 id_slot=0 id_task=1055 p0=38
+slot print_timing: id  0 | task 1055 | 
+prompt eval time =      62.55 ms /    90 tokens (    0.69 ms per token,  1438.87 tokens per second)
+       eval time =    3127.97 ms /   132 tokens (   23.70 ms per token,    42.20 tokens per second)
+      total time =    3190.52 ms /   222 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112024 id_slot=0 id_task=1055 n_ctx=16384 n_past=259 n_system_tokens=0 n_cache_tokens=259 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112024
+INFO [      log_server_request] request | tid="33388" timestamp=1783112024 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 259, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.14, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 259, total state size = 14.167 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 5.34 ms
+ - looking for better prompt, base f_keep = 0.143, sim = 0.170, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 4 prompts, 89.649 MiB (limits: 8192.000 MiB, 0 tokens, 149769 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     259 tokens,       0 discarded, checkpoints:  0,    14.167 MiB
+prompt cache load took 0.37 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112024 id_slot=0 id_task=1386
+======== Cache: cache_size = 259, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache : rivi una funzione Python `euclidean_distance(p1, p2)` che:
+- Prende due punti come liste di coordinate (st
+prompt: rivi una funzione Python chiamata `flatten(data)` che:
+- Prende una lista che puo' contenere elementi o altre liste annid
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112024 id_slot=0 id_task=1386 p0=37
+slot print_timing: id  0 | task 1386 | 
+prompt eval time =      99.47 ms /   139 tokens (    0.72 ms per token,  1397.48 tokens per second)
+       eval time =    3050.33 ms /   127 tokens (   24.02 ms per token,    41.63 tokens per second)
+      total time =    3149.80 ms /   266 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112027 id_slot=0 id_task=1386 n_ctx=16384 n_past=302 n_system_tokens=0 n_cache_tokens=302 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112027
+INFO [      log_server_request] request | tid="34604" timestamp=1783112027 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 302, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.12, cache_ram_similarity: 0.50
 updating prompt cache
  - saving prompt with length 302, total state size = 16.519 MiB
-prompt cache save took 6.03 ms
- - looking for better prompt, base f_keep = 0.129, sim = 0.157, n_keep = 0, n_discarded_prompt = 0
- - cache state: 2 prompts, 49.775 MiB (limits: 8192.000 MiB, 0 tokens, 149769 est)
-   - prompt 0000020AF27602D0:     608 tokens,       0 discarded, checkpoints:  0,    33.256 MiB
-   - prompt 0000020AF2760690:     302 tokens,       0 discarded, checkpoints:  0,    16.519 MiB
-prompt cache load took 0.26 ms
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526362 id_slot=0 id_task=702
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 5.41 ms
+ - looking for better prompt, base f_keep = 0.123, sim = 0.151, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.147, sim = 0.170, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 4 prompts, 92.001 MiB (limits: 8192.000 MiB, 0 tokens, 149769 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AD20:     302 tokens,       0 discarded, checkpoints:  0,    16.519 MiB
+prompt cache load took 3.76 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112027 id_slot=0 id_task=1519
+======== Cache: cache_size = 259, n_past0 =  38, n_past1 =  38, n_past_prompt1 = 38,  n_past2 =  38, n_past_prompt2 =  38
+Common part does not match fully
+cache :  una funzione Python `euclidean_distance(p1, p2)` che:
+- Prende due punti come liste di coordinate (stessa
+prompt:  una funzione Python `linear_regression(X, y, learning_rate, epochs)` che:
+- X: lista di valori input (feature
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112027 id_slot=0 id_task=1519 p0=38
+slot print_timing: id  0 | task 1519 | 
+prompt eval time =     100.32 ms /   150 tokens (    0.67 ms per token,  1495.16 tokens per second)
+       eval time =    8789.91 ms /   365 tokens (   24.08 ms per token,    41.52 tokens per second)
+      total time =    8890.23 ms /   515 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112036 id_slot=0 id_task=1519 n_ctx=16384 n_past=552 n_system_tokens=0 n_cache_tokens=552 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112036
+INFO [      log_server_request] request | tid="33388" timestamp=1783112036 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 552, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.07, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 552, total state size = 30.193 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 9.14 ms
+ - looking for better prompt, base f_keep = 0.067, sim = 0.099, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.129, sim = 0.157, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 4 prompts, 105.675 MiB (limits: 8192.000 MiB, 0 tokens, 149770 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     552 tokens,       0 discarded, checkpoints:  0,    30.193 MiB
+prompt cache load took 4.39 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112036 id_slot=0 id_task=1647
 ======== Cache: cache_size = 302, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
 Common part does not match fully
 cache :  funzione Python chiamata `flatten(data)` che:
 - Prende una lista che puo' contenere elementi o altre liste annidate a
 prompt:  funzione Python chiamata `parse_config(text)` che:
 - Prende una stringa con righe nel formato "chiave=valore
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526362 id_slot=0 id_task=702 p0=39
-slot print_timing: id  0 | task 702 | 
-prompt eval time =     460.94 ms /   157 tokens (    2.94 ms per token,   340.61 tokens per second)
-       eval time =   27219.90 ms /   242 tokens (  112.48 ms per token,     8.89 tokens per second)
-      total time =   27680.83 ms /   399 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526389 id_slot=0 id_task=702 n_ctx=16384 n_past=437 n_system_tokens=0 n_cache_tokens=437 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526389
-INFO [      log_server_request] request | tid="35652" timestamp=1778526389 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
-common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
-======== Prompt cache: cache size: 437, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.09, cache_ram_similarity: 0.50
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112036 id_slot=0 id_task=1647 p0=39
+slot print_timing: id  0 | task 1647 | 
+prompt eval time =     103.22 ms /   157 tokens (    0.66 ms per token,  1521.10 tokens per second)
+       eval time =    4607.90 ms /   190 tokens (   24.25 ms per token,    41.23 tokens per second)
+      total time =    4711.12 ms /   347 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112041 id_slot=0 id_task=1647 n_ctx=16384 n_past=385 n_system_tokens=0 n_cache_tokens=385 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112041
+INFO [      log_server_request] request | tid="34604" timestamp=1783112041 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 385, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.10, cache_ram_similarity: 0.50
 updating prompt cache
- - saving prompt with length 437, total state size = 23.903 MiB
-prompt cache save took 7.96 ms
- - looking for better prompt, base f_keep = 0.089, sim = 0.127, n_keep = 0, n_discarded_prompt = 0
- - found better prompt with f_keep = 0.129, sim = 0.164, n_keep = 0, n_discarded_prompt = 0
- - cache state: 2 prompts, 57.158 MiB (limits: 8192.000 MiB, 0 tokens, 149770 est)
-   - prompt 0000020AF27602D0:     608 tokens,       0 discarded, checkpoints:  0,    33.256 MiB
-   - prompt 0000020AF275F190:     437 tokens,       0 discarded, checkpoints:  0,    23.903 MiB
-prompt cache load took 4.10 ms
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526389 id_slot=0 id_task=945
-======== Cache: cache_size = 302, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
+ - saving prompt with length 385, total state size = 21.059 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 6.78 ms
+ - looking for better prompt, base f_keep = 0.096, sim = 0.133, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 5 prompts, 126.733 MiB (limits: 8192.000 MiB, 0 tokens, 149769 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     552 tokens,       0 discarded, checkpoints:  0,    30.193 MiB
+   - prompt 00000192EDF6AD20:     385 tokens,       0 discarded, checkpoints:  0,    21.059 MiB
+prompt cache load took 0.47 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112041 id_slot=0 id_task=2013
+======== Cache: cache_size = 385, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
 Common part does not match fully
-cache :  funzione Python chiamata `flatten(data)` che:
-- Prende una lista che puo' contenere elementi o altre liste annidate a
-prompt:  funzione Python chiamata `merge_intervals(intervals)` che:
-- Prende una lista di intervalli, ognuno rappresentato come lista [inizio
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526389 id_slot=0 id_task=945 p0=39
-slot print_timing: id  0 | task 945 | 
-prompt eval time =     305.14 ms /   136 tokens (    2.24 ms per token,   445.70 tokens per second)
-       eval time =   49962.99 ms /   436 tokens (  114.59 ms per token,     8.73 tokens per second)
-      total time =   50268.12 ms /   572 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526440 id_slot=0 id_task=945 n_ctx=16384 n_past=610 n_system_tokens=0 n_cache_tokens=610 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526440
-INFO [      log_server_request] request | tid="35652" timestamp=1778526440 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
-common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
-======== Prompt cache: cache size: 610, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.06, cache_ram_similarity: 0.50
+cache : rivi una funzione Python chiamata `parse_config(text)` che:
+- Prende una stringa con righe nel formato "chiave=
+prompt: rivi una funzione Python `kmeans_step(points, centroids)` che:
+- points: lista di punti [[x1,y1], [
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112041 id_slot=0 id_task=2013 p0=37
+slot print_timing: id  0 | task 2013 | 
+prompt eval time =     100.36 ms /   136 tokens (    0.74 ms per token,  1355.15 tokens per second)
+       eval time =   14028.41 ms /   567 tokens (   24.74 ms per token,    40.42 tokens per second)
+      total time =   14128.77 ms /   703 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112055 id_slot=0 id_task=2013 n_ctx=16384 n_past=739 n_system_tokens=0 n_cache_tokens=739 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112055
+INFO [      log_server_request] request | tid="33388" timestamp=1783112055 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 739, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.05, cache_ram_similarity: 0.50
 updating prompt cache
- - saving prompt with length 610, total state size = 33.365 MiB
-prompt cache save took 9.61 ms
- - looking for better prompt, base f_keep = 0.064, sim = 0.100, n_keep = 0, n_discarded_prompt = 0
- - found better prompt with f_keep = 0.089, sim = 0.129, n_keep = 0, n_discarded_prompt = 0
- - cache state: 2 prompts, 66.621 MiB (limits: 8192.000 MiB, 0 tokens, 149771 est)
-   - prompt 0000020AF27602D0:     608 tokens,       0 discarded, checkpoints:  0,    33.256 MiB
-   - prompt 0000020AF2760690:     610 tokens,       0 discarded, checkpoints:  0,    33.365 MiB
-prompt cache load took 5.69 ms
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526440 id_slot=0 id_task=1382
-======== Cache: cache_size = 437, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
+ - saving prompt with length 739, total state size = 40.421 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 11.34 ms
+ - looking for better prompt, base f_keep = 0.050, sim = 0.081, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.101, sim = 0.139, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 5 prompts, 146.096 MiB (limits: 8192.000 MiB, 0 tokens, 149770 est)
+   - prompt 00000192EDF6B860:     401 tokens,       0 discarded, checkpoints:  0,    21.934 MiB
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     552 tokens,       0 discarded, checkpoints:  0,    30.193 MiB
+   - prompt 00000192F4427800:     739 tokens,       0 discarded, checkpoints:  0,    40.421 MiB
+prompt cache load took 5.90 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112055 id_slot=0 id_task=2204
+======== Cache: cache_size = 385, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
 Common part does not match fully
 cache :  funzione Python chiamata `parse_config(text)` che:
 - Prende una stringa con righe nel formato "chiave=valore
-prompt:  funzione Python chiamata `balanced_brackets(s)` che:
-- Prende una stringa contenente parentesi di tre tipi: (), [], {}
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526440 id_slot=0 id_task=1382 p0=39
-slot print_timing: id  0 | task 1382 | 
-prompt eval time =     308.16 ms /   129 tokens (    2.39 ms per token,   418.62 tokens per second)
-       eval time =   26948.33 ms /   238 tokens (  113.23 ms per token,     8.83 tokens per second)
-      total time =   27256.49 ms /   367 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526467 id_slot=0 id_task=1382 n_ctx=16384 n_past=405 n_system_tokens=0 n_cache_tokens=405 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526467
-INFO [      log_server_request] request | tid="35652" timestamp=1778526467 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
+prompt:  funzione Python chiamata `merge_intervals(intervals)` che:
+- Prende una lista di intervalli, ognuno rappresentato come lista [inizio
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112055 id_slot=0 id_task=2204 p0=39
+slot print_timing: id  0 | task 2204 | 
+prompt eval time =     108.47 ms /   136 tokens (    0.80 ms per token,  1253.75 tokens per second)
+       eval time =   10224.53 ms /   401 tokens (   25.50 ms per token,    39.22 tokens per second)
+      total time =   10333.01 ms /   537 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112065 id_slot=0 id_task=2204 n_ctx=16384 n_past=575 n_system_tokens=0 n_cache_tokens=575 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112065
+INFO [      log_server_request] request | tid="34604" timestamp=1783112065 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 575, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.06, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 575, total state size = 31.451 MiB
 common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
-======== Prompt cache: cache size: 405, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.10, cache_ram_similarity: 0.50
+prompt cache save took 10.39 ms
+ - looking for better prompt, base f_keep = 0.064, sim = 0.110, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.095, sim = 0.153, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 5 prompts, 155.613 MiB (limits: 8192.000 MiB, 0 tokens, 149770 est)
+   - prompt 00000192EDF6AF60:     430 tokens,       0 discarded, checkpoints:  0,    23.520 MiB
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     552 tokens,       0 discarded, checkpoints:  0,    30.193 MiB
+   - prompt 00000192F4427800:     739 tokens,       0 discarded, checkpoints:  0,    40.421 MiB
+   - prompt 00000192F4427BC0:     575 tokens,       0 discarded, checkpoints:  0,    31.451 MiB
+prompt cache load took 5.40 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112065 id_slot=0 id_task=2772
+======== Cache: cache_size = 401, n_past0 =  38, n_past1 =  38, n_past_prompt1 = 38,  n_past2 =  38, n_past_prompt2 =  38
+Common part does not match fully
+cache :  una funzione Python `mutate(chromosome, mutation_rate, rng_seed)` che:
+- Prende un cromosoma binario (lista di 
+prompt:  una funzione Python `matrix_multiply(A, B)` che:
+- Prende due matrici come liste di liste
+- Ritorna
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112065 id_slot=0 id_task=2772 p0=38
+slot print_timing: id  0 | task 2772 | 
+prompt eval time =      62.09 ms /    58 tokens (    1.07 ms per token,   934.13 tokens per second)
+       eval time =   13037.97 ms /   506 tokens (   25.77 ms per token,    38.81 tokens per second)
+      total time =   13100.06 ms /   564 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112078 id_slot=0 id_task=2772 n_ctx=16384 n_past=601 n_system_tokens=0 n_cache_tokens=601 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112078
+INFO [      log_server_request] request | tid="33388" timestamp=1783112078 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 601, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.06, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 601, total state size = 32.873 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 10.93 ms
+ - looking for better prompt, base f_keep = 0.062, sim = 0.096, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.086, sim = 0.124, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 5 prompts, 164.965 MiB (limits: 8192.000 MiB, 0 tokens, 149771 est)
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     552 tokens,       0 discarded, checkpoints:  0,    30.193 MiB
+   - prompt 00000192F4427800:     739 tokens,       0 discarded, checkpoints:  0,    40.421 MiB
+   - prompt 00000192F4427BC0:     575 tokens,       0 discarded, checkpoints:  0,    31.451 MiB
+   - prompt 00000192F4426C00:     601 tokens,       0 discarded, checkpoints:  0,    32.873 MiB
+prompt cache load took 5.86 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112078 id_slot=0 id_task=3174
+======== Cache: cache_size = 430, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache : rivi una funzione Python `tournament_select(population, fitnesses, k, rng_seed)` che:
+- population: lista di cromos
+prompt: rivi una funzione Python chiamata `balanced_brackets(s)` che:
+- Prende una stringa contenente parentesi di tre tipi: (),
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112078 id_slot=0 id_task=3174 p0=37
+slot print_timing: id  0 | task 3174 | 
+prompt eval time =     113.05 ms /   131 tokens (    0.86 ms per token,  1158.82 tokens per second)
+       eval time =    6159.97 ms /   238 tokens (   25.88 ms per token,    38.64 tokens per second)
+      total time =    6273.01 ms /   369 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112084 id_slot=0 id_task=3174 n_ctx=16384 n_past=405 n_system_tokens=0 n_cache_tokens=405 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112084
+INFO [      log_server_request] request | tid="34604" timestamp=1783112084 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 405, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.09, cache_ram_similarity: 0.50
 updating prompt cache
  - saving prompt with length 405, total state size = 22.153 MiB
-prompt cache save took 6.51 ms
- - looking for better prompt, base f_keep = 0.096, sim = 0.127, n_keep = 0, n_discarded_prompt = 0
- - cache state: 3 prompts, 88.773 MiB (limits: 8192.000 MiB, 0 tokens, 149770 est)
-   - prompt 0000020AF27602D0:     608 tokens,       0 discarded, checkpoints:  0,    33.256 MiB
-   - prompt 0000020AF2760690:     610 tokens,       0 discarded, checkpoints:  0,    33.365 MiB
-   - prompt 0000020AF275F190:     405 tokens,       0 discarded, checkpoints:  0,    22.153 MiB
-prompt cache load took 0.35 ms
-INFO [   launch_slot_with_task] slot is processing task | tid="19856" timestamp=1778526467 id_slot=0 id_task=1621
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 7.08 ms
+ - looking for better prompt, base f_keep = 0.091, sim = 0.133, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 6 prompts, 187.118 MiB (limits: 8192.000 MiB, 0 tokens, 149771 est)
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     552 tokens,       0 discarded, checkpoints:  0,    30.193 MiB
+   - prompt 00000192F4427800:     739 tokens,       0 discarded, checkpoints:  0,    40.421 MiB
+   - prompt 00000192F4427BC0:     575 tokens,       0 discarded, checkpoints:  0,    31.451 MiB
+   - prompt 00000192F4426C00:     601 tokens,       0 discarded, checkpoints:  0,    32.873 MiB
+   - prompt 00000192F4427380:     405 tokens,       0 discarded, checkpoints:  0,    22.153 MiB
+prompt cache load took 0.60 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112084 id_slot=0 id_task=3681
+======== Cache: cache_size = 405, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache : rivi una funzione Python chiamata `balanced_brackets(s)` che:
+- Prende una stringa contenente parentesi di tre tipi: (),
+prompt: rivi una funzione Python `newton_sqrt(n, tolerance=1e-10)` che:
+- Calcola la radice quadr
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112084 id_slot=0 id_task=3681 p0=37
+slot print_timing: id  0 | task 3681 | 
+prompt eval time =      94.46 ms /   114 tokens (    0.83 ms per token,  1206.89 tokens per second)
+       eval time =    7791.46 ms /   301 tokens (   25.89 ms per token,    38.63 tokens per second)
+      total time =    7885.92 ms /   415 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112092 id_slot=0 id_task=3681 n_ctx=16384 n_past=451 n_system_tokens=0 n_cache_tokens=451 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112092
+INFO [      log_server_request] request | tid="33388" timestamp=1783112092 remote_addr="127.0.0.1" remote_port=3373 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 451, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.08, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 451, total state size = 24.668 MiB
+common_chat_try_specialized_template: detected an outdated gemma4 chat template, applying compatibility workarounds. Consider updating to the official template.
+prompt cache save took 8.30 ms
+ - looking for better prompt, base f_keep = 0.082, sim = 0.112, n_keep = 0, n_discarded_prompt = 0
+ - found better prompt with f_keep = 0.096, sim = 0.127, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 6 prompts, 189.634 MiB (limits: 8192.000 MiB, 0 tokens, 149771 est)
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     552 tokens,       0 discarded, checkpoints:  0,    30.193 MiB
+   - prompt 00000192F4427800:     739 tokens,       0 discarded, checkpoints:  0,    40.421 MiB
+   - prompt 00000192F4427BC0:     575 tokens,       0 discarded, checkpoints:  0,    31.451 MiB
+   - prompt 00000192F4426C00:     601 tokens,       0 discarded, checkpoints:  0,    32.873 MiB
+   - prompt 00000192F4427A40:     451 tokens,       0 discarded, checkpoints:  0,    24.668 MiB
+prompt cache load took 5.69 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112092 id_slot=0 id_task=3920
 ======== Cache: cache_size = 405, n_past0 =  39, n_past1 =  39, n_past_prompt1 = 39,  n_past2 =  39, n_past_prompt2 =  39
 Common part does not match fully
 cache :  funzione Python chiamata `balanced_brackets(s)` che:
 - Prende una stringa contenente parentesi di tre tipi: (), [], {}
 prompt:  funzione Python chiamata `deep_merge(dict1, dict2)` che:
 - Prende due dizionari e li unisce ricors
-INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="19856" timestamp=1778526467 id_slot=0 id_task=1621 p0=39
-slot print_timing: id  0 | task 1621 | 
-prompt eval time =     509.69 ms /   170 tokens (    3.00 ms per token,   333.54 tokens per second)
-       eval time =   26210.37 ms /   230 tokens (  113.96 ms per token,     8.78 tokens per second)
-      total time =   26720.06 ms /   400 tokens
-INFO [           release_slots] slot released | tid="19856" timestamp=1778526494 id_slot=0 id_task=1621 n_ctx=16384 n_past=438 n_system_tokens=0 n_cache_tokens=438 truncated=false
-INFO [              slots_idle] all slots are idle | tid="19856" timestamp=1778526494
-INFO [      log_server_request] request | tid="35652" timestamp=1778526494 remote_addr="127.0.0.1" remote_port=33610 status=200 method="POST" path="/v1/chat/completions" params={}
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112092 id_slot=0 id_task=3920 p0=39
+slot print_timing: id  0 | task 3920 | 
+prompt eval time =     124.43 ms /   170 tokens (    0.73 ms per token,  1366.23 tokens per second)
+       eval time =    4679.18 ms /   181 tokens (   25.85 ms per token,    38.68 tokens per second)
+      total time =    4803.61 ms /   351 tokens
+INFO [           release_slots] slot released | tid="17296" timestamp=1783112097 id_slot=0 id_task=3920 n_ctx=16384 n_past=389 n_system_tokens=0 n_cache_tokens=389 truncated=false
+INFO [              slots_idle] all slots are idle | tid="17296" timestamp=1783112097
+INFO [      log_server_request] request | tid="34604" timestamp=1783112097 remote_addr="127.0.0.1" remote_port=37092 status=200 method="POST" path="/v1/chat/completions" params={}
+======== Prompt cache: cache size: 389, n_keep: 0, n_discarded_prompt: 0, cache_ram_n_min: 0, f_keep: 0.10, cache_ram_similarity: 0.50
+updating prompt cache
+ - saving prompt with length 389, total state size = 21.277 MiB
+prompt cache save took 7.78 ms
+ - looking for better prompt, base f_keep = 0.095, sim = 0.149, n_keep = 0, n_discarded_prompt = 0
+ - cache state: 7 prompts, 210.911 MiB (limits: 8192.000 MiB, 0 tokens, 149770 est)
+   - prompt 00000192EDF6B920:     549 tokens,       0 discarded, checkpoints:  0,    30.029 MiB
+   - prompt 00000192EDF6AC60:     552 tokens,       0 discarded, checkpoints:  0,    30.193 MiB
+   - prompt 00000192F4427800:     739 tokens,       0 discarded, checkpoints:  0,    40.421 MiB
+   - prompt 00000192F4427BC0:     575 tokens,       0 discarded, checkpoints:  0,    31.451 MiB
+   - prompt 00000192F4426C00:     601 tokens,       0 discarded, checkpoints:  0,    32.873 MiB
+   - prompt 00000192F4427A40:     451 tokens,       0 discarded, checkpoints:  0,    24.668 MiB
+   - prompt 00000192F4428340:     389 tokens,       0 discarded, checkpoints:  0,    21.277 MiB
+prompt cache load took 0.66 ms
+INFO [   launch_slot_with_task] slot is processing task | tid="17296" timestamp=1783112097 id_slot=0 id_task=4222
+======== Cache: cache_size = 389, n_past0 =  37, n_past1 =  37, n_past_prompt1 = 37,  n_past2 =  37, n_past_prompt2 =  37
+Common part does not match fully
+cache : rivi una funzione Python chiamata `deep_merge(dict1, dict2)` che:
+- Prende due dizionari e li unisce
+prompt: rivi una funzione Python `sieve_primes(n)` che:
+- Ritorna tutti i numeri primi fino a n (incluso)
+INFO [    batch_pending_prompt] kv cache rm [p0, end) | tid="17296" timestamp=1783112097 id_slot=0 id_task=4222 p0=37

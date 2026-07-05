@@ -1,5 +1,5 @@
 param(
-  [ValidateSet("auto", "fast", "coding", "review", "italian", "max", "quality", "quality-iq3", "qwen36-mtp", "qwopus9", "mellum", "mellum-thinking", "qwen-coder-next", "granite", "oss", "cloud", "kimi", "deepseek", "llama70b", "gptoss", "qwencloud")]
+  [ValidateSet("auto", "fast", "omp", "yi", "qwen2", "g2b", "g3b", "next", "big", "ornith")]
   [string]$Mode = "auto",
   [string]$Project = (Get-Location).Path,
   [string]$Run,
@@ -34,8 +34,13 @@ if ($Stop) {
     Stop-Process -Force -ErrorAction SilentlyContinue
   $routerPid = (Get-NetTCPConnection -State Listen -LocalPort $RouterPort -ErrorAction SilentlyContinue).OwningProcess
   if ($routerPid) { Stop-Process -Id $routerPid -Force -ErrorAction SilentlyContinue }
-  Start-Sleep -Milliseconds 600
-  $stillUp = Get-NetTCPConnection -State Listen -LocalPort $RouterPort, $SwapPort, $ClassifierPort -ErrorAction SilentlyContinue
+
+  $deadline = (Get-Date).AddSeconds(10)
+  do {
+    Start-Sleep -Milliseconds 250
+    $stillUp = Get-NetTCPConnection -State Listen -LocalPort $RouterPort, $SwapPort, $ClassifierPort -ErrorAction SilentlyContinue
+  } while ($stillUp -and (Get-Date) -lt $deadline)
+
   if ($stillUp) {
     Write-Warning "Some listeners still up: $(($stillUp.LocalPort | Sort-Object -Unique) -join ', ')"
     exit 1
@@ -57,51 +62,27 @@ $effectiveMode = $Mode
 $modelByMode = @{
   auto = "llama-swap/auto"
   fast = "llama-swap/qwen-small"
-  coding = "llama-swap/qwen36-iq3"
-  review = "llama-swap/qwen36-iq3"
-  italian = "llama-swap/cerbero-ita"
-  max = "llama-swap/qwen-opus-q8"
-  quality = "llama-swap/qwen36-opus-iq4"
-  "quality-iq3" = "llama-swap/qwen36-opus-iq3"
-  "qwen36-mtp" = "llama-swap/qwen36-mtp"
-  qwopus9 = "llama-swap/qwopus9-mtp"
-  mellum = "llama-swap/mellum2-instruct"
-  "mellum-thinking" = "llama-swap/mellum2-thinking"
-  "qwen-coder-next" = "llama-swap/qwen-coder"
-  granite = "llama-swap/granite-fast"
-  oss = "llama-swap/gpt-oss-20b"
-  # Cloud tier (NVIDIA NIM), opt-in. Router maps the alias -> real catalog id and
-  # forwards to build.nvidia.com. Requires NVIDIA_API_KEY in the router env.
-  cloud = "llama-swap/nvidia-kimi"
-  kimi = "llama-swap/nvidia-kimi"
-  deepseek = "llama-swap/nvidia-deepseek"
-  llama70b = "llama-swap/nvidia-llama70b"
-  gptoss = "llama-swap/nvidia-gptoss"
-  qwencloud = "llama-swap/nvidia-qwen"
+  omp = "llama-swap/qwen-small"
+  yi = "llama-swap/Yi-Coder-1.5B-Chat-Q4_K_M"
+  qwen2 = "llama-swap/Qwen2.5-Coder-1.5B-Q4_K_M"
+  g2b = "llama-swap/granite-3.3-2b-instruct-Q6_K"
+  g3b = "llama-swap/granite-4.1-3B-Q4_K_S"
+  next = "llama-swap/Qwen3-Coder-Next-UD-Q2_K_XL"
+  big = "llama-swap/daily-Qwen3.6-35B-A3B-IQ3_K_R4"
+  ornith = "llama-swap/Ornith-1.0-35B-A3B-IQ3_K_R4-imat"
 }
 
 $agentByMode = @{
   auto = "auto"
   fast = "fast"
-  coding = "coding"
-  review = "review"
-  italian = "italian"
-  max = "max"
-  quality = "quality"
-  "quality-iq3" = $null
-  "qwen36-mtp" = $null
-  qwopus9 = $null
-  mellum = $null
-  "mellum-thinking" = $null
-  "qwen-coder-next" = "qwen-coder-next"
-  granite = $null
-  oss = $null
-  cloud = "kimi-cloud"
-  kimi = "kimi-cloud"
-  deepseek = $null
-  llama70b = $null
-  gptoss = $null
-  qwencloud = $null
+  omp = "fast"
+  yi = "yi"
+  qwen2 = "qwen2"
+  g2b = "g2b"
+  g3b = "g3b"
+  next = "next"
+  big = "big"
+  ornith = "ornith"
 }
 
 $model = $modelByMode[$effectiveMode]

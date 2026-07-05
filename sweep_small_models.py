@@ -35,7 +35,7 @@ LEADERBOARD = REPO / "sweep_leaderboard.json"
 PORT = 1234
 HOST = "127.0.0.1"
 
-MODELS_CACHE = Path(r"F:\01_Modelli_AI\LLM_Models\lm-studio\models")
+MODELS_CACHE = Path(r"F:\01_Modelli_AI\LLM_Models\lm-studio\models")  # moved 2026-06 from F:\LLM_Models\...
 
 # Tier 0..3 candidates. Format: (label, gguf_path, runtime, extra_flags)
 TIERS = {
@@ -45,14 +45,11 @@ TIERS = {
          "ik", []),
         ("Qwen3-0.6B-Q8_0",
          MODELS_CACHE / "lmstudio-community" / "Qwen3-0.6B-GGUF" / "Qwen3-0.6B-Q8_0.gguf",
-         "ik", ["--reasoning", "off"]),  # thinking-mode routes code to reasoning_content -> empty content
+         "ik", []),
     ],
     1: [  # small coder 1.3-1.5B
         ("deepseek-coder-1.3B-kexer-Q4_K_M",
          MODELS_CACHE / "lmstudio-community" / "deepseek-coder-1.3B-kexer-GGUF" / "deepseek-coder-1.3B-kexer-Q4_K_M.gguf",
-         "ik", []),
-        ("deepseek-coder-1.3B-instruct-Q4_K_M",  # instruct sibling of kexer (Alpaca template in GGUF)
-         MODELS_CACHE / "TheBloke" / "deepseek-coder-1.3b-instruct-GGUF" / "deepseek-coder-1.3b-instruct.Q4_K_M.gguf",
          "ik", []),
         ("Yi-Coder-1.5B-Chat-Q4_K_M",
          MODELS_CACHE / "lmstudio-community" / "Yi-Coder-1.5B-Chat-GGUF" / "Yi-Coder-1.5B-Chat-Q4_K_M.gguf",
@@ -107,7 +104,7 @@ TIERS = {
     4: [  # 7-9B (advanced bench challengers — Granite 4.1 8B, Qwen3.5 family)
         ("Qwen3.5-0.8B-Q8_0",
          MODELS_CACHE / "lmstudio-community" / "Qwen3.5-0.8B-GGUF" / "Qwen3.5-0.8B-Q8_0.gguf",
-         "ik", ["--reasoning", "off"]),  # thinking-mode routes code to reasoning_content -> empty content
+         "ik", []),
         ("granite-4.0-h-tiny-Q4_K_M",
          MODELS_CACHE / "lmstudio-community" / "granite-4.0-h-tiny-GGUF" / "granite-4.0-h-tiny-Q4_K_M.gguf",
          "main", []),
@@ -133,6 +130,38 @@ TIERS = {
         ("gemma-4-26B-A4B-it-Q4_K_M",
          MODELS_CACHE / "lmstudio-community" / "gemma-4-26B-A4B-it-GGUF" / "gemma-4-26B-A4B-it-Q4_K_M.gguf",
          "ik", ["--cpu-moe"]),
+        ("gemma-4-26B-A4B-it-qat-UD-Q4_K_XL",
+         MODELS_CACHE / "gemma" / "gemma-4-26b-it" / "gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf",
+         "ik", ["--cpu-moe", "--reasoning", "off", "-ctk", "q8_0", "-ctv", "q8_0"]),
+    ],
+    7: [  # Ornith-1.0 (deepreinforce, qwen3_5 RL) vs daily winner — identical flags, 2026-06-29
+        ("daily-Qwen3.6-35B-A3B-IQ3_K_R4",
+         Path(r"D:\repos\ik_llama.cpp\models\Qwen3.6-35B-A3B-IQ3_K_R4.gguf"),
+         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+        ("Ornith-1.0-35B-A3B-Q4_K_M",
+         Path(r"F:\01_Modelli_AI\LLM_Models\Ornith\ornith-1.0-35b-Q4_K_M.gguf"),
+         "ik", ["-ngl", "80", "--n-cpu-moe", "30", "--reasoning", "off",
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+        ("Ornith-1.0-9B-Q4_K_M",
+         Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-9b-Q4_K_M.gguf"),
+         "ik", ["--reasoning", "off", "-ctk", "q4_0", "-ctv", "q8_0"]),
+        ("Ornith-1.0-35B-A3B-IQ3_K_R4",
+         Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-35b-IQ3_K_R4.gguf"),
+         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+        ("Ornith-1.0-35B-A3B-IQ3_K_R4-imat",
+         Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-35b-IQ3_K_R4-imat.gguf"),
+         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+        ("Qwen2.5-Coder-32B-Instruct-IQ3_M",
+         Path(r"D:\repos\ik_llama.cpp\models\Qwen2.5-Coder-32B-Instruct-IQ3_M.gguf"),
+         "ik", ["-ngl", "15", "--reasoning", "off",
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+        ("DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M",
+         Path(r"D:\repos\ik_llama.cpp\models\DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M.gguf"),
+         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
     ],
 }
 
@@ -202,11 +231,13 @@ def start_server(label: str, model_path: Path, runtime: str, extra: list[str]) -
         "--host", HOST, "--port", str(PORT),
         "--jinja",
         "-c", "16384",
-        "-ngl", "999",
         "-fa", "on",
         "-t", "8",
         "--no-mmap",
-    ] + extra
+    ]
+    if not any(arg in ["-ngl", "--n-gpu-layers"] for arg in extra):
+        cmd += ["-ngl", "999"]
+    cmd += extra
     log_path = REPO / f"sweep_log_{label}.txt"
     log_f = open(log_path, "w", encoding="utf-8")
     proc = subprocess.Popen(cmd, stdout=log_f, stderr=subprocess.STDOUT,
@@ -284,36 +315,16 @@ def run_one(label: str, model_path: Path, runtime: str, extra: list[str]) -> dic
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tier", type=int, choices=[0, 1, 2, 3, 4, 5, 6], help="Run a tier")
+    ap.add_argument("--tier", type=int, choices=[0, 1, 2, 3, 4, 5, 6, 7], help="Run a tier")
     ap.add_argument("--single", help="Run a single label from any tier")
     args = ap.parse_args()
 
-    results = []
-    if LEADERBOARD.exists():
-        try:
-            results = json.loads(LEADERBOARD.read_text())
-        except Exception:
-            pass
-
-    def save_result(r: dict, tier_idx: int):
-        r["tier"] = tier_idx
-        r["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
-        # Replace or append
-        idx = next((i for i, x in enumerate(results) if x.get("label") == r["label"]), -1)
-        if idx != -1:
-            results[idx] = r
-        else:
-            results.append(r)
-        LEADERBOARD.write_text(json.dumps(results, indent=2))
-
     if args.single:
-        for t_idx, tier in TIERS.items():
+        for tier in TIERS.values():
             for label, path, rt, extra in tier:
                 if label == args.single:
                     print(f"\n=== {label} ===")
                     r = run_one(label, path, rt, extra)
-                    if r.get("status") == "ok":
-                        save_result(r, t_idx)
                     print(json.dumps(r, indent=2))
                     return
         print(f"Label '{args.single}' not found"); sys.exit(1)
@@ -321,19 +332,25 @@ def main():
     if args.tier is None:
         ap.print_help(); sys.exit(1)
 
+    results = []
+    if LEADERBOARD.exists():
+        results = json.loads(LEADERBOARD.read_text())
+
     for label, path, rt, extra in TIERS[args.tier]:
         print(f"\n=== {label} ===")
         r = run_one(label, path, rt, extra)
-        if r.get("status") == "ok":
-            save_result(r, args.tier)
+        r["tier"] = args.tier
+        r["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
         keys = ("label", "load_time", "bench_time", "passed", "valid", "status")
         print(json.dumps({k: r.get(k) for k in keys}, indent=2))
+        results.append(r)
+        LEADERBOARD.write_text(json.dumps(results, indent=2))
 
     print("\n=== SUMMARY ===")
-    for r in results:
-        if r.get("tier") == args.tier:
-            print(f"  {r['label']:50s} -> {r.get('passed_of_51', r.get('passed', '?'))}/51  "
-                  f"bench={r.get('bench_time', '?')}s  total={r.get('total_time_s', '?')}s  valid={r.get('valid')}")
+    for r in results[-len(TIERS[args.tier]):]:
+        print(f"  {r['label']:50s} -> {r.get('passed_of_51', r.get('passed', '?'))}/51  "
+              f"bench={r.get('bench_time', '?')}s  total={r.get('total_time_s', '?')}s  valid={r.get('valid')}")
+
 
 if __name__ == "__main__":
     main()

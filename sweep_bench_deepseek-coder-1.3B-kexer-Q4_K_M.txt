@@ -18,55 +18,55 @@ Modelli da testare: 1
 ============================================================
 TESTING: deepseek-coder-1.3B-kexer-Q4_K_M
 ============================================================
-  Warm-up... ok (75.0s)
+  Warm-up... ok (0.2s)
 
   [FACILE] FizzBuzz...
-    [FAIL] - 0/8 test (77.7s)
+    [FAIL] - 0/8 test (0.2s)
     [!] Errore di sintassi: invalid syntax (<string>, line 1)
 
   [MEDIO] Trova Duplicati...
-    [FAIL] - 0/6 test (80.6s)
+    [FAIL] - 0/6 test (77.0s)
     [!] Errore di sintassi: invalid syntax (<string>, line 2)
 
   [DIFFICILE] Somma Valori Nested...
-    [PASS] - 5/5 test (80.5s)
+    [FAIL] - 0/5 test (1.9s)
+    [!] Errore di sintassi: invalid syntax (<string>, line 1)
 
   [MEDIO] Appiattisci Lista...
-    [FAIL] - 0/6 test (79.1s)
-    [!] Errore di sintassi: name 'kotlin' is not defined
+    [FAIL] - 0/6 test (1.7s)
+    [!] Errore di sintassi: invalid syntax (<string>, line 2)
 
   [MEDIO] Parse Configurazione...
-    [FAIL] - 0/6 test (79.0s)
-    [!] Errore di sintassi: unterminated triple-quoted string literal (detected at line 3) (<string>, line 1)
+    [FAIL] - 0/6 test (2.5s)
+    [!] Errore di sintassi: invalid syntax (<string>, line 2)
 
   [DIFFICILE] Unisci Intervalli...
-    [FAIL] - 0/6 test (80.5s)
+    [FAIL] - 0/6 test (79.3s)
     [!] Errore di sintassi: unterminated string literal (detected at line 2) (<string>, line 2)
 
   [DIFFICILE] Parentesi Bilanciate...
-Stringa vuota
-Carattere non trovato
-Carattere non trovato
-    [FAIL] - 0/8 test (78.9s)
+    [FAIL] - 0/8 test (1.7s)
+    [!] Errore di sintassi: unterminated string literal (detected at line 2) (<string>, line 2)
 
   [MOLTO DIFFICILE] Merge Profondo Dizionari...
-    [FAIL] - 0/6 test (80.9s)
-    [!] Errore di sintassi: invalid syntax (<string>, line 2)
+    [FAIL] - 0/6 test (0.8s)
+    [!] Errore di sintassi: invalid syntax (<string>, line 1)
 
   RISULTATO: [X] SCARTATO
-  Test totali: 5/13
-  Tempo totale: 637.23s
+  Test totali: 0/0
+  Tempo totale: 165.06s
 
 ============================================================
 RISULTATI FINALI
 ============================================================
 
-[OK] MODELLI VALIDI PER CODING (43):
-   Qwen2.5-Coder-1.5B-Q4_K_M (4.79s)
+[OK] MODELLI VALIDI PER CODING (44):
+   Qwen2.5-Coder-1.5B-Q4_K_M (4.82s)
+   Yi-Coder-1.5B-Chat-Q4_K_M (5.34s)
    granite-4.1-3B-Q4_K_S (7.36s)
    qwen2.5-coder-3b-instruct@q4_0 (7.81s)
    Qwen2.5-Coder-3B-Q4_0 (8.43s)
-   granite-3.3-2b-instruct-Q6_K (8.96s)
+   granite-3.3-2b-instruct-Q6_K (8.87s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen3-4B-Instruct-2507-GGUF/Qwen3-4B-Instruct-2507-Q4_K_M.gguf (9.74s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/gemma-3-4B-it-qat-GGUF/gemma-3-4B-it-QAT-Q4_0.gguf (11.99s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/Qwen2.5-7B-Instruct-1M-GGUF/Qwen2.5-7B-Instruct-1M-Q4_K_M.gguf (14.07s)
@@ -74,13 +74,13 @@ RISULTATI FINALI
    opusd-iq2kr4-2026-05-31 (17.65s)
    reval-opusd-iq3kr4 (18.23s)
    opusd-iq3kr4-2026-05-31 (19.67s)
+   daily-Qwen3.6-35B-A3B-IQ3_K_R4 (19.7s)
    models/Qwen3.6-35B-A3B-IQ3_K_R4.gguf (20.7s)
-   Ornith-1.0-9B-Q4_K_M (20.87s)
    reval-daily-iq3kr4 (21.13s)
    reval-granite41-8b (21.34s)
    granite-4.1-8b (21.85s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/granite-3.2-8b-instruct-GGUF/granite-3.2-8b-instruct-Q4_K_M.gguf (22.78s)
-   daily-Qwen3.6-35B-A3B-IQ3_K_R4 (23.56s)
+   Ornith-1.0-9B-Q4_K_M (22.99s)
    qwen36-opus-distill-r4 (23.72s)
    daily-rebench-2026-05-21 (23.77s)
    rb0601-granite41-8b (23.78s)
@@ -97,8 +97,8 @@ RISULTATI FINALI
    opusd-iq4kr4-0530 (47.62s)
    opusd-iq4ksr4-0530 (48.51s)
    phi-3.5-mini-instruct (49.19s)
+   Ornith-1.0-35B-A3B-Q4_K_M (51.54s)
    ibm/granite-3.2-8b (51.61s)
-   Ornith-1.0-35B-A3B-Q4_K_M (53.39s)
    opusd-iq4kr4-2026-05-31 (56.2s)
    qwen36-opus-distill (61.89s)
    mistralai/mistral-nemo-instruct-2407 (72.65s)
@@ -106,7 +106,7 @@ RISULTATI FINALI
    mtp-n2-2026-05-21 (310.21s)
    gemma-4-E2B-it-Q4_K_M (473.44s)
 
-[X] MODELLI SCARTATI (65):
+[X] MODELLI SCARTATI (66):
    qwen2.5-coder-7b-instruct
    qwen2.5-coder-3b-instruct@q8_0
    deepseek-coder-v2-lite-instruct
@@ -135,7 +135,6 @@ RISULTATI FINALI
    Qwen2.5-Coder-0.5B-Q4_K_M
    Qwen3-0.6B-Q8_0
    deepseek-coder-1.3B-kexer-Q4_K_M
-   Yi-Coder-1.5B-Chat-Q4_K_M
    DeepCoder-1.5B-Preview-Q8_0
    gemma-3-1B-it-qat-Q4_0
    SmolLM2-1.7B-Instruct-Q8_0
@@ -172,6 +171,8 @@ RISULTATI FINALI
    lfm-coder
    Ornith-1.0-35B-A3B-IQ3_K_R4
    Ornith-1.0-35B-A3B-IQ3_K_R4-imat
+   deepseek-coder-1.3B-instruct-Q4_K_M
+   Qwen2.5-Coder-32B-Instruct-IQ3_M
 
 Risultati salvati in: D:\repos\ralph\local_ralph\coding_benchmark_results.json
 

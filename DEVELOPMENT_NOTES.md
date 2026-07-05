@@ -140,3 +140,50 @@ Le attività pianificate di Windows legate al marketing e all'automazione (situa
 * `\StudioSmart-Email-Review` -> **Disabilitata** (Gestiva le richieste di recensioni giornaliere).
 
 Tutte le attività mostrano ora lo stato `Disabilitato` in Task Scheduler e non verranno avviate automaticamente.
+
+---
+
+## 5. Aggiornamento Codice, Conflitti CUDA e Stress Test (02 Luglio 2026)
+
+### Modifiche e Aggiornamenti Eseguiti
+* **Git Sync**: Eseguito il merge di `origin/main` in `ik_llama.cpp` portando le modifiche dal 16 Giugno al 02 Luglio 2026.
+* **Correzione Errore di Compilazione**:
+  * **Cosa non ha funzionato**: La build di MSBuild/NVCC falliva su `oaidl.h(812)` del Windows SDK con `error: expected an identifier`. Il motivo risiedeva nella macro `#define CC_PASCAL 600` definita in `ggml-cuda/common.cuh` per denotare l'architettura Pascal GPU, la quale collideva con il tipo di convenzione di chiamata `CC_PASCAL` usata internamente negli header Windows (espansa a `600 = CC_MSCPASCAL`).
+  * **Cosa ha funzionato**: La macro è stata rinominata in `GGML_CUDA_CC_PASCAL` in `common.cuh` e `convert.cu`, risolvendo definitivamente l'errore di preprocessore.
+* **Aggiornamento Script**: Copiate le versioni sincronizzate di `sweep_small_models.py` e `sweep_advanced.py` da `ik-llama-bench`.
+
+### Introduzione Stress Test Personalizzati
+* Implementata una nuova suite in [sweep_stress_tests.py](file:///D:/repos/ik_llama.cpp/sweep_stress_tests.py) per valutare i modelli su 4 criteri critici reali:
+  1. **Concurrency**: Scrittura di una coda thread-safe MPSC ed esecuzione con 10 thread produttori contemporanei per catturare deadlock e race condition.
+  2. **Self-Correction**: Iterazione di debug su bug logico (mutamento liste durante ciclo), fornendo l'errore al modello per misurarne i tentativi di fix.
+  3. **Tool-Calling**: Scelta intelligente di sequenze di chiamate API in situazioni di informazioni parziali/ambigue.
+  4. **KV-Cache Pressure**: Estrazione di istruzioni nascoste in contesti lunghi (16K token commentati).
+
+### Apprendimenti sui Modelli e Ottimizzazione Hardware
+* **Ornith-1.0-9B-Q4_K_M** si conferma il miglior modello in assoluto per correttezza logica: **51/51** Base, **17/17** Advanced, e **4/4** Stress Test superati senza allucinazioni o rallentamenti.
+* **Ornith-1.0-35B-A3B-IQ3_K_R4-imat** chiude a **17/17** Advanced, **50/51** Base e **4/4** Stress Test. Supera brillantemente la variante non-imatrix (`Ornith-1.0-35B-A3B-IQ3_K_R4`), la quale fallisce il test di Tool-Calling (allucina sequenze API incomplete), provando l'efficacia del calcolo basato su matrice d'influenza per agenti.
+* **Qwen2.5-Coder-1.5B-Q4_K_M**: Si rivela un modello compatto straordinario. Totalizza **16/17** nell'Advanced, **51/51** nel Base e supera **4/4** Stress Test con tempi fulminei (es. Auto-Correzione in 0.4s).
+* **Limiti VRAM (OOM)**: Il modello `Ornith-1.0-35B-A3B-Q4_K_M` (20 GB) fallisce per OOM in presenza di elevato carico grafico in background (con ~870MB VRAM occupati), in quanto richiede circa 6.1 GB di buffer CUDA sul lato GPU da 6GB. I modelli `IQ3_K_R4` (15 GB) risolvono questo limite senza swap lento.
+* **SSD Optimization (30x Speedup)**: Spostando i tre modelli migliori (`Ornith-1.0-9B-Q4_K_M`, `Ornith-1.0-35B-A3B-IQ3_K_R4` e `Ornith-1.0-35B-A3B-IQ3_K_R4-imat`) dal disco lento `F:` (HDD/SATA) al disco principale NVMe `D:\repos\ik_llama.cpp\models`, il tempo di caricamento è crollato da **~160 secondi** a **5.4 secondi** per il modello 35B.
+
+---
+
+## 6. Ottimizzazione VRAM e Risoluzione Crash 35B (04 Luglio 2026)
+
+### Cosa abbiamo fatto
+* **Risolto crash in sweep**: Corretto il caricamento di `daily-Qwen3.6-35B-A3B-IQ3_K_R4` in `sweep_small_models.py`, eliminando il default `-ngl 999` e il batch eccessivo `-b 2048 -ub 2048`. Il modello è stato validato ottenendo **51/51** coding in **24.26s** senza crash.
+* **Validato Ornith Imatrix**: Testato `Ornith-1.0-35B-A3B-IQ3_K_R4-imat` con gli stessi parametri ottenendo **50/51** coding (punteggio nominale previsto).
+* **Allineamento Configurazione Stack**: Aggiornata la configurazione reale in `llama-swap.config.yaml` per `qwen36-iq3` e introdotto il nuovo modello `ornith-35b-iq3-imat` mappando i parametri del *Global Winner*.
+* **Fix Script Stack**: Corretti errori di sintassi in `opencode-local.ps1` (blocco `agentByMode` parzialmente corrotto) e definito `SMALL_MODEL = "qwen-small"` mancante in `opencode-router.py`.
+* **Creazione Wrapper OMP Locale (`oml`)**: Creati gli script `omp-local.ps1`, `omp-local.bat` e `oml.bat` per eseguire l'agente OMP in locale sfruttando lo stack OpenCode. Il wrapper intercetta e imposta `LM_STUDIO_BASE_URL` indirizzandolo a `llama-swap` (porta 8292) o al router (porta 8291), esponendo i modelli locali tramite il provider integrato `lm-studio` (con caching pre-popolato). Inoltre, supporta l'inoltro trasparente di qualsiasi flag o prompt non intercettato (es. `--continue`, `--auto-approve`, etc.).
+* **Allineamento Limiti Context e Error Rewriting**: Allineato il limite di contesto per `qwen36-iq3` e `ornith-35b-iq3-imat` a **24000** in `opencode-router.py` per rispecchiare la configurazione reale di `llama-swap.config.yaml`. Aggiunto un intercettatore HTTP nel router che cattura gli errori 500 generati da `llama-server.exe` relativi al superamento del contesto e li riscrive nel formato standard OpenAI (`400 context_length_exceeded`), forzando l'agente OMP ad avviare la compattazione automatica invece di interrompere l'esecuzione.
+
+
+### Apprendimenti e Successi
+* **L'importanza dei micro-batch**: `-ub 256` mantiene il buffer temporaneo di calcolo CUDA a circa **800 MiB** (invece di ~1.9 GB con `-ub 2048`), permettendo di alloggiare i modelli MoE 35B nella VRAM limitata da 6 GB della RTX A2000.
+* **Il ruolo di imatrix**: Come da stress test, l'influenza della matrice per quantizzazioni spinte (`IQ3`) rende `Ornith-imat` robusto per il tool-calling degli agenti locali rispetto alla versione base.
+
+### Errori da non ripetere
+* **Mai assumere che l'offload parziale MoE gestisca batch massivi su GPU ridotte**: Un batch di `2048` forza allocazioni CUDA non negoziabili che superano la memoria fisica della scheda, portando a crash silenziosi e successivi fallimenti di rete (*Connection Refused*).
+* **Verificare sempre il rilascio VRAM**: Test paralleli o esecuzioni successive possono risentire di processi orfani `llama-server.exe` attivi. Usare sempre `opencode-local.ps1 -Stop` per pulire la VRAM.
+

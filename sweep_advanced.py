@@ -15,10 +15,14 @@ import sweep_small_models as ssm
 
 ADV_LEADERBOARD = ssm.REPO / "sweep_advanced_leaderboard.json"
 WINNERS = [
+    "daily-Qwen3.6-35B-A3B-IQ3_K_R4",
+    "Ornith-1.0-35B-A3B-IQ3_K_R4",
+    "Ornith-1.0-35B-A3B-IQ3_K_R4-imat",
+    "Ornith-1.0-9B-Q4_K_M",
     "Qwen2.5-Coder-1.5B-Q4_K_M",
-    "granite-3.3-2b-instruct-Q6_K",
-    "granite-4.1-3B-Q4_K_S",
-    "Qwen2.5-Coder-3B-Q4_0",
+    "Yi-Coder-1.5B-Chat-Q4_K_M",
+    "Qwen2.5-Coder-32B-Instruct-IQ3_M",
+    "DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M",
 ]
 
 
