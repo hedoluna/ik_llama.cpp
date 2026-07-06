@@ -15,6 +15,7 @@ For each model:
 """
 from __future__ import annotations
 import argparse
+import importlib.util
 import json
 import os
 import re
@@ -31,6 +32,7 @@ IK_SERVER = REPO / "build" / "bin" / "Release" / "llama-server.exe"
 MAIN_SERVER = Path(r"D:\repos\llama_mtp\build\bin\Release\llama-server.exe")
 BENCH = Path(r"D:\repos\ralph\local_ralph\coding_benchmark.py")
 BENCH_ADV = Path(r"D:\repos\ralph\local_ralph\advanced_benchmark.py")
+EXEC_TRACE = Path(r"D:\repos\ik-llama-bench\sweep_bench_exec_trace.py")
 LEADERBOARD = REPO / "sweep_leaderboard.json"
 PORT = 1234
 HOST = "127.0.0.1"
@@ -176,6 +178,21 @@ PY_CMD = next((p for p in [
 ] if Path(p).exists()), sys.executable)
 
 
+def run_preflight() -> None:
+    """Fail-fast if coding_benchmark's scorer misjudges known-good solutions.
+
+    Session 2026-05-12 found the scorer itself wrong more than once
+    (antiglaze/vision_invoice/extract_function bugs), producing false model
+    fails. Gate every sweep run on it instead of trusting single-sample output.
+    """
+    sys.path.insert(0, str(REPO))
+    from sweep_lib_sanity import preflight_scorer
+    spec = importlib.util.spec_from_file_location("cb", BENCH)
+    cb = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cb)
+    preflight_scorer(cb)
+
+
 def port_open(host: str, port: int, timeout: float = 0.5) -> bool:
     try:
         with socket.create_connection((host, port), timeout=timeout):
@@ -273,7 +290,38 @@ def parse_bench_output(output: str) -> dict:
     }
 
 
-def run_one(label: str, model_path: Path, runtime: str, extra: list[str]) -> dict:
+def parse_exec_trace_output(output: str) -> dict | None:
+    """Parse '== exec_trace: X/N ==' summary line. None if the script errored."""
+    m = re.search(r"==\s*exec_trace:\s*(\d+)/(\d+)\s*==", output)
+    if not m:
+        return None
+    return {"exec_trace_passed": int(m.group(1)), "exec_trace_total": int(m.group(2))}
+
+
+def run_exec_trace(label: str) -> dict:
+    """Run the exec_trace 'easy' tier against the already-running server on :1234.
+
+    Coding-bench accuracy saturates at 51/51 for most viable models (see
+    reference_model_matrix_consolidated), so it stopped discriminating between
+    top candidates. exec_trace (predict exact stdout, don't generate) is the
+    one axis that still separates them — worth a cheap 6-item add-on per model.
+    """
+    if not EXEC_TRACE.exists():
+        return {"exec_trace_status": "skip_missing_script"}
+    try:
+        cp = subprocess.run([PY_CMD, str(EXEC_TRACE)], capture_output=True, text=True, timeout=180)
+        out = (cp.stdout or "") + "\n" + (cp.stderr or "")
+    except subprocess.TimeoutExpired:
+        return {"exec_trace_status": "timeout_180s"}
+    parsed = parse_exec_trace_output(out)
+    if parsed is None:
+        return {"exec_trace_status": "parse_failed", "exec_trace_raw": out[-500:]}
+    parsed["exec_trace_status"] = "ok"
+    return parsed
+
+
+def run_one(label: str, model_path: Path, runtime: str, extra: list[str],
+            with_exec_trace: bool = False) -> dict:
     kill_llama_server()  # ensure clean state
     t_load_start = time.time()
     proc = start_server(label, model_path, runtime, extra)
@@ -299,8 +347,9 @@ def run_one(label: str, model_path: Path, runtime: str, extra: list[str]) -> dic
     parsed = parse_bench_output(out)
     log_dump = REPO / f"sweep_bench_{label}.txt"
     log_dump.write_text(out, encoding="utf-8", errors="replace")
+    exec_trace_result = run_exec_trace(label) if with_exec_trace else {}
     kill_llama_server()
-    return {
+    result = {
         "label": label,
         "model_path": str(model_path),
         "runtime": runtime,
@@ -314,20 +363,30 @@ def run_one(label: str, model_path: Path, runtime: str, extra: list[str]) -> dic
         "per_task": parsed["per_task"],
         "status": "ok",
     }
+    result.update(exec_trace_result)
+    return result
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tier", type=int, choices=[0, 1, 2, 3, 4, 5, 6, 7], help="Run a tier")
     ap.add_argument("--single", help="Run a single label from any tier")
+    ap.add_argument("--skip-preflight", action="store_true",
+                     help="Skip the scorer sanity gate (not recommended)")
+    ap.add_argument("--exec-trace", action="store_true",
+                     help="Also run the exec_trace 'easy' 6-item add-on per model "
+                          "(discriminates the 51/51 coding-bench ceiling cluster)")
     args = ap.parse_args()
+
+    if not args.skip_preflight:
+        run_preflight()
 
     if args.single:
         for tier in TIERS.values():
             for label, path, rt, extra in tier:
                 if label == args.single:
                     print(f"\n=== {label} ===")
-                    r = run_one(label, path, rt, extra)
+                    r = run_one(label, path, rt, extra, with_exec_trace=args.exec_trace)
                     print(json.dumps(r, indent=2))
                     return
         print(f"Label '{args.single}' not found"); sys.exit(1)
@@ -341,7 +400,7 @@ def main():
 
     for label, path, rt, extra in TIERS[args.tier]:
         print(f"\n=== {label} ===")
-        r = run_one(label, path, rt, extra)
+        r = run_one(label, path, rt, extra, with_exec_trace=args.exec_trace)
         r["tier"] = args.tier
         r["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
         keys = ("label", "load_time", "bench_time", "passed", "valid", "status")
