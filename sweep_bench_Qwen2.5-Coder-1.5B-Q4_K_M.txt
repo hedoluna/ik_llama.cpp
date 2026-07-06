@@ -39,21 +39,21 @@ TESTING: Qwen2.5-Coder-1.5B-Q4_K_M
     [PASS] - 6/6 test (0.7s)
 
   [DIFFICILE] Parentesi Bilanciate...
-    [PASS] - 8/8 test (0.8s)
+    [PASS] - 8/8 test (0.7s)
 
   [MOLTO DIFFICILE] Merge Profondo Dizionari...
     [PASS] - 6/6 test (0.7s)
 
   RISULTATO: [OK] VALIDO
   Test totali: 51/51
-  Tempo totale: 4.62s
+  Tempo totale: 4.53s
 
 ============================================================
 RISULTATI FINALI
 ============================================================
 
-[OK] MODELLI VALIDI PER CODING (43):
-   Qwen2.5-Coder-1.5B-Q4_K_M (4.62s)
+[OK] MODELLI VALIDI PER CODING (44):
+   Qwen2.5-Coder-1.5B-Q4_K_M (4.53s)
    Yi-Coder-1.5B-Chat-Q4_K_M (5.32s)
    granite-4.1-3B-Q4_K_S (7.27s)
    qwen2.5-coder-3b-instruct@q4_0 (7.81s)
@@ -69,6 +69,7 @@ RISULTATI FINALI
    models/Qwen3.6-35B-A3B-IQ3_K_R4.gguf (20.7s)
    reval-daily-iq3kr4 (21.13s)
    reval-granite41-8b (21.34s)
+   Mellum2-12B-A2.5B-Instruct-Q4_K_M (21.44s)
    granite-4.1-8b (21.85s)
    C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/granite-3.2-8b-instruct-GGUF/granite-3.2-8b-instruct-Q4_K_M.gguf (22.78s)
    daily-Qwen3.6-35B-A3B-IQ3_K_R4 (23.71s)
