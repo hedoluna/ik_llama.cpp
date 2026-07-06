@@ -187,3 +187,56 @@ Tutte le attività mostrano ora lo stato `Disabilitato` in Task Scheduler e non 
 * **Mai assumere che l'offload parziale MoE gestisca batch massivi su GPU ridotte**: Un batch di `2048` forza allocazioni CUDA non negoziabili che superano la memoria fisica della scheda, portando a crash silenziosi e successivi fallimenti di rete (*Connection Refused*).
 * **Verificare sempre il rilascio VRAM**: Test paralleli o esecuzioni successive possono risentire di processi orfani `llama-server.exe` attivi. Usare sempre `opencode-local.ps1 -Stop` per pulire la VRAM.
 
+---
+
+## 7. Procedura standard "aggiorna i repo collegati" (06 Luglio 2026)
+
+### Regole generali (valide per tutto il cluster `D:\repos`)
+1. **Mai `reset --hard` / `pull` distruttivo senza controllare prima** `git status` e `git log` — specialmente su `ik_llama.cpp` che ha sempre lavoro locale non pulito e diverge da `origin/main`.
+2. **Fetch prima di ogni decisione**: `git fetch origin` su ogni repo per vedere lo stato reale prima di scegliere l'azione (ff-only, merge, o nessuna azione).
+3. **Repo puliti e semplicemente indietro → fast-forward diretto** (`git pull --ff-only origin <branch>`): sicuro, nessuna conferma necessaria. Vale per `llama` e `llama_mtp` (mirror upstream, nessun commit locale).
+4. **Repo con worktree sporco ma già allineato a origin (`0 0` su `rev-list --left-right --count`) → non toccare**: il lavoro locale (`ik-llama-bench`: script/risultati; `trading-algo`: `.wolf`, `state/`) è dato prezioso, non stash/reset automatico.
+5. **`ik_llama.cpp` (repo principale, ha commit locali + diverge da origin) → chiedere conferma esplicita all'utente prima del merge**, poi:
+   - `git stash push -u -m "<descrizione>" -- <file modificati>` per i file sporchi non legati al merge (es. `sweep_leaderboard.json`, dati benchmark)
+   - `git merge origin/main --no-edit` (mai rebase: preserva la history locale con 50+ commit propri)
+   - `git stash pop` per ripristinare i file locali
+   - Se il merge tocca file CUDA/kernel critici, **ricompilare e rilanciare uno smoke test** prima di considerare l'aggiornamento concluso (non fatto sistematicamente finora — vedi nota sotto).
+6. **`llama-zaya` condivide il DB Git con `llama`** (stesso worktree): aggiornare `llama/master` aggiorna automaticamente il ref, ma `zaya-pr` (28 commit locali, unica copia di Zaya-1) **non va mai toccato/riallineato automaticamente** — merge di `master` in `zaya-pr` genera conflitti noti (vedi sezione 2), va fatto solo manualmente e offline.
+7. **`ralph`** non è un repo Git: nessuna azione di aggiornamento possibile o necessaria.
+
+### Comando di verifica divergenza (usato per ogni repo)
+```bash
+git fetch origin
+git rev-list --left-right --count origin/<branch>...HEAD
+# output "<dietro> <avanti>": primo numero = commit solo in origin (behind), secondo = commit solo in HEAD (ahead)
+```
+
+### Log aggiornamento 06 Luglio 2026
+| Repo | Prima | Azione | Dopo |
+|---|---|---|---|
+| `llama` | 18 dietro | `pull --ff-only` | `ee445f93d` |
+| `llama_mtp` | 32 dietro | `pull --ff-only` | `ee445f93d` |
+| `llama-zaya` | — | nessuna (ref aggiornato via worktree condiviso con `llama`) | `zaya-pr` invariato |
+| `llama_indras` | allineato | nessuna | invariato |
+| `ik-llama-bench` | allineato, worktree sporco | nessuna | invariato |
+| `trading-algo` | allineato, worktree sporco | nessuna | invariato |
+| `ik_llama.cpp` | 9 dietro / 54 avanti, `sweep_leaderboard.json` modificato | stash → `merge origin/main --no-edit` → stash pop | `656c39f2`, 0 dietro / 55 avanti |
+
+Il merge in `ik_llama.cpp` ha toccato kernel CUDA critici (flash-attention tile f16/f32, MLA decode Pascal, `iqk_flash_attn`).
+
+### Rebuild + golden-check + re-bench top-5 (07 Luglio 2026, stesso giro)
+
+* **1° rebuild FALSO POSITIVO**: `cmake --build | tail -60` ha riportato exit 0 ma il link falliva davvero (`LNK2019`/`LNK1120`, 2 unresolved `ggml_cuda_flash_attn_ext_vec_f32_case<576,512,...>`). Causa: il merge ha aggiunto 2 nuovi `.cu` in `ggml-cuda/template-instances/` (`fattn-vec-f32-instance-hs576-{f16-f16,q8_0-q8_0}.cu`) e il `file(GLOB ...)` in `ggml/src/CMakeLists.txt:276` non ha `CONFIGURE_DEPENDS` → serve reconfigure esplicito (`cmake -B build -S . -DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=86 -DLLAMA_CURL=OFF -DGGML_NATIVE=ON`) prima del rebuild. Fix applicato, 2° build (senza pipe, redirect diretto su file) exit 0 reale, binari freschi.
+* **Golden-check** (`golden_hash.py check`, solo i 2 job ik-affetti dal merge — i job mainline sono invariati): `qwen36-iq3kr4-daily` e `qwen36-opus-distill-r4` → **3/3 gate pass ciascuno** (prime/arith/json), zero regressione.
+* **Re-bench top-5** (`sweep_small_models.py --single`, upsert manuale in `sweep_leaderboard.json` perché `--single` NON salva da solo — vedi codice `main()`, la nota "salvataggio automatico" di questo file sez.3 è superata):
+
+| Modello | Score | Load | Bench |
+|---|---:|---:|---:|
+| daily-Qwen3.6-35B-A3B-IQ3_K_R4 | 51/51 | 6.6s | 24.9s |
+| Ornith-1.0-9B-Q4_K_M | 51/51 | 3.6s | 43.4s |
+| Ornith-1.0-35B-A3B-IQ3_K_R4-imat | 50/51 | 10.2s | 24.5s |
+| Qwen2.5-Coder-1.5B-Q4_K_M | 51/51 | 13.1s | 5.0s |
+| Mellum2-12B-A2.5B-Instruct-Q4_K_M | 51/51 | 4.6s | 22.2s |
+
+Zero regressioni rispetto ai baseline storici (Ornith-imat 50/51 = fail task3 già noto, non nuovo). Aggiunta entry `Mellum2-12B-A2.5B-Instruct-Q4_K_M` a `TIERS[7]` in `sweep_small_models.py` (mancava, recipe da `reference_winner_configs.md`).
+

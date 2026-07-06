@@ -162,6 +162,9 @@ TIERS = {
          Path(r"D:\repos\ik_llama.cpp\models\DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M.gguf"),
          "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
                 "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+        ("Mellum2-12B-A2.5B-Instruct-Q4_K_M",
+         Path(r"D:\repos\ik_llama.cpp\models\Mellum2-12B-A2.5B-Instruct-Q4_K_M.gguf"),
+         "ik", ["-ngl", "99", "--n-cpu-moe", "12", "--reasoning", "off"]),
     ],
 }
 
