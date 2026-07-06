@@ -18,7 +18,7 @@ Tutti i repository legati a Llama e ai benchmark locali si trovano in `D:\repos`
 | `D:\repos\llama-zaya` | Git worktree | `origin=https://github.com/ggerganov/llama.cpp.git`, `zaya-pr` | Branch locale Zaya-1 su base `llama.cpp`. | Branch critico: unica copia locale nota dell'implementazione Zaya-1. Non eliminare. |
 | `D:\repos\llama_mtp` | Git repo | `origin=https://github.com/ggml-org/llama.cpp.git`, `master` | Checkout mainline/ggml-org per confronto MTP. | Usato come riferimento pulito rispetto alle feature MTP upstream. |
 | `D:\repos\llama_indras` | Git repo | `origin=https://github.com/Indras-Mirror/llama.cpp-mtp.git`, `master` | Mirror/variante Indras con MTP. | Usato per confronto delle implementazioni MTP. |
-| `D:\repos\ralph` | Cartella locale non-Git | nessun `.git` rilevato | Contiene `local_ralph\coding_benchmark.py`, usato da `sweep_small_models.py`. | Non aspettarsi comandi Git funzionanti qui. |
+| `D:\repos\ralph` | Cartella locale non-Git (top-level) | nessun `.git` rilevato al top-level | Contiene `local_ralph\coding_benchmark.py`, usato da `sweep_small_models.py`. | ⚠️ **`D:\repos\ralph\local_ralph` è invece un repo Git nested proprio** (commit indipendenti dal parent) — comandi Git funzionano lì, non nel top-level `ralph\`. |
 | `D:\repos\trading-algo` | Git repo | `origin=https://github.com/hedoluna/trading-algo.git`, `master` | Fornisce l'ambiente Python funzionante per alcuni benchmark. | Interprete usato: `D:\repos\trading-algo\.venv-py312\Scripts\python.exe`. |
 
 Questa tabella e la fonte canonica per i riferimenti cross-repo locali. I documenti specifici (`CLAUDE.md`, `docs/opencode-local-llama-swap.md`, `bench-opencode-local/README.md`) devono rimandare qui invece di duplicare tutta la mappa.
