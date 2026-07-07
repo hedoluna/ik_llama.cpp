@@ -240,3 +240,10 @@ Il merge in `ik_llama.cpp` ha toccato kernel CUDA critici (flash-attention tile 
 
 Zero regressioni rispetto ai baseline storici (Ornith-imat 50/51 = fail task3 già noto, non nuovo). Aggiunta entry `Mellum2-12B-A2.5B-Instruct-Q4_K_M` a `TIERS[7]` in `sweep_small_models.py` (mancava, recipe da `reference_winner_configs.md`).
 
+### Preflight-scorer gate + `--exec-trace` + roster cleanup (07 Luglio 2026, stessa giornata)
+
+* `sweep_small_models.py` ora esegue `run_preflight()` (gate su `sweep_lib_sanity.preflight_scorer`) prima di ogni `--single`/`--tier` — prima non era mai invocato dal runner principale, solo da 2 script di nicchia. `--skip-preflight` per bypasso.
+* Flag `--exec-trace`: esegue il tier "easy" (6 item) di `ik-llama-bench/sweep_bench_exec_trace.py` sullo stesso server già caricato, prima del teardown. Applicato subito sul top-5 (`sweep_leaderboard.json`): **daily-winner 4/6, Ornith-imat 5/6** vs **1-2/6** per Ornith-9B/Coder-1.5B/Mellum-Instruct — conferma che discrimina dove il coding-bench satura.
+* `sweep_advanced.py` (17-task) rieseguito su 7 modelli: Ornith-1.0-35B-A3B (entrambi i quant) e Mellum2-12B **17/17**; Coder-1.5B/Ornith-9B 16/17; Yi-Coder-1.5B 14/17; **daily-winner 16/17** (era 17/17 storico — single-sample, da riverificare prima di chiamarla regressione).
+* **Roster ripulito**: `Qwen2.5-Coder-32B-Instruct-IQ3_M` (dense 32B, `-ngl 15`, 23+ min per il solo advanced bench — 6 GiB VRAM non basta, hardware ceiling confermato) e `DeepSeek-Coder-V2-Lite-Instruct` (già "drop coding", 2 timeout storici da 900s) rimossi da `WINNERS`/`TIERS[7]` — commentati con motivazione, non cancellati.
+
