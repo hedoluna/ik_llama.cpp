@@ -328,50 +328,14 @@
     "label": "daily-Qwen3.6-35B-A3B-IQ3_K_R4",
     "model_path": "D:\\repos\\ik_llama.cpp\\models\\Qwen3.6-35B-A3B-IQ3_K_R4.gguf",
     "runtime": "ik",
-    "load_time": 6.61,
-    "bench_time": 24.9,
+    "load_time": 6.64,
+    "bench_time": 27.42,
     "passed": 51,
     "total": 51,
     "passed_of_51": 51,
-    "total_time_s": 23.71,
+    "total_time_s": 26.38,
     "valid": true,
     "per_task": [
-      {
-        "verdict": "PASS",
-        "passed": 8,
-        "total": 8,
-        "time_s": 2.6
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 2.3
-      },
-      {
-        "verdict": "PASS",
-        "passed": 5,
-        "total": 5,
-        "time_s": 3.1
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 2.2
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 2.7
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 5.0
-      },
       {
         "verdict": "PASS",
         "passed": 8,
@@ -382,12 +346,51 @@
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
+        "time_s": 2.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 3.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
         "time_s": 3.0
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 5.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 3.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 3.3
       }
     ],
     "status": "ok",
+    "exec_trace_passed": 4,
+    "exec_trace_total": 6,
+    "exec_trace_status": "ok",
     "tier": "single-rebench-2026-07-07",
-    "timestamp": "2026-07-07 00:25:18"
+    "timestamp": "2026-07-07 02:00:40"
   },
   {
     "label": "Ornith-1.0-35B-A3B-Q4_K_M",
@@ -458,31 +461,31 @@
     "label": "Ornith-1.0-9B-Q4_K_M",
     "model_path": "D:\\repos\\ik_llama.cpp\\models\\ornith-1.0-9b-Q4_K_M.gguf",
     "runtime": "ik",
-    "load_time": 3.59,
-    "bench_time": 43.38,
+    "load_time": 2.3,
+    "bench_time": 44.7,
     "passed": 51,
     "total": 51,
     "passed_of_51": 51,
-    "total_time_s": 42.44,
+    "total_time_s": 43.81,
     "valid": true,
     "per_task": [
       {
         "verdict": "PASS",
         "passed": 8,
         "total": 8,
-        "time_s": 5.2
+        "time_s": 5.5
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 4.3
+        "time_s": 4.1
       },
       {
         "verdict": "PASS",
         "passed": 5,
         "total": 5,
-        "time_s": 6.9
+        "time_s": 7.3
       },
       {
         "verdict": "PASS",
@@ -494,30 +497,33 @@
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 4.4
+        "time_s": 4.1
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 6.4
+        "time_s": 7.1
       },
       {
         "verdict": "PASS",
         "passed": 8,
         "total": 8,
-        "time_s": 6.2
+        "time_s": 6.4
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 5.5
+        "time_s": 5.6
       }
     ],
     "status": "ok",
+    "exec_trace_passed": 1,
+    "exec_trace_total": 6,
+    "exec_trace_status": "ok",
     "tier": "single-rebench-2026-07-07",
-    "timestamp": "2026-07-07 00:26:06"
+    "timestamp": "2026-07-07 02:01:38"
   },
   {
     "label": "deepseek-coder-1.3B-instruct-Q4_K_M",
@@ -848,37 +854,19 @@
     "label": "Ornith-1.0-35B-A3B-IQ3_K_R4-imat",
     "model_path": "D:\\repos\\ik_llama.cpp\\models\\ornith-1.0-35b-IQ3_K_R4-imat.gguf",
     "runtime": "ik",
-    "load_time": 10.2,
-    "bench_time": 24.49,
+    "load_time": 5.51,
+    "bench_time": 27.58,
     "passed": 50,
     "total": 51,
     "passed_of_51": 50,
-    "total_time_s": 23.58,
+    "total_time_s": 26.51,
     "valid": false,
     "per_task": [
       {
         "verdict": "PASS",
         "passed": 8,
         "total": 8,
-        "time_s": 2.8
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 2.2
-      },
-      {
-        "verdict": "FAIL",
-        "passed": 4,
-        "total": 5,
-        "time_s": 4.1
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 2.1
+        "time_s": 3.2
       },
       {
         "verdict": "PASS",
@@ -887,27 +875,48 @@
         "time_s": 2.7
       },
       {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 3.3
+        "verdict": "FAIL",
+        "passed": 4,
+        "total": 5,
+        "time_s": 4.8
       },
       {
         "verdict": "PASS",
-        "passed": 8,
-        "total": 8,
-        "time_s": 3.4
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.3
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
         "time_s": 2.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 3.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 3.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 3.1
       }
     ],
     "status": "ok",
+    "exec_trace_passed": 5,
+    "exec_trace_total": 6,
+    "exec_trace_status": "ok",
     "tier": "single-rebench-2026-07-07",
-    "timestamp": "2026-07-07 00:26:43"
+    "timestamp": "2026-07-07 02:02:19"
   },
   {
     "label": "Qwen2.5-Coder-0.5B-Q4_K_M",
@@ -1173,12 +1182,12 @@
     "label": "Qwen2.5-Coder-1.5B-Q4_K_M",
     "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\migarcoes\\Qwen-Qwen2.5-Coder-1.5B-Instruct\\Qwen-Qwen2.5-Coder-1.5B-Instruct-Q4_K_M.gguf",
     "runtime": "ik",
-    "load_time": 13.09,
-    "bench_time": 5.0,
+    "load_time": 0.92,
+    "bench_time": 5.34,
     "passed": 51,
     "total": 51,
     "passed_of_51": 51,
-    "total_time_s": 4.62,
+    "total_time_s": 4.92,
     "valid": true,
     "per_task": [
       {
@@ -1203,19 +1212,19 @@
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
+        "time_s": 0.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
         "time_s": 0.4
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 0.3
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 0.7
+        "time_s": 0.8
       },
       {
         "verdict": "PASS",
@@ -1227,12 +1236,15 @@
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 0.7
+        "time_s": 0.8
       }
     ],
     "status": "ok",
+    "exec_trace_passed": 1,
+    "exec_trace_total": 6,
+    "exec_trace_status": "ok",
     "tier": "single-rebench-2026-07-07",
-    "timestamp": "2026-07-07 00:27:02"
+    "timestamp": "2026-07-07 02:02:29"
   },
   {
     "label": "Qwen2.5-Coder-1.5B-bartowski-Q4_K_M",
@@ -4534,65 +4546,68 @@
     "label": "Mellum2-12B-A2.5B-Instruct-Q4_K_M",
     "model_path": "D:\\repos\\ik_llama.cpp\\models\\Mellum2-12B-A2.5B-Instruct-Q4_K_M.gguf",
     "runtime": "ik",
-    "load_time": 4.63,
-    "bench_time": 22.2,
+    "load_time": 4.59,
+    "bench_time": 24.95,
     "passed": 51,
     "total": 51,
     "passed_of_51": 51,
-    "total_time_s": 21.44,
+    "total_time_s": 24.07,
     "valid": true,
     "per_task": [
       {
         "verdict": "PASS",
         "passed": 8,
         "total": 8,
+        "time_s": 2.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 3.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
         "time_s": 2.2
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 1.9
-      },
-      {
-        "verdict": "PASS",
-        "passed": 5,
-        "total": 5,
-        "time_s": 3.1
+        "time_s": 2.3
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 1.9
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 2.1
-      },
-      {
-        "verdict": "PASS",
-        "passed": 6,
-        "total": 6,
-        "time_s": 3.5
+        "time_s": 3.7
       },
       {
         "verdict": "PASS",
         "passed": 8,
         "total": 8,
-        "time_s": 2.5
+        "time_s": 2.8
       },
       {
         "verdict": "PASS",
         "passed": 6,
         "total": 6,
-        "time_s": 4.2
+        "time_s": 4.8
       }
     ],
     "status": "ok",
+    "exec_trace_passed": 2,
+    "exec_trace_total": 6,
+    "exec_trace_status": "ok",
     "tier": "single-rebench-2026-07-07",
-    "timestamp": "2026-07-07 00:27:31"
+    "timestamp": "2026-07-07 02:03:04"
   }
 ]
