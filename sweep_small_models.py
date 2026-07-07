@@ -156,14 +156,15 @@ TIERS = {
          Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-35b-IQ3_K_R4-imat.gguf"),
          "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
                 "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
-        ("Qwen2.5-Coder-32B-Instruct-IQ3_M",
-         Path(r"D:\repos\ik_llama.cpp\models\Qwen2.5-Coder-32B-Instruct-IQ3_M.gguf"),
-         "ik", ["-ngl", "15", "--reasoning", "off",
-                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
-        ("DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M",
-         Path(r"D:\repos\ik_llama.cpp\models\DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M.gguf"),
-         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
-                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+        # Qwen2.5-Coder-32B-Instruct-IQ3_M removed 2026-07-07: dense 32B forces
+        # -ngl 15 (only 15 layers fit 6 GiB VRAM) — 23+ min for the 17-task
+        # advanced bench alone. Confirms the known hardware ceiling: dense >12B
+        # impractical on this rig. Re-add only for a dedicated quality run.
+        # DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M removed 2026-07-07: "drop coding"
+        # verdict in reference_model_matrix_consolidated (A33 11/33, no patch-format
+        # training) + repeated 900s+ timeouts with zero score, twice historically and
+        # again mid-run this session. Pure time cost, no signal — do not re-add
+        # without a specific reason to re-evaluate it.
         ("Mellum2-12B-A2.5B-Instruct-Q4_K_M",
          Path(r"D:\repos\ik_llama.cpp\models\Mellum2-12B-A2.5B-Instruct-Q4_K_M.gguf"),
          "ik", ["-ngl", "99", "--n-cpu-moe", "12", "--reasoning", "off"]),

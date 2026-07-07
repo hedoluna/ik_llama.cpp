@@ -21,9 +21,19 @@ WINNERS = [
     "Ornith-1.0-9B-Q4_K_M",
     "Qwen2.5-Coder-1.5B-Q4_K_M",
     "Yi-Coder-1.5B-Chat-Q4_K_M",
-    "Qwen2.5-Coder-32B-Instruct-IQ3_M",
-    "DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M",
+    "Mellum2-12B-A2.5B-Instruct-Q4_K_M",
 ]
+# DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M removed 2026-07-07: already flagged
+# "drop coding" in reference_model_matrix_consolidated (A33 11/33, no patch-format
+# training) and repeatedly times out (900s+ with no score, 2x historical + this
+# session) — pure time cost, zero signal. See TIERS[7] in sweep_small_models.py.
+#
+# Qwen2.5-Coder-32B-Instruct-IQ3_M removed 2026-07-07: dense 32B needs -ngl 15
+# (only 15 layers fit 6 GiB VRAM, rest on CPU) — technically works, not broken,
+# but 23+ min for the 17-task advanced bench alone (vs seconds-to-low-minutes
+# for the MoE roster). Confirms the known hardware ceiling (project_repo.md):
+# dense >12B is impractical on this A2000 6 GiB rig. Re-add only for a
+# dedicated "quality, time not a constraint" run, not the routine roster.
 
 
 def parse_advanced(output: str) -> dict:
