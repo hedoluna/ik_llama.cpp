@@ -45,8 +45,6 @@ void llama_set_mtp_target_context(struct llama_context * ctx, struct llama_conte
 #  include "ggml-vulkan.h"
 #elif defined(GGML_USE_SYCL)
 #  include "ggml-sycl.h"
-#elif defined(GGML_USE_KOMPUTE)
-#   include "ggml-kompute.h"
 #elif defined(GGML_USE_CANN)
 #   include "ggml-cann.h"
 #endif
@@ -468,11 +466,6 @@ static ggml_backend_buffer_type_t llama_default_buffer_type_offload(const llama_
     buft = ggml_backend_vk_buffer_type(gpu);
 #elif defined(GGML_USE_SYCL)
     buft = ggml_backend_sycl_buffer_type(gpu);
-#elif defined(GGML_USE_KOMPUTE)
-    buft = ggml_backend_kompute_buffer_type(gpu);
-    if (buft == nullptr) {
-        LLAMA_LOG_WARN("%s: cannot use GPU %d, check `vulkaninfo --summary`\n", __func__, gpu);
-    }
 #elif defined(GGML_USE_CANN)
     buft = ggml_backend_cann_buffer_type(gpu);
 #endif
@@ -1030,7 +1023,7 @@ static bool llama_kv_cache_init(
             cache.k_l.push_back(kv);
             // DSA lightning-indexer key cache (MQA, single head). Store the Hadamard-rotated
             // indexer keys in F16 so a decoded token can score against ALL past keys.
-            if (has_dsa_indexer && model.layers[i].indexer_attn_k && !is_mtp_tail_layer) {
+            if (has_dsa_indexer && model.layers[i].indexer_attn_k && hparams.indexer_is_full[i] && !is_mtp_tail_layer) {
                 ggml_tensor * kr = ggml_new_tensor_2d(ctx, idx_type_k, hparams.indexer_head_size, kv_size);
                 ggml_format_name(kr, "cache_kr_l%d", i);
                 cache.kr_l[i] = kr;
@@ -4223,22 +4216,7 @@ static int llama_model_load(const std::string & fname, llama_model & model, llam
             return 0;
         }
 
-#ifdef GGML_USE_KOMPUTE
-        if (params.n_gpu_layers > 0 && (
-            !(model.arch == LLM_ARCH_LLAMA || model.arch == LLM_ARCH_FALCON)
-            || !(
-                model.ftype == LLAMA_FTYPE_ALL_F32 ||
-                model.ftype == LLAMA_FTYPE_MOSTLY_F16 ||
-                model.ftype == LLAMA_FTYPE_MOSTLY_BF16 ||
-                model.ftype == LLAMA_FTYPE_MOSTLY_Q4_0 ||
-                model.ftype == LLAMA_FTYPE_MOSTLY_Q4_1
-            )
-        )) {
-            // TODO(cebtenzzre): propagate this error outside of llama_model_load_from_file
-            LLAMA_LOG_WARN("%s: disabling Kompute due to unsupported model arch or quantization\n", __func__);
-            params.n_gpu_layers = 0;
-        }
-#endif
+
 
         if (!llm_load_tensors(
             ml, model, params.n_gpu_layers, params.mla, params.split_mode, params.main_gpu, params.max_gpu, params.tensor_split,
@@ -6641,6 +6619,7 @@ struct llama_context_params llama_context_default_params() {
         /*.rope_cache                  =*/ false,
         /*.graph_reuse                 =*/ true,
         /*.dsa                         =*/ false,
+        /*.fused_idx_topk              =*/ false,
         /*.dsa_top_k                   =*/ -1,
         /*.min_experts                 =*/ -1,
         /*.thtesh_experts              =*/ 0.0f,
@@ -6724,7 +6703,7 @@ bool llama_supports_mlock(void) {
 
 bool llama_supports_gpu_offload(void) {
 #if defined(GGML_USE_CUDA) || defined(GGML_USE_METAL)   || defined(GGML_USE_VULKAN) || \
-    defined(GGML_USE_SYCL) || defined(GGML_USE_KOMPUTE) || defined(GGML_USE_RPC)
+    defined(GGML_USE_SYCL) || defined(GGML_USE_RPC)
     // Defined when llama.cpp is compiled with support for offloading model layers to GPU.
     return true;
 #else
@@ -7060,6 +7039,7 @@ struct llama_context * llama_init_from_model(
     cparams.rope_cache       = params.rope_cache;
     cparams.graph_reuse      = params.graph_reuse;
     cparams.dsa              = params.dsa;
+    cparams.fused_idx_topk   = params.fused_idx_topk;
     cparams.dsa_top_k        = params.dsa_top_k;
     // The DSA lightning indexer is built only in the layer-mode (non-TP) attention path. Under
     // -sm graph / -sm attn the model runs the tensor-parallel attention path, which has no indexer,
@@ -7211,6 +7191,13 @@ struct llama_context * llama_init_from_model(
     LLAMA_LOG_INFO("%s: fused_mmad    = %d\n",     __func__, cparams.fused_mmad);
     LLAMA_LOG_INFO("%s: rope_cache    = %d\n",     __func__, cparams.rope_cache);
     LLAMA_LOG_INFO("%s: graph_reuse   = %d\n",     __func__, cparams.graph_reuse);
+    if (model->arch == LLM_ARCH_GLM_DSA) {
+        LLAMA_LOG_INFO("%s: dsa           = %d\n",     __func__, cparams.dsa);
+        LLAMA_LOG_INFO("%s: dsa_idx_topk  = %d\n",     __func__, cparams.fused_idx_topk);
+        if (cparams.dsa_top_k > 0) {
+            LLAMA_LOG_INFO("%s: dsa_top_k     = %d\n",     __func__, cparams.dsa_top_k);
+        }
+    }
     LLAMA_LOG_INFO("%s: k_cache_hadam = %d\n",     __func__, cparams.k_cache_hadamard);
     LLAMA_LOG_INFO("%s: v_cache_hadam = %d\n",     __func__, cparams.v_cache_hadamard);
     LLAMA_LOG_INFO("%s: split_mode_graph_scheduling = %d\n",   __func__, cparams.split_mode_graph_scheduling);
@@ -7342,16 +7329,6 @@ struct llama_context * llama_init_from_model(
                 }
                 ggml_backend_add_from_device(ctx, backend);
             }
-        }
-#elif defined(GGML_USE_KOMPUTE)
-        if (model->n_gpu_layers > 0) {
-            auto * backend = ggml_backend_kompute_init(main_gpu_id);
-            if (backend == nullptr) {
-                LLAMA_LOG_ERROR("%s: failed to initialize Kompute backend\n", __func__);
-                llama_free(ctx);
-                return nullptr;
-            }
-            ggml_backend_add_from_device(ctx, backend);
         }
 #elif defined(GGML_USE_CANN)
     // with split_mode LLAMA_SPLIT_MODE_NONE or LLAMA_SPLIT_MODE_GRAPH, only the main GPU backend is used
