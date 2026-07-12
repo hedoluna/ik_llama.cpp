@@ -94,7 +94,7 @@ cmake --build build --config Release -j
 * **Guard D — Context injection dei moduli dipendenti (implementato)**: `Get-ModuleSignatures` in `Build-Prompt` scansiona gli `import` del file target, risolve i moduli relativi, ed inietta le signature delle funzioni/classi/const esportate. Il modello vede l'API reale → zero allucinazioni.
 
 ### Progetti Collegati in D:\repos
-* **text-rpg-online** (`D:\repos\text-rpg-online`): RPG testuale "Cronache di Asteria". Stack: Node 22+, ESM, `node --test`. 31 test (world + items + combat + progression + training). UI: HTML+JS vanilla, persistenza via here.now Site Data. Deploy: `publish-herenow.tmp.sh`.
+* **text-rpg-online** (`D:\repos\text-rpg-online`, repo: `hedoluna/text-rpg-online`): RPG testuale "Cronache di Asteria". Stack: Node 22+, ESM, `node --test`. 31 test (world + items + combat + progression + training). UI: HTML+JS vanilla, persistenza via here.now Site Data. **Pubblicato su: https://stormy-cairn-esr7.here.now/**. Deploy: `node publish.mjs` (jq-free, puro Node.js). **Workflow post-modifica**: dopo ogni fix/feature → sync `src/` → `site/` → `npm test` → `node publish.mjs` → commit+push.
 * **ralph** (`D:\repos\ralph`): Harness agente autonomo. `local_ralph/ralph.ps1` + `brain_manager.py`. Benchmark codici in `local_ralph/coding_benchmark_*.py`.
 * **remotica2** (`D:\repos\remotica2`): Progetto primario (piattaforma coworking). Pattern: Single File API, monorepo.
 
