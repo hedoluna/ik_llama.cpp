@@ -15,6 +15,7 @@ import sweep_small_models as ssm
 
 ADV_LEADERBOARD = ssm.REPO / "sweep_advanced_leaderboard.json"
 WINNERS = [
+    "Qwen3-7B-Q4_K_M",
     "daily-Qwen3.6-35B-A3B-IQ3_K_R4",
     "Ornith-1.0-35B-A3B-IQ3_K_R4",
     "Ornith-1.0-35B-A3B-IQ3_K_R4-imat",
