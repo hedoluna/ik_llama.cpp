@@ -57,7 +57,6 @@ Significato:
 - `ocl -Run "..."`: esecuzione non interattiva; in `auto` passa dal router.
 - `ocl -Mode coding`: forza `qwen36-iq3`.
 - `ocl -Mode quality`: forza `qwen36-opus-iq4`.
-- `ocl -Mode max`: forza `qwen-opus-q8`, piu lento e pesante.
 - `ocl -Web`: apre direttamente la Web UI.
 - `ocl -Tui`: ritenta la TUI nativa ignorando il marker di rottura.
 - `ocl -Restart`: riavvia i processi locali.
@@ -118,7 +117,9 @@ Profili principali disponibili:
 
 - `auto`, `fast`, `coding`, `review`
 - `quality-iq3`, `quality`, `max`
+- `quality-guided` (quality IQ3 con checklist di verifica e sampling conservativo; override manuale)
 - `qwen36-mtp`, `qwopus9`, `qwen-coder-next`
+- `agentworld`
 - `mellum`, `mellum-thinking`
 - `italian`, `granite`, `oss`
 

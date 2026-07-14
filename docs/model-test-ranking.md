@@ -1,6 +1,6 @@
 # Graduatoria modelli testati
 
-Ultimo aggiornamento: 2026-07-05.
+Ultimo aggiornamento: 2026-07-12.
 
 Questa e l'unica graduatoria locale da aggiornare. I file JSON/CSV restano dati raw; README e guide operative devono linkare questa pagina invece di duplicare classifiche. La memoria di cosa abbiamo imparato e cosa evitare sta in [docs/benchmark-memory.md](D:/repos/ik_llama.cpp/docs/benchmark-memory.md).
 
@@ -8,11 +8,13 @@ Non e un benchmark assoluto: i test hanno prompt, tempi e hardware diversi. Usar
 
 Hardware locale rilevante: Ryzen 9 5950X, 128GB RAM, RTX A2000 6GB VRAM.
 
+`Qwen-AgentWorld-35B-A3B-IQ4_K_R4` e disponibile localmente (context dichiarato `262144` token); il refresh del 2026-07-12 lo mantiene fuori dal routing coding per il risultato `50/51` nel gate comune.
+
 ## Fonti
 
 | File | Cosa misura | Affidabilita |
 | --- | --- | --- |
-| `sweep_leaderboard.json` | coding sweep piccolo/incompleto | Media: aggiornato 2026-07-05 sui candidati tier 7; molte righe storiche restano parziali. |
+| `sweep_leaderboard.json` | coding sweep piccolo/incompleto | Media: aggiornato 2026-07-12 sui migliori candidati 35B a 100k; molte righe storiche restano parziali. |
 | `sweep_advanced_leaderboard.json` | coding avanzato | Media: utile per confronto tra piccoli/3B. |
 | `sweep_text_leaderboard.json` | text/estrazione/traduzione | Alta per task testuali brevi. |
 | `sweep_ts_ab_leaderboard.json` | TypeScript/coding web | Media: punteggio e tempi aggiornati 2026-06-18. |
@@ -28,7 +30,39 @@ Hardware locale rilevante: Ryzen 9 5950X, 128GB RAM, RTX A2000 6GB VRAM.
 
 ## Coding sweep aggiornato 2026-07-05
 
-Run eseguito con `py -3 sweep_small_models.py --tier 7`, runtime locale `build\bin\Release\llama-server.exe`, endpoint `127.0.0.1:1234`, contesto `16384`, `-fa on`, e flag specifici definiti in `sweep_small_models.py`. Il risultato aggiorna `sweep_leaderboard.json` e i log `sweep_bench_*.txt`.
+Il refresh a 100k usa `py -3 sweep_small_models.py --tier 7 --ctx-size 102400`, runtime locale `build\bin\Release\llama-server.exe`, endpoint `127.0.0.1:1234`, contesto allocato `102400`, `-fa on`, e flag specifici definiti in `sweep_small_models.py`. I risultati a 100k restano marcati con `context_size: 102400` in `sweep_leaderboard.json`, cosi non vengono confusi con le misure storiche a 16k/32k.
+
+### Conferma 100k (2026-07-11)
+
+| Modello | Esito | Tempo suite | Nota |
+| --- | --- | ---: | --- |
+| `daily-Qwen3.6-35B-A3B-IQ3_K_R4` | `51/51`, valido | `49.50s` | Caricamento e coding sweep completati con `n_ctx=102400`. |
+| `Ornith-1.0-9B-Q4_K_M` | `51/51`, valido | `93.61s` | Caricamento e coding sweep completati con `n_ctx=102400`. |
+
+### Refresh migliori 35B (2026-07-12)
+
+Stesso runtime `build\\bin\\Release\\llama-server.exe`, contesto `102400`, Flash Attention e coding gate da 51 test. Il record raw e in `sweep_leaderboard.json`; i log completi sono `sweep_bench_*.txt`.
+
+| Rank refresh | Modello / quantizzazione | Caricamento | Esito coding | Tempo suite | Caratteristiche operative | Caso d'uso | Decisione |
+| ---: | --- | ---: | --- | ---: | --- | --- | --- |
+| 1 | `quality-Qwen3.6-35B-A3B-Opus-Distill-IQ3_K_R4` | `3.68s` | `51/51`, valido | `17.99s` | 35B-A3B MoE, IQ3, reasoning off, 95 layer GPU, CPU-MoE 30, KV Q4/Q8 | Quality coding, refactor e review quando serve la massima qualita locale | Primo profilo quality: pieno punteggio e 2.7x piu rapido del default in questo gate; resta da confermare con OpenCode breve aggiornato. |
+| 2 | `daily-Qwen3.6-35B-A3B-IQ3_K_R4` | `3.72s` | `51/51`, valido | `48.41s` | 35B-A3B MoE, IQ3, reasoning off, 95 layer GPU, CPU-MoE 30, KV Q4/Q8 | Default robusto, contesto lungo, agent/Ralph e review quotidiana | Valido a 100k; conserva il ruolo default grazie alla copertura OpenCode/Ralph storica, ma e piu lento nel gate sintetico. |
+| 3 | `Qwen-AgentWorld-35B-A3B-IQ4_K_R4` | `4.97s` | `50/51`, non valido | `50.32s` | 35B-A3B MoE, IQ4, reasoning off, 8 layer GPU, KV Q8/Q8, context dichiarato 262k | Solo esperimento agentico/diagnostica; non coding automatico | Fallisce 1 dei 5 test del terzo task: non promuovere senza un gate qualitativo mirato che spieghi il trade-off. |
+
+### Bench completo tier 7 a 50k (2026-07-12)
+
+Tutti i candidati del tier 7 sono stati rieseguiti sul coding gate da 51 test con `--ctx-size 51200`, runtime IK, Flash Attention e flag specifici del profilo. I record completi sono in `sweep_leaderboard.json`.
+
+| Modello | Caricamento | Esito | Tempo suite | Decisione |
+| --- | ---: | ---: | ---: | --- |
+| `quality-Qwen3.6-35B-A3B-Opus-Distill-IQ3_K_R4` | `4.11s` | `51/51` | `17.76s` | Miglior quality/speed del tier; candidato Ralph/OpenCode prioritario. |
+| `daily-Qwen3.6-35B-A3B-IQ3_K_R4` | `9.63s` | `51/51` | `19.77s` | Default solido e vicino al quality per il gate sintetico. |
+| `Mellum2-12B-A2.5B-Instruct-Q4_K_M` | `4.65s` | `51/51` | `22.46s` | Segnale positivo nel gate; resta fuori routing finche non passa OpenCode/Ralph. |
+| `Qwen-AgentWorld-35B-A3B-IQ4_K_R4` | `11.41s` | `50/51` | `50.88s` | Non valido per coding generale; mantenerlo sperimentale agent/world-model. |
+| `Ornith-1.0-9B-Q4_K_M` | `3.54s` | `51/51` | `100.84s` | Valido ma non competitivo sul percorso rapido a 50k. |
+| `Ornith-1.0-35B-A3B-IQ3_K_R4` | `8.10s` | `51/51` | `237.53s` | Qualita gate piena ma troppo lento per il fast/default path. |
+
+Il 35B Ornith IQ3 è stato interrotto dopo oltre sette minuti durante lo stesso sweep a 100k: non è un fallimento di allocazione, ma non è idoneo al percorso rapido su questa macchina.
 
 ### Risultato fresco tier 7
 
@@ -77,9 +111,11 @@ Questa e la tabella da usare per decidere routing, ritest e priorita. Ordine sce
 
 | Rank | Modello / profilo | Qualita osservata | Velocita osservata | Caso d'uso consigliato | Stato operativo |
 | ---: | --- | --- | --- | --- | --- |
-| 1 | `quality-iq3` / `llama-swap/qwen36-opus-iq3` | Ralph v4 `8/9`, v5 `8/8`, totale `16/17`; FFT corrente `4/4` | Corrente base: `pp128 200.19 +/- 53.92`, `tg64 16.29 +/- 1.58 tok/s`; FFT `34.97s`; API storico ~`26.1 tok/s` gen | Quality locale, refactor, TS/Python realistico, task dove conta il primo colpo | Miglior candidato quality; promuovere solo dopo gate OpenCode breve dedicato |
+| 1 | `quality-iq3` / `llama-swap/qwen36-opus-iq3` | Ralph v4 `8/9`, v5 `8/8`, totale `16/17`; FFT corrente `4/4`; sweep 100k fresco `51/51` | Corrente base: `pp128 200.19 +/- 53.92`, `tg64 16.29 +/- 1.58 tok/s`; sweep 100k `17.99s`; API storico ~`26.1 tok/s` gen | Quality locale, refactor, TS/Python realistico, task dove conta il primo colpo | Miglior candidato quality; fresco e pienamente valido, promuovere solo dopo gate OpenCode breve dedicato |
+
+Profilo sperimentale disponibile: `quality-guided` usa lo stesso GGUF di `quality-iq3`, reasoning disattivato, sampling conservativo (`temp 0.2`, `top_p 0.9`, `top_k 20`, `min_p 0`) e la checklist in `prompts/quality-thinking-system.md`. Si invoca con `scripts/opencode-local.ps1 -Mode qualityguided` oppure nel router con `!quality-guided`; resta fuori dal routing automatico finche non supera OpenCode breve e Ralph.
 | 2 | `qwen36-mtp` / `llama-swap/qwen36-mtp` | Con prompt generali: Ralph v4 `8/9`, v5 `8/8`, totale `16/17`; FFT corrente `4/4` | Target base: `pp128 161.09 +/- 39.13`, `tg64 13.78 +/- 1.02 tok/s`; FFT con MTP `38.44s`; API storico ~`20.6 tok/s` gen | Quality sperimentale, coding medio-difficile, confronto MTP | Competitivo ma sperimentale; `llama-bench` non include il guadagno MTP |
-| 3 | `qwen36-iq3` / `coding`, `review` | Text `29/31`, TS `55/58`, OpenCode `3/3`; Ralph aggiornato `15/17`; FFT corrente `4/4` | Corrente: `pp128 197.50 +/- 48.85`, `tg64 15.37 +/- 1.26 tok/s`; FFT `41.95s`; OpenCode storico `64-97s/task` | Default quotidiano, review, contesto lungo 32k, workflow OpenCode stabile | Default robusto attuale |
+| 3 | `qwen36-iq3` / `coding`, `review` | Text `29/31`, TS `55/58`, OpenCode `3/3`; Ralph aggiornato `15/17`; FFT corrente `4/4`; coding sweep 100k `51/51` | Corrente: `pp128 197.50 +/- 48.85`, `tg64 15.37 +/- 1.26 tok/s`; sweep 100k `48.41s` | Default quotidiano, review, contesto lungo 100k, workflow OpenCode stabile | Default robusto attuale |
 | 4 | `qwen-small` / `fast` (`Qwen3.5-4B`) | OpenCode storico `3/3`; FFT corrente `3/4`, fallisce `bit_reverse` | Corrente: `pp128 1486.63 +/- 359.12`, `tg64 54.40 +/- 0.31 tok/s`; FFT `22.19s`; OpenCode storico `7.77-11.85s/task` | Classifier, prompt corti, comandi banali, titoli, routing helper | Fast path operativo, ma non il miglior 4B per coding algoritmico |
 | 5 | `phi-4 14B Q4_K_M` | Ralph storico v4 `9/9`, v5 `4/8`, totale `13/17`; FFT corrente `3/4` per output non parsabile | Corrente: `pp128 168.51 +/- 11.22`, `tg64 4.32 +/- 0.21 tok/s`; FFT `471.34s` | Hard refactor, rule reasoning, confronto quality lento | Forte sul gate storico difficile, ma troppo lento per uso quotidiano |
 | 6 | `Qwen3-4B-Instruct-2507-Q4_K_M` | TS `55/58`, Text `23/31`; `asynciter` `4/4`; FFT corrente `4/4` | Corrente: `pp128 1704.35 +/- 435.35`, `tg64 66.11 +/- 0.27 tok/s`; FFT `9.53s`; TS `30.07s` | Coding leggero, TS, repair piccoli e algoritmi FFT/DSP | Miglior 4B corrente per rapporto velocita/qualita; candidato da configurare |
@@ -102,7 +138,7 @@ Questa e la tabella da usare per decidere routing, ritest e priorita. Ordine sce
 | Casella | Profilo/OpenCode | Modello | Segnale migliore | Stato | Nota |
 | --- | --- | --- | --- | --- | --- |
 | Quality reale | `quality-iq3` | `llama-swap/qwen36-opus-iq3` | Ralph v4 `8/9`, v5 `8/8`, totale `16/17` | Piena | Migliore candidato locale misurato con regole generali; GildedRose resta aperto. |
-| Default / contesto lungo | `coding` / `review` | `llama-swap/qwen36-iq3` | Text `29/31`, TS `55/58`, OpenCode OK `3/3` | Piena per text/TS/OpenCode, debole su Ralph v4 | Resta default pragmatico per 32k e stabilita, non per qualita massima. |
+| Default / contesto lungo | `coding` / `review` | `llama-swap/qwen36-iq3` | Text `29/31`, TS `55/58`, OpenCode OK `3/3`, sweep 100k `51/51` | Piena per text/TS/OpenCode, debole su Ralph v4 | Resta default pragmatico per 100k e stabilita, non per qualita massima. |
 | Fast / classifier | `fast` | `llama-swap/qwen-small` | OpenCode OK `3/3`, `7.77-11.85s` | Piena per smoke/OpenCode breve | Usare per prompt corti, classificazione e comandi banali. |
 | MTP sperimentale | `qwen36-mtp` | `llama-swap/qwen36-mtp` | Ralph v4 `8/9`, v5 `8/8`, totale `16/17` | Piena | Ora competitivo con prompt generali; resta aperto GildedRose. |
 | Hard refactor storico | non configurata | `phi-4 14B Q4_K_M` | Ralph v4 `9/9`, v5 `4/8`, totale `13/17` | Piena storica, manca profilo OpenCode locale | Miglior segnale su refactor/rule reasoning; lenta e da aggiungere a `llama-swap` solo se serve. |
@@ -219,6 +255,7 @@ Lettura: con l'harness aggiornato il daily-winner completa autonomamente task di
 - Miglior Ornith fresco: `Ornith-1.0-9B-Q4_K_M`, `51/51` in `42.94s`; i 35B IQ3 fanno `50/51` e quindi restano sotto soglia nello sweep coding.
 - Da scartare dal run fresco: `Ornith-1.0-35B-A3B-Q4_K_M` per load timeout a `180s`, `DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M` per timeout harness a `900s`.
 - `Qwen3.5-4B-Q4_K_M`/`qwen-small` resta utile come fast path (`54.40 tok/s`), ma il nuovo FFT `3/4` smentisce il vecchio vantaggio di dominio.
+- `Qwen-AgentWorld-35B-A3B-IQ4_K_R4` e ora verificato a 100k: `50/51` in `50.32s`; resta fuori dalla classifica operativa e dal routing coding automatico.
 - Da non mettere in routing coding automatico per ora: `mellum`, `granite-fast`, `qwen-coder`, `Qwen3-Coder-Next` pesante, finche non passano un gate OpenCode/Ralph.
 - Il vecchio `tools` -> `granite-fast` era sbagliato; il profilo corretto passa il gate atomico tool-use `5/5`, ma fallisce OpenCode breve `0/3`. Eventuale routing solo come tool specialist, non coding.
 - `gpt-oss-20b` e tornato API-OK nello smoke 2026-06-18, ma resta fuori dal routing finche non passa un test OpenCode vero.
@@ -247,7 +284,8 @@ Obiettivo: promuovere solo profili che migliorano davvero il routing locale senz
 - Per ogni candidato eseguire prima `scripts/model_profile_gate.py`: smoke + tool-use breve, JSON persistente, exit code non ambiguo.
 - Se fallisce smoke, template, caricamento o `message.tool_calls`, fermarsi: niente Ralph, niente OpenCode, niente Optuna.
 - Candidati immediati: `quality-iq3`, `qwen36-mtp`, `Qwen3.5-4B-Q4_K_M`, `qwen-coder` corretto, `mellum2-instruct`.
-- Candidati da aggiungere dopo il run 2026-07-05: `daily-Qwen3.6-35B-A3B-IQ3_K_R4` e `Ornith-1.0-9B-Q4_K_M`.
+- Candidati immediati: `quality-iq3`, `qwen36-mtp`, `Qwen3.5-4B-Q4_K_M`, `qwen-coder` corretto, `mellum2-instruct`, `Qwen-AgentWorld-35B-A3B-IQ4_K_R4`.
+- Candidati da aggiungere dopo il run 2026-07-05: `daily-Qwen3.6-35B-A3B-IQ3_K_R4`, `Ornith-1.0-9B-Q4_K_M` e `Qwen-AgentWorld-35B-A3B-IQ4_K_R4`.
 
 ### Fase 2 - Gate OpenCode breve
 

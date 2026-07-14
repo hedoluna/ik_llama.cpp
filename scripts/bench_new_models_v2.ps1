@@ -11,16 +11,14 @@ $matrix = @(
      bin=$ik; mod='F:/LLM_Models/lm-studio/models/migarcoes/Qwen-Qwen2.5-Coder-1.5B-Instruct/Qwen-Qwen2.5-Coder-1.5B-Instruct-Q4_K_M.gguf';
      args=@('-c','16384','-ngl','999','-fa','on','-t','8','--no-mmap','--jinja') },
   @{ tag='Phi-4-mini';      label='phi-4-mini-instruct';
-     bin=$ml; mod='D:/repos/ik_llama.cpp/models/microsoft_Phi-4-mini-instruct-Q4_K_M.gguf';
+     bin=$ml; mod='F:/01_Modelli_AI/LLM_Models/archived_from_D/microsoft_Phi-4-mini-instruct-Q4_K_M.gguf';
      args=@('-c','16384','-ngl','999','-fa','on','-t','8','--jinja') },
-  @{ tag='Qwen3.5-4B';      label='qwen3.5-4b';
-     bin=$ik; mod='D:/repos/ik_llama.cpp/models/Qwen_Qwen3.5-4B-Q4_K_M.gguf';
-     args=@('-c','16384','-ngl','999','-fa','on','-t','8','--no-mmap','--jinja') },
+  # Qwen3.5-4B removed 2026-07-11: bocciato (38/43, FizzBuzz 0/8), file deleted from disk
   @{ tag='Granite-4.1-8B';  label='granite-4.1-8b';
      bin=$ml; mod='D:/repos/ik_llama.cpp/models/ibm-granite_granite-4.1-8b-Q4_K_M.gguf';
      args=@('-c','16384','-ngl','999','-fa','on','-t','8','--jinja') },
   @{ tag='Qwen3-8B-CSDist'; label='qwen3-8b-claude-distill';
-     bin=$ml; mod='D:/repos/ik_llama.cpp/models/Qwen3-8B-claude-sonnet-4.5-high-reasoning-distill-Q4_K_M.gguf';
+     bin=$ml; mod='F:/01_Modelli_AI/LLM_Models/archived_from_D/Qwen3-8B-claude-sonnet-4.5-high-reasoning-distill-Q4_K_M.gguf';
      args=@('-c','16384','-ngl','999','-fa','on','-t','8','--jinja') }
 )
 

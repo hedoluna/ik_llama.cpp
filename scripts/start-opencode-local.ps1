@@ -8,8 +8,8 @@ param(
   [int]$ClassifierPort = 9998,
   [int]$RouterPort = 8291,
   [int]$ClassifierThreads = 8,
-  [string]$SmallGguf = "D:\repos\ik_llama.cpp\models\Qwen_Qwen3.5-4B-Q4_K_M.gguf",
-  [string]$LlamaServer = "D:\repos\ik_llama.cpp\build\bin\Release\llama-server.exe",
+  [string]$SmallGguf = "D:\repos\ik_llama.cpp\models\NVIDIA-Nemotron3-Nano-4B-Q4_K_M.gguf",
+  [string]$LlamaServer = "D:\repos\llama_mtp\build\bin\Release\llama-server.exe",
   [string]$RouterScript = "D:\repos\ik_llama.cpp\scripts\opencode-router.py"
 )
 
@@ -119,8 +119,8 @@ function Start-Classifier {
   $out = Join-Path $LogDir "classifier.out.log"
   $err = Join-Path $LogDir "classifier.err.log"
   $a = @(
-    "--model", $Gguf, "--alias", "qwen-small", "--port", "$Port", "--host", $ListenHost,
-    "-ngl", "0", "--parallel", "1", "--ctx-size", "8192", "--jinja", "--reasoning", "off",
+    "--model", $Gguf, "--alias", "nemotron-fast", "--port", "$Port", "--host", $ListenHost,
+    "-ngl", "0", "--parallel", "1", "--ctx-size", "102400", "--jinja", "--reasoning", "off",
     "-fa", "on", "-ctk", "q8_0", "-ctv", "q8_0", "--threads", "$Threads"
   )
   Start-Process -FilePath $Exe -ArgumentList $a -WindowStyle Hidden `
@@ -132,7 +132,7 @@ function Start-Classifier {
   if (-not (Wait-Url "http://${ListenHost}:$Port/v1/models" -TimeoutSeconds ([Math]::Max($TimeoutSeconds, 60)))) {
     throw "classifier started a process, but http://${ListenHost}:$Port/v1/models did not respond. Check $err"
   }
-  Write-Host "classifier (qwen-small, CPU) started on http://${ListenHost}:$Port"
+  Write-Host "classifier (nemotron-fast, CPU) started on http://${ListenHost}:$Port"
 }
 
 function Start-Router {

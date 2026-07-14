@@ -19,13 +19,12 @@ if ($IncludeMax -and "max" -notin $Modes) {
 }
 
 $modelByMode = @{
-  fast = "llama-swap/qwen-small"
+  fast = "llama-swap/nemotron-fast"
   granite = "llama-swap/granite-fast"
   coding = "llama-swap/qwen36-iq3"
   quality = "llama-swap/qwen36-opus-iq4"
   "qwen-coder-next" = "llama-swap/qwen-coder"
   oss = "llama-swap/gpt-oss-20b"
-  max = "llama-swap/qwen-opus-q8"
 }
 
 $agentByMode = @{

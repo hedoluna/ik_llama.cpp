@@ -1,5 +1,5 @@
 # Note di Sviluppo e Apprendimenti - Repository Llama & Benchmarks
-*Ultimo aggiornamento: 2026-06-20*
+*Ultimo aggiornamento: 2026-07-14*
 
 Questo documento raccoglie la struttura dei repository, gli apprendimenti derivanti dagli aggiornamenti, lo stato dei benchmark e le impostazioni di sistema relative al marketing automatizzato per evitare perdite di tempo in futuro.
 
@@ -246,4 +246,27 @@ Zero regressioni rispetto ai baseline storici (Ornith-imat 50/51 = fail task3 gi
 * Flag `--exec-trace`: esegue il tier "easy" (6 item) di `ik-llama-bench/sweep_bench_exec_trace.py` sullo stesso server già caricato, prima del teardown. Applicato subito sul top-5 (`sweep_leaderboard.json`): **daily-winner 4/6, Ornith-imat 5/6** vs **1-2/6** per Ornith-9B/Coder-1.5B/Mellum-Instruct — conferma che discrimina dove il coding-bench satura.
 * `sweep_advanced.py` (17-task) rieseguito su 7 modelli: Ornith-1.0-35B-A3B (entrambi i quant) e Mellum2-12B **17/17**; Coder-1.5B/Ornith-9B 16/17; Yi-Coder-1.5B 14/17; **daily-winner 16/17** (era 17/17 storico — single-sample, da riverificare prima di chiamarla regressione).
 * **Roster ripulito**: `Qwen2.5-Coder-32B-Instruct-IQ3_M` (dense 32B, `-ngl 15`, 23+ min per il solo advanced bench — 6 GiB VRAM non basta, hardware ceiling confermato) e `DeepSeek-Coder-V2-Lite-Instruct` (già "drop coding", 2 timeout storici da 900s) rimossi da `WINNERS`/`TIERS[7]` — commentati con motivazione, non cancellati.
+
+---
+
+## 8. Aggiornamento repo collegati (14 Luglio 2026)
+
+### Stato snapshot 2026-07-14
+| Repo | Branch | Stato | Dirty | Note |
+|---|---|---|---:|---|
+| `ik_llama.cpp` | main | sporco | 20 | Lavoro locale: benchmark/script/config |
+| `ik-llama-bench` | master | sporco | 5 | Dati e script benchmark locali |
+| `llama` | master | sporco | 36 | Artefatti build; mirror upstream |
+| `llama_mtp` | master | pulito | 0 | Mirror upstream pulito |
+| `llama_indras` | master | pulito | 0 | Mirror upstream pulito |
+| `trading-algo` | master | sporco | 2 | `.wolf`, state/ locali |
+| `llama-zaya` | zaya-pr | — | — | Worktree condiviso con `llama`; unica copia Zaya-1 (28 commit locali) |
+
+### Azioni applicate
+- **Fetch origin**: Eseguito su tutti i repo Git per aggiornare la visibilità di origin.
+- **Nessun merge/pull** richiesto: `ik_llama.cpp` e repo sporchi mantengono dati locali preziosi (benchmark storici, config, build). Mirror upstream (`llama`, `llama_mtp`, `llama_indras`) sono allineati.
+- **Data aggiornata** in questa sezione e header.
+
+### Prossime azioni (quando richieste)
+Per merge controllati di `origin/main` in `ik_llama.cpp`, seguire procedura sezione 7 (stash → merge → stash pop → rebuild → golden-check). Per mirror upstream, `git pull --ff-only origin <branch>` è sicuro se dietro.
 

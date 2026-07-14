@@ -48,36 +48,34 @@ def case(name, text, want_model, want_tier, session=None, mock_label=None):
 
 print("== L1 gate ==")
 reset_sticky()
-case("trivial-en", "hi there", "qwen-small", "L1")
+case("trivial-en", "hi there", "nemotron-fast", "L1")
 
 reset_sticky()
-case("trivial-ciao", "ciao", "qwen-small", "L1")
+case("trivial-ciao", "ciao", "nemotron-fast", "L1")
 
 reset_sticky()
 italian = ("Per favore spiegami nel dettaglio come funziona questa parte di codice "
            "e scrivimi un riassunto chiaro in italiano, grazie. Vorrei capire quindi "
            "perche viene usato questo approccio e cosa succede passo dopo passo nel "
            "flusso generale del programma cosi posso documentarlo meglio.")
-case("italian-long", italian, "cerbero-ita", "L1")
+case("italian-long", italian, "minerva-ita", "L1")
 
 reset_sticky()
 case("hard-short", "refactor this module to remove the deadlock and explain why",
-     "qwen36-opus-iq4", "L1")
+     "ornith-35b-iq3-imat", "L1")
 
 reset_sticky()
 case("coder-kw", "apply patch: add error handling to each function",
-     "qwen-coder", "L1")
+     "mellum2-instruct", "L1")
 
 reset_sticky()
 bigctx = body_of("x " * 40000)   # ~80k chars -> ~20k tokens
 m, t, _, _, _ = R.route(bigctx, {"session": "big"})
-check("bigctx", (m, t), ("qwen36-iq3", "L1"))
+check("bigctx", (m, t), ("daily-Qwen3.6-35B-A3B-IQ3_K_R4", "L1"))
 
 print("== overrides ==")
 reset_sticky()
-case("override-max", "!max design a quick thing", "qwen-opus-q8", "L1")
-reset_sticky()
-case("override-coder", "!coder write a parser", "qwen-coder", "L1")
+case("override-coder", "!coder write a parser", "mellum2-instruct", "L1")
 
 print("== cloud tier (NVIDIA, opt-in) ==")
 reset_sticky()
@@ -105,21 +103,21 @@ ambiguous = ("I have a piece of logic that processes incoming records and update
 reset_sticky()
 case("l2-normal", ambiguous, "qwen36-iq3", "L2", session="a", mock_label="NORMAL")
 reset_sticky()
-case("l2-hard", ambiguous, "qwen36-opus-iq4", "L2", session="b", mock_label="HARD")
+case("l2-hard", ambiguous, "ornith-35b-iq3-imat", "L2", session="b", mock_label="HARD")
 reset_sticky()
-case("l2-trivial", ambiguous, "qwen-small", "L2", session="c", mock_label="TRIVIAL")
+case("l2-trivial", ambiguous, "nemotron-fast", "L2", session="c", mock_label="TRIVIAL")
 
 print("== sticky anti-thrash ==")
 reset_sticky()
-# First turn HARD -> opus-iq4; second turn (same session) classifies NORMAL -> iq3,
-# but sticky must KEEP opus-iq4 (BIG->BIG without escalation).
+# First turn HARD -> ornith-35b-iq3-imat; second turn (same session) classifies NORMAL -> iq3,
+# but sticky must KEEP ornith-35b-iq3-imat (BIG->BIG without escalation).
 R.classify = lambda u: ("HARD", 1.0)
 m1, _, _, _, _ = R.route(body_of("refactor the scheduler to fix the race condition"),
                          {"session": "S"})
-check("sticky-turn1", m1, "qwen36-opus-iq4")
+check("sticky-turn1", m1, "ornith-35b-iq3-imat")
 R.classify = lambda u: ("NORMAL", 1.0)
 m2, _, r2, _, _ = R.route(body_of(ambiguous), {"session": "S"})
-check("sticky-turn2-keepbig", m2, "qwen36-opus-iq4")
+check("sticky-turn2-keepbig", m2, "ornith-35b-iq3-imat")
 
 # Different session is independent.
 reset_sticky()

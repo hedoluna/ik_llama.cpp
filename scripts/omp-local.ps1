@@ -1,5 +1,5 @@
 param(
-  [ValidateSet("auto", "fast", "omp", "yi", "qwen2", "g2b", "g3b", "next", "big", "ornith")]
+  [ValidateSet("auto", "fast", "omp", "big", "ornith")]
   [string]$Mode = "auto",
   [string]$Project = (Get-Location).Path,
   [string]$Run,
@@ -33,13 +33,8 @@ if (-not $NoStart) {
 # Resolve local model name for llama-swap
 $modelByMode = @{
   auto = "auto"
-  fast = "qwen-small"
-  omp = "qwen-small"
-  yi = "Yi-Coder-1.5B-Chat-Q4_K_M"
-  qwen2 = "Qwen2.5-Coder-1.5B-Q4_K_M"
-  g2b = "granite-3.3-2b-instruct-Q6_K"
-  g3b = "granite-4.1-3B-Q4_K_S"
-  next = "Qwen3-Coder-Next-UD-Q2_K_XL"
+  fast = "nemotron-fast"
+  omp = "nemotron-fast"
   big = "daily-Qwen3.6-35B-A3B-IQ3_K_R4"
   ornith = "Ornith-1.0-35B-A3B-IQ3_K_R4-imat"
 }

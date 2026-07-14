@@ -4,13 +4,18 @@ param(
   [string[]]$ExpectedModels = @(
     "qwen36-iq3",
     "qwen36-opus-iq4",
-    "qwen36-q5",
-    "qwen-coder",
-    "qwen-opus-q8",
-    "qwen-small",
+    "qwen36-opus-iq3",
+    "quality-guided",
+    "qwen36-mtp",
+    "nemotron-fast",
+    "agentworld",
     "granite-fast",
-    "cerbero-ita",
-    "gpt-oss-20b"
+    "minerva-ita",
+    "mellum2-instruct",
+    "mellum2-thinking",
+    "gpt-oss-20b",
+    "ornith-35b-iq3-imat",
+    "ornith-9b-q4"
   ),
   [switch]$Chat
 )
@@ -38,9 +43,9 @@ if ($missingOpenCodeModels.Count -gt 0) {
 }
 
 if ($Chat) {
-  Write-Host "`nChecking chat completion with qwen-small"
+  Write-Host "`nChecking chat completion with nemotron-fast"
   $body = @{
-    model = "qwen-small"
+    model = "nemotron-fast"
     messages = @(@{ role = "user"; content = "Rispondi solo con OK." })
     max_tokens = 16
     temperature = 0

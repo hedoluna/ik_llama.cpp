@@ -6,7 +6,7 @@ incoming request asks for the synthetic model id ``auto`` (or ``llama-swap/auto`
 picks a concrete local model with a hybrid policy:
 
   L1  fast deterministic gate  (override / big-ctx / trivial / italian / hard / coder)
-  L2  classifier fallback      (an always-hot qwen-small instance on its own port)
+  L2  classifier fallback      (an always-hot nemotron-fast instance on its own port)
 
 A per-session sticky policy avoids thrashing between the 35B variants (each big
 swap relaunches a llama-server process even when the GGUF is warm in page cache).
@@ -34,34 +34,38 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 LISTEN_HOST, LISTEN_PORT = "127.0.0.1", 8291
 SWAP_BASE = "http://127.0.0.1:8292"
 CLASSIFIER_BASE = "http://127.0.0.1:9998"
-CLASSIFIER_MODEL = "qwen-small"
-SMALL_MODEL = "qwen-small"
+CLASSIFIER_MODEL = "nemotron-fast"
+SMALL_MODEL = "nemotron-fast"
 LOG_DIR = r"D:\repos\ik_llama.cpp\bench-opencode-local"
 
 AUTO_IDS = {"auto", "llama-swap/auto"}
 SWAP_PREFIX = "llama-swap/"
 CHARS_PER_TOKEN = 4
 
-# Input-context budget per model (tokens). Used by the context guard.
+# Input-context budget per model (tokens). All local OCL profiles provision at
+# least 100k tokens; keep this in lockstep with llama-swap.config.yaml.
 MODEL_CTX = {
-    "qwen-small": 32768, "qwen36-iq3": 24000, "qwen-coder": 32768,
-    "qwen36-opus-iq4": 24576, "qwen36-q5": 24576, "qwen-opus-q8": 24576,
-    "cerbero-ita": 16384, "granite-fast": 32768, "gpt-oss-20b": 24576,
-    "ornith-35b-iq3-imat": 24000,
+    "nemotron-fast": 102400, "qwen36-iq3": 102400,
+    "qwen36-opus-iq4": 102400, "qwen36-opus-iq3": 102400,
+    "qwen36-opus-iq3-guided": 102400,
+    "qwen36-mtp": 102400, "mellum2-instruct": 102400,
+    "mellum2-thinking": 102400, "minerva-ita": 102400,
+    "granite-fast": 102400, "gpt-oss-20b": 102400,
+    "ornith-35b-iq3-imat": 102400, "ornith-9b-q4": 102400,
 }
 CTX_SAFETY_FRAC = 0.75
 TRIVIAL_TOKENS = 60
-BIG_CONTEXT_TOKENS = 18000
+BIG_CONTEXT_TOKENS = 76800
 AMBIGUOUS_LOW = 60
 AMBIGUOUS_HIGH = 400
 
 LABEL_MODEL = {
-    "TRIVIAL": "qwen-small", "NORMAL": "qwen36-iq3", "HARD": "qwen36-opus-iq4",
-    "CODER": "qwen-coder", "ITALIAN": "cerbero-ita",
+    "TRIVIAL": "nemotron-fast", "NORMAL": "qwen36-iq3", "HARD": "ornith-35b-iq3-imat",
+    "CODER": "mellum2-instruct", "ITALIAN": "minerva-ita",
 }
 # Preferred default model (highest correctness from latest leaderboard)
 DEFAULT_MODEL = "daily-Qwen3.6-35B-A3B-IQ3_K_R4"
-BIG_CAPABLE_MODEL = "daily-Qwen3.6-35B-A3B-IQ3_K_R4"   # 32k window, used when context is huge
+BIG_CAPABLE_MODEL = "daily-Qwen3.6-35B-A3B-IQ3_K_R4"   # 100k window, used when context is huge
 
 HARD_KEYWORDS = [
     "refactor", "redesign", "architecture", "architettura", "design pattern",
@@ -74,10 +78,12 @@ CODER_KEYWORDS = [
     "implement", "codegen", "generate code", "scaffold", "boilerplate",
 ]
 OVERRIDE_TOKENS = {
-    "!small": "qwen-small", "!fast": "qwen-small", "!coding": "qwen36-iq3",
+    "!small": "nemotron-fast", "!fast": "nemotron-fast", "!coding": "qwen36-iq3",
     "!normal": "qwen36-iq3", "!quality": "qwen36-opus-iq4", "!hard": "qwen36-opus-iq4",
-    "!max": "qwen-opus-q8", "!coder": "qwen-coder", "!ita": "cerbero-ita",
-    "!italian": "cerbero-ita", "!ornith": "ornith-35b-iq3-imat",
+    "!quality-guided": "qwen36-opus-iq3-guided",
+    "!coder": "mellum2-instruct", "!ita": "minerva-ita",
+    "!italian": "minerva-ita", "!ornith": "ornith-35b-iq3-imat",
+    "!ornith9": "ornith-9b-q4",
 }
 
 CLASSIFY_TIMEOUT_S = 4.0
@@ -94,8 +100,8 @@ FORCE_NONSTREAM_STREAM_MODELS = {
 }
 
 BIG_MODELS = {
-    "qwen36-iq3", "qwen36-opus-iq4", "qwen36-q5", "qwen-opus-q8",
-    "qwen-coder", "gpt-oss-20b",
+    "qwen36-iq3", "qwen36-opus-iq4", "mellum2-instruct",
+    "gpt-oss-20b", "ornith-35b-iq3-imat",
 }
 STICKY_TURNS_TTL_S = 1800
 
@@ -345,7 +351,7 @@ def route(body, hint=None):
         if low.startswith(tok) or (" " + tok) in low:
             return _commit(hint, toks, m, "L1", "override %s" % tok, "gate", 0.0,
                            allow_small=(m == SMALL_MODEL), escalate=(m in BIG_MODELS))
-    # Huge context must go to a 32k-capable model.
+    # Huge context must go to the validated 100k-capable daily profile.
     if toks >= BIG_CONTEXT_TOKENS:
         return _commit(hint, toks, BIG_CAPABLE_MODEL, "L1", "bigctx~%d" % toks,
                        "gate", 0.0, escalate=True)

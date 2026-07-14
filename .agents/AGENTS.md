@@ -98,3 +98,57 @@ cmake --build build --config Release -j
 * **ralph** (`D:\repos\ralph`): Harness agente autonomo. `local_ralph/ralph.ps1` + `brain_manager.py`. Benchmark codici in `local_ralph/coding_benchmark_*.py`.
 * **remotica2** (`D:\repos\remotica2`): Progetto primario (piattaforma coworking). Pattern: Single File API, monorepo.
 
+---
+
+## 6. here.now Site Data API — Lezioni di Produzione (2026-07)
+
+Tutte le lezioni apprese durante lo sviluppo e il deploy di `text-rpg-online` su here.now.
+
+### Schema e Manifest
+* **Il manifest `.herenow/data.json` è obbligatorio**: senza di esso, l'API inferisce lo schema dal primo record scritto e poi rifiuta qualsiasi campo non presente nella prima scrittura con `{"error":"Validation failed","details":{"field":"...","message":"Unknown field"}}`. Lo schema persiste a livello di collection anche quando tutti i record vengono cancellati.
+* **Il manifest deve essere pubblicato con il sito**: il publish script deve includere `.herenow/data.json`. Aggiungere logica esplicita per pubblicare SOLO `data.json` e ignorare `state.json` e le sottodirectory.
+* **Field types supportati**: `string`, `number`, `integer`, `boolean`, `url`, `email`, `datetime`. **`array` e `object` NON funzionano** (manifest rifiutato). Usare `"type": "string"` + `JSON.stringify`/`JSON.parse` nel repository.
+* **Reserved field names**: `id`, `site_slug`, `collection`, `data`, `status`, `created_at`, `updated_at`, `created_by_account_id`. Non usarli come nomi di campo.
+* **Source of truth**: La versione canonica del manifest è `site/.herenow/data.json`. **NON copiare mai da root verso site** (`cp .herenow/data.json site/.herenow/data.json`) — la root può essere stale.
+
+### Rate Limiting
+* **`rateLimit` si applica a TUTTE le richieste incluse le GET**: un gioco con polling ogni 4s con 2-3 GET/ciclo esaurisce `50/hour` in ~90 secondi. Non è un limite per sole scritture.
+* **Platform default senza `rateLimit` dichiarato = 10/hour**: ancora peggio. Dichiarare sempre esplicitamente.
+* **Valore consigliato per gameplay**: `"rateLimit": "10000/hour/ip"` su tutte le collection — equivale a nessun limite pratico (~167 req/min).
+* **Polling interval**: usare almeno 8-10s (non 3-4s). Aggiungere backoff su 429: pausa 60s poi ripresa automatica.
+* **Diagnostiche**: le funzioni di debug che creano record (rooms di test, players di test) bruciano il rate limit su write. Usare solo chiamate GET read-only nelle diagnostiche.
+
+### API Response Format
+* **Records restituiti con wrapper `data`**: `{ id, data: { ...fields }, createdAt, updatedAt }`. Il game service si aspetta campi piatti. Il repository deve fare `#flatten(record)` che spacchetta `record.data`.
+* **Serializzazione oggetti**: il repository deve `JSON.stringify` qualsiasi valore object/array prima di scrivere, e `JSON.parse` i valori stringa che iniziano con `{` o `[` in lettura.
+* **Writes richiedono header `Origin` corretto**: le scritture via `curl` falliscono con "Forbidden: Public Site Data writes require a matching Origin header". Funzionano solo dal browser (Origin impostato automaticamente) o con l'owner API (`Authorization: Bearer <API_KEY>`).
+* **Collection-level DELETE non supportato**: `DELETE /collection` → `{"error":"Method not allowed"}`. Cancellare i record uno per uno tramite owner API: `DELETE /api/v1/publishes/:slug/data/:collection/:id`.
+
+### Owner API (manutenzione/pulizia)
+```javascript
+// Cancellare tutti i record di una collection (node -e "...")
+const key = require('fs').readFileSync(require('os').homedir() + '/.herenow/credentials', 'utf8').trim();
+const base = 'https://here.now/api/v1/publishes/<SLUG>/data';
+const h = { 'Authorization': 'Bearer ' + key };
+const res = await fetch(base + '/rooms?limit=100', { headers: h });
+const { records } = await res.json();
+for (const r of records) await fetch(base + '/rooms/' + r.id, { method: 'DELETE', headers: h });
+```
+
+### Accesso Anonimo (gioco multiutente senza auth)
+* **`publicMutation: "open"`** è richiesto per permettere ai visitatori anonimi di fare PATCH sui record. Senza di esso solo il record owner può modificarlo.
+* **Schema `access`**: `{ "read": "public", "insert": "public", "update": "public", "delete": "owner" }` per collection mutabili da tutti i giocatori (players, rooms).
+
+### Game Logic — Bug Risolti
+* **Double-take items**: Gli oggetti in world.js sono statici (sempre disponibili). Senza tracking dello stato "già raccolto", chiunque può raccogliere lo stesso oggetto più volte. Fix: campo `takenitems` (JSON string) sulla stanza. `take()` controlla e aggiorna; `look()` filtra. Condiviso tra tutti i giocatori della stessa stanza.
+* **FakeRepository maschera incompatibilità**: i test passano con FakeRepository ma la produzione rompe perché FakeRepository non replica il formato `{ data: {...} }` né i vincoli di schema. Lezione: i test unitari non sostituiscono uno smoke test di integrazione end-to-end.
+
+### Workflow Deploy Canonico (text-rpg-online)
+```powershell
+# Dopo ogni modifica a src/:
+cp src/application/game-service.js site/src/application/game-service.js  # (e altri file cambiati)
+npm test                   # 34+ test devono essere verdi
+node publish.mjs           # pubblica su https://stormy-cairn-esr7.here.now/
+git add -A && git commit -m "..." && git push
+```
+**NON usare**: `cp .herenow/data.json site/.herenow/data.json` — direzione sbagliata.

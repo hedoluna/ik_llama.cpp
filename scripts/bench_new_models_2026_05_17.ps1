@@ -13,12 +13,9 @@ $matrix = @(
      args=@('-c','16384','-ngl','999','-fa','on','-t','8','--no-mmap','--jinja','--host','127.0.0.1','--port','1234') },
   @{ name='Phi-4-mini-instruct';
      bin=$ml;
-     mod='D:/repos/ik_llama.cpp/models/microsoft_Phi-4-mini-instruct-Q4_K_M.gguf';
+     mod='F:/01_Modelli_AI/LLM_Models/archived_from_D/microsoft_Phi-4-mini-instruct-Q4_K_M.gguf';
      args=@('-c','16384','-ngl','999','-fa','on','-t','8','--jinja','--host','127.0.0.1','--port','1234') },
-  @{ name='Qwen3.5-4B';
-     bin=$ik;
-     mod='D:/repos/ik_llama.cpp/models/Qwen_Qwen3.5-4B-Q4_K_M.gguf';
-     args=@('-c','16384','-ngl','999','-fa','on','-t','8','--no-mmap','--jinja','--host','127.0.0.1','--port','1234') },
+  # Qwen3.5-4B removed 2026-07-11: bocciato (38/43, FizzBuzz 0/8), file deleted from disk
   @{ name='Granite-4.1-8B';
      bin=$ml;
      mod='D:/repos/ik_llama.cpp/models/ibm-granite_granite-4.1-8b-Q4_K_M.gguf';

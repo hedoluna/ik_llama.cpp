@@ -36,6 +36,7 @@ EXEC_TRACE = Path(r"D:\repos\ik-llama-bench\sweep_bench_exec_trace.py")
 LEADERBOARD = REPO / "sweep_leaderboard.json"
 PORT = 1234
 HOST = "127.0.0.1"
+DEFAULT_CTX_SIZE = 102400
 
 MODELS_CACHE = Path(r"F:\01_Modelli_AI\LLM_Models\lm-studio\models")  # moved 2026-06 from F:\LLM_Models\...
 
@@ -141,21 +142,28 @@ TIERS = {
          Path(r"D:\repos\ik_llama.cpp\models\Qwen3.6-35B-A3B-IQ3_K_R4.gguf"),
          "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
                 "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
-        ("Ornith-1.0-35B-A3B-Q4_K_M",
-         Path(r"F:\01_Modelli_AI\LLM_Models\Ornith\ornith-1.0-35b-Q4_K_M.gguf"),
-         "ik", ["-ngl", "80", "--n-cpu-moe", "30", "--reasoning", "off",
+        ("quality-Qwen3.6-35B-A3B-Opus-Distill-IQ3_K_R4",
+         Path(r"D:\repos\ik_llama.cpp\models\Qwen3.6-35B-A3B-Opus-Distill-IQ3_K_R4.gguf"),
+         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
                 "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+        ("Qwen-AgentWorld-35B-A3B-IQ4_K_R4",
+         Path(r"D:\repos\ik_llama.cpp\models\Qwen-AgentWorld-35B-A3B-IQ4_K_R4.gguf"),
+         "ik", ["-ngl", "8", "--reasoning", "off", "-ctk", "q8_0", "-ctv", "q8_0",
+                "-b", "1024", "-ub", "1024"]),
+        # ("Ornith-1.0-35B-A3B-Q4_K_M",
+        #  Path(r"F:\01_Modelli_AI\LLM_Models\Ornith\ornith-1.0-35b-Q4_K_M.gguf"),
+        #  "ik", ["-ngl", "80", "--n-cpu-moe", "30",
+        #         "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
         ("Ornith-1.0-9B-Q4_K_M",
          Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-9b-Q4_K_M.gguf"),
-         "ik", ["--reasoning", "off", "-ctk", "q4_0", "-ctv", "q8_0"]),
+         "ik", ["-ctk", "q4_0", "-ctv", "q8_0"]),
         ("Ornith-1.0-35B-A3B-IQ3_K_R4",
          Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-35b-IQ3_K_R4.gguf"),
-         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
+         "ik", ["-ngl", "95", "--n-cpu-moe", "30",
                 "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
-        ("Ornith-1.0-35B-A3B-IQ3_K_R4-imat",
-         Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-35b-IQ3_K_R4-imat.gguf"),
-         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
-                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+# Ornith-1.0-35B-A3B-IQ3_K_R4-imat removed 2026-07-11: redundant duplicate of the
+        # entry above using a locally-generated imatrix (430 entries/129 chunks) vs the
+        # upstream author's imatrix (510 entries/1608 chunks) already used by the kept file.
         # Qwen2.5-Coder-32B-Instruct-IQ3_M removed 2026-07-07: dense 32B forces
         # -ngl 15 (only 15 layers fit 6 GiB VRAM) — 23+ min for the 17-task
         # advanced bench alone. Confirms the known hardware ceiling: dense >12B
@@ -238,7 +246,8 @@ def kill_llama_server() -> None:
     wait_port_free(HOST, PORT, max_wait=20)
 
 
-def start_server(label: str, model_path: Path, runtime: str, extra: list[str]) -> subprocess.Popen | None:
+def start_server(label: str, model_path: Path, runtime: str, extra: list[str],
+                 ctx_size: int) -> subprocess.Popen | None:
     if not model_path.exists():
         print(f"  [SKIP] missing model: {model_path}")
         return None
@@ -251,7 +260,7 @@ def start_server(label: str, model_path: Path, runtime: str, extra: list[str]) -
         "--model", str(model_path),
         "--host", HOST, "--port", str(PORT),
         "--jinja",
-        "-c", "16384",
+        "-c", str(ctx_size),
         "-fa", "on",
         "-t", "8",
         "--no-mmap",
@@ -322,10 +331,10 @@ def run_exec_trace(label: str) -> dict:
 
 
 def run_one(label: str, model_path: Path, runtime: str, extra: list[str],
-            with_exec_trace: bool = False) -> dict:
+            with_exec_trace: bool = False, ctx_size: int = DEFAULT_CTX_SIZE) -> dict:
     kill_llama_server()  # ensure clean state
     t_load_start = time.time()
-    proc = start_server(label, model_path, runtime, extra)
+    proc = start_server(label, model_path, runtime, extra, ctx_size)
     if proc is None:
         return {"label": label, "status": "skip_missing"}
     ready = wait_server_ready(HOST, PORT, max_wait=180)
@@ -354,6 +363,7 @@ def run_one(label: str, model_path: Path, runtime: str, extra: list[str],
         "label": label,
         "model_path": str(model_path),
         "runtime": runtime,
+        "context_size": ctx_size,
         "load_time": round(load_time, 2),
         "bench_time": round(bench_time, 2),
         "passed": parsed["passed"],
@@ -377,17 +387,25 @@ def main():
     ap.add_argument("--exec-trace", action="store_true",
                      help="Also run the exec_trace 'easy' 6-item add-on per model "
                           "(discriminates the 51/51 coding-bench ceiling cluster)")
+    ap.add_argument("--ctx-size", type=int, default=DEFAULT_CTX_SIZE,
+                    help=f"Server context window in tokens (default: {DEFAULT_CTX_SIZE})")
     args = ap.parse_args()
 
     if not args.skip_preflight:
         run_preflight()
 
     if args.single:
-        for tier in TIERS.values():
+        for tier_id, tier in TIERS.items():
             for label, path, rt, extra in tier:
                 if label == args.single:
                     print(f"\n=== {label} ===")
-                    r = run_one(label, path, rt, extra, with_exec_trace=args.exec_trace)
+                    r = run_one(label, path, rt, extra, with_exec_trace=args.exec_trace,
+                                ctx_size=args.ctx_size)
+                    r["tier"] = tier_id
+                    r["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
+                    results = json.loads(LEADERBOARD.read_text()) if LEADERBOARD.exists() else []
+                    results.append(r)
+                    LEADERBOARD.write_text(json.dumps(results, indent=2))
                     print(json.dumps(r, indent=2))
                     return
         print(f"Label '{args.single}' not found"); sys.exit(1)
@@ -401,7 +419,8 @@ def main():
 
     for label, path, rt, extra in TIERS[args.tier]:
         print(f"\n=== {label} ===")
-        r = run_one(label, path, rt, extra, with_exec_trace=args.exec_trace)
+        r = run_one(label, path, rt, extra, with_exec_trace=args.exec_trace,
+                    ctx_size=args.ctx_size)
         r["tier"] = args.tier
         r["timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
         keys = ("label", "load_time", "bench_time", "passed", "valid", "status")

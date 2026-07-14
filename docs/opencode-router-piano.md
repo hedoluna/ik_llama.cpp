@@ -20,8 +20,8 @@ L1 = gate euristico deterministico (in ordine, primo match vince). L2 = classifi
 
 | Ordine | Regola | Condizione | Modello | Tier |
 | --- | --- | --- | --- | --- |
-| 1 | Override | testo contiene `!small/!fast/!coding/!quality/!hard/!max/!coder/!ita` | mappato | L1 |
-| 2 | Big ctx | tokens >= 18000 | qwen36-iq3 (32k) | L1 |
+| 1 | Override | testo contiene `!small/!fast/!coding/!quality/!hard/!coder/!ita` | mappato | L1 |
+| 2 | Big ctx | tokens >= 76800 | qwen36-iq3 (100k) | L1 |
 | 3 | Hard | keyword (refactor, architettura, race condition, deadlock, optimize, ...) | qwen36-opus-iq4 | L1 |
 | 4 | Coder | keyword (diff, apply patch, full file, implement, scaffold, ...) | qwen-coder | L1 |
 | 5 | Trivial | tokens <= 60 e no code-fence | qwen-small | L1 |
@@ -30,9 +30,9 @@ L1 = gate euristico deterministico (in ordine, primo match vince). L2 = classifi
 | 8 | Default | altro | qwen36-iq3 | L1 |
 
 - **Hard/Coder prima di Trivial**: un prompt corto puo essere difficile ("refactor to remove the deadlock" e ~14 token ma va su opus, non su small).
-- **Context guard**: se `tokens > ctx_modello * 0.75` -> bump a qwen36-iq3 (evita troncamento su opus/q5/q8/cerbero, ctx piu piccolo).
+- **Context guard**: tutti i profili locali OCL sono configurati a `102400` token; il guard interviene oltre il 75% della finestra e preserva il routing sticky.
 - **L2 classifier**: qwen-small (:9998), few-shot, `temp=0 max_tokens=5`, label in {TRIVIAL, NORMAL, HARD, CODER, ITALIAN}. Timeout 4s -> fallback qwen36-iq3.
-- **Anti-thrash sticky** (per sessione, TTL 30 min): memorizza l'ultimo modello BIG; se prev BIG e nuova scelta BIG-diversa -> resta, salvo escalation HARD o de-escalation TRIVIAL. Lo swap big<->big rilancia il processo llama-server (caldo grazie ai 128 GB di page-cache, ma non gratis). `qwen-opus-q8` e solo override-only (mai auto).
+- **Anti-thrash sticky** (per sessione, TTL 30 min): memorizza l'ultimo modello BIG; se prev BIG e nuova scelta BIG-diversa -> resta, salvo escalation HARD o de-escalation TRIVIAL. Lo swap big<->big rilancia il processo llama-server (caldo grazie ai 128 GB di page-cache, ma non gratis).
 
 Soglie e keyword sono nel blocco CONFIG in testa a `scripts/opencode-router.py`. Ritoccarle solo dopo dati reali.
 
@@ -44,11 +44,10 @@ ocl
 
 # il routing e attivo in modalita auto (default). Modi espliciti = override manuale:
 ocl -Mode quality     # forza qwen36-opus-iq4 (bypassa il router)
-ocl -Mode max         # forza qwen-opus-q8
 ocl -Run "..."        # non interattivo, anch'esso instradato dal router
 ```
 
-Override inline dentro il prompt: iniziare con `!max`, `!quality`, `!coder`, `!ita`, `!small`, ecc.
+Override inline dentro il prompt: iniziare con `!quality`, `!coder`, `!ita`, `!small`, ecc.
 
 ## Cloud tier (NVIDIA NIM) — opt-in
 

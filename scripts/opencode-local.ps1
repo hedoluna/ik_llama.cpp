@@ -1,5 +1,5 @@
 param(
-  [ValidateSet("auto", "fast", "omp", "yi", "qwen2", "g2b", "g3b", "next", "big", "ornith")]
+  [ValidateSet("auto", "fast", "omp", "big", "qualityguided", "agentworld", "ornith", "ornith9")]
   [string]$Mode = "auto",
   [string]$Project = (Get-Location).Path,
   [string]$Run,
@@ -61,28 +61,24 @@ $effectiveMode = $Mode
 
 $modelByMode = @{
   auto = "llama-swap/auto"
-  fast = "llama-swap/qwen-small"
-  omp = "llama-swap/qwen-small"
-  yi = "llama-swap/Yi-Coder-1.5B-Chat-Q4_K_M"
-  qwen2 = "llama-swap/Qwen2.5-Coder-1.5B-Q4_K_M"
-  g2b = "llama-swap/granite-3.3-2b-instruct-Q6_K"
-  g3b = "llama-swap/granite-4.1-3B-Q4_K_S"
-  next = "llama-swap/Qwen3-Coder-Next-UD-Q2_K_XL"
+  fast = "llama-swap/nemotron-fast"
+  omp = "llama-swap/nemotron-fast"
   big = "llama-swap/daily-Qwen3.6-35B-A3B-IQ3_K_R4"
+  qualityguided = "llama-swap/quality-guided"
+  agentworld = "llama-swap/agentworld-35b-iq4"
   ornith = "llama-swap/Ornith-1.0-35B-A3B-IQ3_K_R4-imat"
+  ornith9 = "llama-swap/ornith-9b-q4"
 }
 
 $agentByMode = @{
   auto = "auto"
   fast = "fast"
   omp = "fast"
-  yi = "yi"
-  qwen2 = "qwen2"
-  g2b = "g2b"
-  g3b = "g3b"
-  next = "next"
   big = "big"
+  qualityguided = ""
+  agentworld = ""
   ornith = "ornith"
+  ornith9 = "ornith9"
 }
 
 $model = $modelByMode[$effectiveMode]
