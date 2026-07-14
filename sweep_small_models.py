@@ -105,6 +105,9 @@ TIERS = {
          "ik", []),
     ],
     4: [  # 7-9B (advanced bench challengers — Granite 4.1 8B, Qwen3.5 family)
+        ("Qwen3-7B-Q4_K_M",
+         Path(r"D:\repos\ik_llama.cpp\models\Qwen3-7B-Q4_K_M.gguf"),
+         "ik", []),
         ("Qwen3.5-0.8B-Q8_0",
          MODELS_CACHE / "lmstudio-community" / "Qwen3.5-0.8B-GGUF" / "Qwen3.5-0.8B-Q8_0.gguf",
          "ik", []),
@@ -348,7 +351,7 @@ def run_one(label: str, model_path: Path, runtime: str, extra: list[str],
     try:
         cp = subprocess.run(
             [PY_CMD, str(BENCH), "--models", label],
-            capture_output=True, text=True, timeout=900,
+            capture_output=True, text=True, timeout=7200,
         )
         out = (cp.stdout or "") + "\n" + (cp.stderr or "")
     except subprocess.TimeoutExpired:
