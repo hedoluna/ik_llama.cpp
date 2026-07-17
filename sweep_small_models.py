@@ -36,7 +36,10 @@ EXEC_TRACE = Path(r"D:\repos\ik-llama-bench\sweep_bench_exec_trace.py")
 LEADERBOARD = REPO / "sweep_leaderboard.json"
 PORT = 1234
 HOST = "127.0.0.1"
-DEFAULT_CTX_SIZE = 102400
+DEFAULT_CTX_SIZE = 24000  # reverted 2026-07-17: bumped to 102400 on 2026-07-14 (704c83fd)
+# without perf validation; caused a ~3x decode-throughput cliff on VRAM-constrained
+# --n-cpu-moe 35B configs (16.57 t/s @ 102400 vs 47-49 t/s @ 8k-24k, same build/flags).
+# 24000 matches the Optuna-validated "daily winner" in reference_winner_configs.md.
 
 MODELS_CACHE = Path(r"F:\01_Modelli_AI\LLM_Models\lm-studio\models")  # moved 2026-06 from F:\LLM_Models\...
 
@@ -144,26 +147,32 @@ TIERS = {
         ("daily-Qwen3.6-35B-A3B-IQ3_K_R4",
          Path(r"D:\repos\ik_llama.cpp\models\Qwen3.6-35B-A3B-IQ3_K_R4.gguf"),
          "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
-                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256",
+                "--chat-template-kwargs", '{"enable_thinking":false}',
+                "--ctx-checkpoints-interval", "0"]),
         ("quality-Qwen3.6-35B-A3B-Opus-Distill-IQ3_K_R4",
          Path(r"D:\repos\ik_llama.cpp\models\Qwen3.6-35B-A3B-Opus-Distill-IQ3_K_R4.gguf"),
          "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
-                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256",
+                "--chat-template-kwargs", '{"enable_thinking":false}']),
         ("Qwen-AgentWorld-35B-A3B-IQ4_K_R4",
          Path(r"D:\repos\ik_llama.cpp\models\Qwen-AgentWorld-35B-A3B-IQ4_K_R4.gguf"),
          "ik", ["-ngl", "8", "--reasoning", "off", "-ctk", "q8_0", "-ctv", "q8_0",
-                "-b", "1024", "-ub", "1024"]),
+                "-b", "1024", "-ub", "1024",
+                "--chat-template-kwargs", '{"enable_thinking":false}']),
         # ("Ornith-1.0-35B-A3B-Q4_K_M",
         #  Path(r"F:\01_Modelli_AI\LLM_Models\Ornith\ornith-1.0-35b-Q4_K_M.gguf"),
         #  "ik", ["-ngl", "80", "--n-cpu-moe", "30",
         #         "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
         ("Ornith-1.0-9B-Q4_K_M",
          Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-9b-Q4_K_M.gguf"),
-         "ik", ["-ctk", "q4_0", "-ctv", "q8_0"]),
+         "ik", ["-ctk", "q4_0", "-ctv", "q8_0",
+                "--chat-template-kwargs", '{"enable_thinking":false}']),
         ("Ornith-1.0-35B-A3B-IQ3_K_R4",
          Path(r"D:\repos\ik_llama.cpp\models\ornith-1.0-35b-IQ3_K_R4.gguf"),
          "ik", ["-ngl", "95", "--n-cpu-moe", "30",
-                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256"]),
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256",
+                "--chat-template-kwargs", '{"enable_thinking":false}']),
 # Ornith-1.0-35B-A3B-IQ3_K_R4-imat removed 2026-07-11: redundant duplicate of the
         # entry above using a locally-generated imatrix (430 entries/129 chunks) vs the
         # upstream author's imatrix (510 entries/1608 chunks) already used by the kept file.
