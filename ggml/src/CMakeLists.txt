@@ -1100,11 +1100,11 @@ if (CMAKE_OSX_ARCHITECTURES      STREQUAL "arm64" OR
         if (GGML_SVE)
             list(APPEND ARCH_FLAGS -march=armv8.6-a+sve)
         endif()
-        if (GGML_NATIVE)
-            list(APPEND ARCH_FLAGS -march=native)
-        endif()
         if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
             # else we fail on Gravitons and such
+            if (GGML_NATIVE)
+                list(APPEND ARCH_FLAGS -march=native)
+            endif()
             list(APPEND ARCH_FLAGS -flax-vector-conversions)
         endif()
     endif()
@@ -1297,6 +1297,8 @@ add_library(ggml
             ggml.c
             ggml-alloc.c
             ggml-backend.cpp
+            ggml-moe-prefetch.cpp
+            ggml-moe-prefetch.h
             ggml-quants.c
             ggml-quants.h
             ${GGML_SOURCES_CUDA}      ${GGML_HEADERS_CUDA}
