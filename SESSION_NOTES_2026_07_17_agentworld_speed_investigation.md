@@ -54,12 +54,22 @@ llama-bench.exe -m models\Qwen-AgentWorld-35B-A3B-IQ4_K_R4.gguf -ngl 8 -p 128 -n
 
 **Conclusione**: la regressione e' reale e riproducibile, ma la causa e' altrove — o in un commit tra il 07-10 e il 07-14 (il pre-merge testato oggi e' del 07-14, non del 07-10: la finestra 07-10→07-14 non e' stata ancora bisettata), o le condizioni della misura storica del 07-10 non erano direttamente comparabili (driver/cache/altro). **Non eseguita l'Opzione B** (requant IQ3_K_R4): la sua premessa ("il repack R4 non copre i layer SSM, quindi il guadagno e' solo parziale") presuppone che la causa sia nota e strutturale — dato che ora sappiamo che NON e' il merge sospettato, requantizzare alla cieca senza sapere cosa si sta effettivamente compensando ha basso valore atteso.
 
+## Aggiornamento 2026-07-21: bisect esteso, conclusione rivista
+
+Ripresa ulteriore. Prima di lanciare il bisect automatizzato, scoperto un bug nel proprio script (`bisect_agentworld.sh`): il parsing del tg64 estraeva "4.5" da "IQ4_K_R4 - **4.5** bpw" invece del vero valore nella colonna risultato — ogni decisione automatica sarebbe stata invalida. Fixato (regex ancorata su `± `), ma prima di rilanciare il bisect si è verificato manualmente l'estremo "good" mai testato (`c2b58f88`, 07-09) — **e anche quello e' risultato lento**: 12.48-14.55 t/s (2 build pulite indipendenti, con e senza `-p 128`), non 32 t/s.
+
+**Verifiche di integrità**: il file `.gguf` non è stato toccato dal 07-10 00:40 (timestamp/size invariati, 19'736'026'368 byte = 18.37 GiB, coerente con tutte le misure). Driver NVIDIA 581.29 / CUDA 13.1.115 attuali — nessun baseline storico registrato per confronto, ma nessun'altra spiegazione plausibile trovata.
+
+**Bilancio finale**: 7 misure indipendenti dello stesso comando (`-ngl 8 -p 128 -n 64 -fa 1`), su commit che spaziano da `c2b58f88` (07-09) a `4e3108aa`/`b29439a7` (07-20/21, oggi), su **3 build puliti separati** (worktree pre-merge, worktree 07-09, main repo), danno TUTTE 12.5-14.8 t/s, nessuna eccezione. Contro **1 sola misura storica** di 32.0 t/s (07-10), mai riprodotta né allora né oggi su nessun punto della storia testato.
+
+**Conclusione rivista**: l'ipotesi più coerente coi dati non è più "una regressione di codice tra il 07-10 e oggi", ma che **la misura dei 32.0 t/s del 07-10 fosse essa stessa l'anomalia** (misurazione singola, non ripetuta, possibile stato transitorio di boost-clock GPU o errore di trascrizione in memoria) — non un comportamento stabile mai più raggiunto. Proseguire il bisect ancora più indietro nella storia avrebbe valore atteso basso: 7/7 punti concordano già su ~13-15 t/s lungo un ampio range temporale, mentre serverebbe trovare UN singolo commit che spieghi un'unica misura anomala e mai ripetuta — pattern statisticamente più compatibile con rumore di misurazione che con una vera regressione persistente.
+
+**Nessuna azione correttiva necessaria**: la config attuale (`-ngl 8`) è verosimilmente già vicina al vero limite prestazionale di questo modello su questo hardware per l'architettura ibrida SSM/full-attention. Non eseguita l'Opzione B (requant IQ3_K_R4): stesso ragionamento di prima, ancora meno giustificata ora che la premessa "regressione codice" è caduta.
+
 ## Decisione
 
-**Sospeso di nuovo il 2026-07-20** — ipotesi principale falsificata con dati solidi, ma la causa reale resta aperta. Worktree `ik_llama.cpp-origin-main-test` lasciato checked-out a `69c4ec1f` con build fresca (non ripulito) per evitare un rebuild da zero se si riprende il bisect. AgentWorld resta nel roster con la config attuale (`-ngl 8`), funzionalmente corretto ma ~2.2× più lento del proprio baseline storico, causa ignota.
+**Chiusa il 2026-07-21** — investigazione risolta con conclusione rivista (vedi sezione sopra). Worktree `ik_llama.cpp-origin-main-test` e script `bisect_agentworld.sh` lasciati per riferimento/eventuale verifica futura se emergessero nuovi dati (es. un'altra misura anomala che riporti la questione in dubbio).
 
-## Come riprendere (revisionato)
+## Se si volesse riaprire in futuro
 
-1. **Bisect nella finestra 07-10→07-14** (non più 07-14→07-17, già escluso): serve trovare il range di commit tra la misura storica (32 t/s, presumibilmente vicino al commit del 2026-07-10 usato per il requant originale — vedi `project_qwen_agentworld_2026_07_09`) e `69c4ec1f` (07-14, già misurato lento). Il worktree `ik_llama.cpp-origin-main-test` è pronto per continuare da qui: basta `git checkout <commit-candidato>`, riconfigurare (`cmake -B build -S .` — necessario perché nuovi/rimossi `.cu` template-instance non vengono rilevati dal GLOB senza reconfigure) e rebuildare.
-2. Se il bisect nella finestra 07-10→07-14 non isola nulla, considerare che la misura storica del 07-10 potesse non essere comparabile (driver CUDA diverso, cache calda/fredda) — vedi lezione generale "primo bench post-download misura I/O non compute" in `project_qwen_agentworld_2026_07_09`.
-3. Opzione B (requant IQ3_K_R4 da `F:\...\Qwen-AgentWorld-35B-A3B-Q8_0.gguf`) resta disponibile ma va rivalutata SOLO dopo aver capito la causa reale — non prima.
+Solo se emerge un'altra misura ~30 t/s riproducibile (che riabiliterebbe l'ipotesi regressione): riprendere il bisect da dove lasciato, `c2b58f88` (07-09, confermato lento) fino a commit ancora più indietro nella storia. Altrimenti, considerare la questione chiusa: 7/7 misure concordi su ~13-15 t/s è l'evidenza più forte disponibile.
