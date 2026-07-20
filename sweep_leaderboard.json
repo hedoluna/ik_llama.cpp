@@ -2373,5 +2373,150 @@
     "exec_trace_status": "ok",
     "tier": 7,
     "timestamp": "2026-07-10 20:51:52"
+  },
+  {
+    "label": "GLM-4.7-Flash-IQ3_M",
+    "model_path": "D:\\repos\\ik_llama.cpp\\models\\zai-org_GLM-4.7-Flash-IQ3_M.gguf",
+    "runtime": "ik",
+    "context_size": 24000,
+    "load_time": 10.11,
+    "bench_time": 65.19,
+    "passed": 50,
+    "total": 51,
+    "passed_of_51": 50,
+    "total_time_s": 62.93,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 5.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 3.8
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 4,
+        "total": 5,
+        "time_s": 9.8
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 4.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 7.0
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 13.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 9.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 8.9
+      }
+    ],
+    "status": "ok",
+    "exec_trace_passed": 1,
+    "exec_trace_total": 6,
+    "exec_trace_status": "ok",
+    "tier": 7,
+    "timestamp": "2026-07-20 19:07:02"
+  },
+  {
+    "label": "Nemotron-Cascade-2-30B-A3B-Q4_K_M",
+    "model_path": "D:\\repos\\ik_llama.cpp\\models\\nvidia_Nemotron-Cascade-2-30B-A3B-Q4_K_M.gguf",
+    "runtime": "main",
+    "context_size": 24000,
+    "load_time": 15.62,
+    "bench_time": 27.11,
+    "passed": 0,
+    "total": 0,
+    "passed_of_51": 0,
+    "total_time_s": 14.98,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 0.6
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 2.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 5,
+        "time_s": 2.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 2.0
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 2.0
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 2.0
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 8,
+        "time_s": 2.1
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 0,
+        "total": 6,
+        "time_s": 2.1
+      }
+    ],
+    "status": "ok",
+    "exec_trace_passed": 0,
+    "exec_trace_total": 6,
+    "exec_trace_status": "ok",
+    "tier": 7,
+    "timestamp": "2026-07-20 19:08:25"
+  },
+  {
+    "label": "Nemotron-Cascade-2-30B-A3B-Q4_K_M",
+    "status": "load_failed",
+    "load_time": 180.552663564682,
+    "tier": 7,
+    "timestamp": "2026-07-20 19:14:03"
   }
 ]

@@ -68,7 +68,7 @@ def run_one_advanced(label: str) -> dict:
     lab, path, rt, extra = entry
     ssm.kill_llama_server()
     t0 = time.time()
-    proc = ssm.start_server(lab, path, rt, extra)
+    proc = ssm.start_server(lab, path, rt, extra, ssm.DEFAULT_CTX_SIZE)
     if proc is None:
         return {"label": label, "status": "skip_missing"}
     if not ssm.wait_server_ready(ssm.HOST, ssm.PORT, max_wait=180):

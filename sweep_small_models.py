@@ -173,6 +173,25 @@ TIERS = {
          "ik", ["-ngl", "95", "--n-cpu-moe", "30",
                 "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256",
                 "--chat-template-kwargs", '{"enable_thinking":false}']),
+        # 2026-07-20 online research candidates (see DEVELOPMENT_NOTES.md / plan
+        # cerca-online-se-ci-wise-lecun): -ngl/--n-cpu-moe are first-guess starting
+        # points, not yet tuned for these archs. Retune if OOM or slow.
+        ("GLM-4.7-Flash-IQ3_M",
+         Path(r"D:\repos\ik_llama.cpp\models\zai-org_GLM-4.7-Flash-IQ3_M.gguf"),
+         "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
+                "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256",
+                "--chat-template-kwargs", '{"enable_thinking":false}']),
+        # 0/51 2026-07-20: reasoning-trap (content routed to reasoning, "Nessun
+        # codice generato" on every task). NVIDIA docs confirm Nemotron defaults
+        # reasoning-on via a "/no_think" SYSTEM-PROMPT directive, but llama-server
+        # rejects -sys/--system-prompt (set_examples excludes LLAMA_EXAMPLE_SERVER,
+        # common/arg.cpp:1584) — no CLI-level override exists for server mode; would
+        # need coding_benchmark.py to inject a system message per-request. Not
+        # pursued further (out of scope for this pass). See DEVELOPMENT_NOTES.md.
+        ("Nemotron-Cascade-2-30B-A3B-Q4_K_M",
+         Path(r"D:\repos\ik_llama.cpp\models\nvidia_Nemotron-Cascade-2-30B-A3B-Q4_K_M.gguf"),
+         "main", ["-ngl", "8", "--n-cpu-moe", "99",
+                   "-ctk", "q4_0", "-ctv", "q8_0"]),
 # Ornith-1.0-35B-A3B-IQ3_K_R4-imat removed 2026-07-11: redundant duplicate of the
         # entry above using a locally-generated imatrix (430 entries/129 chunks) vs the
         # upstream author's imatrix (510 entries/1608 chunks) already used by the kept file.
