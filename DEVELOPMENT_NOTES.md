@@ -1,5 +1,5 @@
 # Note di Sviluppo e Apprendimenti - Repository Llama & Benchmarks
-*Ultimo aggiornamento: 2026-07-14*
+*Ultimo aggiornamento: 2026-07-20*
 
 Questo documento raccoglie la struttura dei repository, gli apprendimenti derivanti dagli aggiornamenti, lo stato dei benchmark e le impostazioni di sistema relative al marketing automatizzato per evitare perdite di tempo in futuro.
 
@@ -269,4 +269,30 @@ Zero regressioni rispetto ai baseline storici (Ornith-imat 50/51 = fail task3 gi
 
 ### Prossime azioni (quando richieste)
 Per merge controllati di `origin/main` in `ik_llama.cpp`, seguire procedura sezione 7 (stash → merge → stash pop → rebuild → golden-check). Per mirror upstream, `git pull --ff-only origin <branch>` è sicuro se dietro.
+
+---
+
+## 9. Aggiornamento repo collegati (20 Luglio 2026)
+
+### Azioni applicate
+| Repo | Prima | Azione | Dopo |
+|---|---|---|---|
+| `llama` | 5 dietro | `pull --ff-only origin master` | aggiornato, 11 file (+177/-94) |
+| `llama_mtp` | allineato | nessuna | invariato |
+| `llama_indras` | allineato | nessuna | invariato |
+| `ik-llama-bench` | allineato, worktree sporco (script/risultati locali) | nessuna | invariato |
+| `trading-algo` | 13 avanti (non dietro), worktree sporco (`state/`) | nessuna | invariato |
+| `ik_llama.cpp` | 7 dietro / 74 avanti (branch traccia `hedoluna/main`, fork personale) | stash (`leaderboard.html` + `SESSION_NOTES_2026_07_16_bonsai_download.md`) → `merge origin/main --no-edit` → stash pop → fix build → rebuild → golden-check | `4e3108aa`, 0 dietro |
+
+### Merge `ik_llama.cpp` — 7 commit da `origin/main` (ikawrakow)
+Tocca kernel CUDA/Metal: `perplexity.cpp` (fix overflow int buffer grandi ctx×vocab), MROPE/IMROPE legacy-batch decode, DSA indexer in kv/slot serializer, race CUDA in indexer topk, `ggml-metal` ROPE_MULTI, routing P100 (sm_60) decode flash-attn a kernel fp32 vec.
+
+### Bug rebuild: `CC_PASCAL` reintrodotto (ricorrenza del bug sez.5/02-Lug)
+Il primo rebuild post-merge falliva su `fattn.cu(102)` / `fattn.cu(204)`: `identifier "CC_PASCAL" is undefined`. **Nota importante**: il primo `cmake --build ... > log 2>&1; echo EXIT:$?` ha riportato exit 0 nella notifica del tool, ma il log conteneva `MSB3721`/errori reali — **controllare sempre il contenuto del log, non solo l'exit code riportato** (stesso gotcha di sez.7, variante nuova: qui l'exit code stesso era fuorviante, non solo `| tail`).
+- **Causa**: il fix storico (sez.5) rinomina `CC_PASCAL` → `GGML_CUDA_CC_PASCAL` in `common.cuh`/`convert.cu`/`mmq_id_common.cuh` per evitare la collisione con la macro Windows SDK `CC_PASCAL` (calling convention, espansa a `600`). Il nuovo codice P100 merged in `fattn.cu` (righe 102, 204) usava il nome grezzo `CC_PASCAL`, non essendo a conoscenza del rename locale-only (upstream non ha questo problema, è specifico Windows/MSVC).
+- **Fix**: rinominate le 2 occorrenze in `fattn.cu` a `GGML_CUDA_CC_PASCAL`. Rebuild pulito, zero errori.
+- **Da ricordare per merge futuri**: qualunque nuovo file `.cu` che referenzia `CC_PASCAL` va controllato/rinominato — il rename non è upstream-aware e si ripresenta a ogni merge che tocca `fattn*.cu`.
+
+### Golden-check (`D:\repos\ik-llama-bench\scripts\golden_check_2026_07_20.ps1`)
+Stessi 2 job CUDA-critici del 07-07 (`qwen36-iq3kr4-daily`, `qwen36-opus-distill-r4`, deadline cold-load 8 min): **3/3 gate pass ciascuno** (prime/arith/json), zero regressioni. VRAM rilasciata correttamente a fine check (nessun `llama-server.exe` orfano).
 

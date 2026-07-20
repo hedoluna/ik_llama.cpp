@@ -99,7 +99,7 @@ void ggml_cuda_flash_attn_ext(ggml_backend_cuda_context & ctx, ggml_tensor * dst
                 // P100 (sm_60/CC_PASCAL): the fp16 vec kernel accumulates the online-softmax
                 // denominator and the P*V product in fp16, flipping ~3-4% of decode top-1 tokens
                 // vs fp32 (llama.cpp#25593). Decode is bandwidth-bound on P100 so vec_f32 is free.
-                if (cc == CC_PASCAL && Q->ne[1] <= 8) {  // decode only (batch<=8); D=256 prefill stays vec_f16
+                if (cc == GGML_CUDA_CC_PASCAL && Q->ne[1] <= 8) {  // decode only (batch<=8); D=256 prefill stays vec_f16
                     ggml_cuda_flash_attn_ext_vec_f32(ctx, dst);
                 } else {
                     ggml_cuda_flash_attn_ext_vec_f16(ctx, dst);
@@ -201,7 +201,7 @@ bool ggml_cuda_fattn_is_supported(ggml_backend_cuda_context & ctx, const ggml_te
         }
         if (precision == GGML_PREC_DEFAULT) {
             if (Q->ne[1] <= 8 || Q->ne[0] == 256) {
-                if (cc == CC_PASCAL && Q->ne[1] <= 8) {  // decode only (batch<=8); D=256 prefill stays vec_f16
+                if (cc == GGML_CUDA_CC_PASCAL && Q->ne[1] <= 8) {  // decode only (batch<=8); D=256 prefill stays vec_f16
                     return ggml_cuda_fattn_vec_f32_is_supported(ctx, dst);
                 }
                 return ggml_cuda_fattn_vec_f16_is_supported(ctx, dst);
