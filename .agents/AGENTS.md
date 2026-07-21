@@ -52,7 +52,6 @@ cmake --build build --config Release -j
 ## 4. Evidenze Critiche dai Test Logici e di Stress
 
 * **Importanza del tuning Imatrix**: La quantizzazione con calcolo imatrix (`Ornith-1.0-35B-A3B-IQ3_K_R4-imat`) supera tutti e 4 gli stress test, mentre la versione base non-imatrix (`Ornith-1.0-35B-A3B-IQ3_K_R4`) fallisce sistematicamente il test di Tool-Calling (allucinando chiamate API parziali). Il tuning imatrix è **essenziale** per compiti di agenti ed esecuzioni complesse.
-* **Scelta del Co-Pilota Leggero (1.5B)**: Il modello `Qwen2.5-Coder-1.5B-Q4_K_M` si dimostra incredibilmente solido, ottenendo **16/17** nel test avanzato e **4/4** negli stress test con i tempi di risposta più veloci. Da preferire per il coding veloce locale.
 * **Limiti dei Modelli Minori sotto Pressione Context**: Modelli come `Yi-Coder-1.5B-Chat` tendono a fallire l'estrazione di istruzioni complesse da ampi contesti (16K commenti), denotando problemi di "needle-in-a-haystack" tipici dei pesi inferiori a 3B.
 * **Wrapper OMP locale (`oml`)**: Creato il wrapper `oml.bat` per usare l'agente `omp` con modelli locali. Mappa gli stessi alias di OpenCode (`big`, `ornith`, `fast`, etc.) ed inoltra qualsiasi argomento aggiuntivo o flag (es. `--continue`, `--auto-approve`, `--thinking` o prompt diretti) direttamente all'agente `omp` (esposto tramite il provider locale `lm-studio` a 8292/8291).
 ---
