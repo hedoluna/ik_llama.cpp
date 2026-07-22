@@ -154,7 +154,7 @@ git add -A && git commit -m "..." && git push
 
 ---
 
-## 7. Benchmark Ralph (Suite v4, v5, FFT) & Raccomandazioni Modelli (2026-07)
+## 7. Benchmark Ralph (Suite v4, v5, v6, FFT) & Raccomandazioni Modelli (2026-07)
 
 I test eseguiti sotto `D:\repos\ralph` su hardware locale (RTX A2000 6 GB / Ryzen 9 5950X / 128 GB RAM) con server `ik_llama.cpp` tracciano i limiti e i punti di forza dei modelli per compiti di agenti:
 
@@ -163,7 +163,9 @@ I test eseguiti sotto `D:\repos\ralph` su hardware locale (RTX A2000 6 GB / Ryze
    - Miglior modello: **`phi-4 14B Q4_K_M`** ottiene **9/9** (l'unico ad aver superato la logica complessa di refactoring GildedRose Conjured).
 2. **Suite v5 (8 test su stack TypeScript / JavaScript moderno)**:
    - Modelli come `Qwen3.6-35B-A3B (heretic Q6_K)` e `Q4_K_M` ottengono **7/8**, dimostrandosi eccellenti su pattern TS/React/Zod/Drizzle.
-3. **Suite FFT (4 task di dominio algoritmico/matematico)**:
+3. **Suite v6 (8 test reali & agentici con DeepEval)**:
+   - **`Ornith-1.0-35B-A3B IQ3_K_R4`**: **8/8 PASSED (100%)** via `pytest` + `deepeval` (`test_v6_deepeval_full.py`), superando validazioni sintattiche ed esecutive su qui-now manifest, backoff network, syntax gate, idempotenza SQLite, Zod discriminated union, rate-limiter, JWKS e DAG toposort.
+4. **Suite FFT (4 task di dominio algoritmico/matematico)**:
    - **`qwen3.5-4b Q4_K_M`**: Miglior rapporto qualità/dimensioni (4/4 superati in 18.6s, modello da 2.7 GB).
    - **`Qwen3.6-35B-A3B IQ3_K_R4`**: Miglior MoE 35B per velocità (4/4 superati in 24.8s).
 
@@ -172,7 +174,8 @@ I test eseguiti sotto `D:\repos\ralph` su hardware locale (RTX A2000 6 GB / Ryze
 | Sfondo del Task / Workload | Modello Consigliato | Motivazione / Benchmark |
 |---|---|---|
 | **Sviluppo TypeScript quotidiano e bilanciato** | `Qwen3.6-35B-A3B (heretic Q6_K o Q5_K_M)` | **14/17** v4+v5, decode a ~25 t/s |
-| **Sviluppo rapido / Co-pilota ad alta velocità** | `Qwen3.6-35B-A3B (IQ3_K_R4)` o `Qwen2.5-Coder-1.5B` | Decode fino a **47–115 t/s**, 4/4 stress test |
+| **Sviluppo rapido / Co-pilota ad alta velocità** | `Qwen3.6-35B-A3B (IQ3_K_R4)` o `Qwen2.5-Coder-1.5B` | Decode fino a **47–115 t/s**, 8/8 v6 DeepEval |
 | **Refactoring critico o regole logiche complesse** | `phi-4 14B Q4_K_M` | **9/9** su v4, infallibile sulla logica complessa |
 | **Task algoritmici / FFT leggeri** | `qwen3.5-4b Q4_K_M` | **4/4** in 18.6s (2.7 GB RAM) |
+
 
