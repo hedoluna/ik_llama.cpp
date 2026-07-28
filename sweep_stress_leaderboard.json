@@ -320,5 +320,125 @@
       "time": 23.37
     },
     "timestamp": "2026-07-29 00:01:15"
+  },
+  {
+    "label": "daily-Qwen3.6-35B-A3B-IQ3_K_R4",
+    "concurrency": {
+      "passed": true,
+      "details": "Passed concurrency stress test.",
+      "time": 6.72
+    },
+    "self_correction": {
+      "passed": true,
+      "tries": 1,
+      "time": 1.47
+    },
+    "tool_calling": {
+      "passed": true,
+      "details": "Correct tool call sequence generated.",
+      "time": 2.78
+    },
+    "kv_cache": {
+      "passed": true,
+      "time": 28.5
+    },
+    "timestamp": "2026-07-29 00:44:06",
+    "note": "tool_calling test now includes system-prompt hint fix (2026-07-29)"
+  },
+  {
+    "label": "Ornith-1.0-9B-Q4_K_M",
+    "concurrency": {
+      "passed": true,
+      "details": "Passed concurrency stress test.",
+      "time": 8.51
+    },
+    "self_correction": {
+      "passed": true,
+      "tries": 1,
+      "time": 2.39
+    },
+    "tool_calling": {
+      "passed": true,
+      "details": "Correct tool call sequence generated.",
+      "time": 4.49
+    },
+    "kv_cache": {
+      "passed": true,
+      "time": 27.86
+    },
+    "timestamp": "2026-07-29 00:44:53",
+    "note": "tool_calling test now includes system-prompt hint fix (2026-07-29)"
+  },
+  {
+    "label": "Ornith-1.0-35B-A3B-IQ3_K_R4",
+    "concurrency": {
+      "passed": true,
+      "details": "Passed concurrency stress test.",
+      "time": 3.91
+    },
+    "self_correction": {
+      "passed": true,
+      "tries": 1,
+      "time": 1.24
+    },
+    "tool_calling": {
+      "passed": true,
+      "details": "Correct tool call sequence generated.",
+      "time": 2.77
+    },
+    "kv_cache": {
+      "passed": true,
+      "time": 27.05
+    },
+    "timestamp": "2026-07-29 00:45:34",
+    "note": "tool_calling test now includes system-prompt hint fix (2026-07-29)"
+  },
+  {
+    "label": "Qwen2.5-Coder-1.5B-Q4_K_M",
+    "concurrency": {
+      "passed": true,
+      "details": "Passed concurrency stress test.",
+      "time": 1.92
+    },
+    "self_correction": {
+      "passed": false,
+      "tries": 3,
+      "time": 8.12
+    },
+    "tool_calling": {
+      "passed": true,
+      "details": "Correct tool call sequence generated.",
+      "time": 0.89
+    },
+    "kv_cache": {
+      "passed": true,
+      "time": 2.25
+    },
+    "timestamp": "2026-07-29 00:45:50",
+    "note": "tool_calling test now includes system-prompt hint fix (2026-07-29)"
+  },
+  {
+    "label": "Mellum2-12B-A2.5B-Instruct-Q4_K_M",
+    "concurrency": {
+      "passed": true,
+      "details": "Passed concurrency stress test.",
+      "time": 3.99
+    },
+    "self_correction": {
+      "passed": true,
+      "tries": 1,
+      "time": 1.76
+    },
+    "tool_calling": {
+      "passed": true,
+      "details": "Correct tool call sequence generated.",
+      "time": 4.76
+    },
+    "kv_cache": {
+      "passed": true,
+      "time": 23.43
+    },
+    "timestamp": "2026-07-29 00:46:29",
+    "note": "tool_calling test now includes system-prompt hint fix (2026-07-29)"
   }
 ]

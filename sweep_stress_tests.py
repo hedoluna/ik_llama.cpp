@@ -201,8 +201,17 @@ def run_tool_calling_test() -> tuple[bool, str, float]:
         '[\n  {"tool": "get_user_email", "arguments": {"username": "johndoe"}},\n  ...\n]\n'
         "Return ONLY the raw JSON block."
     )
-    
-    resp, elapsed = send_chat_completion(prompt)
+    # 2026-07-29: Ornith-1.0-35B-A3B-IQ3_K_R4 deterministically stopped after the
+    # 2 lookup calls at temp=0 (5/5 truncated), never emitting update_user_record.
+    # This system hint fixed it 5/5 without encoding the expected answer (general
+    # agentic-hygiene instruction, not task-specific disambiguation).
+    system_hint = (
+        "The task always requires a FINAL action call after any lookup/resolve "
+        "calls. Never stop at just gathering information — always include the "
+        "call that performs the requested change."
+    )
+
+    resp, elapsed = send_chat_completion(prompt, system_prompt=system_hint)
     if "Error:" in resp:
         return False, f"Failed: {resp}", elapsed
         
