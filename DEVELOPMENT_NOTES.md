@@ -1,5 +1,5 @@
 # Note di Sviluppo e Apprendimenti - Repository Llama & Benchmarks
-*Ultimo aggiornamento: 2026-07-20*
+*Ultimo aggiornamento: 2026-07-28*
 
 Questo documento raccoglie la struttura dei repository, gli apprendimenti derivanti dagli aggiornamenti, lo stato dei benchmark e le impostazioni di sistema relative al marketing automatizzato per evitare perdite di tempo in futuro.
 
@@ -295,4 +295,27 @@ Il primo rebuild post-merge falliva su `fattn.cu(102)` / `fattn.cu(204)`: `ident
 
 ### Golden-check (`D:\repos\ik-llama-bench\scripts\golden_check_2026_07_20.ps1`)
 Stessi 2 job CUDA-critici del 07-07 (`qwen36-iq3kr4-daily`, `qwen36-opus-distill-r4`, deadline cold-load 8 min): **3/3 gate pass ciascuno** (prime/arith/json), zero regressioni. VRAM rilasciata correttamente a fine check (nessun `llama-server.exe` orfano).
+
+---
+
+## 10. Aggiornamento repo collegati (28 Luglio 2026)
+
+### Azioni applicate
+| Repo | Prima | Azione | Dopo |
+|---|---|---|---|
+| `llama` | allineato | nessuna | invariato |
+| `llama_mtp` | allineato | nessuna | invariato |
+| `llama_indras` | allineato | nessuna | invariato |
+| `ik-llama-bench` | allineato, worktree sporco (dati locali) | nessuna | invariato |
+| `trading-algo` | allineato, worktree sporco (`.wolf`) | nessuna | invariato |
+| `ik_llama.cpp` | 17 dietro / 83 avanti vs `origin/main`, worktree pulito (a parte `CLAUDE.md` locale non correlato + `.rtk/`/`.wolf/` non tracciati) | conferma utente → `git merge origin/main --no-edit` (zero conflitti) → reconfigure+rebuild CUDA → golden-check | `2a8b9a1e`, 0 dietro |
+
+### Merge `ik_llama.cpp` — 17 commit da `origin/main` (ikawrakow)
+Il più corposo dei merge recenti (82 file, +7974/-555): DS4 refactoring/optimizations (più round), `MXFP4_R8`, nuovo op `GGML_OP_LATENT_ATTN` per openpangu (`ggml-cuda/latent_attn.cu` nuovo, 698 righe), supporto architettura **DeepSeek-V4/DSv4** (`src/llama-dsv4.cpp` nuovo, 1095 righe + `build_deepseek4.cpp` nuovo, 1486 righe + template jinja), fix scratch sizing q8_1 `indexer_topk.cu` su CUDA, fix conteggio token draft MTP, fix out-of-bounds logits read quando il vocab non ha newline, endpoint `/models`+`/responses`, revert di un cambio CUDA `concat` introdotto e poi rollback nello stesso batch (#2179→#2200).
+
+### Rebuild — nessuna recidiva `CC_PASCAL`
+A differenza del merge 07-20, questo giro **non tocca** `fattn*.cu`/`common.cuh` (solo file nuovi: `ds4_comp.cu`, `latent_attn.cu`, `dsa_attn.cu`, `indexer_topk.cu`, `sinkhorn.cu`, `unary.cu`) → nessuna collisione con la macro Windows SDK `CC_PASCAL`. Reconfigure esplicito (`cmake -B build -S .`, stesso comando di sez.7) eseguito comunque prima del build per i nuovi `.cu` (nessun `CONFIGURE_DEPENDS` nel GLOB, gotcha noto). Build pulito, solo warning MSVC benigni (`C4267`/`C4101`), `llama-server.exe` collegato correttamente.
+
+### Golden-check (`D:\repos\ik-llama-bench\scripts\golden_check_2026_07_28.ps1`)
+Stessi 2 job CUDA-critici (`qwen36-iq3kr4-daily`, `qwen36-opus-distill-r4`): **3/3 gate pass ciascuno** (prime/arith/json), zero regressioni. Nessun `llama-server.exe` orfano a fine check.
 
