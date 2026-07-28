@@ -11,9 +11,9 @@ TESTING: Qwen2.5-Coder-1.5B-Q4_K_M
 ============================================================
   Warm-up... ok (0.1s)
 
-  [Algoritmi & Strutture Dati] Binary Search... [PASS] (0.8s)
+  [Algoritmi & Strutture Dati] Binary Search... [PASS] (0.9s)
 
-  [Algoritmi & Strutture Dati] QuickSort... [PASS] (0.8s)
+  [Algoritmi & Strutture Dati] QuickSort... [PASS] (0.9s)
 
   [Algoritmi & Strutture Dati] LRU Cache... [PASS] (1.5s)
 
@@ -23,33 +23,33 @@ TESTING: Qwen2.5-Coder-1.5B-Q4_K_M
 
   [Algoritmi Genetici] Bit-Flip Mutation... [PASS] (0.7s)
 
-  [Algoritmi Genetici] Tournament Selection... [PASS] (0.5s)
+  [Algoritmi Genetici] Tournament Selection... [PASS] (1.2s)
 
   [Machine Learning] Min-Max Normalization... [PASS] (0.6s)
 
   [Machine Learning] Euclidean Distance... [PASS] (0.4s)
 
-  [Machine Learning] Linear Regression (Gradient Descent)... [PASS] (1.2s)
+  [Machine Learning] Linear Regression (Gradient Descent)... [FAIL] 0/2 (1.1s)
 
-  [Machine Learning] K-Means Single Step... [FAIL] 0/1 (1.1s)
+  [Machine Learning] K-Means Single Step... [FAIL] 0/1 (3.0s)
 
-  [Matematica & Scientifico] Matrix Multiplication... [PASS] (1.2s)
+  [Matematica & Scientifico] Matrix Multiplication... [PASS] (0.8s)
 
   [Matematica & Scientifico] Newton-Raphson Square Root... [PASS] (0.7s)
 
   [Matematica & Scientifico] Sieve of Eratosthenes... [PASS] (1.0s)
 
-  [Design Patterns] Singleton Pattern... [PASS] (0.6s)
+  [Design Patterns] Singleton Pattern... [PASS] (1.4s)
 
   [Design Patterns] Factory Pattern... [PASS] (0.9s)
 
-  [Design Patterns] Observer Pattern... A received: Hello
-B received: Hello
-B received: World
-[PASS] (1.8s)
+  [Design Patterns] Observer Pattern... A received message: Hello
+B received message: Hello
+B received message: World
+[PASS] (1.2s)
 
-  PROFILO: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
-  Score: 16/17
+  PROFILO: Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns
+  Score: 15/17
 
 ============================================================
 PROFILI MODELLI
@@ -256,12 +256,12 @@ C:/Users/orlan/.cache/lm-studio/models/lmstudio-community/gemma-3-4B-it-qat-GGUF
     Design Patterns: [##########] 3/3
 
 Qwen2.5-Coder-1.5B-Q4_K_M:
-  Score: 16/17
-  Tempo: 14.55s
-  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+  Score: 15/17
+  Tempo: 17.06s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Matematica & Scientifico, Design Patterns
     Algoritmi & Strutture Dati: [##########] 3/3
     Algoritmi Genetici: [##########] 4/4
-    Machine Learning: [#######---] 3/4
+    Machine Learning: [#####-----] 2/4
     Matematica & Scientifico: [##########] 3/3
     Design Patterns: [##########] 3/3
 
@@ -617,11 +617,11 @@ lfm-coder:
 
 daily-Qwen3.6-35B-A3B-IQ3_K_R4:
   Score: 16/17
-  Tempo: 59.45s
-  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
-    Algoritmi & Strutture Dati: [##########] 3/3
+  Tempo: 100.72s
+  Specializzazioni: Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [######----] 2/3
     Algoritmi Genetici: [##########] 4/4
-    Machine Learning: [#######---] 3/4
+    Machine Learning: [##########] 4/4
     Matematica & Scientifico: [##########] 3/3
     Design Patterns: [##########] 3/3
 
@@ -636,8 +636,18 @@ Ornith-1.0-35B-A3B-Q4_K_M:
     Design Patterns: [##########] 3/3
 
 Ornith-1.0-9B-Q4_K_M:
+  Score: 2/17
+  Tempo: 46.3s
+  Specializzazioni: Nessuna
+    Algoritmi & Strutture Dati: [######----] 2/3
+    Algoritmi Genetici: [----------] 0/4
+    Machine Learning: [----------] 0/4
+    Matematica & Scientifico: [----------] 0/3
+    Design Patterns: [----------] 0/3
+
+Ornith-1.0-35B-A3B-IQ3_K_R4:
   Score: 17/17
-  Tempo: 196.58s
+  Tempo: 52.51s
   Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
     Algoritmi & Strutture Dati: [##########] 3/3
     Algoritmi Genetici: [##########] 4/4
@@ -645,34 +655,24 @@ Ornith-1.0-9B-Q4_K_M:
     Matematica & Scientifico: [##########] 3/3
     Design Patterns: [##########] 3/3
 
-Ornith-1.0-35B-A3B-IQ3_K_R4:
-  Score: 14/17
-  Tempo: 570.4s
-  Specializzazioni: Algoritmi Genetici, Matematica & Scientifico, Design Patterns
-    Algoritmi & Strutture Dati: [######----] 2/3
-    Algoritmi Genetici: [##########] 4/4
-    Machine Learning: [#####-----] 2/4
+Ornith-1.0-35B-A3B-IQ3_K_R4-imat:
+  Score: 15/17
+  Tempo: 1338.93s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [#######---] 3/4
+    Machine Learning: [#######---] 3/4
     Matematica & Scientifico: [##########] 3/3
     Design Patterns: [##########] 3/3
 
-Ornith-1.0-35B-A3B-IQ3_K_R4-imat:
-  Score: 15/17
-  Tempo: 533.03s
-  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico
-    Algoritmi & Strutture Dati: [##########] 3/3
-    Algoritmi Genetici: [##########] 4/4
-    Machine Learning: [#######---] 3/4
-    Matematica & Scientifico: [##########] 3/3
-    Design Patterns: [######----] 2/3
-
 Yi-Coder-1.5B-Chat-Q4_K_M:
-  Score: 14/17
-  Tempo: 19.54s
-  Specializzazioni: Algoritmi Genetici, Machine Learning, Design Patterns
-    Algoritmi & Strutture Dati: [######----] 2/3
-    Algoritmi Genetici: [##########] 4/4
-    Machine Learning: [#######---] 3/4
-    Matematica & Scientifico: [######----] 2/3
+  Score: 7/17
+  Tempo: 47.48s
+  Specializzazioni: Algoritmi & Strutture Dati, Design Patterns
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [----------] 0/4
+    Machine Learning: [----------] 0/4
+    Matematica & Scientifico: [###-------] 1/3
     Design Patterns: [##########] 3/3
 
 Qwen2.5-Coder-32B-Instruct-IQ3_M:
@@ -696,13 +696,13 @@ DeepSeek-Coder-V2-Lite-Instruct-Q4_K_M:
     Design Patterns: [##########] 3/3
 
 Mellum2-12B-A2.5B-Instruct-Q4_K_M:
-  Score: 17/17
-  Tempo: 52.67s
-  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+  Score: 16/17
+  Tempo: 106.05s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Design Patterns
     Algoritmi & Strutture Dati: [##########] 3/3
     Algoritmi Genetici: [##########] 4/4
     Machine Learning: [##########] 4/4
-    Matematica & Scientifico: [##########] 3/3
+    Matematica & Scientifico: [######----] 2/3
     Design Patterns: [##########] 3/3
 
 Qwen-AgentWorld-35B-A3B-IQ4_XS:
@@ -724,6 +724,26 @@ Qwen-AgentWorld-35B-A3B-IQ4_K_R4:
     Machine Learning: [##########] 4/4
     Matematica & Scientifico: [##########] 3/3
     Design Patterns: [##########] 3/3
+
+GLM-4.7-Flash-IQ3_M:
+  Score: 15/17
+  Tempo: 181.12s
+  Specializzazioni: Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns
+    Algoritmi & Strutture Dati: [######----] 2/3
+    Algoritmi Genetici: [#######---] 3/4
+    Machine Learning: [##########] 4/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [##########] 3/3
+
+Qwen3-7B-Q4_K_M:
+  Score: 14/17
+  Tempo: 98.37s
+  Specializzazioni: Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico
+    Algoritmi & Strutture Dati: [##########] 3/3
+    Algoritmi Genetici: [##########] 4/4
+    Machine Learning: [##########] 4/4
+    Matematica & Scientifico: [##########] 3/3
+    Design Patterns: [----------] 0/3
 
 Risultati salvati in: D:\repos\ralph\local_ralph\advanced_benchmark_results.json
 
