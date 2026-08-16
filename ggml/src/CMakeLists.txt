@@ -180,6 +180,7 @@ if (GGML_IQK_MUL_MAT)
     message(STATUS "Using optimized iqk matrix multiplications")
     add_compile_definitions(GGML_USE_IQK_MULMAT)
     set(GGML_SOURCES_IQK_MM iqk/iqk_mul_mat.cpp
+                            iqk/iqk_kda.cpp
                             iqk/iqk_flash_attn.cpp
                             iqk/fa/iqk_fa_576_512.cpp
                             iqk/fa/iqk_fa_512_512.cpp
@@ -217,6 +218,10 @@ if (GGML_IQK_MUL_MAT)
     else()
         message(STATUS "Disabling IQK Flash Attention kernels")
     endif()
+endif()
+
+if (GGML_EXPERT_CHUNKING)
+    add_compile_definitions(GGML_EXPERT_CHUNKING)
 endif()
 
 if (GGML_CUDA)
@@ -1301,6 +1306,8 @@ add_library(ggml
             ggml-moe-prefetch.h
             ggml-quants.c
             ggml-quants.h
+            ggml-utils.h
+            ggml-impl.h
             ${GGML_SOURCES_CUDA}      ${GGML_HEADERS_CUDA}
             ${GGML_SOURCES_METAL}     ${GGML_HEADERS_METAL}
             ${GGML_SOURCES_RPC}       ${GGML_HEADERS_RPC}

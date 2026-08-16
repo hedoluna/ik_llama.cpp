@@ -243,11 +243,16 @@ struct llama_layer {
     llama_split_tensor split_ssm_wqkv_gate;
     llama_split_tensor split_ssm_in;
     llama_split_tensor split_ssm_conv1d;
+    llama_split_tensor split_ssm_conv1d_q;
+    llama_split_tensor split_ssm_conv1d_k;
+    llama_split_tensor split_ssm_conv1d_v;
     llama_split_tensor split_ssm_dt;
     llama_split_tensor split_ssm_a;
     llama_split_tensor split_ssm_beta_alpha;
     llama_split_tensor split_ssm_beta;
     llama_split_tensor split_ssm_alpha;
+    llama_split_tensor split_ssm_f_a;
+    llama_split_tensor split_ssm_g_a;
     llama_split_tensor split_ssm_norm;
     llama_split_tensor split_ssm_out;
 
@@ -354,9 +359,14 @@ struct llama_layer {
     struct ggml_tensor * ssm_beta_alpha = nullptr;
     struct ggml_tensor * ssm_alpha = nullptr;
     struct ggml_tensor * ssm_beta = nullptr;
+    struct ggml_tensor * ssm_f_a = nullptr;
+    struct ggml_tensor * ssm_g_a = nullptr;
 
     // mamba
     struct ggml_tensor * ssm_conv1d = nullptr;
+    struct ggml_tensor * ssm_conv1d_q = nullptr;
+    struct ggml_tensor * ssm_conv1d_k = nullptr;
+    struct ggml_tensor * ssm_conv1d_v = nullptr;
     struct ggml_tensor * ssm_a = nullptr;
     struct ggml_tensor * ssm_d = nullptr;
 
@@ -474,6 +484,10 @@ struct llama_model {
     struct ggml_tensor * dflash_fc = nullptr;
     struct ggml_tensor * dflash_hidden_norm = nullptr;
     std::vector<struct ggml_tensor *> dflash_aux_hidden_norms;
+    struct ggml_tensor * dspark_markov_w1 = nullptr;
+    struct ggml_tensor * dspark_markov_w2 = nullptr;
+    struct ggml_tensor * dspark_conf_proj = nullptr;
+    struct ggml_tensor * dspark_conf_proj_b = nullptr;
 
     struct ggml_tensor * output_norm;
     struct ggml_tensor * output_norm_b;
@@ -493,6 +507,11 @@ struct llama_model {
 
     std::unique_ptr<ggml_tensor> output_mtp_ptr;
 
+    // Device-local DFlash IO copies for cross-buffer sharing.
+    std::unique_ptr<ggml_tensor> dflash_tok_embd_ptr;
+    std::unique_ptr<ggml_tensor> dflash_output_ptr;
+    std::unique_ptr<ggml_tensor> dflash_output_mtp_ptr;
+
     llama_split_tensor split_output;
     llama_split_tensor split_output_norm;
 
@@ -504,6 +523,7 @@ struct llama_model {
     int n_gpu_layers;
 
     bool mtp; // use mtp if is supported by the Model
+    bool swa_compress = false; // value the cache-size fit was computed with
 
     std::vector<rpc_device> rpc_servers;
     std::vector<int32_t> devices;
@@ -571,13 +591,26 @@ struct llama_model {
     }
 
     bool is_mla_model() const {
-        return arch == LLM_ARCH_DEEPSEEK2 || arch == LLM_ARCH_GLM_DSA || arch == LLM_ARCH_MISTRAL4;
+        return arch == LLM_ARCH_DEEPSEEK2 || arch == LLM_ARCH_GLM_DSA || arch == LLM_ARCH_MISTRAL4 || arch == LLM_ARCH_BAILINGMOE3;
+    }
+
+    float swiglu_limit(uint32_t il, bool shared) const {
+        if (arch != LLM_ARCH_STEP35 && arch != LLM_ARCH_BAILINGMOE3 && arch != LLM_ARCH_DEEPSEEK4) {
+            return 0.0f;
+        }
+        return shared ? hparams.swiglu_limits_shared[il] : hparams.swiglu_limits[il];
+    }
+
+    // a compacted sliding-window cache needs the graph to build its KQ mask over the compacted
+    // layout, and the compacted mask keys on position alone, so it requires a single sequence
+    bool supports_swa_compress() const {
+        return arch == LLM_ARCH_OPENPANGU || arch == LLM_ARCH_DEEPSEEK4 || arch == LLM_ARCH_LAGUNA;
     }
 
     static inline int hadamard_size(int head_size) {
         if ((head_size & ~(head_size - 1)) == head_size) return head_size;
         // Note: we do not include 32 as an option because the CUDA Hadamard implementation
-        //       does not hcurrently andle a block size of 32.
+        //       does not currently handle a block size of 32.
         for (int i = 512; i >= 64; i >>= 1) {
             if (head_size % i == 0) return i;
         }
@@ -594,7 +627,8 @@ struct llama_model {
         return hadamard_size(hparams.n_embd_head_v(il));
     }
 
-    size_t cache_size(int il, ggml_type type_k, ggml_type type_v, ggml_type idx_type_k, uint32_t kv_size, int mla_attn, int n_seq_max, bool flash_attn) const;
+    size_t cache_size(int il, ggml_type type_k, ggml_type type_v, ggml_type idx_type_k, uint32_t kv_size, int mla_attn, int n_seq_max, bool flash_attn,
+                      bool swa_compress = false, uint32_t n_ubatch = 0) const;
 
     void set_tensor_overrides(const llama_model_params& params);
 

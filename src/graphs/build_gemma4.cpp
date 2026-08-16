@@ -541,19 +541,12 @@ ggml_cgraph * llm_build_context::build_gemma4_mtp() {
 
     GGML_ASSERT(n_backbone > 0);
 
-    ggml_tensor * hidden_state = ggml_new_tensor_2d(ctx0, GGML_TYPE_F32, n_backbone, n_tokens);
-    ggml_set_name(hidden_state, "inp_mtp_states");
-    ggml_set_input(hidden_state);
-    lctx.inp_mtp_states = hidden_state;
+    ggml_tensor * hidden_state = build_inp_mtp_states(n_backbone);
 
     if (!has_target_ctx || !batch.token) {
         ggml_tensor * cur = ggml_view_2d(ctx0, hidden_state, n_embd, n_tokens,
                 ggml_row_size(hidden_state->type, n_backbone), 0);
         cb(cur, "mtp_init_hidden_view", -1);
-
-        ggml_tensor * mtp_embd = ggml_dup(ctx0, hidden_state);
-        cb(mtp_embd, "result_mtp_embd", -1);
-        ggml_build_forward_expand(gf, mtp_embd);
 
         ggml_tensor * logits = build_output(lctx, ctx0, cur, model.output, model.output_norm, cb);
         cb(logits, "result_output", -1);
@@ -679,7 +672,7 @@ ggml_cgraph * llm_build_context::build_gemma4_mtp() {
                 GGML_ASSERT(model.layers[il].attn_q_norm && model.layers[il].attn_q_norm->extra);
                 Qcur = do_split_norm(ctx0, Qcur, model.layers[il].attn_q_norm, hparams, cb, id, il_cb, false);
                 cb(Qcur, "Qcur_normed", il_cb);
-                auto freq_factors = is_sliding ? nullptr : ((const ggml_split_tensor_t *)model.layers[il].rope_freqs->extra)->splits[id];
+                auto freq_factors = is_sliding || !model.layers[il].rope_freqs ? nullptr : ((const ggml_split_tensor_t *)model.layers[il].rope_freqs->extra)->splits[id];
                 Qcur = ggml_rope_ext(ctx0, Qcur, inp_pos, freq_factors, n_rot_l, rope_type, n_ctx_orig, freq_base_l, freq_scale_l,
                         ext_factor, attn_factor, beta_fast, beta_slow);
                 cb(Qcur, "Qcur_rope", il_cb);
@@ -903,7 +896,7 @@ ggml_cgraph * llm_build_context::build_gemma4() {
     inpL = llm_build_inp_embd(ctx0, lctx, hparams, batch, model.tok_embd, cb);
     cb(inpL, "tok_embd", -1);
 
-    // important: do not normalize weights for raw embeddings input (i.e. encoded image emdeddings)
+    // important: do not normalize weights for raw embeddings input (i.e. encoded image embeddings)
     if (batch.token) {
         inpL = ggml_scale(ctx0, inpL, sqrtf(n_embd));
         cb(inpL, "inp_scaled", -1);
@@ -1125,12 +1118,6 @@ ggml_cgraph * llm_build_context::build_gemma4() {
     }
 
     cur = inpL;
-
-    if (cparams.mtp) {
-        ggml_tensor * mtp_embd = ggml_dup(ctx0, cur);
-        cb(mtp_embd, "result_mtp_embd", -1);
-        ggml_build_forward_expand(gf, mtp_embd);
-    }
 
     cur = llm_build_norm(ctx0, cur, hparams, model.output_norm, NULL, LLM_NORM_RMS, cb, -1);
     cb(cur, "result_norm", -1);
