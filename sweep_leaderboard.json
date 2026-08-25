@@ -5873,5 +5873,71 @@
     "status": "ok",
     "tier": "quick-top5-2026-08-25",
     "timestamp": "2026-08-25 09:56:09"
+  },
+  {
+    "label": "Qwen2.5-Coder-1.5B-Q4_K_M",
+    "model_path": "F:\\01_Modelli_AI\\LLM_Models\\lm-studio\\models\\migarcoes\\Qwen-Qwen2.5-Coder-1.5B-Instruct\\Qwen-Qwen2.5-Coder-1.5B-Instruct-Q4_K_M.gguf",
+    "runtime": "ik",
+    "context_size": 16384,
+    "load_time": 18.72,
+    "bench_time": 28.34,
+    "passed": 51,
+    "total": 51,
+    "passed_of_51": 51,
+    "total_time_s": 27.69,
+    "valid": true,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 3.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 3.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 4.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 4.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 5.8
+      }
+    ],
+    "status": "ok",
+    "tier": 1,
+    "timestamp": "2026-08-25 16:52:36"
   }
 ]
