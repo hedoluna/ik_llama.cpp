@@ -5807,5 +5807,71 @@
     "status": "ok",
     "tier": "quick-top5-2026-08-25",
     "timestamp": "2026-08-25 09:51:31"
+  },
+  {
+    "label": "Mellum2-12B-A2.5B-Instruct-Q4_K_M",
+    "model_path": "D:\\repos\\ik_llama.cpp\\models\\Mellum2-12B-A2.5B-Instruct-Q4_K_M.gguf",
+    "runtime": "ik",
+    "context_size": 16384,
+    "load_time": 2.08,
+    "bench_time": 18.35,
+    "passed": 51,
+    "total": 51,
+    "passed_of_51": 51,
+    "total_time_s": 17.31,
+    "valid": true,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 2.0
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 2.5
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 1.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 2.3
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 2.7
+      }
+    ],
+    "status": "ok",
+    "tier": "quick-top5-2026-08-25",
+    "timestamp": "2026-08-25 09:56:09"
   }
 ]
