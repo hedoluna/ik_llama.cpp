@@ -328,3 +328,29 @@ Rieseguito il roster "top-5" storico (daily-Qwen3.6-35B, Ornith-9B, Ornith-35B-I
 1. **Mellum2-12B exec-trace 0/6 → ipotesi `--chat-template-kwargs enable_thinking:false` smentita**: A/B diretto con/senza flag = output **byte-identico** (2/6 entrambe le volte). Nessun leak `<think>` in nessuno dei due casi — i fail sono errori di tracing multi-step genuini (capability limit), non un bug di reasoning-suppression. Scoperto anche che l'exec-trace ha varianza run-to-run reale (0/6 ieri vs 2/6 oggi, stessi flag/item) — bench a campione piccolo (6 item), non giudicare da un solo run.
 2. **Ornith-35B-IQ3_K_R4 tool-calling FAIL → causa reale diversa dall'ipotesi iniziale, e RISOLTA**. Ipotesi iniziale ("ordine di risoluzione sbagliato") era **sbagliata**: il vero meccanismo, confermato a temp=0 (5/5 deterministico), è che il modello si ferma dopo le 2 chiamate di lookup (`get_user_email`+`search_user_database`) e non emette mai la chiamata finale `update_user_record` che esegue davvero l'azione richiesta. Fix: system-prompt hint generico ("la task richiede sempre una call finale d'azione dopo le call di lookup, non fermarsi al solo gathering") → **5/5 completo e corretto** a temp=0, verificato contro la logica reale dello scorer (non solo conteggio item). Applicato in modo permanente a `run_tool_calling_test()` in `sweep_stress_tests.py` (condiviso da tutti i modelli testati dalla suite) e ri-validato l'intera stress suite sui 5 modelli: **tool-calling ora 5/5 PASS** (era 4/5), zero regressioni sugli altri 3 criteri (concurrency/self-correction/kv-cache — il fail di Self-Correction su Qwen2.5-Coder-1.5B persiste, debolezza nota del modello 1.5B, non correlata al fix).
 
+## 11. Aggiornamento repo collegati (25 Agosto 2026)
+
+### Azioni applicate
+| Repo | Prima | Azione | Dopo |
+|---|---|---|---|
+| `llama` / `llama_mtp` / `llama_indras` / `ik-llama-bench` | allineati (tag-only diff) | nessuna | invariati |
+| `ik_llama.cpp` | 9 dietro vs `origin/main`, worktree pulito (a parte `.rtk/`/`.wolf/` non tracciati) | `git merge origin/main --no-edit` (zero conflitti) → rebuild CUDA → golden-check → push | `aed96eeb`, 0 dietro |
+
+### Merge `ik_llama.cpp` — 9 commit da `origin/main` (ikawrakow)
+41 file, +1480/-135. Contenuto: **CUDA graphs improvements** (#2316, ID univoco per grafo + confronto nodi più accurato → meno ricompilazioni spurie); **More principled CUDA DSA** (#2315, bind cublas handle allo stream corretto, fix correttezza attention); **IQ4_KS/IQ4_KT su Vulkan** (#2332) e **validati su RDNA3/HIP** (#2339, non rilevante per A2000 CUDA — solo backend secondari); **MTP Qwen3.5 standalone GGUF via `-md`** (#2328, fix loader per drafter predictor-only, prima falliva `tensor not found`); Adaptive-P sampler quality fixes (#2337); dspark drafting oltre block size (#2323). **Nessun nuovo modello/arch abilitato.**
+
+### Rebuild
+Nessuna recidiva `CC_PASCAL` (nessun file `fattn*.cu`/`common.cuh` toccato). Build pulito, solo warning MSVC benigni (`C4267`/`C4101`/`C4806`/`C4244`), `llama-server.exe` collegato correttamente (54 binari totali).
+
+### Golden-check
+`qwen36-iq3kr4-daily` (config Optuna daily-winner): **3/3 semantic PASS** (`check`) + **3/3 hash byte-identico** (`verify`) vs golden registrato 2026-05-21 (engine `ik@4b73de24`) → output invariato bit-per-bit nonostante ~30 commit di distanza. Push su `hedoluna/main` eseguito **dopo** verifica, non prima (`515f41c7..aed96eeb`).
+
+### Re-bench top-5 roster + leaderboard
+`leaderboard.html` era ferma al 2026-07-29 (quasi un mese). Ri-testato l'intero roster "top-5" storico sulla build post-merge: **5/5 invariati vs baseline**, zero regressioni (daily 51/51 già golden-checked, Ornith-9B 51/51, Ornith-35B-R4 50/51 trade-off noto dal 07-17, Coder-1.5B 51/51, Mellum2-12B 51/51).
+
+⭐ **2 scoperte operative**:
+1. `sweep_small_models.py --single <label>` **non persiste** in `sweep_leaderboard.json` (solo `--tier` lo fa) — side-bug: serve chiamare `ssm.run_one()` a mano e scrivere il risultato, altrimenti il re-bench si perde silenziosamente.
+2. **Mellum2-12B era assente da `TIERS`** nonostante fosse citato come parte del roster "top-5" da memoria dal 2026-06-07. Aggiunto permanentemente a tier 7 (config `--n-cpu-moe 12 --reasoning off --temp 0`) — commit `8913e90` su `ik-llama-bench-data`. Da ora rientra automaticamente nei `--tier 7` run.
+
+Commit `ik_llama.cpp`: `56dd5ad3` (leaderboard + 4/5 roster), `61d775f0` (Mellum2 + leaderboard finale). Push `hedoluna/main` aggiornato.
+
