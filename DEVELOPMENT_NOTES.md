@@ -373,3 +373,27 @@ Nessuna recidiva `CC_PASCAL`. Build pulito, solo warning MSVC benigni (`C4267`/`
 
 ### Golden-check
 `golden_check_2026_07_28.ps1`: `qwen36-iq3kr4-daily` e `qwen36-opus-distill-r4` **3/3 gate pass ciascuno** (prime/arith/json), zero regressioni.
+
+## 13. Indagine Qwen3.8-Flash-Next: supporto arch + tentativo di run locale (26 Agosto 2026)
+
+### Contesto
+Rilascio Qwen3.8-Flash-Next (blog `qwen.ai/blog?id=qwen3.8-flash-next`, 2026-08-26): MoE 125B totali / 6B attivi, 512 esperti (10 routed+1 shared), 262K ctx nativo (1M con YaRN), + 51B N-gram Embedding + 4B MTP. Arch: GDN (Gated DeltaNet) + QSA (Qwen Sparse Attention) + Gated Residual (4 branch) + N-gram Embedding. Preview ufficiale dell'architettura Qwen4.
+
+### Cosa ha funzionato
+1. **Verifica pre-download della fattibilità**: prima di scaricare 83GB, letta la README HF (`unsloth/Qwen3.8-Flash-Next-GGUF`) via `hf_fs` — dichiara esplicitamente "serve la nostra llama.cpp PR o Unsloth Desktop". Evitato uno scaricamento a vuoto verificando che ik_llama.cpp non ha l'arch registrata (grep su `llama-arch.cpp`/`convert_hf_to_gguf.py`, nessun hit `qwen3.8`/`flash_next`).
+2. **Audit del codebase ik_llama.cpp prima di assumere "non supportato"**: trovato che GDN (Gated DeltaNet, `llama-delta-net.cpp/.h` + `ggml-cuda/delta-net.cu`) e le fondamenta DSA/sparse-attention (`dsa_attn.cu`, `indexer_topk.cu`) **erano già presenti** da merge precedenti (DeepSeek-V3.2/V4, Qwen3-Next `build_qwen3next.cpp`). Solo N-gram Embedding e Gated Residual mancavano del tutto. Vedi [[reference_qwen38_flash_next_support_2026_08_26]].
+3. **Trovata la PR reale**: `ggml-org/llama.cpp#27742` implementa l'arch come `qwen4exp` (20 commit: hyper-connections, GDN, N-gram hash embedding, QSA, indexer cache). Fetch + `git worktree add` in `D:\repos\llama-qwen38-flash-next` (branch `pr-27742-qwen38-flash-next`), **senza toccare** `master` né il branch critico `zaya-pr` che condivide lo stesso DB Git.
+4. **Build della PR pulita**: `cmake -B build -DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=86 -DLLAMA_CURL=OFF` + build Release di `llama-cli`/`llama-server`/`llama-quantize` — exit 0, nessun conflitto.
+5. **Recupero dati parziali dopo un fallimento**: quando il download primario si è bloccato, il file `.incomplete` nella hf-cache (3.44GB già scaricati) è stato **copiato** come base `.part` per il resume invece di ripartire da zero — nessun byte sprecato.
+
+### Cosa NON ha funzionato
+1. **`hf_hub_download` (huggingface_hub) si è bloccato silenziosamente** sullo shard 2/3 (46.5GB): 0 byte scritti per 7+ minuti, nessun errore/retry in log, processo Python vivo con CPU alta (89s) ma nessun progresso reale — deadlock senza timeout-per-chunk. **Stesso pattern già noto per `curl` su Windows** (vedi [[project_huggingface_download_lesson_2026_07_16]]), ora confermato anche per la libreria `huggingface_hub` stessa — non è un problema specifico di curl, è un problema di rete/proxy Windows più generale su download HF grandi.
+2. Misurare il rate su una finestra troppo breve (8s) ha dato `rate=0` per rumore di campionamento — serve una finestra ≥15-20s per un rate affidabile.
+
+### Errori da non ripetere
+- **Non fidarsi di un processo Python "vivo" (CPU>0) come prova di progresso** — verificare sempre la dimensione file nel tempo, non solo lo stato del processo.
+- **Non usare `hf_hub_download`/`huggingface_hub` per singoli file >20GB su questa macchina senza un watchdog di timeout** — preferire da subito lo script robusto `urllib` + `Range` + retry + timeout-per-chunk (ora in `scripts/download_qwen38_flash_next_robust_2026_08_26.py`, riusabile come template al posto del vecchio `download_model_robust.py` mai ritrovato).
+- **Prima di un download multi-shard grande, salvare da subito i download intermedi con path/naming che permettano resume manuale** — il salvataggio ha funzionato solo perché la hf-cache teneva ancora il `.incomplete`; se fosse stato ripulito all'uscita del processo, i 3.44GB sarebbero andati persi.
+
+### Stato a fine sessione
+Build PR pronta (`D:\repos\llama-qwen38-flash-next\build\bin\Release\`). Download UD-IQ3_XXS (83GB, 3 shard) in corso con script robusto, shard 1/3 completo, shard 2/3 in resume da 3.44GB @ ~8 MB/s. Test di caricamento reale (`llama-server` con `--cpu-moe`) non ancora eseguito — prossimo passo a download completato.
