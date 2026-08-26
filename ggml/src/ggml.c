@@ -8846,8 +8846,9 @@ struct ggml_tensor * ggml_permute(
     //ggml_format_name(result, "%s (permuted)", a->name);
     ggml_format_name_fast(a->name, " (permuted)", 11, result->name);
 
-    int ne[GGML_MAX_DIMS];
-    int nb[GGML_MAX_DIMS];
+    // 64-bit: nb is size_t in ggml_tensor; a 32-bit int truncated any stride > 2 GiB.
+    int64_t ne[GGML_MAX_DIMS];
+    size_t  nb[GGML_MAX_DIMS];
 
     ne[axis0] = a->ne[0];
     ne[axis1] = a->ne[1];
@@ -24471,7 +24472,8 @@ static void ggml_compute_forward_hc_post_f32(
         const float * post_r = (const float *)((const char *)post->data);
         const float * comb_r = (const float *)((const char *)comb->data);
 
-        int nchunk = (ne0 + nth - 1)/nth;
+        // chunks are 64 elements wide (see `first` below); threads stride over chunks
+        int nchunk = (ne0 + 63)/64;
 
         for (int ic = ith; ic < nchunk; ic += nth) {
             int first = 64*ic;
