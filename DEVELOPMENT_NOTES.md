@@ -354,3 +354,22 @@ Nessuna recidiva `CC_PASCAL` (nessun file `fattn*.cu`/`common.cuh` toccato). Bui
 
 Commit `ik_llama.cpp`: `56dd5ad3` (leaderboard + 4/5 roster), `61d775f0` (Mellum2 + leaderboard finale). Push `hedoluna/main` aggiornato.
 
+
+## 12. Aggiornamento repo collegati (26 Agosto 2026)
+
+### Azioni applicate
+| Repo | Prima | Azione | Dopo |
+|---|---|---|---|
+| `llama` / `llama_mtp` | 2 dietro vs `origin/master`, puliti (solo artefatti build non tracciati) | `git pull --ff-only` | allineati, +341/-544 (37 file) |
+| `llama_indras` / `ik-llama-bench` / `trading-algo` | allineati (0/0) | nessuna | invariati (worktree sporco intatto su `ik-llama-bench`/`trading-algo`, dati locali) |
+| `llama-zaya` / `ralph` | branch critico / non-Git | nessuna | invariati |
+| `ik_llama.cpp` | 11 dietro / 96 avanti vs `origin/main`, worktree con `sweep_bench_*.txt`/`probabilities.txt`/`.rtk`/`.wolf` non correlati | conferma utente → stash → `git merge origin/main --no-edit` (zero conflitti) → rebuild CUDA → golden-check → stash pop | 0 dietro |
+
+### Merge `ik_llama.cpp` — 11 commit da `origin/main` (ikawrakow)
+43 file, +1425/-168. Contenuto principale: **Dflash 2 speculative decoding** (#2345, refactor consistente di `speculative-dflash-impl.h`/`speculative.cpp`, draft context come capacity contract #2341); fix **RPC crash GLM-5.2 (glm-dsa)** split su RPC (#2360); fix server: `finish_reason` per stop su token-limit (#2362), budget di generazione contato per token accettato (#2358), riuso prompt con `--reasoning-tokens none` (#2353), tool call multi-argomento su template taggati (#2351); `--log-file` ora cattura tutti i sink di log; fix conteggio chunk CPU `HC_POST` single-token (#2357); fix check MMQ quando il quant non lo supporta (#2356); Metal init `encode_async` (non rilevante, backend non maintained). **Nessun nuovo modello/arch abilitato**, nessuna entry `qwen3.8`/`flash_next` (vedi [[reference_qwen38_flash_next_support_2026_08_26]] in memoria — ricerca separata sul supporto Qwen3.8-Flash-Next).
+
+### Rebuild
+Nessuna recidiva `CC_PASCAL`. Build pulito, solo warning MSVC benigni (`C4267`/`C4101`/`C4244`), `llama-server.exe` collegato correttamente.
+
+### Golden-check
+`golden_check_2026_07_28.ps1`: `qwen36-iq3kr4-daily` e `qwen36-opus-distill-r4` **3/3 gate pass ciascuno** (prime/arith/json), zero regressioni.
