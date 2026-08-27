@@ -30,6 +30,9 @@ from pathlib import Path
 REPO = Path(r"D:\repos\ik_llama.cpp")
 IK_SERVER = REPO / "build" / "bin" / "Release" / "llama-server.exe"
 MAIN_SERVER = Path(r"D:\repos\llama_mtp\build\bin\Release\llama-server.exe")
+# arch qwen4exp (Qwen3.8-Flash-Next) needs the mainline PR #27742 build; ik_llama
+# rejects it ("unknown architecture 'qwen4exp'"). See project_qwen38_flash_next memory.
+PR_QWEN4EXP_SERVER = Path(r"D:\repos\llama-qwen38-flash-next\build\bin\Release\llama-server.exe")
 BENCH = Path(r"D:\repos\ralph\local_ralph\coding_benchmark.py")
 BENCH_ADV = Path(r"D:\repos\ralph\local_ralph\advanced_benchmark.py")
 EXEC_TRACE = Path(r"D:\repos\ik-llama-bench\sweep_bench_exec_trace.py")
@@ -181,6 +184,14 @@ TIERS = {
          "ik", ["-ngl", "95", "--n-cpu-moe", "30", "--reasoning", "off",
                 "-ctk", "q4_0", "-ctv", "q8_0", "-b", "1024", "-ub", "256",
                 "--chat-template-kwargs", '{"enable_thinking":false}']),
+        # Qwen3.8-Flash-Next (arch qwen4exp, Qwen4 preview): needs the PR #27742
+        # build (runtime "qwen4exp" -> PR_QWEN4EXP_SERVER). Tuned config from
+        # Optuna 2026-08-27: --cpu-moe -ngl 99, KV f16 forced, mmap ON. Bench
+        # 2026-08-27: coding 50/51 (71.7s), advanced 17/17. ~12 t/s, not a daily
+        # driver (3-4x slower than daily-winner). See project_qwen38_flash_next.
+        ("Qwen3.8-Flash-Next-UD-IQ3_XXS",
+         Path(r"D:\repos\ik_llama.cpp\models\Qwen3.8-Flash-Next-UD-IQ3_XXS\UD-IQ3_XXS\Qwen3.8-Flash-Next-UD-IQ3_XXS-00001-of-00003.gguf"),
+         "qwen4exp", ["--cpu-moe", "-ngl", "99"]),
         # 0/51 2026-07-20: reasoning-trap (content routed to reasoning, "Nessun
         # codice generato" on every task). NVIDIA docs confirm Nemotron defaults
         # reasoning-on via a "/no_think" SYSTEM-PROMPT directive, but llama-server
@@ -282,10 +293,28 @@ def start_server(label: str, model_path: Path, runtime: str, extra: list[str],
     if not model_path.exists():
         print(f"  [SKIP] missing model: {model_path}")
         return None
-    bin_path = IK_SERVER if runtime == "ik" else MAIN_SERVER
+    bin_path = {"ik": IK_SERVER, "qwen4exp": PR_QWEN4EXP_SERVER}.get(runtime, MAIN_SERVER)
     if not bin_path.exists():
         print(f"  [SKIP] missing server bin: {bin_path}")
         return None
+    if runtime == "qwen4exp":
+        # qwen4exp: KV must be f16 (assert qwen4exp.cpp:544), mmap must stay ON
+        # (51B N-gram table pages from SSD), -fit off (auto-fit mis-sizes this arch),
+        # -t 12 sweet spot on the 5950X. Optuna 2026-08-27 found flags otherwise flat.
+        cmd = [
+            str(bin_path), "--model", str(model_path),
+            "--host", HOST, "--port", str(PORT),
+            "--jinja", "-fit", "off", "-rea", "off",
+            "-c", str(ctx_size), "-t", "12",
+        ]
+        if not any(a in ("-ngl", "--n-gpu-layers") for a in extra):
+            cmd += ["-ngl", "99"]
+        cmd += extra
+        log_path = REPO / f"sweep_log_{label}.txt"
+        log_f = open(log_path, "w", encoding="utf-8")
+        proc = subprocess.Popen(cmd, stdout=log_f, stderr=subprocess.STDOUT,
+                                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP)
+        return proc
     cmd = [
         str(bin_path),
         "--model", str(model_path),

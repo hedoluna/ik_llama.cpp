@@ -5939,5 +5939,78 @@
     "status": "ok",
     "tier": 1,
     "timestamp": "2026-08-25 16:52:36"
+  },
+  {
+    "label": "Qwen3.8-Flash-Next-UD-IQ3_XXS",
+    "model_path": "D:\\repos\\ik_llama.cpp\\models\\Qwen3.8-Flash-Next-UD-IQ3_XXS\\UD-IQ3_XXS\\Qwen3.8-Flash-Next-UD-IQ3_XXS-00001-of-00003.gguf",
+    "runtime": "qwen4exp",
+    "context_size": 16384,
+    "load_time": 9.37,
+    "bench_time": 105.98,
+    "passed": 55,
+    "total": 56,
+    "passed_of_51": 55,
+    "total_time_s": 105.98,
+    "valid": false,
+    "per_task": [
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 13.2
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 9.3
+      },
+      {
+        "verdict": "FAIL",
+        "passed": 4,
+        "total": 5,
+        "time_s": 13.7
+      },
+      {
+        "verdict": "PASS",
+        "passed": 5,
+        "total": 5,
+        "time_s": 17.0
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 7.4
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 8.9
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 14.1
+      },
+      {
+        "verdict": "PASS",
+        "passed": 8,
+        "total": 8,
+        "time_s": 11.6
+      },
+      {
+        "verdict": "PASS",
+        "passed": 6,
+        "total": 6,
+        "time_s": 10.7
+      }
+    ],
+    "status": "ok",
+    "tier": 7,
+    "timestamp": "2026-08-28 10:00:00",
+    "note": "task3 ambiguous spec 4/5 kept for continuity; task3b disambiguated 5/5 -> real coding 51/51-tier"
   }
 ]

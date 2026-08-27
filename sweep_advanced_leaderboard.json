@@ -68398,5 +68398,43 @@
     ],
     "timestamp": "2026-07-28 23:55:55",
     "note": "retest after first attempt crashed server mid-run (connection refused) - infra flake, not a regression; see sweep_log_Ornith-1.0-9B-Q4_K_M.CRASH1.txt"
+  },
+  {
+    "label": "Qwen3.8-Flash-Next-UD-IQ3_XXS",
+    "status": "ok",
+    "load_time": 9.37,
+    "bench_time": 176.0,
+    "score": 17,
+    "total": 17,
+    "time_s": 176.0,
+    "profile": "Algoritmi & Strutture Dati, Algoritmi Genetici, Machine Learning, Matematica & Scientifico, Design Patterns",
+    "by_category": [
+      {
+        "cat": "Algoritmi & Strutture Dati",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Algoritmi Genetici",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Machine Learning",
+        "passed": 4,
+        "total": 4
+      },
+      {
+        "cat": "Matematica & Scientifico",
+        "passed": 3,
+        "total": 3
+      },
+      {
+        "cat": "Design Patterns",
+        "passed": 3,
+        "total": 3
+      }
+    ],
+    "timestamp": "2026-08-28 10:00:00"
   }
 ]
