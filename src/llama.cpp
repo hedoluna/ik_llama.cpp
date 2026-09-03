@@ -1156,7 +1156,6 @@ static bool llama_mtp_tail_uses_layer_cache(const llama_model & model) {
     return model.hparams.nextn_predict_layers > 0 &&
         (model.arch == LLM_ARCH_GLM_DSA ||
          model.arch == LLM_ARCH_QWEN35MOE ||
-         model.arch == LLM_ARCH_QWEN4EXP ||
          model.arch == LLM_ARCH_STEP35);
 }
 
@@ -1225,11 +1224,7 @@ static bool llama_kv_cache_init(
             cache.head_swa     = cache.sink_rows;
             cache.pos_base_swa = 0;
         } else {
-            if (model.supports_dflash_swa_compress()) {
-                LLAMA_LOG_INFO("%s: --swa-compress uses the DFlash custom cache, ordinary KV bookkeeping has no compactable layers\n", __func__);
-            } else {
-                LLAMA_LOG_WARN("%s: --swa-compress had no effect: no compactable sliding-window layers\n", __func__);
-            }
+            LLAMA_LOG_WARN("%s: --swa-compress had no effect: no compactable sliding-window layers\n", __func__);
         }
     }
 
@@ -2034,15 +2029,6 @@ bool llama_kv_cache::checkpoint_save(ggml_backend_sched_t sched) {
     ckpt.used_snapshot  = used;
 
     std::unordered_set<ggml_backend_t> backends_to_sync;
-    // a row with no resolvable backend is copied generically, outside any stream;
-    // drain queued work once so the copy cannot race an in-flight graph
-    bool sched_synced = false;
-    auto sync_sched_once = [&]() {
-        if (!sched_synced) {
-            ggml_backend_sched_synchronize(sched);
-            sched_synced = true;
-        }
-    };
 
     for (uint32_t il = 0; il < n_layer; ++il) {
         if (s_l[il] == nullptr) {
@@ -2054,28 +2040,18 @@ bool llama_kv_cache::checkpoint_save(ggml_backend_sched_t sched) {
             auto & shadow_split = ckpt.split_s_l_shadow[il];
             for (int d = 0; d < split_info->n_device; ++d) {
                 if (split_info->splits[d] && shadow_split[d]) {
+                    //ggml_backend_tensor_copy(split_info->splits[d], shadow_split[d]);
                     auto src_backend = ggml_backend_sched_get_tensor_backend(sched, split_info->splits[d]);
-                    if (src_backend == nullptr) {
-                        // a host-resident row (e.g. CUDA_Host) matches no backend's default
-                        // buffer type between graphs; the generic copy handles it
-                        sync_sched_once();
-                        ggml_backend_tensor_copy(split_info->splits[d], shadow_split[d]);
-                    } else {
-                        ggml_backend_tensor_copy_async(src_backend, src_backend, split_info->splits[d], shadow_split[d]);
-                        backends_to_sync.insert(src_backend);
-                    }
+                    ggml_backend_tensor_copy_async(src_backend, src_backend, split_info->splits[d], shadow_split[d]);
+                    backends_to_sync.insert(src_backend);
                 }
             }
         } else {
             GGML_ASSERT(ckpt.s_l_shadow[il] != nullptr);
             auto src_backend = ggml_backend_sched_get_tensor_backend(sched, s_l[il]);
-            if (src_backend == nullptr) {
-                sync_sched_once();
-                ggml_backend_tensor_copy(s_l[il], ckpt.s_l_shadow[il]);
-            } else {
-                ggml_backend_tensor_copy_async(src_backend, src_backend, s_l[il], ckpt.s_l_shadow[il]);
-                backends_to_sync.insert(src_backend);
-            }
+            GGML_ASSERT(src_backend != nullptr);
+            ggml_backend_tensor_copy_async(src_backend, src_backend, s_l[il], ckpt.s_l_shadow[il]);
+            backends_to_sync.insert(src_backend);
         }
     }
 
@@ -2102,15 +2078,6 @@ bool llama_kv_cache::checkpoint_restore(ggml_backend_sched_t sched) {
     used  = ckpt.used_snapshot;
 
     std::unordered_set<ggml_backend_t> backends_to_sync;
-    // a row with no resolvable backend is copied generically, outside any stream;
-    // drain queued work once so the copy cannot race an in-flight graph
-    bool sched_synced = false;
-    auto sync_sched_once = [&]() {
-        if (!sched_synced) {
-            ggml_backend_sched_synchronize(sched);
-            sched_synced = true;
-        }
-    };
 
     for (uint32_t il = 0; il < n_layer; ++il) {
         if (s_l[il] == nullptr) {
@@ -2123,26 +2090,17 @@ bool llama_kv_cache::checkpoint_restore(ggml_backend_sched_t sched) {
             for (int d = 0; d < split_info->n_device; ++d) {
                 if (split_info->splits[d] && shadow_split[d]) {
                     auto dst_backend = ggml_backend_sched_get_tensor_backend(sched, split_info->splits[d]);
-                    if (dst_backend == nullptr) {
-                        sync_sched_once();
-                        ggml_backend_tensor_copy(shadow_split[d], split_info->splits[d]);
-                    } else {
-                        ggml_backend_tensor_copy_async(dst_backend, dst_backend, shadow_split[d], split_info->splits[d]);
-                        backends_to_sync.insert(dst_backend);
-                    }
+                    ggml_backend_tensor_copy_async(dst_backend, dst_backend, shadow_split[d], split_info->splits[d]);
+                    backends_to_sync.insert(dst_backend);
                 }
             }
         } else {
             GGML_ASSERT(ckpt.s_l_shadow[il] != nullptr);
             GGML_ASSERT(ggml_nbytes(ckpt.s_l_shadow[il]) == ggml_nbytes(s_l[il]));
             auto dst_backend = ggml_backend_sched_get_tensor_backend(sched, s_l[il]);
-            if (dst_backend == nullptr) {
-                sync_sched_once();
-                ggml_backend_tensor_copy(ckpt.s_l_shadow[il], s_l[il]);
-            } else {
-                ggml_backend_tensor_copy_async(dst_backend, dst_backend, ckpt.s_l_shadow[il], s_l[il]);
-                backends_to_sync.insert(dst_backend);
-            }
+            GGML_ASSERT(dst_backend != nullptr);
+            ggml_backend_tensor_copy_async(dst_backend, dst_backend, ckpt.s_l_shadow[il], s_l[il]);
+            backends_to_sync.insert(dst_backend);
         }
     }
 
@@ -8057,7 +8015,6 @@ struct llama_context_params llama_context_default_params() {
         /*.abort_callback_data         =*/ nullptr,
         /*.offload_policy              =*/ nullptr,
         /*.cuda_params                 =*/ nullptr,
-        /*.dflash_query_capacity       =*/ 0,
     };
 
     return result;
@@ -8568,7 +8525,6 @@ struct llama_context * llama_init_from_model(
     cparams.cuda_params      = params.cuda_params;
     cparams.mtp              = params.mtp;
     cparams.worst_graph_tokens = params.worst_case_tokens;
-    cparams.dflash_query_capacity = params.dflash_query_capacity;
 
     cparams.reduce_type      = params.type_reduce;
     cparams.graph_attn_precision = params.type_graph_attn;
@@ -8585,19 +8541,6 @@ struct llama_context * llama_init_from_model(
 
     // this is necessary due to kv_self.n being padded later during inference
     cparams.n_ctx            = GGML_PAD(cparams.n_ctx, llama_kv_cache::get_padding(cparams.flash_attn));
-
-    if (llm_arch_is_dflash_family(model->arch)) {
-        const int32_t query_capacity = cparams.dflash_query_capacity > 0
-                ? cparams.dflash_query_capacity
-                : std::max<int32_t>(1, (int32_t) model->hparams.dflash_block_size);
-        const int32_t logical_cross_ctx = std::max<int32_t>(1,
-                (int32_t) cparams.n_ctx - query_capacity);
-        const int32_t physical_cross_ctx = model->dflash_swa_compress_cross_ctx(
-                logical_cross_ctx, cparams.swa_compress);
-        ctx->dflash.visible_cross_ctx = physical_cross_ctx;
-        LLAMA_LOG_INFO("%s: DFlash context logical_cross_ctx=%d physical_cross_ctx=%d query_capacity=%d window=%u\n",
-                __func__, logical_cross_ctx, physical_cross_ctx, query_capacity, model->hparams.n_swa);
-    }
 
     // with causal attention, the batch size is limited by the context size
     cparams.n_batch          = hparams.causal_attn ? std::min(cparams.n_ctx, params.n_batch) : params.n_batch;
@@ -8689,7 +8632,6 @@ struct llama_context * llama_init_from_model(
         model->arch != LLM_ARCH_STEP35 &&
         model->arch != LLM_ARCH_GEMMA4_ASSISTANT &&
         model->arch != LLM_ARCH_OPENPANGU &&
-        model->arch != LLM_ARCH_QWEN4EXP &&
         cparams.mtp != 0) {
         cparams.mtp = 0;
     }
@@ -9704,14 +9646,6 @@ static bool spec_ckpt_try_per_step(llama_kv_cache & kv, const llama_model & mode
     // here) - does not apply. Decline it so the checkpoint resolves to the whole-slot
     // shadow (gpu-fallback), which is arch-agnostic.
     if (model.arch == LLM_ARCH_OPENPANGU) {
-        kv.save_per_step_ssm = false;
-        return false;
-    }
-
-    // qwen4exp's recurrent row carries a PLE conv-history tail the per-step
-    // checkpoint doesn't size, so it would leave that tail advanced by rejected
-    // drafts. Decline; the whole-slot (gpu-fallback) shadow covers the full row.
-    if (model.arch == LLM_ARCH_QWEN4EXP) {
         kv.save_per_step_ssm = false;
         return false;
     }

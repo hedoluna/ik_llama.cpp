@@ -38,8 +38,6 @@ struct llama_model_loader {
     int n_kv      = 0;
     int n_tensors = 0;
     int n_created = 0;
-    int n_skipped = 0;
-    size_t size_skipped = 0;
 
     int64_t n_elements = 0;
     size_t  n_bytes    = 0;
@@ -140,8 +138,7 @@ struct llama_model_loader {
     enum llm_arch get_arch() const {
         if (!arch_resolved) {
             resolved_arch = llm_kv.arch;
-            if (resolved_arch == LLM_ARCH_DFLASH &&
-                    get_tensor_meta("selector_hidden.weight") != nullptr) {
+            if (resolved_arch == LLM_ARCH_DFLASH && get_tensor_meta("selector_hidden.weight") != nullptr) {
                 resolved_arch = LLM_ARCH_DFLASH2;
             }
             arch_resolved = true;
