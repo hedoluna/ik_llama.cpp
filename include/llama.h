@@ -518,6 +518,7 @@ extern "C" {
         void *              abort_callback_data;
         void *              offload_policy;
         void *              cuda_params;
+        int32_t             dflash_query_capacity; // internal DFlash query capacity override
     };
 
     // model quantization parameters
@@ -715,6 +716,8 @@ extern "C" {
     LLAMA_API bool llama_model_is_step35(const struct llama_model * model);
 
     LLAMA_API bool llama_model_is_qwen35_family(const struct llama_model * model);
+
+    LLAMA_API bool llama_model_is_qwen4exp(const struct llama_model * model);
 
     LLAMA_API bool llama_is_gemma4_mtp_file(const char * path);
 
