@@ -121,6 +121,10 @@ void llm_build_context::init() {
         lctx.inp_embd_enc      = nullptr;
         lctx.inp_KQ_mask_cross = nullptr;
         lctx.inp_dsa_sink      = nullptr;
+        lctx.inp_kpool_cells     = nullptr;
+        lctx.inp_kpool_bias      = nullptr;
+        lctx.inp_kpool_tail      = nullptr;
+        lctx.inp_kpool_ape_slots = nullptr;
         lctx.inp_mtp_carry     = nullptr;
         lctx.inp_qsa.clear();
         lctx.dflash.inputs.target_features = nullptr;
@@ -2730,6 +2734,7 @@ ggml_cgraph * llm_build_context::llama_build_graph(
     llm.init();
 
     switch (model.arch) {
+        case LLM_ARCH_K2_HORIZON:   // dense K2: same tensors + graph as llama
         case LLM_ARCH_LLAMA:
         case LLM_ARCH_LLAMA4:
         case LLM_ARCH_GRANITE:
@@ -3017,6 +3022,10 @@ ggml_cgraph * llm_build_context::llama_build_graph(
             {
                 result = llm.build_bailingmoe3();
             } break;
+        case LLM_ARCH_GLM5NEXT:
+            {
+                result = llm.build_glm5next();
+            } break;
         case LLM_ARCH_MINIMAX_M2:
             {
                 result = llm.build_minimaxm2();
@@ -3051,6 +3060,11 @@ ggml_cgraph * llm_build_context::llama_build_graph(
             } break;
         default:
             GGML_ABORT("fatal error");
+    }
+
+    if (result == nullptr) {
+        llm.free();
+        return nullptr;
     }
 
     result->n_batch = llm.n_tokens;
