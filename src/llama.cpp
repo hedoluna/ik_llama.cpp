@@ -1269,8 +1269,8 @@ static bool llama_kv_cache_init(
         replicate_mla = true;
     }
 
-    if (cache.any_compacted() && (split_cache || replicate_mla)) {
-        LLAMA_LOG_ERROR("%s: --swa-compress is not supported with a split or replicated KV cache "
+    if (cache.any_compacted() && replicate_mla) {
+        LLAMA_LOG_ERROR("%s: --swa-compress is not supported with a replicated KV cache "
                         "(split mode graph/attn); run without --swa-compress or with a single device\n", __func__);
         return false;
     }
@@ -1607,7 +1607,7 @@ static bool llama_kv_cache_init(
                         LLAMA_LOG_DEBUG("K_cache(%d, %d): using %d instead of %ld heads\n",
                                 i, is, nhead_kv, extra_K->splits[is]->ne[1]/n_embd_head_k);
                     }
-                    split_k_l.tensor_splits[is] = ggml_new_tensor_2d(ctx, this_type_k, n_embd_head_k, nhead_kv * kv_size);
+                    split_k_l.tensor_splits[is] = ggml_new_tensor_2d(ctx, this_type_k, n_embd_head_k, nhead_kv * cache.rows(i));
                     auto split_name = k_name + '.' + std::to_string(is);
                     ggml_set_name(split_k_l.tensor_splits[is], split_name.c_str());
                     mem_split[is] += ggml_nbytes(split_k_l.tensor_splits[is]);
@@ -1618,7 +1618,7 @@ static bool llama_kv_cache_init(
                 for (int is = 0; is < extra_V->n_device; ++is) {
                     auto split = extra_V->splits[is];
                     if (!split) continue;
-                    split_v_l.tensor_splits[is] = ggml_new_tensor_1d(ctx, this_type_v, split->ne[1] * kv_size);
+                    split_v_l.tensor_splits[is] = ggml_new_tensor_1d(ctx, this_type_v, split->ne[1] * cache.rows(i));
                     auto split_name = v_name + '.' + std::to_string(is);
                     ggml_set_name(split_v_l.tensor_splits[is], split_name.c_str());
                     mem_split[is] += ggml_nbytes(split_v_l.tensor_splits[is]);
@@ -1753,6 +1753,11 @@ static bool llama_kv_cache_find_slot(
         return false;
     }
 
+    if (cache.used == 0) {
+        // an empty cache refills in append order, restoring index-order == position-order
+        cache.cells_disordered = false;
+    }
+
     uint32_t n_tested = 0;
 
     while (true) {
@@ -1822,6 +1827,30 @@ static void llama_kv_cache_compact_swa(struct llama_context & lctx, uint32_t n_t
     const uint32_t dst_row = cache.sink_rows;
 
     auto copy_bytes = [&](ggml_tensor * tensor, size_t src_offset, size_t dst_offset, size_t nbytes) {
+        // The nbytes % sizeof(float) condition is just lazyness. It should be true for any cache type.
+        if (!tensor->view_src && dst_offset < src_offset && nbytes % sizeof(float) == 0) {
+            auto max_bytes = sizeof(float)*((src_offset - dst_offset)/sizeof(float));
+            int nstep = max_bytes > 0 ? (nbytes + max_bytes - 1)/max_bytes : 0;
+            if (nstep > 0 && nstep <= 4) {
+                auto src = *tensor;
+                src.type = GGML_TYPE_F32;
+                src.ne[1] = src.ne[2] = src.ne[3] = 1;
+                src.nb[0] = sizeof(float);
+                for (int istep = 0; istep < nstep; ++istep) {
+                    size_t nleft = std::min(max_bytes, nbytes);
+                    src.ne[0] = nleft / sizeof(float);
+                    src.nb[1] = src.nb[2] = src.nb[3] = src.ne[0]*sizeof(float);
+                    src.data = (char *)tensor->data + src_offset;
+                    auto dst = src;
+                    dst.data = (char *)tensor->data + dst_offset;
+                    ggml_backend_tensor_copy(&src, &dst);
+                    src_offset += nleft;
+                    dst_offset += nleft;
+                    nbytes -= nleft;
+                }
+                return;
+            }
+        }
         if (scratch.size() < nbytes) {
             scratch.resize(nbytes);
         }
@@ -1833,9 +1862,51 @@ static void llama_kv_cache_compact_swa(struct llama_context & lctx, uint32_t n_t
         if (!cache.is_compacted((int) il) || cache.k_l[il] == nullptr) {
             continue;
         }
+        auto cache_rows = cache.rows(il);
         ggml_tensor * kl = cache.k_l[il];
+
+        if (kl->extra) {
+            // Handle cache split between 2 or more devices
+            auto k_extra = (ggml_split_tensor_t *)kl->extra;
+            auto vl = il < cache.v_l.size() ? cache.v_l[il] : nullptr;
+            ggml_split_tensor_t * v_extra = nullptr;
+            int32_t n_embd_v_row = 0;
+            int64_t v_tot = 0;
+            if (vl) {
+                GGML_ASSERT(vl->extra);
+                GGML_ASSERT(!cache.v_trans); // split mode graph only works with FA enabled
+                n_embd_v_row = llama_kv_v_row_embd(lctx.model, lctx.model.hparams, il);
+                v_extra = (ggml_split_tensor_t *)vl->extra;
+                for (int is = 0; is < v_extra->n_device; ++is) {
+                    if (v_extra->splits[is]) v_tot += v_extra->splits[is]->ne[0];
+                }
+            }
+            for (int is = 0; is < k_extra->n_device; ++is) {
+                auto k_split = k_extra->splits[is];
+                if (k_split) {
+                    const size_t rows_per_pos = (size_t) k_split->ne[1] / cache_rows;
+                    const size_t stride = k_split->nb[1] * rows_per_pos;
+                    copy_bytes(k_split, (size_t) src_row*stride, (size_t) dst_row*stride, (size_t) W*stride);
+                }
+                auto v_split = v_extra ? v_extra->splits[is] : nullptr;
+                if (v_split) {
+                    // It is really stupid that the V-cache is a 1d tensor and does not contain head size, etc.
+                    const size_t v_tot_stride = ggml_row_size(v_split->type, n_embd_v_row);
+                    // Can v_tot_stride * v_split->ne[0] overflow?
+                    // Hopefully not as we are dealing with a SWA cache. Even if people use really large u-batches (say, 16k tokens)
+                    // v_tot_stride & v_split->ne[0] should not become greater than 10^8, so we get 10^16, which is well within the
+                    // range of a 64-bit integer.
+                    const size_t v_aux = v_tot_stride * v_split->ne[0];
+                    GGML_ASSERT(v_aux % v_tot == 0);
+                    const size_t v_stride = v_aux / v_tot;
+                    copy_bytes(v_split, (size_t) src_row*v_stride, (size_t) dst_row*v_stride, (size_t) W*v_stride);
+                }
+            }
+            continue;
+        }
+
         // kl rows are position-major: kl->ne[1]/rows(il) rows per position (n_head_kv)
-        const size_t rows_per_pos = (size_t) kl->ne[1] / cache.rows((int) il);
+        const size_t rows_per_pos = (size_t) kl->ne[1] / cache_rows;
         const size_t stride = kl->nb[1] * rows_per_pos;
         copy_bytes(kl, (size_t) src_row*stride, (size_t) dst_row*stride, (size_t) W*stride);
 
@@ -1852,7 +1923,7 @@ static void llama_kv_cache_compact_swa(struct llama_context & lctx, uint32_t n_t
         } else {
             // transposed V is position-minor, so one position is a column, not a row
             const size_t v_size_el = ggml_type_size(vl->type);
-            const size_t v_rows    = cache.rows((int) il);
+            const size_t v_rows    = cache_rows;
             const size_t nbytes    = ggml_nbytes(vl);
             if (scratch.size() < nbytes) {
                 scratch.resize(nbytes);
@@ -2451,6 +2522,7 @@ static void llama_kv_cache_clear(struct llama_kv_cache & cache) {
     }
     cache.head = 0;
     cache.used = 0;
+    cache.cells_disordered = false;
     cache.head_swa     = cache.sink_rows;
     cache.pos_base_swa = 0;
 
@@ -2670,6 +2742,7 @@ static void llama_kv_cache_seq_add(
     for (uint32_t i = 0; i < cache.size; ++i) {
         if (cache.cells[i].has_seq_id(seq_id) && cache.cells[i].pos >= p0 && cache.cells[i].pos < p1) {
             cache.has_shift = true;
+            cache.cells_disordered = true;
             cache.cells[i].pos   += delta;
             cache.cells[i].delta += delta;
 
@@ -7782,6 +7855,9 @@ static void llama_kv_cache_defrag_internal(struct llama_context & lctx) {
     // the pooled block keys must be rebuilt from the moved indexer keys
     lctx.qsa_pooled_stale = !kv_self.kp_l.empty();
 
+    // defrag moves cells from the end of the cache into earlier holes
+    kv_self.cells_disordered = true;
+
     //LLAMA_LOG_INFO("(tmp log) KV defrag cell moves: %u\n", n_moves);
 
     //LLAMA_LOG_INFO("expected gf nodes: %u\n", 6*n_moves*n_layer);
@@ -9603,6 +9679,7 @@ enum llama_rope_type llama_rope_type(const struct llama_model * model) {
         case LLM_ARCH_DFLASH2:
         case LLM_ARCH_K2_HORIZON:   // NEOX, per the IFM fork that implements this arch
         case LLM_ARCH_GEMMA4_ASSISTANT:
+        case LLM_ARCH_LFM2:
             return LLAMA_ROPE_TYPE_NEOX;
 
         case LLM_ARCH_QWEN2VL:
@@ -9975,11 +10052,9 @@ void llama_kv_cache_clear(struct llama_context * ctx) {
 
 // Unified speculative-checkpoint
 static bool spec_ckpt_try_per_step(llama_kv_cache & kv, const llama_model & model, int max_tokens) {
-    // openPangu carries only a conv state (no SSM recurrent term), so the per-step
-    // path - which sizes itself from the ssm_* hparams (ssm_dt_rank etc, all zero
-    // here) - does not apply. Decline it so the checkpoint resolves to the whole-slot
-    // shadow (gpu-fallback), which is arch-agnostic.
-    if (model.arch == LLM_ARCH_OPENPANGU) {
+    // openPangu carries only a conv state and LFM2 a short-conv state (no SSM
+    // term); the per-step path would divide by zero (ssm_dt_rank == 0), decline
+    if (model.arch == LLM_ARCH_OPENPANGU || model.arch == LLM_ARCH_LFM2) {
         kv.save_per_step_ssm = false;
         return false;
     }
@@ -11013,6 +11088,7 @@ struct llama_data_read {
 
             llama_batch batch = llama_batch_init(cell_count, 0, 1);
             batch.n_tokens = cell_count;
+            bool disordered = false;
             for (uint32_t i = 0; i < cell_count; ++i) {
                 llama_pos pos;
                 uint32_t n_seq_id;
@@ -11026,6 +11102,9 @@ struct llama_data_read {
                     return false;
                 }
 
+                if (i > 0 && pos < batch.pos[i - 1]) {
+                    disordered = true;
+                }
                 batch.pos[i] = pos;
                 batch.n_seq_id[i] = 1;
                 batch.seq_id[i][0] = dest_seq_id;
@@ -11034,6 +11113,9 @@ struct llama_data_read {
                 llama_batch_free(batch);
                 LLAMA_LOG_ERROR("%s: failed to find available cells in kv cache\n", __func__);
                 return false;
+            }
+            if (disordered) {
+                kv_self.cells_disordered = true;
             }
 
             // DEBUG CHECK: kv_self.head should be our first cell, kv_self.head + cell_count - 1 should be our last cell (verify seq_id and pos values)
@@ -11057,6 +11139,8 @@ struct llama_data_read {
 
             llama_kv_cache_clear(kv_self);
 
+            llama_pos prev_pos = -1;
+
             for (uint32_t i = 0; i < cell_count; ++i) {
                 llama_kv_cell & cell = kv_self.cells[i];
 
@@ -11067,6 +11151,11 @@ struct llama_data_read {
                 read_to(&n_seq_id, sizeof(n_seq_id));
 
                 cell.pos = pos;
+
+                if (pos < prev_pos) {
+                    kv_self.cells_disordered = true;
+                }
+                prev_pos = pos;
 
                 for (uint32_t j = 0; j < n_seq_id; ++j) {
                     llama_seq_id seq_id;
