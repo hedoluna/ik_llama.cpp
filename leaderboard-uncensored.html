@@ -1,0 +1,123 @@
+<title>Uncensored Models Leaderboard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #f4f7f6;
+  --surface: #ffffff;
+  --surface-2: #eef3f2;
+  --border: #dbe4e2;
+  --text: #151b1a;
+  --text-dim: #5b6d6a;
+  --accent: #b8478f;
+  --accent-dim: #f8e3f0;
+  --good: #1a8a4a;
+  --warn: #a8720a;
+  --bad: #c23b3b;
+  --font-ui: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f0a0d;
+    --surface: #191216;
+    --surface-2: #21181d;
+    --border: #362a30;
+    --text: #f0e7ec;
+    --text-dim: #a68d97;
+    --accent: #ee7dc4;
+    --accent-dim: #3a1c30;
+    --good: #7ee787;
+    --warn: #e3b341;
+    --bad: #f38181;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f0a0d; --surface: #191216; --surface-2: #21181d; --border: #362a30;
+  --text: #f0e7ec; --text-dim: #a68d97; --accent: #ee7dc4; --accent-dim: #3a1c30;
+  --good: #7ee787; --warn: #e3b341; --bad: #f38181;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-ui); padding-inline: 20px; padding-block: 28px 60px; }
+.wrap { max-width: 980px; margin: 0 auto; }
+h1 { font-family: var(--font-mono); font-size: clamp(22px, 3.4vw, 30px); font-weight: 600; margin: 0 0 6px; text-wrap: balance; }
+.subtitle { color: var(--text-dim); font-size: 14px; max-width: 68ch; line-height: 1.5; margin: 0 0 16px; }
+.caveat {
+  background: var(--accent-dim); border: 1px solid var(--accent); border-radius: 10px;
+  padding: 12px 16px; font-size: 13px; line-height: 1.55; color: var(--text); margin-bottom: 22px;
+}
+.caveat b { color: var(--accent); }
+.table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 13px; }
+thead th {
+  background: var(--surface-2); color: var(--text-dim); font-family: var(--font-mono); font-weight: 500;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; text-align: left; padding: 10px 12px;
+  border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-variant-numeric: tabular-nums; vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+.rank { font-family: var(--font-mono); font-weight: 600; color: var(--text-dim); }
+.rank.top1 { color: var(--accent); }
+.model-name { font-weight: 600; font-size: 13.5px; }
+.model-quant { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); }
+.metric { font-family: var(--font-mono); font-size: 12.5px; white-space: nowrap; }
+.score-cell { display: flex; align-items: center; gap: 8px; min-width: 120px; }
+.score-num { font-family: var(--font-mono); font-weight: 600; font-size: 13.5px; width: 34px; text-align: right; }
+.score-bar { flex: 1; height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; min-width: 50px; }
+.score-bar > span { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+.cov { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-dim); }
+.cov.partial { color: var(--warn); }
+.note-row td { background: var(--surface-2); font-size: 12.5px; color: var(--text-dim); line-height: 1.55; }
+footer { margin-top: 20px; font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+footer code { font-family: var(--font-mono); background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+footer a { color: var(--accent); }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Uncensored Models Leaderboard</h1>
+    <p class="subtitle">3 modelli abliterated/heretic, verificati su Hugging Face (non da blog SEO) e scaricati/benchati 2026-09-13, stessa metodologia e pesi della <a href="#" style="color:var(--accent)">leaderboard principale</a>.</p>
+  </header>
+
+  <div class="caveat">
+    <b>Nota metodologica:</b> gemma-4-12b-heretic-abliterated ha dato solo 5.4 t/s (VRAM overflow: 7.4GB su scheda 6GB) — A17/A33/TS/HL non misurati per non bruciare ore di sessione su un solo modello. Copertura dati 55%, score meno affidabile.
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Modello</th><th>Cod</th><th>A17</th><th>A33</th><th>TXT</th><th>TS</th><th>HL</th><th>Tool</th><th>Tg t/s</th><th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank top1">1</td>
+          <td><div class="model-name">Huihui-Qwen3.6-35B-A3B Opus-abliterated</div><div class="model-quant">Q4_K 21.7GB · MoE --cpu-moe</div></td>
+          <td class="metric">56/56</td><td class="metric">16/17</td><td class="metric">28/33</td><td class="metric">29/31</td><td class="metric">35/35</td><td class="metric">15/15</td><td class="metric">3/3</td><td class="metric">33.2</td>
+          <td><div class="score-cell"><span class="score-num">96.4</span><span class="score-bar"><span style="width:96.4%"></span></span></div></td>
+        </tr>
+        <tr><td colspan="11" class="note-row">Base Opus-Distill (già nel roster principale), abliterated by huihui-ai. Accuracy praticamente intatta rispetto all'originale censurato — <b>batte il #1 della leaderboard principale (92.9)</b>. HL 15/15 perfetto, Cod 56/56 pari al daily-winner. Miglior candidato assoluto per uso uncensored senza compromessi di qualità.</td></tr>
+
+        <tr>
+          <td class="rank">2</td>
+          <td><div class="model-name">Huihui-Ornith-1.5-9B-abliterated</div><div class="model-quant">i1-Q4_K_M 5.6GB · dense full-GPU</div></td>
+          <td class="metric">55/56</td><td class="metric">15/17</td><td class="metric">12/33</td><td class="metric">29/31</td><td class="metric">30/35</td><td class="metric">11/15</td><td class="metric">3/3</td><td class="metric">18.2</td>
+          <td><div class="score-cell"><span class="score-num">80.8</span><span class="score-bar"><span style="width:80.8%"></span></span></div></td>
+        </tr>
+        <tr><td colspan="11" class="note-row">Base Ornith-1.5 (già nel roster). Coding/testo/tool solidi, ma A33 crolla (12/33 — self_consistency 0/5, il modello varia risposta a ogni seed) e latenza sospetta più alta di quanto atteso per un 9B dense full-GPU. Alternativa leggera, non da preferire al Qwen abliterated se la logica di codice conta.</td></tr>
+
+        <tr>
+          <td class="rank">3</td>
+          <td><div class="model-name">gemma-4-12b-heretic-abliterated</div><div class="model-quant">Q4_K_M 7.4GB · dense (VRAM overflow)</div></td>
+          <td class="metric">28/56</td><td class="metric">—</td><td class="metric">—</td><td class="metric">29/31</td><td class="metric">—</td><td class="metric">—</td><td class="metric">3/3</td><td class="metric">5.4</td>
+          <td><div class="score-cell"><span class="score-num">70.4</span><span class="score-bar"><span style="width:70.4%"></span></span></div><span class="cov partial">copertura 55%</span></td>
+        </tr>
+        <tr><td colspan="11" class="note-row">⚠️ 7.4GB non entra nei 6GB VRAM di questa macchina → offload parziale su CPU → 5.4 t/s, troppo lento per la batteria completa in tempo ragionevole. Cod crolla a 28/56 (5/9 task falliti) — possibile danno reale da abliterazione, possibile anche solo instabilità sotto carico CPU-bound; da ri-testare su hardware con più VRAM prima di giudicare la qualità vera del modello.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    Candidati trovati via ricerca Hugging Face diretta (query "abliterated", ordinati per download) — scartate le fonti-blog SEO del giro iniziale, verificati solo repo reali. Metodologia e pesi: TS 25% · TXT 20% · Tool 15% · A33 15% · Cod 10% · Tg 10% · HL 5% (log-scale su Tg). Dati grezzi raccolti 2026-09-13 su RTX A2000 6GB / Ryzen 9 5950X.
+  </footer>
+</div>
