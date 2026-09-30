@@ -310,6 +310,15 @@ Suggested benchmarking pattern:
 
 Keep benchmarks sequential (not parallel) when comparing tuples, otherwise CPU/GPU
 resource contention can make the results non-comparable.
+
+Before recording comparative GPU or hybrid results, run a quick preflight:
+
+- Ensure no stale `llama-server` / `llama-cli` / benchmark process is still holding
+  CUDA memory.
+- Check VRAM state (`nvidia-smi`) and record baseline used/free memory.
+- If background desktop apps are using significant VRAM, either close them or treat
+  the run as non-comparable to clean baselines.
+
 ## Metal Build
 
 On MacOS, Metal is enabled by default. Using Metal makes the computation run on the GPU.
