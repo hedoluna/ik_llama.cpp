@@ -286,6 +286,30 @@ op issues two micro-ops with throughput of roughly one AVX-512 op per two
 cycles. The wider register width and reduced loop overhead still produce
 measurable gains over AVX2 on prompt processing for IQK kernels.
 
+
+### Practical tuning on Zen3 (e.g. Ryzen 5950X)
+
+For AVX2/FMA-only Zen3 hosts, a few runtime knobs can matter more than extra compile flags:
+
+- Enable runtime repack (`-rtr 1`) for IQK-heavy models: this can improve both
+  prompt processing and token generation throughput.
+- Sweep thread count instead of defaulting to max logical cores. On Ryzen 5950X,
+  `-t 12..16` is typically the useful range; pushing to `24`/`32` threads can
+  reduce throughput due to contention.
+- For hybrid CUDA+CPU MoE runs, also sweep `--n-cpu-moe` together with `-t`.
+  Optimal settings are workload-dependent and can shift between PP-focused and
+  TG-focused usage.
+
+Suggested benchmarking pattern:
+
+```bash
+./build/bin/llama-bench -m <model.gguf> -ngl 95 \
+  --n-cpu-moe 8,12,16,24 -t 8,12,16 \
+  -b 1024 -ub 256 -p 512 -n 128 -r 1 -o json
+```
+
+Keep benchmarks sequential (not parallel) when comparing tuples, otherwise CPU/GPU
+resource contention can make the results non-comparable.
 ## Metal Build
 
 On MacOS, Metal is enabled by default. Using Metal makes the computation run on the GPU.
