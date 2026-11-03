@@ -27,24 +27,33 @@ function piup {
 }
 
 function pidown {
-    Get-Process llama-server -ErrorAction SilentlyContinue | Stop-Process -Force
-    Write-Host "llama-server fermato"
+    Get-CimInstance Win32_Process -Filter "Name = 'llama-server.exe'" |
+        Where-Object { $_.CommandLine -match '8080' -or $_.CommandLine -notmatch '8092' } |
+        ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+    Write-Host "llama-server (daily, :8080) fermato"
 }
 
 function pistatus {
     $ok = $false
     for ($i = 0; $i -lt 3 -and -not $ok; $i++) {
         try {
-            Invoke-WebRequest http://127.0.0.1:8080/health -UseBasicParsing -TimeoutSec 8 | Out-Null
+            Invoke-WebRequest http://127.0.0.1:8080/health -UseBasicParsing -TimeoutSec 2 -ErrorAction Stop | Out-Null
             $ok = $true
         } catch {
-            Start-Sleep -Milliseconds 500
+            if ($i -lt 2) { Start-Sleep -Milliseconds 300 }
         }
     }
     if ($ok) {
         Write-Host "UP - modello pronto su :8080"
+        return
+    }
+    Write-Host "DOWN - nessun server su :8080"
+    $proc = Get-CimInstance Win32_Process -Filter "Name = 'llama-server.exe'" | Where-Object { $_.CommandLine -match '8080' }
+    if ($proc) {
+        Write-Host "  (processo attivo, PID $($proc.ProcessId) - probabilmente ancora in fase di caricamento modello o occupato con una richiesta)"
     } else {
-        Write-Host "DOWN - nessun server su :8080"
+        Write-Host "  (nessun processo llama-server per la porta 8080 - controlla i log:)"
+        Write-Host "  Get-Content 'D:\repos\ik_llama.cpp\scripts\logs\daily_err.log' -Tail 40"
     }
 }
 
@@ -82,10 +91,10 @@ function piuncstatus {
     $ok = $false
     for ($i = 0; $i -lt 3 -and -not $ok; $i++) {
         try {
-            Invoke-WebRequest http://127.0.0.1:8092/health -UseBasicParsing -TimeoutSec 8 | Out-Null
+            Invoke-WebRequest http://127.0.0.1:8092/health -UseBasicParsing -TimeoutSec 2 -ErrorAction Stop | Out-Null
             $ok = $true
         } catch {
-            Start-Sleep -Milliseconds 500
+            if ($i -lt 2) { Start-Sleep -Milliseconds 300 }
         }
     }
     if ($ok) {
