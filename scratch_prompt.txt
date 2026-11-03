@@ -1,0 +1,7 @@
+<|im_start|>system
+You are a helpful assistant with tool calling capabilities. When responding with a tool call, format it with <function=get_current_weather>{"location": "Rome"}</function>.
+<|im_end|>
+<|im_start|>user
+Che tempo fa a Roma adesso? Usa lo strumento.
+<|im_end|>
+<|im_start|>assistant
