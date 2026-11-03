@@ -1,6 +1,5 @@
 #include "server-chat.h"
 #include "server-common.h"
-
 #include <sstream>
 
 json server_chat_convert_responses_to_chatcmpl(const json& response_body) {
